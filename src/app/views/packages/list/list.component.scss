@@ -11,6 +11,27 @@
     grid-template-columns: auto auto auto auto;
 }
 
+.tabs .mat-mdc-tab {
+  padding: 5px;
+  background-color: transparent;
+  font-weight: 600;
+}
+
+/* Styles for the active tab label */
+.mat-mdc-tab.mdc-tab--active {
+  padding: 5px;
+  background-color: transparent;
+}
+
+.mat-mdc-tab.mdc-tab--active .mdc-tab__content .mdc-tab__text-label{
+  color:black!important;
+}
+
+/* Styles for the ink bar */
+.mdc-tab-indicator__content.mdc-tab-indicator__content--underline {
+  background-color: green;
+  border-color: var(--primary-color)!important;
+}
 
   
   @media screen and (max-width: 1534px) {
@@ -28,10 +49,3 @@
   }
 
 
-  mat-tab-label-active {
-    position: relative;
-    z-index: 5;
-    top: 1px;
-    font-weight: bold!important;
-    border-bottom: 3px solid var(--primary-color);
-}

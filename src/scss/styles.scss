@@ -10,10 +10,10 @@
 @tailwind utilities;
 
 
-*:not(mat-icon){
+*:not(mat-icon) {
     font-family: "Plus Jakarta Sans", sans-serif !important;
     letter-spacing: -.01rem !important;
-    word-spacing: 0.1rem!important;
+    word-spacing: 0.1rem !important;
 
 }
 
@@ -71,8 +71,8 @@ $enable-rtl: true;
 // If you want to add something do it here
 @import "custom";
 
-:root{
-    --primary-color:#d9045b
+:root {
+    --primary-color: #d9045b
 }
 
 canvas {
@@ -122,20 +122,20 @@ canvas {
     margin-right: 20px !important;
     min-width: 0px !important;
     padding-right: 10px !important;
-    color: rgb(52, 45, 71)!important;
-    height: 32px !important;
+    color: rgb(52, 45, 71) !important;
+    height: 25px !important;
 }
 
-::ng-deep.mat-tab-label-active {
+.mat-tab-label-active {
     position: relative;
     z-index: 5;
     top: 1px;
-    font-weight: bold!important;
+    font-weight: bold !important;
     border-bottom: 3px solid var(--primary-color);
 }
 
 .mat-input-element {
-    background: #fff 
+    background: #fff
 }
 
 .mat-tab-label-active .mat-tab-label-content {
@@ -146,20 +146,20 @@ canvas {
 
 
 ::-webkit-scrollbar {
-    width: 14px!important;
-  }
-  
-  ::-webkit-scrollbar-thumb {
+    width: 14px !important;
+}
+
+::-webkit-scrollbar-thumb {
     border: 4px solid rgba(248, 246, 246, 0);
     background-clip: padding-box;
     border-radius: 9999px;
     background-color: #dcdcdc;
-  }
+}
 
 .mat-dialog-container {
     padding: 15px !important;
     border-radius: 2px !important;
-    z-index: 3000!important;
+    z-index: 3000 !important;
 }
 
 .mat-tab-body-wrapper {
@@ -204,7 +204,7 @@ a:hover {
 
 .bg-light {
     // background-color: #fdfdfd !important;
-    background-color: #f9f9fa!important;
+    background-color: #f9f9fa !important;
 }
 
 .footer {
@@ -223,15 +223,15 @@ a:hover {
 }
 
 .sidebar {
-    
-    background-color: #ffffff!important;
-    border-right: 2px solid whitesmoke!important;
-    opacity: 1!important;
+
+    background-color: #ffffff !important;
+    border-right: 2px solid whitesmoke !important;
+    opacity: 1 !important;
 }
 
 .sidebar-item.active .sidebar-link:hover,
 .sidebar-item.active>.sidebar-link {
-    background-color: grey!important;
+    background-color: grey !important;
 }
 
 .sidebar-nav .nav-link {
@@ -239,7 +239,7 @@ a:hover {
     padding-bottom: 14px !important;
     font-weight: 400 !important;
     font-size: 15px;
-    color:black!important;
+    color: black !important;
 }
 
 .sidebar-nav .active {
@@ -297,27 +297,27 @@ a:hover {
 
 #toast-container>.toast-success {
     background-image: url('/assets/icons/success.png') !important;
-    background-size: 17px 17px!important;
+    background-size: 17px 17px !important;
     padding: 20px !important;
-    padding-left: 45px!important;
-    background-position: 19px 20px!important;
+    padding-left: 45px !important;
+    background-position: 19px 20px !important;
 }
 
 
 #toast-container>.toast-error {
     background-image: url('/assets/icons/error.png') !important;
-    background-size: 17px 17px!important;
+    background-size: 17px 17px !important;
     padding: 20px !important;
-    padding-left: 45px!important;
-    background-position: 19px 20px!important;
+    padding-left: 45px !important;
+    background-position: 19px 20px !important;
 }
 
 #toast-container>.toast-warning {
     background-image: url('/assets/icons/warning.png') !important;
-    background-size: 17px 17px!important;
+    background-size: 17px 17px !important;
     padding: 20px !important;
-    padding-left: 45px!important;
-    background-position: 19px 20px!important;
+    padding-left: 45px !important;
+    background-position: 19px 20px !important;
 }
 
 .toast-error {
@@ -373,18 +373,18 @@ a:hover {
     opacity: 0.99 !important;
 }
 
-.custom-modalbox  {
-    box-shadow: none!important;
-    border-radius: 2px!important;
-    padding: 0!important;
-    z-index: 3000!important;
+.custom-modalbox {
+    box-shadow: none !important;
+    border-radius: 2px !important;
+    padding: 0 !important;
+    z-index: 3000 !important;
 }
 
 .custom-modalbox mat-dialog-container {
-    box-shadow: none!important;
-    border-radius: 2px!important;
-    padding: 0!important;
-    z-index: 3000!important;
+    box-shadow: none !important;
+    border-radius: 2px !important;
+    padding: 0 !important;
+    z-index: 3000 !important;
 }
 
 
@@ -397,27 +397,27 @@ a:hover {
     z-index: 990 !important;
 }
 
-.required-btn{
-    font-family: 'Inter',sans-serif!important;
+.required-btn {
+    font-family: 'Inter', sans-serif !important;
     font-size: 11px;
     text-transform: uppercase;
     background-color: #edf1f5;
-    color:#536487;
+    color: #536487;
     padding: 4px 10px;
     border-radius: 5px;
-  }
+}
 
-  .max-size-btn{
-    font-family: 'Inter',sans-serif!important;
+.max-size-btn {
+    font-family: 'Inter', sans-serif !important;
     font-size: 11px;
     text-transform: uppercase;
     background-color: #f5f0ed;
-    color:#875353;
+    color: #875353;
     padding: 4px 10px;
     border-radius: 5px;
-  }
+}
 
-  .xxs-text {
+.xxs-text {
     /* f-s-8 xxs-text f-s-10 s-text*/
     font-size: 9px !important;
 }
@@ -451,27 +451,23 @@ a:hover {
 
 .cdk-drag-preview {
     border: 2px solid whitesmoke;
-    background-color: white!important;
+    background-color: white !important;
     opacity: 0.7;
-    max-height: 70px!important;
-  }
+    max-height: 70px !important;
+}
 
-  .mat-form-field-appearance-fill .mat-form-field-flex {
+.mat-form-field-appearance-fill .mat-form-field-flex {
     background-color: rgb(248, 247, 251)
 }
 
 
-
-
-
-*{
+* {
     transition: all 0.2s ease-out;
-  }
+}
 
 
-  @media screen and (max-width: 1150px) {
-    .sidebar{
-       z-index: 1500!important;
+@media screen and (max-width: 1150px) {
+    .sidebar {
+        z-index: 1500 !important;
     }
-
 }

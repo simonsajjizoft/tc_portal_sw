@@ -31,16 +31,6 @@ const routes: Routes = [
           import('./views/packages/packages.module').then((m) => m.PackagesModule)
       },      
       {
-        path: 'careers',
-        loadChildren: () =>
-          import('./views/careers/careers.module').then((m) => m.CareersModule)
-      },
-      {
-        path: 'blogs',
-        loadChildren: () =>
-          import('./views/blogs/blogs.module').then((m) => m.BlogsModule)
-      },
-      {
         path: 'home',
         loadChildren: () =>
           import('./views/home/home.module').then((m) => m.HomeModule)

@@ -88,11 +88,11 @@
                     <div class="text-xs font-medium  w-3/4 whitespace-nowrap overflow-ellipsis overflow-hidden">Created Dec 21. 2023</div>
                 </div>
             </div>
-            <mat-tab-group animationDuration="0" class="mt-2 overflow-y-auto h-3/5 px-2" >
-                <mat-tab>
-                    <ng-template mat-tab-label >
+            <mat-tab-group animationDuration="0" class="mt-2 overflow-y-auto h-3/5 px-2 tabs" >
+                <mat-tab label="Details">
+                    <!-- <ng-template mat-tab-label >
                       Details
-                    </ng-template>
+                    </ng-template> -->
                     <div class="text-xs font-semibold px-2.5 py-2  w-3/4 whitespace-nowrap overflow-ellipsis overflow-hidden">Last Updated Dec 20, 2023</div>
                     <div class="text-sm font-semibold flex gap-1 px-2.5 "><span class="mr-2">Updated by</span> <img class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image"> Jose Leos</div>  
                     <div class="px-3 py-3 flex text-sm">
@@ -102,7 +102,7 @@
                     <div class="flex flex-wrap justify-center  gap-2 px-2 py-3">
                         <div *ngFor="let item of [1,2,3,4]" class=" h-32 w-28  items-center justify-center">
                             <div class="flex items-center justify-center w-full h-4/6 rounded-lg bg-pink-50 relative border-2 border-pink-300">
-                                <img src="assets/icons/exercise.png" class="w-8 h-8" alt="" srcset="">
+                                <img src="assets/icons/exercise.svg" class="w-8 h-8" alt="" srcset="">
                                 <!-- <div  class="flex justify-end xs-text text-pink-500 absolute right-2.5 top-2"><img src="assets/icons/pencil.png" width="13px" height="13px" alt="" srcset=""></div> -->
                                 <div *ngIf="item===4" class="flex justify-end xs-text text-pink-500 absolute right-2.5 bottom-2">Bonus</div>
 
