@@ -1,0 +1,217 @@
+
+<c-container [fluid]="true" class="m-l-2 ctn-breadcrumb">
+    <c-breadcrumb>
+        <c-breadcrumb-item url="#">Home</c-breadcrumb-item>
+        <c-breadcrumb-item [active]="true">Contact Us</c-breadcrumb-item>
+    </c-breadcrumb>
+</c-container>
+<c-row ngPreserveWhitespaces style="min-height:80vh!important">
+    <div >
+        <c-row >
+
+          <div style="text-align: right">
+            <button cButton class="primary-custom-btn " (click)="contactUsSubmit(formGroup?.value)"  type="button" >Add Contact
+            </button>
+           </div>
+
+            <c-col md="12" xl="9" sm="12" xs="12">
+              <div [formGroup]="formGroup">
+                <div class="p-5 p-l-2 p-r-5 f-s-14 f-w-500">Email</div>
+                <c-input-group class="mb-3 f-s-12">
+                  <input autoComplete="email" formControlName="email" cFormControl placeholder=""  class="f-s-15 f-w-500 p-l-5 p-r-5"/>
+                </c-input-group>
+  
+                <div class="p-5 p-l-2 p-r-5 f-s-14 f-w-500">Address</div>
+                <!-- <c-input-group class="mb-3 f-s-12">
+                  <input autoComplete="expertInstagramUrl" formControlName="address" cFormControl placeholder=""  class="f-s-15 f-w-500 p-l-5 p-r-5"/>
+                </c-input-group> -->
+
+                <c-row  class="m-b-10">
+                  <ckeditor [editor]="Editor"   
+           
+                   [config]="{ toolbar: [ 
+                  'heading',
+                  '|',
+                  'bold',
+                  'italic',
+                  'underline',
+                  'horizontalLine',
+                  'link',
+                  'bulletedList',
+                  'code',
+                  'codeBlock',
+                  '|',
+                  'classicEditor',
+                  'numberedList',
+                  'sourcedialog',
+                  '|',
+                  'outdent',
+                  'indent',
+                  'alignment',
+                  '|',
+                  'fontColor',
+                  'fontSize',
+                  'blockQuote',
+                  'undo',
+                  'redo'
+                  ] }"  formControlName="address" #myEditor></ckeditor>
+                </c-row>
+
+              
+                
+                <div class="p-5 p-l-2 p-r-5 f-s-14 f-w-500">Image</div>
+                <div class="input-group mb-3 f-s-12">
+                  <input type="file" class="form-control f-s-12" id="inputGroupFile02" >
+                  <label class="input-group-text f-s-12" for="inputGroupFile02" >Upload</label>
+                </div>
+
+              
+
+
+          
+
+              <div class="p-5 p-l-2 p-r-5 f-s-14 f-w-500">Phone</div>
+              <c-input-group class="mb-3 f-s-12">
+                <input autoComplete="phone" formControlName="phone" cFormControl placeholder=""  class="f-s-15 f-w-500 p-l-5 p-r-5"/>
+              </c-input-group>
+
+
+              
+
+             
+              
+              
+              </div>
+
+              
+
+
+            </c-col>
+            <c-col md="12" xl="3" sm="12" xs="12">
+              <div class="p-5 p-l-2 p-r-5 f-s-14 f-w-500" style="height:'31px'"></div>
+              <c-card class="mb-4 ">
+                <c-card-body>
+                  <c-row>
+                    <c-accordion [alwaysOpen]="true">
+                      <c-accordion-item #item0="cAccordionItem" [visible]="true" flush="true">
+                        <ng-template cTemplateId="accordionHeaderTemplate">
+                          <button [collapsed]="!item0.visible" cAccordionButton class="f-s-16 f-w-500">
+                            Publish
+                          </button>
+                        </ng-template>
+                        <ng-template cTemplateId="accordionBodyTemplate">
+                          <div class="accordion-body">
+                            <div class="d-grid-2 f-s-13 ">
+                              <div class="f-w-400 grid-item">Status</div>
+                              <mat-form-field appearance="fill" style="width: 150px;">
+                              <select (change)="onOptionSelected($event)" matNativeControl required formControlName="status">
+                                <option value="publish">Publish</option>
+                                <option value="draft">Draft</option>
+                              </select>
+                              </mat-form-field>
+                              <div class="f-w-400 grid-item">Published on </div>
+                              <div class="f-w-500 grid-item">
+                                <input type="date" style="padding-left: 10px;" formControlName="publishingDate" id="birthday"
+                                  name="birthday">
+                              </div>
+                            </div>
+            
+                          </div>
+                        </ng-template>
+                      </c-accordion-item>
+                    </c-accordion>
+                  </c-row>
+                </c-card-body>
+            
+              </c-card>
+              <!-- </div> -->
+            
+            
+              <c-card class="mb-4">
+                <c-card-body>
+            
+                  <c-row>
+                    <c-accordion [alwaysOpen]="true">
+                      <!-- <c-accordion-item #item0="cAccordionItem" [visible]="true" flush="true"> -->
+                      <!-- <ng-template cTemplateId="accordionHeaderTemplate"> -->
+            
+                      <h5 class="f-s-16 p-15 h-btn">Page Attributes</h5>
+                      <div class="d-grid-2 f-s-13 p-15">
+                        <div class="f-w-400 grid-item">Parent : </div>
+                        <div class="f-w-500 grid-item">
+                          <c-dropdown variant="btn-group">
+                            <button cButton cDropdownToggle color="secondary" size="sm" class="f-s-13 dropdown-tgle">
+                              Default
+                            </button>
+                            <ul cDropdownMenu class="f-s-13">
+                              <li><button cDropdownItem>Action</button></li>
+                              <li><button cDropdownItem>Another action</button></li>
+                              <li><button cDropdownItem>Another action</button></li>
+                              <li><button cDropdownItem>Another action</button></li>
+                              <li><button cDropdownItem>Another action</button></li>
+                              <li><button cDropdownItem>Another action</button></li>
+                              <li><button cDropdownItem>Something else here</button></li>
+                            </ul>
+                          </c-dropdown>
+                        </div>
+            
+                        <div class="f-w-400 grid-item">Template : </div>
+                        <div class="f-w-500 grid-item">
+                          <c-dropdown variant="btn-group">
+                            <button cButton cDropdownToggle color="secondary" size="sm" class="f-s-13 dropdown-tgle">
+                              Default
+                            </button>
+                            <ul cDropdownMenu class="f-s-13">
+                              <li><button cDropdownItem>Action</button></li>
+                              <li><button cDropdownItem>Another action</button></li>
+                              <li><button cDropdownItem>Another action</button></li>
+                              <li><button cDropdownItem>Another action</button></li>
+                              <li><button cDropdownItem>Another action</button></li>
+                              <li><button cDropdownItem>Another action</button></li>
+                              <li><button cDropdownItem>Something else here</button></li>
+                            </ul>
+                          </c-dropdown>
+                        </div>
+                      </div>
+                      <!-- </ng-template> -->
+                      <!-- </c-accordion-item> -->
+                    </c-accordion>
+                  </c-row>
+                </c-card-body>
+            
+              </c-card>
+            
+              <c-card class="mb-4">
+                <c-card-body>
+                  <c-row>
+                    <c-accordion [alwaysOpen]="true">
+            
+                      <h5 class="f-s-16 p-15 h-btn"></h5>
+                      <div class="d-grid-2 f-s-13 p-15">
+                        <div class="f-w-400 grid-item">Status &nbsp;&nbsp; </div>
+                <div class="f-w-500 grid-item">
+                  <mat-form-field appearance="fill" style="width: 150px;">
+                    <select  (change)="onOptionSelectedCompany($event)" matNativeControl required >
+                      <option  value="ZoftSolutions">ZoftSolutions</option>
+                      <option  value="ZxDigital">ZX Digital</option>
+                      <option  value="SchoolWizard">SchoolWizard</option>
+                    </select>
+                  </mat-form-field>
+            
+                        </div>
+                      </div>
+                    </c-accordion>
+                  </c-row>
+                </c-card-body>
+              </c-card>
+            
+            </c-col>
+
+
+
+
+        </c-row>
+        
+
+        
+    </div>

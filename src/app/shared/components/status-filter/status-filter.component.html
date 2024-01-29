@@ -1,0 +1,12 @@
+<div class="no-close select b-gr btn p-0 p-t-2 p-b-2 c-pointer" (click)="statusDropDown=!statusDropDown">
+    <div class="no-close h-100 align-center d-flex j-space f-s-15 p-l-15 p-r-15 p-5 p-t-1 p-b-1">
+        <span class="no-close m-r-5 f-s-14 flter-name d-flex align-center"><img src="assets/icons/status.png" class="no-close" width="18px" height="15px" alt="" srcset=""> <span class="no-close m-t-2 m-l-3">{{selectedStatusType?.name ? selectedStatusType?.name :'Status'}}</span> </span> 
+      <span><i class="no-close fa fa-chevron-down f-s-11 c-gr"></i></span>
+      <div class="no-close selection-dropdown " *ngIf="statusDropDown">
+        <!-- <div class="f-w-500 head">Status</div> -->
+        <div class="no-close content" *ngFor="let item of statusList"
+          [ngClass]="{'selected-item' :selectedStatusType == item }"
+          (click)="onOptionSelected(item)">{{item?.name}} </div>
+      </div>
+    </div>
+  </div>

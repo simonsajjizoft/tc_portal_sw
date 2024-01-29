@@ -1,0 +1,90 @@
+<!--sidebar-->
+<c-sidebar #sidebar="cSidebar" class="d-print-none sidebar sidebar-fixed bg-white" id="sidebar" visible>
+  <c-sidebar-brand class="bg-white">
+    <div class="flex  px-4 text-center items-center  py-3 ">
+      <div class="logo text-lg font-semibold f-lexend"><img src="assets/icons/favicon.ico" width="25px" height="25px"
+          alt=""></div>
+      <div class="font-bold text-lg text-pink-600 ml-2 pt-1">TC <span class="font-semibold">Portal</span></div>
+    </div>
+  </c-sidebar-brand>
+  <perfect-scrollbar [config]="perfectScrollbarConfig">
+    <div class="px-2 py-3 mt-2  bg-white ">
+      <div  (click)="navigate('/dashboard')" [ngClass]="router?.url?.includes('dashboard') ? 'bg-violet-50' : ''"
+        class="overflow-hidden cursor-pointer font-bold  text-sm flex p-10 pt-2 pb-2 gap-1 rounded-md items-center">
+        <img class="p-2 mr-2" src="assets/icons/home.png" width="25px" height="25px" alt="">
+        <span class=" text-sm "
+          [ngClass]="router?.url?.includes('dashboard') ? 'text-pink-600 font-bold': 'text-gray-600'">Home</span>
+      </div>
+      <div   [ngClass]="router?.url?.includes('exercises') ? 'bg-violet-50' : ''"
+        class="overflow-hidden cursor-pointer font-bold  text-sm flex p-10 pt-2 pb-2 gap-1 rounded-md items-center">
+        <img class="p-2 mr-2" src="assets/icons/exercise.png" width="25px" height="25px" alt="">
+        <span class=" text-sm "
+          [ngClass]="router?.url?.includes('exercises') ? 'text-pink-600 font-bold': 'text-gray-600'">Excercises</span>
+      </div>
+      <div   [ngClass]="router?.url?.includes('packages') ? 'bg-violet-50' : ''" (click)="navigate('/packages')"
+        class="overflow-hidden cursor-pointer font-bold  text-sm flex p-10 pt-2 pb-2 gap-1  rounded-md items-center">
+        <img class="p-2 mr-2" src="assets/icons/pkg.svg" width="26px" height="28px" alt="">
+        <span  class=" text-sm"
+          [ngClass]="router?.url?.includes('packages') ? 'text-pink-600 font-bold': 'text-gray-600'">Packages</span>
+      </div>
+    </div>
+    <div class="px-2.5 py-3   mt-3  bg-white " *ngIf="!unfoldable">
+      <div class="font-bold text-xs text-gray-500 py-2 px-1">RECENTLY UPDATED</div>
+      <div class="flex py-2 overflow-hidden">
+        <div class="font-medium text-sm flex px-1 py-2 gap-1 rounded-md items-center overflow-hidden">
+          <img class="p-2 mr-1" src="assets/icons/pkg.svg" width="32px" height="30px" alt="">
+          <div class="flex-col flex">
+            <span class=" text-xs font-bold text-black">Package 1325</span>
+            <span class=" text-xs text-gray-500">P14151</span>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="flex overflow-hidden ">
+        <div class="font-medium text-sm flex px-1 py-2 gap-1 rounded-md items-center">
+          <img class="p-2 mr-1" src="assets/icons/exercise.png" width="32px" height="28px" alt="">
+          <div class="flex-col flex">
+            <span class=" text-xs font-bold text-black">Exercise 8</span>
+            <span class="text-xs text-gray-500">E19151</span>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="flex overflow-hidden">
+        <div class="font-medium text-sm flex px-1 py-2 gap-1 rounded-md items-center">
+          <img class="p-2 mr-1" src="assets/icons/exercise.png" width="32px" height="28px" alt="">
+          <div class="flex-col flex">
+            <span class=" text-xs font-bold text-black">Exercise 6325</span>
+            <span class=" text-xs text-gray-500">E14151</span>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="flex overflow-hidden">
+        <div class="font-medium text-sm flex px-1 py-2 gap-1 rounded-md items-center">
+          <img class="p-2 mr-1" src="assets/icons/exercise.png" width="32px" height="28px" alt="">
+          <div class="flex-col flex">
+            <span class=" text-xs font-bold text-black">Exercise 6325</span>
+            <span class=" text-xs text-gray-500">E14151</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </perfect-scrollbar>
+</c-sidebar>
+<div class="wrapper bg-light dark:bg-transparent">
+  <app-default-header class="mb-3 d-print-none header header-sticky " position="sticky"
+    sidebarId="sidebar"></app-default-header>
+  <div class="body flex-grow-1 px-3">
+    <c-container breakpoint="xxl" class="h-auto">
+      <router-outlet></router-outlet>
+    </c-container>
+  </div>
+  <!-- <app-default-footer></app-default-footer> -->
+</div>

@@ -1,0 +1,27 @@
+<div class="p-relative carousel-container " [ngClass]="dashboard ? 'p-b-10 p-l-0 p-r-0' : 'p-15'" style="width:100%;height: 100%;" (click)="carouselClick()">
+    <div style="width:100%;height: 100%;" *ngFor="let item of images;let i=index" class="fadeInRight"
+        [ngClass]="i==selectedIndex ? 'active' : 'inactive'">
+        <mat-icon class="f-s-18" [ngClass]="dashboard ? 'p-r-15' : ''"
+            style="position: absolute;top:5px;right:-1px;color:rgb(205, 189, 249)">history_toggle_off</mat-icon>
+        <img *ngIf="dashboard" [src]="item?.coverImageUrl" class="m-b-10" width="100%" height="180px" alt="" srcset="">
+        <h4 style="width: 90%;" class="clamp f-s-15 f-roboto f-w-500" [ngClass]="dashboard ? 'p-l-15 p-r-15' : ''">{{item?.title}}</h4>
+        <p [ngClass]="dashboard ? 'p-l-15 p-r-15' : ''" style="width:200px!important;overflow: hidden!important;max-width: 200px!important;" class="f-s-14  m-b-4 max-h">{{item?.preview}}</p>
+        <div [ngClass]="dashboard ? 'p-l-15 p-r-15' : ''" class="d-flex j-space align-center">
+            <div class="category f-s-12 f-roboto f-w-600 t-a-center t-overflow-el">{{item?.category}}</div>
+            <div class="f-s-12 f-roboto c-light ">{{item?.createdDate | date :"MMM dd YYYY"}}</div>
+        </div>
+    </div>
+    <div  *ngIf="indicators" [ngClass]="dashboard ? 'carousel-dot-container2' : 'carousel-dot-container'" class=" d-flex align-center j-center">
+        <span (click)="selectItem(i)" *ngFor="let dot of images;let i=index"
+            [ngClass]="i==selectedIndex ? 'active-dot' : 'inactive-dot'" class="dot">
+        </span>
+    </div>
+    <div class="btn-carousel btn-prev">
+        <button (click)="prevClick()" mat-icon-button
+           ><mat-icon>chevron_left</mat-icon></button>
+    </div>
+    <div class="btn-carousel btn-next">
+        <button (click)="nextClick()" mat-icon-button
+            ><mat-icon>chevron_right</mat-icon></button>
+    </div>
+</div>

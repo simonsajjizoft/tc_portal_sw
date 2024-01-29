@@ -1,0 +1,456 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Lexend:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sarabun:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Hammersmith+One&family=Lato:wght@400;700;900&family=Montserrat:wght@400;500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700&family=Poiret+One&family=Poppins:wght@300;400;500;600&family=Raleway:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Signika+Negative:wght@400;500;600&family=Signika:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*:not(mat-icon){
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    letter-spacing: -.01rem !important;
+    word-spacing: 0.1rem!important;
+
+}
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1600px
+);
+
+
+
+c-col {
+    transition: all 0.60s ease !important;
+}
+
+.f-heebo {
+    font-family: 'Heebo', sans-serif !important;
+}
+
+.accordion {
+    border: 0 !important;
+    border-color: transparent !important;
+}
+
+// @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600,700,900");
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,500,600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600');
+@import "variables";
+
+$enable-ltr: true;
+$enable-rtl: true;
+
+// Import styles with default layout.
+@import "@coreui/coreui/scss/coreui";
+
+// Import Chart.js custom tooltips styles
+@import "@coreui/chartjs/scss/coreui-chartjs";
+
+// perfect scrollbar theming for use with [perfectScrollbar] directive
+//@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+
+@import "layout";
+
+// Some temp fixes
+@import "fixes";
+
+// Prism.js
+@import "examples";
+
+// If you want to add something do it here
+@import "custom";
+
+:root{
+    --primary-color:#d9045b
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.f-inter {
+    font-family: 'Inter', sans-serif !important;
+}
+
+
+.sans {
+    font-family: 'Open Sans', Helvetica, sans-serif !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0.3675em 0;
+}
+
+
+.f-lexend {
+    font-family: "Lexend", sans-serif !important;
+    letter-spacing: -.01rem !important;
+
+}
+
+
+.mat-typography {
+    letter-spacing: 0.2px !important;
+}
+
+.mat-tab-header {
+    border-bottom: 2px solid rgb(231, 231, 231);
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.mat-tab-label {
+    opacity: unset !important;
+    padding: 10px !important;
+    padding-left: 10px !important;
+    margin-right: 20px !important;
+    min-width: 0px !important;
+    padding-right: 10px !important;
+    color: rgb(52, 45, 71)!important;
+    height: 32px !important;
+}
+
+::ng-deep.mat-tab-label-active {
+    position: relative;
+    z-index: 5;
+    top: 1px;
+    font-weight: bold!important;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.mat-input-element {
+    background: #fff 
+}
+
+.mat-tab-label-active .mat-tab-label-content {
+    font-weight: bold !important;
+    color: #121212 !important;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 14px!important;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border: 4px solid rgba(248, 246, 246, 0);
+    background-clip: padding-box;
+    border-radius: 9999px;
+    background-color: #dcdcdc;
+  }
+
+.mat-dialog-container {
+    padding: 15px !important;
+    border-radius: 2px !important;
+}
+
+.mat-tab-body-wrapper {
+    height: 100%;
+}
+
+.mat-tab-body {
+    height: 100%;
+}
+
+.record-pagination ul.ngx-pagination {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.record-pagination .ngx-pagination a:hover {
+    background: #419ae8 !important;
+    color: #fff;
+}
+
+.record-pagination .ngx-pagination a {
+    text-decoration: none;
+}
+
+a {
+    color: unset;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+
+.cdk-overlay-dark-backdrop {
+    background: rgba(3, 2, 12, 0.52) !important;
+}
+
+.bg-primary {
+    background-color: #2273c9 !important;
+}
+
+
+.bg-light {
+    // background-color: #fdfdfd !important;
+    background-color: #f9f9fa!important;
+}
+
+.footer {
+    background-color: #f6f6f9 !important;
+}
+
+
+.sidebar-toggler {
+    background: none !important;
+}
+
+.sidebar-toggler::before {
+    background-image: none !important;
+    background: url('../assets/img/brand/zoft.png') !important;
+    content: "" !important;
+}
+
+.sidebar {
+    
+    background-color: #ffffff!important;
+    border-right: 2px solid whitesmoke!important;
+    opacity: 1!important;
+}
+
+.sidebar-item.active .sidebar-link:hover,
+.sidebar-item.active>.sidebar-link {
+    background-color: grey!important;
+}
+
+.sidebar-nav .nav-link {
+    padding-top: 10px !important;
+    padding-bottom: 14px !important;
+    font-weight: 400 !important;
+    font-size: 15px;
+    color:black!important;
+}
+
+.sidebar-nav .active {
+    background-color: rgba(68, 105, 157, 0.3) !important;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: white !important;
+    border-left: 0 !important;
+    border-radius: 8px !important;
+}
+
+.tstr-title {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 14px !important;
+    margin-bottom: 5px;
+    font-weight: 500 !important;
+}
+
+.toast-close-button {
+    padding: 0 !important;
+    cursor: pointer !important;
+    background: transparent !important;
+    color: rgb(185, 185, 185) !important;
+    width: 19px !important;
+    height: 18px !important;
+    border: 0;
+}
+
+
+.tstr-message {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 14px !important;
+    color: rgb(37, 38, 41) !important;
+}
+
+.toast-warning {
+    color: rgba(0, 0, 0, 0.99) !important;
+    background-color: white !important;
+    border-radius: 6px !important;
+    font-family: 'Roboto', sans-serif !important;
+    border: 1px solid whitesmoke !important;
+    box-shadow: rgba(99, 99, 99, 0.14) 0px 2px 8px 0px !important;
+}
+
+.toast-success {
+    color: rgba(0, 0, 0, 0.99) !important;
+    background-color: white !important;
+    border-radius: 6px !important;
+    font-family: 'Roboto', sans-serif !important;
+    border: 1px solid whitesmoke !important;
+    box-shadow: rgba(99, 99, 99, 0.14) 0px 2px 8px 0px !important;
+}
+
+
+
+#toast-container>.toast-success {
+    background-image: url('/assets/icons/success.png') !important;
+    background-size: 17px 17px!important;
+    padding: 20px !important;
+    padding-left: 45px!important;
+    background-position: 19px 20px!important;
+}
+
+
+#toast-container>.toast-error {
+    background-image: url('/assets/icons/error.png') !important;
+    background-size: 17px 17px!important;
+    padding: 20px !important;
+    padding-left: 45px!important;
+    background-position: 19px 20px!important;
+}
+
+#toast-container>.toast-warning {
+    background-image: url('/assets/icons/warning.png') !important;
+    background-size: 17px 17px!important;
+    padding: 20px !important;
+    padding-left: 45px!important;
+    background-position: 19px 20px!important;
+}
+
+.toast-error {
+    color: rgba(0, 0, 0, 0.99) !important;
+    background-color: white !important;
+    border-radius: 6px !important;
+    font-family: 'Roboto', sans-serif !important;
+    border: 1px solid whitesmoke !important;
+    box-shadow: rgba(99, 99, 99, 0.14) 0px 2px 8px 0px !important;
+}
+
+
+
+.selected-pageitems {
+    color: #2273c9;
+    font-weight: 600 !important;
+    background-color: aliceblue !important;
+}
+
+.ngx-pagination {
+    height: 60px !important;
+    max-height: 60px !important;
+}
+
+.ngx-pagination .pagination-next {
+    border-radius: 5px !important;
+
+}
+
+.ngx-pagination a,
+.ngx-pagination button,
+.ngx-pagination li {
+    border-radius: 50% !important;
+}
+
+.h-max-content {
+    height: max-content !important;
+}
+
+
+.dialog-ctn {
+    position: fixed !important;
+    bottom: 0 !important;
+    top: 0px !important;
+    right: 0 !important;
+    z-index: 1040 !important;
+    display: flex;
+    flex-direction: column;
+    color: var(--cui-offcanvas-color);
+    background-clip: padding-box;
+    outline: 0;
+    transition: var(--cui-offcanvas-transition);
+    opacity: 0.99 !important;
+}
+
+.sidebar {
+    z-index: 2000 !important;
+}
+
+.header {
+    z-index: 990 !important;
+}
+
+.required-btn{
+    font-family: 'Inter',sans-serif!important;
+    font-size: 11px;
+    text-transform: uppercase;
+    background-color: #edf1f5;
+    color:#536487;
+    padding: 4px 10px;
+    border-radius: 5px;
+  }
+
+  .max-size-btn{
+    font-family: 'Inter',sans-serif!important;
+    font-size: 11px;
+    text-transform: uppercase;
+    background-color: #f5f0ed;
+    color:#875353;
+    padding: 4px 10px;
+    border-radius: 5px;
+  }
+
+  .xxs-text {
+    /* f-s-8 xxs-text f-s-10 s-text*/
+    font-size: 9px !important;
+}
+
+.xs-text {
+    /*  xxs-text f-s-10  s-text*/
+    font-size: 11px !important;
+}
+
+.s-text {
+    /* s-text f-s-12 m-text */
+    font-size: 12px !important;
+}
+
+.m-text {
+    /* m-text f-s-14 f-s-15 */
+    font-size: 14px !important;
+
+}
+
+
+
+.req {
+    color: red !important;
+}
+
+.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: rgb(224, 224, 224) !important;
+}
+
+.cdk-drag-preview {
+    border: 2px solid whitesmoke;
+    background-color: white!important;
+    opacity: 0.7;
+    max-height: 70px!important;
+  }
+
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgb(248, 247, 251)
+}
+
+
+.custom-modalbox mat-dialog-container {
+    box-shadow: none!important;
+    border-radius: 2px!important;
+    padding: 0!important;
+}
+
+
+*{
+    transition: all 0.2s ease-out;
+  }

@@ -1,0 +1,40 @@
+<div class=" min-vh-100 d-flex flex-row align-items-center outer-box outer-div">
+  <div class="m-0 w-100  p-0 main-ctn">
+    <c-row class="w-100 m-0 p-0 d-flex j-center align-items-center">
+      <c-col md="4" class="p-0">
+        <c-card class="p-15 bg-white">
+          <c-card-body class="bg-white">
+            <div class="text-center">
+                <div style="display: grid;gap:5px">
+                 <span class="welcome">SchoolWizard <span class="f-w-600">TC Portal</span></span>
+                 <span class="sub-head">Please enter your login details</span>
+                 </div>
+             </div>
+             <div [formGroup]="formGroup" style="margin-top: 2%;">
+               <div class=" form-outline mb-4" style="margin-bottom: 0px !important;">
+                 <img class="envelope" src="assets/icons/email.png">
+                 <input type="email" 
+                 formControlName="empEmail" class="form-control" placeholder="Email Address" style="padding-left: 40px;">
+                   <!-- <p *ngIf="formGroup.get('empEmail').invalid && formGroup.get('empEmail').touched" class="form-error" >
+                     *Please Enter Valid Email Address
+                   </p> -->
+               </div>
+               <div class=" form-outline mb-4" >
+                  <img class="envelope" src="assets/icons/password.png" >
+                 <input type="password" style="padding-left: 40px;"
+                  formControlName="empPassword" class="form-control" placeholder="Password">
+               </div>
+               <div class="form-outline mb-4" >
+                 <button class="bg-pink-600 text-white font-semibold rounded-2xl w-36 py-2.5 px-3"  type="button" (click)="submitClick()">Continue</button>
+                 <h5 class="reset-password" > Reset Password </h5>
+               </div>
+               <div class=" loader mb-4" *ngIf="loginLoader">
+                     <mat-spinner diameter="50" color="basic"></mat-spinner>
+               </div>
+             </div>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </div>
+</div>

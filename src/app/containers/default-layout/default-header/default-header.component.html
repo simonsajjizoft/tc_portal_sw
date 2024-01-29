@@ -1,0 +1,105 @@
+<!--<c-header class="mb-4 d-print-none" position="sticky">-->
+<ng-container >
+  <c-container   breakpoint="xxl" >
+    <!-- <img src="assets/img/brand/loader.png" width="35px" height="35px" alt="" srcset=""> -->
+    <!-- <div class="create-nav p-l-10">
+      <div class="c-gr" style="color:rgb(94, 93, 93)">Menu <i class="fa fa-chevron-down f-s-12 m-l-4"></i></div>
+      <div class="">
+        <div>Create Blog</div>
+      </div>
+    </div> -->
+    <button
+    toggle="visible"
+    cHeaderToggler
+    [cSidebarToggle]="sidebarId"
+    class="ps-1"
+  >
+    <svg cIcon
+      name="cilMenu"
+      size="lg"
+    ></svg>
+  </button>
+    <c-header-nav class="d-none d-lg-flex me-auto f-s-14"> 
+          
+    </c-header-nav>
+    <!-- <div class="m-r-15" >
+      <img src="assets/icons/blog.png" width="22px" height="22px" alt="" srcset="">
+     </div>
+     <div style="border-left:2px solid rgb(235, 235, 235);height:30px;"></div>
+     <div >
+      <button mat-icon-button><mat-icon>work_outline</mat-icon></button>
+     </div>
+     <div style="border-left:2px solid rgb(235, 235, 235);height:30px;"></div> -->
+    <c-header-nav class="ms-3">
+      
+      <ng-container *ngTemplateOutlet="userDropdown"></ng-container>
+    </c-header-nav>
+  </c-container>
+  
+</ng-container>
+<!--</c-header>-->
+<ng-template #userDropdown>
+  <c-dropdown alignment="end" variant="nav-item" class="d-flex align-center" >
+    <button
+      cButton
+      color=""
+      [caret]="false"
+      cDropdownToggle
+      class="py-0 d-flex align-center"
+      style="outline:none!important;border: none!important;"
+    >
+    <div class="avatar m-b-5 m-r-10">
+      <img   class="avatar-img a-img" src="/assets/icons/prof.svg" alt="user@email.com">
+      <span class="avatar-status bg-success"></span>
+    </div>
+    <div *ngIf="userName" class="flex-column d-flex user">
+      <div class="f-s-13 fw-semibold f-poppins c-black" style="color:black!important">{{userName | titlecase}}</div>
+      <div class="f-s-12 f-poppins t-a-left" style="line-height: 9px;">Admin <i class="fa fa-caret-down"></i></div>
+
+    </div>
+    </button>
+    <ul cDropdownMenu class="pt-0 pr-5 w-auto f-roboto shadow-bx" style="border:1px solid rgb(231, 231, 231)!important">
+      <!-- <li>
+        <h6 cDropdownHeader class="bg-light fw-semibold py-2">Account</h6>
+      </li>
+      <li>
+        <a routerLink="./" cDropdownItem>
+          <svg cIcon class="me-2" name="cilBell"></svg>
+          Updates
+          <c-badge class=" float-end info" >
+            42
+          </c-badge>
+        </a>
+      </li>
+      <li>
+        <a routerLink="./" cDropdownItem>
+          <svg cIcon class="me-2" name="cilEnvelopeOpen"></svg>
+          Messages
+          <c-badge class="float-end success" >
+            42
+          </c-badge>
+        </a>
+      </li>
+      <li>
+        <a routerLink="./" cDropdownItem>
+          <svg cIcon class="me-2" name="cilTask"></svg>
+          Tasks
+          <c-badge class="ms-2 float-end danger" >
+            42
+          </c-badge>
+        </a>
+      </li>   
+      <li>
+        <hr cDropdownDivider/>
+      </li> -->
+      <li class="p-t-15">
+        <a (click)="logout()" cDropdownItem class="f-s-14 d-flex align-center">
+          <mat-icon class="m-r-4 f-s-20">logout</mat-icon>
+          Log Out
+      </a>
+      </li>
+      <li></li>
+    </ul>
+  </c-dropdown>
+</ng-template>
+

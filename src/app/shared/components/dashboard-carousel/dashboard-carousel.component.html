@@ -1,0 +1,38 @@
+<div class="p-relative carousel-container p-0"  style="width:100%;height: 400px;" (click)="carouselClick()">
+    <!-- <div style="width:100%;height: 100%;" *ngFor="let item of images;let i=index" class="fadeInRight"
+        [ngClass]="i==selectedIndex ? 'active' : 'inactive'">
+        <mat-icon class="f-s-18" [ngClass]="dashboard ? 'p-r-15' : ''"
+            style="position: absolute;top:5px;right:-1px;color:rgb(205, 189, 249)">history_toggle_off</mat-icon>
+        <img  [src]="item?.coverImageUrl" class="m-b-10" width="100%" height="180px" alt="" srcset="">
+        <h4 style="width: 90%;" class="clamp f-s-15 f-roboto f-w-500" [ngClass]="dashboard ? 'p-l-15 p-r-15' : ''">{{item?.title}}</h4>
+        <p [ngClass]="dashboard ? 'p-l-15 p-r-15' : ''" style="width:200px!important;overflow: hidden!important;max-width: 200px!important;" class="f-s-14  m-b-4 max-h">{{item?.preview}}</p>
+        <div [ngClass]="dashboard ? 'p-l-15 p-r-15' : ''" class="d-flex j-space align-center">
+            <div class="category f-s-12 f-roboto f-w-600 t-a-center t-overflow-el">{{item?.category}}</div>
+            <div class="f-s-12 f-roboto c-light ">{{item?.createdDate | date :"MMM dd YYYY"}}</div>
+        </div>
+    </div> -->
+    <div style="width:100%;height: 400px;" *ngFor="let item of images;let i=index" class="fadeInRight  d-flex "  [ngClass]="i==selectedIndex ? 'active' : 'inactive'">
+        <div style="width:50%;height: 100%;" class="p-15">
+            <h3 style="width: 99%;" class="clamp f-roboto f-w-500" >{{item?.title}}</h3>
+            <p   class="f-s-14  m-b-4 clamp">{{item?.preview}}</p>
+            <div class="view-more d-flex align-center "><span class="f-s-13">View More</span> <mat-icon>chevron_right</mat-icon></div>
+        </div>
+        <div style="width:50%;height: 100%;">
+            <img  [src]="item?.coverImageUrl" width="100%" height="100%" alt="" srcset="">
+        </div>
+
+    </div>
+    <div  *ngIf="indicators" class=" d-flex align-center j-center carousel-dot-container2">
+        <span (click)="selectItem(i)" *ngFor="let dot of images;let i=index"
+            [ngClass]="i==selectedIndex ? 'active-dot' : 'inactive-dot'" class="dot">
+        </span>
+    </div>
+    <div class="btn-carousel btn-prev">
+        <button (click)="prevClick()" mat-icon-button
+           ><mat-icon>chevron_left</mat-icon></button>
+    </div>
+    <div class="btn-carousel btn-next">
+        <button (click)="nextClick()" mat-icon-button
+            ><mat-icon>chevron_right</mat-icon></button>
+    </div>
+</div>

@@ -1,0 +1,131 @@
+<div class="mb-2 bg-zinc-50 flex ">
+    <div class="w-3/4 mr-3">
+        <div class="flex gap-3  items-center ">
+            <div class="text-lg w-1/4 font-bold px-2 py-1.5 flex gap-2 items-center">
+                <div class=" w-5 h-5  flex  justify-center items-center">
+                    <img src="assets/icons/pkg.svg" class="w-fit h-fit" alt="" srcset="">
+                </div> Packages
+            </div>
+            <div class="w-2/4 relative ">
+                <input type="text"
+                    class="w-full border-gray-200 rounded-lg border-2 outline-none text-sm font-semibold px-2 py-1.5"
+                    placeholder="Search">
+                <img src="assets/icons/search.svg" width="18px" height="18px" alt="" srcset=""
+                    class="absolute top-1/4 right-3 ">
+            </div>
+            <div class="flex gap-1 items-center text-sm  rounded-lg font-semibold  px-2 py-1.5 ">
+                Status
+                <svg class="w-2 h-2 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 4 4 4-4" />
+                </svg>
+            </div>
+            <div class="flex gap-1 items-center font-semibold py-1.5 relative cursor-pointer" (click)="createPackage()">
+                <img src="assets/icons/pkg.svg" width="20px" height="20px" alt="" srcset="">
+                <div class="absolute left-3  top-0 z-20 border-pink-200 border-2 rounded-full"><img src="assets/icons/plus.png"  width="12px" height="12px" alt="" srcset="">
+                </div>
+               <span class="ml-1 text-sm "> New</span>
+            </div>
+
+        </div>
+        <div class="row px-4 py-3 card-list gap-3 mr-2">
+            <div *ngFor="let item of [1,2,3,4,5,6,7,8]" class=" h-52 card-item  rounded-md  bg-white border flex flex-col justify-between gap-2  px-2 py-2 overflow-hidden">
+               <div class="flex justify-end">
+                <div class="w-fit px-2  xs-text text-gray-700 font-medium rounded-2xl bg-pink-50">
+                    Active
+
+                </div>
+               </div>
+                <div class="w-full h-1/3 flex items-center justify-center text-center">
+                    <div class=" w-1/3 h-full flex  justify-center items-center px-2.5 py-2.5 rounded-full bg-pink-50">
+                        <img src="assets/icons/pkg.svg" class="w-full h-full" alt="" srcset="">
+                    </div>
+                </div>
+                <div class=" flex  flex-col justify-center items-center">
+                    <div class=" font-semibold text-sm">Package {{item}}</div>
+                    <div class="font-medium text-xs text-gray-600">P 121215</div>
+                </div>
+                <div class="flex items-center gap-0.5">
+                    <img class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image">
+                    <div class="flex flex-col w-full ">
+                        <div class="s-text font-medium    relative w-3/4 overflow-hidden max-w-full  whitespace-nowrap overflow-ellipsis">John Doe</div>
+                        <div class="xs-text  w-3/4 whitespace-nowrap overflow-ellipsis overflow-hidden">Created Dec 21. 2023</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="w-1/4 ">
+        <div class="flex justify-end  items-center mb-2 mt-0.5 px-1">
+            <div class="flex gap-1 items-center font-semibold py-1.5 text-sm ">
+                <img src="assets/icons/eye.png" width="18px" height="18px" alt="" srcset="">View
+            </div>
+        </div>
+        <div class="bg-white rounded-md w-full h-full shadow-sm py-2 h-tab overflow-hidden">
+            <div class="flex justify-end px-2 text-xs font-semibold items-center">Active 
+                <svg class="w-2 h-2 ms-1 mt-0.5 text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 4 4 4-4" />
+            </svg>
+            </div>
+            <div class="w-full  flex items-center justify-center text-center ">
+                <div class=" w-16 h-16 flex  justify-center items-center mt-5">
+                    <img src="assets/icons/pkg.svg" class="w-full h-full" alt="" srcset="">
+                </div>
+            </div>
+            <div class=" flex  flex-col justify-center items-center">
+                <div class=" font-semibold text-base mt-2">Package 2</div>
+                <div class="font-medium text-xs text-gray-600">P 121215</div>
+            </div>
+            <div class="flex items-center gap-0.5 px-3 py-3">
+                <img class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image">
+                <div class="flex flex-col w-full ">
+                    <div class="text-sm font-semibold    relative w-3/4 overflow-hidden max-w-full  whitespace-nowrap overflow-ellipsis">John Doe</div>
+                    <div class="text-xs font-medium  w-3/4 whitespace-nowrap overflow-ellipsis overflow-hidden">Created Dec 21. 2023</div>
+                </div>
+            </div>
+            <mat-tab-group animationDuration="0" class="mt-2 overflow-y-auto h-3/5 px-2" >
+                <mat-tab>
+                    <ng-template mat-tab-label >
+                      Details
+                    </ng-template>
+                    <div class="text-xs font-semibold px-2.5 py-2  w-3/4 whitespace-nowrap overflow-ellipsis overflow-hidden">Last Updated Dec 20, 2023</div>
+                    <div class="text-sm font-semibold flex gap-1 px-2.5 "><span class="mr-2">Updated by</span> <img class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image"> Jose Leos</div>  
+                    <div class="px-3 py-3 flex text-sm">
+                        <div class="bg-rose-50 px-3 py-1 rounded-full font-semibold border-pink-200 border-2 z-10">Exercises</div>
+                        <div class="bg-zinc-50 text-gray-600 px-3 py-1 rounded-full font-semibold border-zinc-50 border-2 -ml-2 -z-10">Templates</div>
+                    </div>
+                    <div class="flex flex-wrap justify-center  gap-2 px-2 py-3">
+                        <div *ngFor="let item of [1,2,3,4]" class=" h-32 w-28  items-center justify-center">
+                            <div class="flex items-center justify-center w-full h-4/6 rounded-lg bg-pink-50 relative border-2 border-pink-300">
+                                <img src="assets/icons/exercise.png" class="w-8 h-8" alt="" srcset="">
+                                <!-- <div  class="flex justify-end xs-text text-pink-500 absolute right-2.5 top-2"><img src="assets/icons/pencil.png" width="13px" height="13px" alt="" srcset=""></div> -->
+                                <div *ngIf="item===4" class="flex justify-end xs-text text-pink-500 absolute right-2.5 bottom-2">Bonus</div>
+
+                            </div>
+                            <div class="h-2/6">
+                                <div class=" text-center flex justify-center text-xs font-semibold h-4">Exercise 1</div>
+                                <div class="xs-text  text-center h-4">ID 634873</div>
+                            </div>
+                           
+                        </div>
+                     
+                       
+                    </div>
+                </mat-tab>
+                  <mat-tab  title="This feature will be available soon">
+                    <ng-template mat-tab-label>
+                      <div>Comments</div>
+                    </ng-template>
+                    <div class="px-3 py-5 text-gray-500 text-center text-xs font-medium">This feature will be available soon</div>
+                  </mat-tab>
+              </mat-tab-group>
+        </div>
+        
+
+    </div>
+</div>

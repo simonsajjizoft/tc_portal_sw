@@ -1,0 +1,111 @@
+<table class="w-100  f-s-14 custom-table p-15">
+  <tr class="table-headder  f-w-600 p-b-15">
+    <th *ngFor="let list of listHeader" class="f-sans f-w-600 hdr"
+      [ngClass]="list === 'Created By' || list ==='Actions' ? 't-a-center' : 't-a-left'">
+      <h6 class="f-s-13  fw-bold m-b-0 text-overflow-ellipsis">{{(list=='Title' ? list :list)}}</h6>
+    </th>
+  </tr>
+  <tr (dblclick)="navigateToEditPage(task?.id)" (click)="selectRow(task)" [ngClass]="selectedRow?.id == task?.id ? 'selected-row':''"
+      *ngFor="let task of tasks | paginate: { itemsPerPage: currentLimit, currentPage: currentPage ,totalItems: totalItems}">
+    <td *ngIf="listKey?.includes('Title')"  style="border-top-left-radius: 12px !important;border-bottom-left-radius: 12px !important;color:rgb(16, 18, 68)!important" class="text-overflow-ellipsis big-column c-pointer  p-relative">
+      <div class="clamp text-overflow-ellipsis f-s-13  w-100 m-t-5 d-flex align-center f-w-500 f-roboto flex-wrap">{{task?.Title}} </div>
+    </td>
+    <td *ngIf="listKey?.includes('Role')"  style="border-top-left-radius: 12px !important;border-bottom-left-radius: 12px !important;color:rgb(16, 18, 68)!important" class="text-overflow-ellipsis big-column c-pointer  p-relative">
+      <div class="clamp2 text-overflow-ellipsis f-s-13  w-100 m-t-5 d-flex align-center f-w-500 f-roboto flex-wrap">{{task?.Role}} </div>
+      <div *ngIf="task?.jobCode" class="f-s-12 f-heebo f-w-500 jobcode">{{task?.jobCode}}</div>
+    </td>
+    
+    <td *ngIf="listKey?.includes('CreatedBy')" [matTooltip]="task?.CreatedBy" class="t-a-left text-overflow-ellipsis">
+      <div class="d-flex align-center j-center">
+        <div class="round-img t-a-center d-flex f-sans f-s-16 j-center align-center">ZS</div>
+      </div>
+    </td>
+    <!-- Optional -->
+    <td *ngIf="listKey?.includes('category')" class="">
+      <div class=" m-l-10 w-100 ">
+        <div class="">
+          <div class=" f-w-500 f-roboto f-s-14" style="color:rgb(16, 18, 68)!important">{{task?.category | titlecase}}</div>
+        </div>
+      </div>
+    </td>
+     <!-- Optional -->
+    <td *ngIf="listKey?.includes('workLocation')" class="">
+      <div class=" m-l-10 w-100 ">
+        <div class="">
+          <div class=" f-w-500 f-roboto f-s-14" style="color:rgb(16, 18, 68)!important">{{task?.workLocation | titlecase}}</div>
+        </div>
+      </div>
+    </td>
+    <td *ngIf="listKey?.includes('workMode')" >
+      <div class=" m-l-10 w-100 ">
+          <div class=" f-w-500 f-roboto f-s-14" style="color:rgb(16, 18, 68)!important">{{task?.workMode}}</div>
+      </div>
+    </td>
+    <td *ngIf="listKey?.includes('experience')" class="">
+      <div class=" m-l-10 w-100 ">
+        <div class="">
+          <div class=" f-w-500 f-roboto f-s-14" style="color:rgb(16, 18, 68)!important">{{task?.experience | titlecase}}</div>
+        </div>
+      </div>
+    </td>
+    <td *ngIf="listKey?.includes('PublishedDate')" class="p-l-15 ">
+      <div class="d-flex flex-column j-center align-start">
+        <div class="f-inter fw-semibold f-s-16 m-b-5">{{task?.PublishedDate | date:"dd MMM YYYY"}}</div>
+        <div class="f-s-12 f-roboto light-fnt">Published Date</div>
+      </div>
+
+    </td>
+    <td *ngIf="listKey?.includes('clients')" class="p-l-15 ">
+      <div class="d-flex flex-column j-center ">
+        <div class="f-inter fw-semibold f-s-14 ">{{task?.clients}}</div>
+      </div>
+
+    </td>
+    <td *ngIf="listKey?.includes('Tags')" class="p-l-15 text-overflow-ellipsis big-column f-inter f-w-500  ">
+      <div class="tag-ctn" style="display: flex;align-items: flex-end;">
+        <div class="clamp d-flex align-center p-relative flex-wrap ">
+          <div class="badge m-4 f-inter" *ngFor="let tag of task?.Tags">{{tag}}</div>
+        </div>
+      </div>
+     
+    </td>
+    <td *ngIf="listKey?.includes('status')" class="">
+      <div class="m-t-5 m-l-10  fw-semibold d-flex  align-center"
+        [ngClass]="task?.status == 'Publish' ? 'publish-badge t-a-center' : 'draft-badge t-a-center'">
+        <span>
+          <mat-icon class=" f-s-15 f-w-600"
+            style="line-height: 26px!important;margin:0!important;width: 15px!important;">
+            {{task?.status == 'Publish' ? 'done' : 'close'}}</mat-icon>
+        </span>
+        {{task?.status ==
+        'Publish' ? 'Published' :
+        'Draft'}}
+      </div>
+    </td>
+    <td *ngIf="listKey?.includes('actions')" class="c-pointer  t-a-center ">
+      <div class="d-flex align-center j-center">
+        <div mat-icon-button class="more-btn  t-a-center p-3 " style="width: 32px;height: 32px;"
+        [matMenuTriggerFor]="menu" [matMenuTriggerData]="{task: task}">
+        <mat-icon class="t-a-center d-flex align-center j-center f-s-28" style="color:rgb(18, 103, 194)">more_horiz</mat-icon>
+      </div>
+      </div>
+      
+    </td>
+    <td *ngIf="listKey?.includes('goto')" (click)="navigateToEditPage(task?.id)" class="c-pointer  t-a-center p-l-5"
+      style="width: 30px;height: 30px;">
+      <div class="d-flex align-center m-t-5"><mat-icon class="light-fnt3 f-s-18">arrow_forward_ios</mat-icon></div>
+    </td>
+  </tr>
+</table>
+<mat-menu #menu="matMenu">
+  <ng-template matMenuContent let-aliasMenuItems="task">
+    <button mat-menu-item (click)="cl(aliasMenuItems,'edit')" class=" d-flex align-center  j-center">
+      <mat-icon class="f-s-18 m-t-4 ">edit</mat-icon>
+      <span class="f-s-14 f-inter ">Edit {{content | titlecase}}</span>
+    </button>
+    <button mat-menu-item (click)="cl(aliasMenuItems,'delete')"   class=" d-flex align-center">
+      <mat-icon class="f-s-18 m-t-4">delete</mat-icon>
+      <span class="f-s-14 f-inter ">Delete</span>
+    </button>
+  </ng-template>
+</mat-menu>

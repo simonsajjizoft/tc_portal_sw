@@ -1,0 +1,167 @@
+
+.carousel-container{
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-container .inactive{
+    display: none!important;
+}
+
+.carousel-container .active{
+    display: initial!important;
+}
+
+.category{
+    background-color: rgba(194, 213, 255, 0.95);
+    max-width: 65%!important;
+    width: max-content!important;
+    color:rgb(31, 64, 104);
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+
+.max-h{
+    max-height: 32px!important;
+    height: 32px!important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.c-light{
+    color:rgb(50, 50, 105);
+}
+
+.clamp{
+    display: -webkit-box!important;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    height: 35px!important;
+}
+
+.carousel-dot-container{
+    position: absolute;
+    bottom: -5%;
+    left: 0;
+    right: 0;
+    margin-bottom: 1rem;
+    padding: 0;
+    gap: 4px;
+}
+
+.carousel-dot-container2{
+    position: absolute;
+    bottom: 1%;
+    left: 0;
+    right: 0;
+    margin-bottom: 1rem;
+    padding: 0;
+    gap: 4px;
+}
+
+
+.dot{
+    cursor: pointer;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: white;
+    display: inline-block;
+    transition: all 0.3s ease;
+    opacity: 0.5;
+}
+
+.active-dot{
+    opacity: 1;
+}
+
+.inactive-dot{
+    opacity: 0.5;
+}
+
+.fadeInRight{
+    animation: fadeInRight 5s linear;
+    animation-duration: 5s;
+    animation-delay: 5s;
+}
+
+@keyframes fadeInRight {
+    0% {
+       opacity: 0;
+       transform: translateX(200px);
+    }
+    100% {
+       opacity: 1;
+       transform: translateX(0);
+    }
+ } 
+
+
+.btn-carousel{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    padding: 0;
+    width: 15%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-carousel.btn-prev{
+    left: 0px;
+    color:rgb(208, 202, 238);
+    z-index: 5;
+}
+
+.btn-carousel.btn-next{
+    right: 0px;
+    color:rgb(208, 202, 238);
+    z-index: 5;
+}
+
+button{
+    background: rgba(0, 0, 0,0.15);
+    width: 35px!important;
+    height: 35px!important;
+    padding: 10px!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button .mat-icon{
+    line-height: 25px!important;
+    margin-left: -5px;
+}
+
+.btn-next:hover{
+    button{
+        color:white;
+    background:rgba(0,0,0,0.5) ;
+    }
+}
+
+.btn-prev:hover{
+    button{
+        color:white;
+    background:rgba(0,0,0,0.5)!important ;
+    }
+}
+
+.t-overflow-el{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+img{
+    border-top-left-radius: 8px!important;
+    border-top-right-radius: 8px!important;
+}

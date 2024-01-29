@@ -1,0 +1,123 @@
+div{
+  font-family: 'Roboto',sans-serif!important;
+}
+
+.cancel{
+  display: flex;
+  align-items: center;
+  border-width: 2px !important;
+  border-style: solid !important;
+  border-color: rgba(40, 79, 171, 0.65) !important;
+  border-radius: 16px !important;
+  padding: 6px 20px !important;
+  color: rgba(24, 49, 111, 0.85) !important;
+  font-size: 14px !important;
+  opacity: 1;
+  background-color: white!important;
+}
+.del-blog2 {
+  display: flex;
+  align-items: center;
+  border-width: 2px !important;
+  border-style: solid !important;
+  border-color: rgba(171, 42, 40, 0.65) !important;
+  background:linear-gradient(90deg,rgba(179, 86, 86, 0.87),rgba(130, 25, 25, 0.85))45%!important;
+  border-radius: 16px !important;
+  padding: 6px 20px !important;
+  color: rgba(248, 250, 255, 0.85) !important;
+  font-size: 14px !important;
+  opacity: 0.97;
+}
+
+
+
+
+.btn-parent{
+    margin-top: 25px;
+}
+
+.btn-ok{
+    padding: 0px 22px;
+    background-color: rgb(110, 136, 165)!important;
+    color:white;
+    border-radius: 15px;
+    border:0.1rem solid rgb(110, 136, 165) !important;;
+    font-size: 0.92rem;
+    margin-right: 10px;
+  }
+  
+  .btn-cancel{
+    /* background-color: #6d7f8e !important; */
+    padding-bottom: 1px;
+    background: none!important;
+    color:rgb(110, 136, 165)!important;
+    padding: 2px 14px;
+    border:0.1rem solid rgba(110, 136, 165,0.86) !important;;
+    border-radius: 15px;
+    font-weight: 500!important;
+    font-size: 0.92rem;
+  }
+  
+  .btn-primary{
+  background-color: var(--button-bg-alt)!important;
+}
+button{
+    border: none;
+    outline: none!important;
+    border-radius: 4px!important;
+    cursor: pointer;
+    color: #fff;
+    padding-top: 2px !important;
+}
+
+button:focus {
+    outline: none !important;
+    box-shadow: none!important;
+  }
+
+.c-gr{
+  color:gray;
+}
+
+.text-o{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+}
+
+.clamp {
+  overflow: hidden !important;
+  overflow-wrap: break-word!important;
+  flex-wrap: wrap !important;
+  word-wrap: break-word!important;
+  text-overflow: ellipsis !important;
+  text-wrap: wrap;
+  width: 100% !important;
+  max-width: 100% !important;
+  display: flex !important;
+  max-height: 80px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical !important;
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 4px solid rgba(195, 195, 195, 0);
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: #d6d4d4;
+}
+
+
+.title-name{
+  color: rgb(15, 15, 74)!important;
+  font-size: 17px!important;
+}
+
+.c-blk{
+  color: rgb(15, 15, 74)!important;
+}
