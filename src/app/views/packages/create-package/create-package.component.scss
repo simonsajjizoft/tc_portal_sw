@@ -1,0 +1,44 @@
+.min-h-scr-half{
+    height: calc(100vh - 100px);
+    position: relative;
+}
+
+.main-content{
+    height: calc(90% - 10px)!important;
+}
+
+.p-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 2px;
+    background-color: white!important;
+    width: 100%;
+  }
+
+  ::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+    background-color: #8b398f!important;
+    font-weight: bold!important;
+    font-size: 11px!important;
+  }
+
+
+  ::ng-deep .mat-step-icon .mat-icon{
+    display: none!important;
+
+  }
+
+  ::ng-deep .mat-step-icon-state-edit{
+    background-color: #8b398f!important;
+  }
+
+  .inactive-element{
+    pointer-events:none!important;
+    opacity: 0.5;
+    color: #cccccc;
+  }
+
+  .bg-secondary{
+    background-color: #8b398f!important;
+  }
+
+  

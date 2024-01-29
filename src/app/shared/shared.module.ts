@@ -15,13 +15,16 @@ import { StatusFilterComponent } from './components/status-filter/status-filter.
 import { MaterialModule } from '../material/material.module';
 import { CustomCarouselComponent } from './components/custom-carousel/custom-carousel.component';
 import { DashboardCarouselComponent } from './components/dashboard-carousel/dashboard-carousel.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatStepperModule } from '@angular/material/stepper';
 @NgModule({
   declarations: [
     FormModalComponent,
     StatusFilterComponent,
     CustomCarouselComponent,
     TableViewComponent,
-    DashboardCarouselComponent
+    DashboardCarouselComponent,
+    ConfirmboxComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +36,9 @@ import { DashboardCarouselComponent } from './components/dashboard-carousel/dash
     MatCheckboxModule,
     ModalModule,
     NgxPaginationModule,
-    MaterialModule
+    MaterialModule,
+    MatSlideToggleModule,
+    MatStepperModule
   ],
   exports: [
     RouterModule,
@@ -46,7 +51,10 @@ import { DashboardCarouselComponent } from './components/dashboard-carousel/dash
     MaterialModule,
     CustomCarouselComponent,
     TableViewComponent,
-    DashboardCarouselComponent
+    DashboardCarouselComponent,
+    MatSlideToggleModule,
+    MatStepperModule,
+    ConfirmboxComponent
   ]
 })
 export class SharedModules { }

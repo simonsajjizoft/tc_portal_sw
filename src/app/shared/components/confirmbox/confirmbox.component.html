@@ -1,22 +1,4 @@
-<!-- <button (click)="toggleLiveDemo()" cButton>Launch demo modal</button> -->
-
-<!-- <c-modal  [visible]="visible" alignment="center" (visibleChange)="handleLiveDemoChange($event)">
-  <c-modal-header>
-    <h5 cModalTitle>{{data?.title}}</h5>
-    <button (click)="toggleLiveDemo()" cButtonClose></button>
-  </c-modal-header>
-  <c-modal-body class="f-s-16">
-    <p><span class="f-w-400 c-gr">Blog </span>&nbsp; <span class="f-w-500">{{data?.name}}</span></p>
-    <p *ngIf="data?.publishedDate"><span class="f-w-400 c-gr">Date </span>&nbsp; <span class="f-w-500">{{data?.publishedDate}}</span></p>
-  </c-modal-body>
-  <c-modal-footer>
-    <button (click)="toggleLiveDemo()" cButton color="secondary">
-      Cancel
-    </button>
-    <button cButton [color]="data?.action==='Delete' ? 'danger' :'primary'" (click)="okClick()" >{{data?.action}}</button>
-  </c-modal-footer>
-</c-modal> -->
-<div  mat-dialog-close class="d-flex j-end p-10 p-b-0"><mat-icon style="color:grey">close</mat-icon></div>
+<!-- <div  mat-dialog-close class="d-flex j-end p-10 p-b-0"><mat-icon style="color:grey">close</mat-icon></div>
 
 <h6 mat-dialog-title class="f-s-16">Are you sure you want to {{data?.action}} {{data?.content}}?</h6>
 <mat-dialog-content class="f-heebo ">
@@ -38,4 +20,35 @@
 <mat-dialog-actions align="end">
   <button mat-dialog-close class="cancel m-r-15 f-w-500">Cancel</button>
   <button [mat-dialog-close]="true" (click)="okClick()"  class="del-blog2 f-w-500 f-heebo f-s-13">{{data?.action}}</button>
-</mat-dialog-actions>
+</mat-dialog-actions> -->
+<div >
+  <div class="hdr font-bold w-100 text-sm px-3 py-3 border-b-2 border-zinc-100 flex justify-between items-center">
+      <div>Submit for Review</div>
+      <div class="text-lg font-medium opacity-70"><img src="assets/icons/clear.svg" width="17px" height="17px" alt="" srcset=""></div>
+  </div>
+  <div class="details">
+      <div class="flex gap-2 py-3 items-center px-3">
+          <div class="font-semibold ">Select Reviewer</div>
+          <div class="flex items-center gap-0.5 py-4 px-5">
+              <img class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image">
+              <div class="flex items-center w-full ">
+                  <div
+                      class="text-sm font-semibold    relative  overflow-hidden max-w-full  whitespace-nowrap overflow-ellipsis">
+                      John Doe
+                     
+                  </div>
+                  <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="m1 1 4 4 4-4" />
+              </svg>
+              </div>
+          </div>
+      </div>
+      <div class="flex gap-1 px-2 py-3  w-full justify-end items-center ">
+          <div [ngClass]="true ? ' text-pink-600 cursor-pointer' : ' text-gray-500 cursor-default'"  class="rounded-2xl  text-sm font-semibold px-4 py-1 ">
+              Submit for Review</div>
+          <div [ngClass]="false ? ' text-pink-600  cursor-pointer' : ' text-gray-500'" class="rounded-2xl  text-sm  font-semibold  px-4 py-1 " >Cancel</div>
+      </div>
+  </div>
+</div>

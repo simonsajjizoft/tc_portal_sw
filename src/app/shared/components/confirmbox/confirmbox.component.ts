@@ -10,8 +10,6 @@ import { MaterialModule } from 'src/app/material/material.module';
   selector: 'app-confirmbox',
   templateUrl: './confirmbox.component.html',
   styleUrls: ['./confirmbox.component.scss'],
-  standalone: true,
-  imports: [MatDialogModule, MatButtonModule,CommonModule,MaterialModule,MatIconModule],
 })
 export class ConfirmboxComponent {
   message: string = "";
@@ -29,8 +27,8 @@ export class ConfirmboxComponent {
     private dialogRef: MatDialogRef<ConfirmboxComponent>
     ) {
     if (data) {
-      this.visible = true;
-      this.message = data.message || this.message;
+      // this.visible = true;
+      // this.message = data.message || this.message;
     }
   }
 

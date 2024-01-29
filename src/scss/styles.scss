@@ -159,6 +159,7 @@ canvas {
 .mat-dialog-container {
     padding: 15px !important;
     border-radius: 2px !important;
+    z-index: 3000!important;
 }
 
 .mat-tab-body-wrapper {
@@ -372,8 +373,24 @@ a:hover {
     opacity: 0.99 !important;
 }
 
+.custom-modalbox  {
+    box-shadow: none!important;
+    border-radius: 2px!important;
+    padding: 0!important;
+    z-index: 3000!important;
+}
+
+.custom-modalbox mat-dialog-container {
+    box-shadow: none!important;
+    border-radius: 2px!important;
+    padding: 0!important;
+    z-index: 3000!important;
+}
+
+
+
 .sidebar {
-    z-index: 2000 !important;
+    z-index: 1000 !important;
 }
 
 .header {
@@ -444,13 +461,17 @@ a:hover {
 }
 
 
-.custom-modalbox mat-dialog-container {
-    box-shadow: none!important;
-    border-radius: 2px!important;
-    padding: 0!important;
-}
+
 
 
 *{
     transition: all 0.2s ease-out;
   }
+
+
+  @media screen and (max-width: 1150px) {
+    .sidebar{
+       z-index: 1500!important;
+    }
+
+}

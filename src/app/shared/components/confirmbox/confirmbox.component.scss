@@ -121,3 +121,30 @@ button:focus {
 .c-blk{
   color: rgb(15, 15, 74)!important;
 }
+
+.details{
+  width: 35vw;
+}
+
+
+*:not(mat-icon){
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  letter-spacing: -.01rem !important;
+  word-spacing: 0.1rem!important;
+}
+
+
+
+.custom-modalbox  {
+  box-shadow: none!important;
+  border-radius: 2px!important;
+  padding: 0!important;
+  z-index: 2000!important;
+}
+
+.custom-modalbox mat-dialog-container {
+  box-shadow: none!important;
+  border-radius: 2px!important;
+  padding: 0!important;
+  z-index: 2000!important;
+}
