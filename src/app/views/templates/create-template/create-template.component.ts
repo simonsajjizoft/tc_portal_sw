@@ -36,7 +36,7 @@ export class CreateTemplateComponent implements OnInit {
     // { title: 'Label', price: 12, id: 5 ,img:"assets/icons/label.png",type:'label',label:"Question"},
     { title: 'Text', price: 12, id: 1 ,img:"assets/icons/text.png", type: "textbox",placeholder: "Please Enter Placeholder",label:"Question",selected:false,checked:false},
     { title: 'Dropdown', price: 12, id: 3 ,img:"assets/icons/dropdown.png",type: "dropdown",label:"Question",selected:false,checked:false},
-    { title: 'Multiple Choice', price: 12, id: 4 ,img:"assets/icons/radio.png",type: "radio",values: ["Option"],label:"Question",selected:false,checked:false},
+    { title: 'Radio', price: 12, id: 4 ,img:"assets/icons/radio.png",type: "radio",values: ["Option"],label:"Question",selected:false,checked:false},
     { title: 'Textarea', price: 12, id: 5 ,img:"assets/icons/textarea.png",type:'textarea',label:"Question",selected:false,checked:false},
     { title: 'Checkbox', price: 12, id: 5 ,img:"assets/icons/check.png",type:'checkbox',label:"Question",selected:false,checked:false},
   ];
