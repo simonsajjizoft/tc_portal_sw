@@ -1,0 +1,11 @@
+<div class=" mb-4 px-2" >
+    <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">{{config?.label}}</label>
+    <div class="inline-block relative w-full " >
+      <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-3.5 py-2.5 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+        <option *ngFor="let value of config?.values" class="px-3.5 py-3">{{value}}</option>
+      </select>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-gray-700">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+      </div>
+    </div>
+</div>

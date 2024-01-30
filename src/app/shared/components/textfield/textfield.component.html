@@ -1,0 +1,28 @@
+<div #field2  class=" mb-1 px-3 py-3 cursor-move relative rounded-lg bg-white "
+  (click)="displayOptions(true)"
+  [ngClass]="showProperties ? 'border-2 border-pink-300 bg-white ' : 'border-zinc-200 border'">
+  <div class="flex justify-center cursor-pointer relative">
+    <img class="cursor-move" src="assets/icons/drag.png" width="18px" height="18px" srcset="">
+    <img  (click)="swap()" matTooltip="Swap with the selected Item" class="opacity-40 hover:opacity-80 ml-3 cursor-pointer"
+        src="assets/icons/swap.png" width="13px" height="13px" srcset="">
+    <div class="absolute -top-3 right-0">
+      <div class=" font-medium  text-xs py-2 px-3 flex gap-2 items-center"><span>Required</span> <span><mat-slide-toggle></mat-slide-toggle></span></div>
+
+    </div>
+</div>
+  <div class="flex flex-col gap-5 absolute top-1/4 -left-8 justify-center items-center z-10 cursor-pointer" [hidden]="!showProperties">
+    <input (click)="checkItem(config)" [checked]="config?.checked==true" id="default-checkbox"
+      type="checkbox" value="" class="w-4 h-4  bg-gray-100 border-gray-800 border-2 rounded-md  ">
+    <img src="assets/icons/delete.png" width="24px" height="24px" class=" cursor-pointer" alt="" srcset="">
+    <img src="assets/icons/copy.png" width="20px" height="20px" class=" cursor-pointer" alt="" srcset="">
+  </div>
+  <mat-form-field class="flex items-center mb-2 mt-1 font-medium text-sm w-full cursor-pointer" floatLabel='never' appearance="fill">
+    <textarea matInput (input)="labelChange($event.target.value)" placeholder="Question" class="font-medium p-0 "
+      value="{{config?.label}}"></textarea>
+  </mat-form-field>
+  <!-- <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">{{config?.label}}</label> -->
+  <div class="mt-2.5 cursor-pointer">
+    <input type="text" [placeholder]="config?.placeholder" [value]="config?.value ? config?.value : ''"
+      class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm outline-none ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6">
+  </div>
+</div>

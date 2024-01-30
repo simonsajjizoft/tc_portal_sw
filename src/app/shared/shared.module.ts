@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgComponentOutlet } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
@@ -17,6 +17,13 @@ import { CustomCarouselComponent } from './components/custom-carousel/custom-car
 import { DashboardCarouselComponent } from './components/dashboard-carousel/dashboard-carousel.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatStepperModule } from '@angular/material/stepper';
+import { TextfieldComponent } from './components/textfield/textfield.component';
+import { RadioComponent } from './components/radio/radio.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { LabelComponent } from './components/label/label.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import {ClipboardModule} from '@angular/cdk/clipboard';
+
 @NgModule({
   declarations: [
     FormModalComponent,
@@ -24,7 +31,11 @@ import { MatStepperModule } from '@angular/material/stepper';
     CustomCarouselComponent,
     TableViewComponent,
     DashboardCarouselComponent,
-    ConfirmboxComponent
+    ConfirmboxComponent,
+    TextfieldComponent,
+    RadioComponent,
+    DropdownComponent,
+    LabelComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +49,12 @@ import { MatStepperModule } from '@angular/material/stepper';
     NgxPaginationModule,
     MaterialModule,
     MatSlideToggleModule,
-    MatStepperModule
+    MatStepperModule,
+    ReactiveFormsModule,
+    FormsModule,
+    DragDropModule,
+    ClipboardModule,
+    NgComponentOutlet,
   ],
   exports: [
     RouterModule,
@@ -54,7 +70,16 @@ import { MatStepperModule } from '@angular/material/stepper';
     DashboardCarouselComponent,
     MatSlideToggleModule,
     MatStepperModule,
-    ConfirmboxComponent
+    ConfirmboxComponent,
+    TextfieldComponent,
+    RadioComponent,
+    DropdownComponent,
+    LabelComponent,
+    ReactiveFormsModule,
+    FormsModule,
+    DragDropModule,
+    NgComponentOutlet,
+    ClipboardModule
   ]
 })
 export class SharedModules { }
