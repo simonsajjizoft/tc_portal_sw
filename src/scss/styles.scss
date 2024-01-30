@@ -41,6 +41,39 @@ c-col {
     border-color: transparent !important;
 }
 
+.mat-mdc-tab-list {
+    flex-grow: 0!important;
+  
+  }
+  
+  .tabs .mat-mdc-tab {
+    padding: 5px!important;
+    background-color: transparent;
+    font-weight: 500;
+    max-height: 45px!important;
+    color:black!important;
+  }
+  
+  /* Styles for the active tab label */
+  .mat-mdc-tab.mdc-tab--active {
+    padding: 5px;
+    background-color: transparent;
+  }
+  
+  .mat-mdc-tab.mdc-tab--active .mdc-tab__content .mdc-tab__text-label{
+    color:black!important;
+    font-weight: 600!important;
+  }
+
+  .mdc-tab__content .mdc-tab__text-label{
+    color:black!important;
+  }
+  
+  /* Styles for the ink bar */
+  .mdc-tab-indicator__content.mdc-tab-indicator__content--underline {
+    border-color: var(--primary-color)!important;
+  }
+
 // @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600,700,900");
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,600&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,500,600&display=swap');
@@ -72,7 +105,9 @@ $enable-rtl: true;
 @import "custom";
 
 :root {
-    --primary-color: #d9045b
+    --primary-color: #d9045b;
+    --secondary-color:#7F2A86;
+
 }
 
 canvas {
@@ -456,9 +491,20 @@ a:hover {
     max-height: 70px !important;
 }
 
-.mat-form-field-appearance-fill .mat-form-field-flex {
-    background-color: rgb(248, 247, 251)
+
+input:autofill {
+background: white!important;
 }
+  
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+  
 
 
 * {
@@ -471,3 +517,4 @@ a:hover {
         z-index: 1500 !important;
     }
 }
+

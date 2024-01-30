@@ -3,8 +3,8 @@
         <div class="flex gap-3  items-center ">
             <div class="text-lg w-1/4 font-bold px-2 py-1.5 flex gap-2 items-center">
                 <div class=" w-5 h-5  flex  justify-center items-center">
-                    <img src="assets/icons/pkg.svg" class="w-fit h-fit" alt="" srcset="">
-                </div> Packages
+                    <img src="assets/icons/layout.png" class="w-fit h-fit" alt="" srcset="">
+                </div> Templates
             </div>
             <div class="w-2/4 relative ">
                 <input type="text"
@@ -22,7 +22,7 @@
                 </svg>
             </div>
             <div class="flex gap-1 items-center font-semibold py-1.5 relative cursor-pointer" (click)="createPackage()">
-                <img src="assets/icons/pkg.svg" width="20px" height="20px" alt="" srcset="">
+                <img src="assets/icons/layout.png" width="20px" height="20px" alt="" srcset="">
                 <div class="absolute left-3  top-0 z-20 border-pink-200 border-2 rounded-full"><img src="assets/icons/plus.png"  width="12px" height="12px" alt="" srcset="">
                 </div>
                <span class="ml-1 text-sm "> New</span>
@@ -39,19 +39,19 @@
                </div>
                 <div class="w-full h-1/3 flex items-center justify-center text-center">
                     <div class=" w-1/3 h-full flex  justify-center items-center px-2.5 py-2.5 rounded-full bg-pink-50">
-                        <img src="assets/icons/pkg.svg" class="w-full h-full" alt="" srcset="">
+                        <img src="assets/icons/layout.png" class="w-full h-full p-2" alt="" srcset="">
                     </div>
                 </div>
                 <div class=" flex  flex-col justify-center items-center">
-                    <div class=" font-semibold text-sm">Package {{item}}</div>
+                    <div class=" font-semibold text-sm">Template {{item}}</div>
                     <div class="font-medium text-xs text-gray-600">P 121215</div>
                 </div>
-                <div class="flex items-center gap-0.5">
+                <div class="flex items-center justify-between gap-0.5">
                     <!-- <img class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image"> -->
                     <div class="w-8 h-7 rounded-full ring-2 ring-gray-100 bg-gray-100 text-violet-800 font-medium flex align-center justify-center mr-2 p-2">JD</div>
-                    <div class="flex flex-col w-full ">
-                        <div class="s-text font-medium    relative w-3/4 overflow-hidden max-w-full  whitespace-nowrap overflow-ellipsis">John Doe</div>
-                        <div class="xs-text  w-3/4 whitespace-nowrap overflow-ellipsis overflow-hidden">Created Dec 21. 2023</div>
+                    <div class="flex flex-col justify-end text-right ">
+                        <div class="s-text font-medium    relative  overflow-hidden max-w-full  whitespace-nowrap overflow-ellipsis">Exercise 34312</div>
+                        <div class="xs-text   whitespace-nowrap overflow-ellipsis overflow-hidden">Package 42535</div>
                     </div>
                 </div>
             </div>
@@ -75,12 +75,12 @@
             </div>
             <div class="w-full  flex items-center justify-center text-center ">
                 <div class=" w-16 h-16 flex  justify-center items-center mt-5">
-                    <img src="assets/icons/pkg.svg" class="w-full h-full" alt="" srcset="">
+                    <img src="assets/icons/layout.png" class="w-full h-full" alt="" srcset="">
                 </div>
             </div>
             <div class=" flex  flex-col justify-center items-center">
-                <div class=" font-semibold text-base mt-2">Package 2</div>
-                <div class="font-medium text-xs text-gray-600">P 121215</div>
+                <div class=" font-semibold text-base mt-2">Template 2</div>
+                <div class="font-medium text-xs text-gray-600">T 121215</div>
             </div>
             <div class="flex items-center gap-0.5 px-3 py-3">
                 <img class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image">
@@ -96,27 +96,14 @@
                     </ng-template> -->
                     <div class="text-xs font-semibold px-2.5 py-2  w-3/4 whitespace-nowrap overflow-ellipsis overflow-hidden">Last Updated Dec 20, 2023</div>
                     <div class="text-sm font-semibold flex gap-1 px-2.5 "><span class="mr-2">Updated by</span> <img class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image"> Jose Leos</div>  
-                    <div class="px-3 py-3 flex text-sm">
-                        <div class="bg-rose-50 px-3 py-1 rounded-full font-semibold border-pink-200 border-2 z-10">Exercises</div>
-                        <div class="bg-zinc-50 text-gray-600 px-3 py-1 rounded-full font-semibold border-zinc-50 border-2 -ml-2 -z-10">Templates</div>
+                    <div class="py-3 grid-cols-2 grid text-sm px-2.5 gap-1">
+                        <div class="font-medium">Exercise</div>
+                        <div class="font-semibold">Exercise 4213</div>
+                        <div class="font-medium">Package</div>
+                        <div class="font-semibold">Package 4213</div>
                     </div>
-                    <div class="flex flex-wrap justify-center  gap-2 px-2 py-3">
-                        <div *ngFor="let item of [1,2,3,4]" class=" h-32 w-28  items-center justify-center">
-                            <div class="flex items-center justify-center w-full h-4/6 rounded-lg bg-pink-50 relative border-2 border-pink-300">
-                                <img src="assets/icons/exercise.svg" class="w-8 h-8" alt="" srcset="">
-                                <!-- <div  class="flex justify-end xs-text text-pink-500 absolute right-2.5 top-2"><img src="assets/icons/pencil.png" width="13px" height="13px" alt="" srcset=""></div> -->
-                                <div *ngIf="item===4" class="flex justify-end xs-text text-pink-500 absolute right-2.5 bottom-2">Bonus</div>
-
-                            </div>
-                            <div class="h-2/6">
-                                <div class=" text-center flex justify-center text-xs font-semibold h-4">Exercise 1</div>
-                                <div class="xs-text  text-center h-4">ID 634873</div>
-                            </div>
-                           
-                        </div>
-                     
-                       
-                    </div>
+                    <div class="font-semibold text-sm px-2.5 py-1.5 mt-3">Description</div>
+                    <p class="px-2.5 text-xs py-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur voluptatibus illum atque numquam deleniti adipisci est! Laborum, aut quaerat.</p>
                 </mat-tab>
                   <mat-tab  title="This feature will be available soon">
                     <ng-template mat-tab-label>

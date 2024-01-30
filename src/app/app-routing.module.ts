@@ -29,7 +29,12 @@ const routes: Routes = [
         path: 'packages',
         loadChildren: () =>
           import('./views/packages/packages.module').then((m) => m.PackagesModule)
-      },      
+      },
+      {
+        path: 'templates',
+        loadChildren: () =>
+          import('./views/templates/templates.module').then((m) => m.TemplatesModule)
+      },        
       {
         path: 'home',
         loadChildren: () =>

@@ -27,6 +27,12 @@
         <span  class=" text-sm"
           [ngClass]="router?.url?.includes('packages') ? 'text-pink-600 font-bold': 'text-gray-600'">Packages</span>
       </div>
+      <div   [ngClass]="router?.url?.includes('templates') ? 'bg-violet-50' : ''"  (click)="navigate('/templates')"
+        class="overflow-hidden cursor-pointer font-bold  text-sm flex p-10 pt-2 pb-2 gap-1  rounded-md items-center">
+        <img class="p-2 mr-2" src="assets/icons/layout.png" width="26px" height="28px" alt="">
+        <span  class=" text-sm"
+          [ngClass]="router?.url?.includes('templates') ? 'text-pink-600 font-bold': 'text-gray-600'">Templates</span>
+      </div>
     </div>
     <div class="px-2.5 py-3   mt-3  bg-white " *ngIf="!unfoldable">
       <div class="font-bold text-xs text-gray-500 py-2 px-1">RECENTLY UPDATED</div>

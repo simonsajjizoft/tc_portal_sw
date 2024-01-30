@@ -40,7 +40,6 @@ export class DefaultLayoutComponent {
   }
 
   navigate(route){
-    console.log(route)
     this.router.navigate([route])
   }
   
