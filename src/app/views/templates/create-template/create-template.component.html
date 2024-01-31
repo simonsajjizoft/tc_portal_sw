@@ -1,5 +1,5 @@
 <div class="  min-h-screen    rounded-md mt-0">
-   
+
     <div class="bg-white py-2 px-3 mb-3 rounded-md border">
         <div class="flex justify-between ">
             <div class="flex gap-1 items-center font-semibold py-1.5 relative cursor-pointer">
@@ -10,12 +10,12 @@
                 <span class="ml-2 text-lg">Create Template</span>
             </div>
             <div class="flex gap-4 px-2 py-3 justify-end items-center ">
-                <div   
+                <div
                     class="cursor-pointer rounded-3xl relative  text-pink-600 px-3 py-2 font-bold text-sm flex  items-center">
                     <span class="  ">Submit & Review </span>
-                   
+
                 </div>
-                <div (click)="statusDropdown=!statusDropdown" 
+                <div (click)="statusDropdown=!statusDropdown"
                     class="cursor-pointer rounded-3xl relative  text-gray-800 px-3 py-2 font-medium text-sm flex  items-center">
                     <span class="   font-bold">Draft </span>
                     <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -23,29 +23,32 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
-                    <div *ngIf="statusDropdown" class=" w-44 h-fit bg-white text-black z-10 rounded-lg border absolute text-xs top-10 shadow right-0">
-                        <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span class="mr-1">Save As Draft</span></div>
-                        <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span class="mr-1">Submit & Review</span></div>
+                    <div *ngIf="statusDropdown"
+                        class=" w-44 h-fit bg-white text-black z-10 rounded-lg border absolute text-xs top-10 shadow right-0">
+                        <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
+                                class="mr-1">Save As Draft</span></div>
+                        <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span class="mr-1">Submit &
+                                Review</span></div>
                     </div>
                 </div>
                 <div class="text-gray-600 font-bold text-sm">
                     Clear
                 </div>
             </div>
-            
+
         </div>
         <div class="flex py-2 items-start flex-wrap gap-4 w-full text-sm ">
             <div class="flex-1">
                 <div class="font-semibold px-1.5">Template</div>
                 <div class=" py-3  w-full">
-                    <input formControlName="name" type="text" placeholder="Type a name for your Template.."
+                    <input  type="text" placeholder="Type a name for your Template.."
                         class="block w-3/4 rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
                 </div>
             </div>
             <div class="flex-1">
                 <div class="font-semibold px-1.5">Description</div>
                 <div class=" py-3  w-full">
-                    <textarea formControlName="description" placeholder="Description"
+                    <textarea  placeholder="Description"
                         class="font-semibold border-2 border-gray-300 rounded-lg px-2 py-2 w-3/4  outline-pink-500 "></textarea>
                 </div>
             </div>
@@ -53,28 +56,29 @@
     </div>
     <div class="table bg-white  w-full px-3 py-4" cdkDropList #tableList="cdkDropList" [cdkDropListData]="table"
         (cdkDropListDropped)="drop($event)">
-        
-    <ul class="flex  border-b-2 border-gray-100 flex-wrap items-center p-0 gap-0" cdkDropList #menuList="cdkDropList" [cdkDropListData]="menu"
-    cdkDropListSortingDisabled [cdkDropListConnectedTo]="[tableList]" (cdkDropListDropped)="drop($event)"
-    (cdkDropListExited)="exited($event)" (cdkDropListEntered)="entered()">
-    <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
 
-    <div (click)="addItemToList(item)" class="item   p-0 w-fit" *ngFor="let item of menu;let idx=index" cdkDrag
-        [cdkDragData]="item">
-        <div matRipple [matRippleCentered]="true"
-            class="text-center justify-center  items-center flex flex-col gap-1  py-1 bg-white border-0">
-            <img *ngIf="item?.img" class="p-t-3" [src]="item?.img" width="22px" height="22px" alt="" srcset="">
-            <div class=" font-semibold text-blue-950 xs-text px-2">{{ item?.title }}</div>
+        <ul class="flex  border-b-2 border-gray-100 flex-wrap items-center p-0 gap-0" cdkDropList
+            #menuList="cdkDropList" [cdkDropListData]="menu" cdkDropListSortingDisabled
+            [cdkDropListConnectedTo]="[tableList]" (cdkDropListDropped)="drop($event)"
+            (cdkDropListExited)="exited($event)" (cdkDropListEntered)="entered()">
+            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
 
-        </div>
-        <div [ngSwitch]="item?.type" *cdkDragPreview>
-            <app-label *ngSwitchCase="'label'" [config]="item" [idx]="idx"></app-label>
-            <app-textfield *ngSwitchCase="'textbox'" [config]="item"></app-textfield>
-            <app-radio *ngSwitchCase="'radio'" [config]="item"></app-radio>
-            <app-dropdown *ngSwitchCase="'dropdown'" [config]="item"></app-dropdown>
-        </div>
-    </div>
-</ul>
+            <div (click)="addItemToList(item)" class="item   p-0 w-fit" *ngFor="let item of menu;let idx=index" cdkDrag
+                [cdkDragData]="item">
+                <div matRipple [matRippleCentered]="true"
+                    class="text-center justify-center  items-center flex flex-col gap-1  py-1 bg-white border-0">
+                    <img *ngIf="item?.img" class="p-t-3" [src]="item?.img" width="22px" height="22px" alt="" srcset="">
+                    <div class=" font-semibold text-blue-950 xs-text px-2">{{ item?.title }}</div>
+
+                </div>
+                <div [ngSwitch]="item?.type" *cdkDragPreview>
+                    <app-label *ngSwitchCase="'label'" [config]="item" [idx]="idx"></app-label>
+                    <app-textfield *ngSwitchCase="'textbox'" [config]="item"></app-textfield>
+                    <app-radio *ngSwitchCase="'radio'" [config]="item"></app-radio>
+                    <app-dropdown *ngSwitchCase="'dropdown'" [config]="item"></app-dropdown>
+                </div>
+            </div>
+        </ul>
         <div class="border-dashed border-2 min-h-screen mt-2 bg-zinc-100 px-32 py-4">
 
             <div *ngFor="let item of table; let idx = index" cdkDrag class=" px-3 py-3">
@@ -110,6 +114,6 @@
             </div>
         </div>
     </div>
-   
+
 
 </div>
