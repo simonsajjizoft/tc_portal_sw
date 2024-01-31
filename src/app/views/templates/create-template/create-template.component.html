@@ -82,10 +82,11 @@
         <div class="h-10 w-full bg-violet-50"></div>
         <div class="droparea mt-2   py-4 w-full flex flex-col gap-0.5 items-center">
 
-            <div *ngFor="let item of table; let idx = index" cdkDrag class="  w-full " >
-                <div class="example-custom-placeholder  w-full rounded-md  text-gray-400   py-3 bg-indigo-50  b-indigo-200"
+            <div *ngFor="let item of table; let idx = index"  class="  w-full " >
+                <!-- <div class="example-custom-placeholder  w-full rounded-md  text-gray-400    bg-indigo-50  b-indigo-200"
                     *cdkDragPlaceholder>
-                    <div [ngSwitch]="item?.type" class="opacity-5">
+                    <div [ngSwitch]="item?.type" class="opacity-70 bg-transparent">
+
                         <app-textfield *ngSwitchCase="'textbox'" [config]="item" [idx]="idx"
                             (swapElement)="swap($event)" (fieldValueChange)="fieldChange($event)"
                             (checkItemEvent)="checkField($event)" (selectFieldEvent)="selectField($event)"
@@ -98,8 +99,8 @@
                             (checkItemEvent)="checkField($event)" (selectFieldEvent)="selectField($event)"
                             [checkedField]="checkedField"></app-dropdown>
                     </div>
-                </div>
-                <div [ngSwitch]="item?.type" >
+                </div> -->
+                <div [ngSwitch]="item?.type" class="bg-white" >
                     <app-textfield *ngSwitchCase="'textbox'" [config]="item" [idx]="idx" (swapElement)="swap($event)"
                         (fieldValueChange)="fieldChange($event)" (checkItemEvent)="checkField($event)"
                         (selectFieldEvent)="selectField($event)" [checkedField]="checkedField"></app-textfield>

@@ -2,3 +2,14 @@ textarea{
     resize: none;
     overflow: hidden;
 }
+
+.example-custom-placeholder {
+    background: #f9f9fc;
+    border: dotted 3px #cacad7;
+    /* min-height: 60px;
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1); */
+  }
+
+  .rht-15{
+    right: 15%!important;
+  }

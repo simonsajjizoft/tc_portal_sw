@@ -27,13 +27,36 @@
 </div> -->
 
 
-<div #field2 class="text-sm px-3 py-3 " >
-  <div class="w-full">
-    <div class=" py-1 flex flex-col items-center w-full ">
-      <textarea #tArea [rows]="rows"  (keyup)="autoResizingTArea()" [spellcheck]="false" class="font-semibold px-2 py-2 w-3/5 border-0 bg-zinc-50 focus:bg-zinc-100 outline-none "    value="{{config?.label}}"></textarea>
-    
+<div #field2 class="text-sm  py-3 bg-white " cdkDrag>
+    <!-- Preview Placeholder -->
+  <div class="example-custom-placeholder w-full rounded-md  text-gray-400    bg-indigo-50  b-indigo-200"
+    *cdkDragPlaceholder>
+    <div class="w-full bg-white opacity-10">
+      <div class=" py-1 flex flex-col items-center w-full bg-white">
+        <textarea #tArea [rows]="2" (keyup)="autoResizingTArea()" [spellcheck]="false"
+          placeholder="Add your Question here.."
+          class="font-semibold px-2.5 py-2 w-3/5 border-0 bg-neutral-50 focus:bg-neutral-100 outline-none "></textarea>
+
+      </div>
+      <div class=" py-3 flex flex-col items-center w-full bg-white">
+        <input type="text" placeholder="Enter your placeholder..."
+          class="block w-3/5 rounded-md font-semibold  px-2 py-2 text-gray-900   border-2 border-gray-300 placeholder:text-gray-400 outline-pink-500  ">
+      </div>
     </div>
-    <div  class=" py-3 flex flex-col items-center w-full " >
+  </div>
+  <!-- Preview Placeholder -->
+
+  <div class="w-full h-fit bg-white ">
+
+    <div class=" py-1 flex flex-col items-center w-full  relative">
+      <div cdkDragHandle class="absolute rht-15 top-1/3 text-gray-400  "
+      ><mat-icon class="text-2xl p-0">drag_indicator</mat-icon></div>
+      <textarea #tArea [rows]="2" (keyup)="autoResizingTArea()" [spellcheck]="false"
+        placeholder="Add your Question here.."
+        class="font-semibold px-2.5 py-2 w-3/5 border-0 bg-neutral-50 focus:bg-neutral-100 outline-none "></textarea>
+
+    </div>
+    <div class=" py-3 flex flex-col items-center w-full ">
       <input type="text" placeholder="Enter your placeholder..."
         class="block w-3/5 rounded-md font-semibold  px-2 py-2 text-gray-900   border-2 border-gray-300 placeholder:text-gray-400 outline-pink-500  ">
     </div>

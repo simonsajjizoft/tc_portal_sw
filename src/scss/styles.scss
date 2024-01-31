@@ -9,11 +9,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: Plus Jakarta Sans;
+    src:url("/assets/fonts/PlusJakartaSans-Regular.ttf") format("truetype"),
+    url("/assets/font/PlusJakartaSans-Medium.ttf") format("truetype"),
+    url("/assets/font/PlusJakartaSans-Semibold.ttf") format("truetype"),
+    url("/assets/font/PlusJakartaSans-Bold.ttf") format("truetype");
+    
+  }
+
 
 *:not(mat-icon) {
-    font-family: "Plus Jakarta Sans", sans-serif !important;
-    letter-spacing: -.01rem !important;
+    font-family: "Plus Jakarta Sans",sans-serif !important;
     word-spacing: 0.1rem !important;
+    -webkit-font-smoothing: antialiased !important;
+    font-smooth: antialiased!important;
 
 }
 
@@ -107,7 +117,10 @@ $enable-rtl: true;
 :root {
     --primary-color: #d9045b;
     --secondary-color:#7F2A86;
+}
 
+.sec-clr{
+    color:var(--secondary-color)!important
 }
 
 canvas {
