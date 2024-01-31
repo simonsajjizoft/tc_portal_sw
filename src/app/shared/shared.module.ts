@@ -23,6 +23,7 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { LabelComponent } from './components/label/label.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import {ClipboardModule} from '@angular/cdk/clipboard';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
     DragDropModule,
     ClipboardModule,
     NgComponentOutlet,
+    CKEditorModule,
   ],
   exports: [
     RouterModule,
@@ -79,7 +81,8 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
     FormsModule,
     DragDropModule,
     NgComponentOutlet,
-    ClipboardModule
+    ClipboardModule,
+    CKEditorModule
   ]
 })
 export class SharedModules { }

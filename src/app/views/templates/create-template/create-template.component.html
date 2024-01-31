@@ -1,4 +1,4 @@
-<div class="  min-h-screen    rounded-md mt-0">
+<div class="  max-h-screen    rounded-md mt-0">
 
     <div class="bg-white py-2 px-3 mb-3 rounded-md border">
         <div class="flex justify-between ">
@@ -9,22 +9,22 @@
                 </div>
                 <span class="ml-2 text-lg">Create Template</span>
             </div>
-            <div class="flex gap-4 px-2 py-3 justify-end items-center ">
-                <div
+            <div class="flex gap-0.5 px-2 py-3 justify-end items-center ">
+                <!-- <div
                     class="cursor-pointer rounded-3xl relative  text-pink-600 px-3 py-2 font-bold text-sm flex  items-center">
                     <span class="  ">Submit & Review </span>
 
-                </div>
+                </div> -->
                 <div (click)="statusDropdown=!statusDropdown"
                     class="cursor-pointer rounded-3xl relative  text-gray-800 px-3 py-2 font-medium text-sm flex  items-center">
-                    <span class="   font-bold">Draft </span>
+                    <span class="text-pink-600   font-bold">Save As </span>
                     <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
                     <div *ngIf="statusDropdown"
-                        class=" w-44 h-fit bg-white text-black z-10 rounded-lg border absolute text-xs top-10 shadow right-0">
+                        class=" w-44 h-fit bg-white text-black z-10 rounded-md border absolute text-xs top-10 shadow right-0">
                         <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
                                 class="mr-1">Save As Draft</span></div>
                         <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span class="mr-1">Submit &
@@ -37,7 +37,7 @@
             </div>
 
         </div>
-        <div class="flex py-2 items-start flex-wrap gap-4 w-full text-sm ">
+        <!-- <div class="flex py-2 items-start flex-wrap gap-4 w-full text-sm ">
             <div class="flex-1">
                 <div class="font-semibold px-1.5">Template</div>
                 <div class=" py-3  w-full">
@@ -52,12 +52,12 @@
                         class="font-semibold border-2 border-gray-300 rounded-lg px-2 py-2 w-3/4  outline-pink-500 "></textarea>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="table bg-white  w-full px-3 py-4" cdkDropList #tableList="cdkDropList" [cdkDropListData]="table"
         (cdkDropListDropped)="drop($event)">
 
-        <ul class="flex  border-b-2 border-gray-100 flex-wrap items-center p-0 gap-0" cdkDropList
+        <ul class="flex  border-b-2 border-gray-200 flex-wrap items-center p-0 gap-0 mb-0" cdkDropList
             #menuList="cdkDropList" [cdkDropListData]="menu" cdkDropListSortingDisabled
             [cdkDropListConnectedTo]="[tableList]" (cdkDropListDropped)="drop($event)"
             (cdkDropListExited)="exited($event)" (cdkDropListEntered)="entered()">
@@ -79,13 +79,13 @@
                 </div>
             </div>
         </ul>
-        <div class="border-dashed border-2 min-h-screen mt-2 bg-zinc-100 px-32 py-4">
+        <div class="h-10 w-full bg-violet-50"></div>
+        <div class="droparea mt-2   py-4 w-full flex flex-col gap-0.5 items-center">
 
-            <div *ngFor="let item of table; let idx = index" cdkDrag class=" px-3 py-3">
-                <div class="example-custom-placeholder   flex items-center justify-center rounded-md  text-gray-400  h-full py-3 bg-indigo-50 border-dashed border-2 b-indigo-200"
+            <div *ngFor="let item of table; let idx = index" cdkDrag class="  w-full " >
+                <div class="example-custom-placeholder  w-full rounded-md  text-gray-400   py-3 bg-indigo-50  b-indigo-200"
                     *cdkDragPlaceholder>
                     <div [ngSwitch]="item?.type" class="opacity-5">
-                        <!-- <app-label *ngSwitchCase="'label'" [config]="item" [idx]="idx"></app-label> -->
                         <app-textfield *ngSwitchCase="'textbox'" [config]="item" [idx]="idx"
                             (swapElement)="swap($event)" (fieldValueChange)="fieldChange($event)"
                             (checkItemEvent)="checkField($event)" (selectFieldEvent)="selectField($event)"
@@ -99,8 +99,7 @@
                             [checkedField]="checkedField"></app-dropdown>
                     </div>
                 </div>
-                <div [ngSwitch]="item?.type">
-                    <!-- <app-label *ngSwitchCase="'label'" [config]="item" [idx]="idx"></app-label> -->
+                <div [ngSwitch]="item?.type" >
                     <app-textfield *ngSwitchCase="'textbox'" [config]="item" [idx]="idx" (swapElement)="swap($event)"
                         (fieldValueChange)="fieldChange($event)" (checkItemEvent)="checkField($event)"
                         (selectFieldEvent)="selectField($event)" [checkedField]="checkedField"></app-textfield>

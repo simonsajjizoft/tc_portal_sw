@@ -3,7 +3,7 @@
 @supports (scrollbar-width: thin) {
   * {
     scrollbar-width: thin;
-    scrollbar-color: rgb(142, 142, 142) transparent;
+    scrollbar-color: rgb(212, 212, 212) transparent;
   }
 }
 
@@ -22,7 +22,7 @@
 ::-webkit-scrollbar-thumb {
   // background: #5b5a5a;
   // border: .2em solid var(--cui-body-bg, #e0e0e0);
-  background: #868686;
+  background: #dedede;
   border-radius: 0px;
 }
 

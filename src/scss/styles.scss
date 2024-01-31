@@ -507,8 +507,18 @@ input:-webkit-autofill:active{
   
 
 
+// * {
+//     transition: background-color 0.2s ease-out;
+//     -webkit-transition:background-color 0.2s ease-out;
+//     -ms-transition:background-color 0.2s ease-out;
+
+// }
+
 * {
     transition: all 0.2s ease-out;
+    -webkit-transition:all 0.2s ease-out;
+    -ms-transition:all 0.2s ease-out;
+
 }
 
 

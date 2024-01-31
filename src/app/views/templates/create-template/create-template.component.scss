@@ -5,7 +5,9 @@
     cursor: move;
   }
   
- 
+  .table > :not(caption) > * > *{
+    border:0!important
+  }
   
   .drap-copy {
     display: flex;
@@ -71,4 +73,16 @@
     border-bottom-right-radius: 0%;
     transform: rotate(180deg);
   } */
+
+.max-h-screen{
+  height: calc(100vh - 90px);
+  overflow-y: hidden;
+}
+
+.droparea{
+  height: calc(100vh - 300px);
+  overflow-y: auto;
+
+}
+
 
