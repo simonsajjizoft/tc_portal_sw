@@ -17,7 +17,7 @@
                 </div> -->
                 <div (click)="statusDropdown=!statusDropdown"
                     class="cursor-pointer rounded-3xl relative  text-gray-800 px-3 py-2 font-medium text-sm flex  items-center">
-                    <span class="text-pink-600   font-bold">Save As </span>
+                    <span class="text-pink-600 flex items-center  font-bold"><mat-icon class="text-sm text-pink-500 -mr-1 mt-1">save</mat-icon>Save As </span>
                     <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -31,9 +31,7 @@
                                 Review</span></div>
                     </div>
                 </div>
-                <div class="text-gray-600 font-bold text-sm">
-                    Clear
-                </div>
+                
             </div>
 
         </div>
@@ -79,9 +77,19 @@
                 </div>
             </div>
         </ul>
-        <div class="h-10 w-full bg-violet-50"></div>
+        <div class=" w-full bg-violet-50">
+            <div class="flex justify-between">
+                <div class="text-xs font-bold px-3 flex items-center text-black gap-1.5" >
+                  <img src="assets/icons/codicon.png" width="19px" height="19px" alt="" srcset="">  Properties
+                </div>
+                <div class="text-xs font-bold px-3 flex items-center justify-end gap-3" >
+                    <div><img src="assets/icons/del.png" width="17px" height="17px" alt="" srcset=""></div>
+                    <div class="flex items-center gap-0.5"><mat-icon class="text-base mb-1.5  rounded-full p-2  ">edit</mat-icon></div>
+                    <div class="font-bold">Required</div>
+                </div>
+            </div>
+        </div>
         <div class="droparea mt-2   py-4 w-full flex flex-col gap-0.5 items-center">
-
             <div *ngFor="let item of table; let idx = index"  class="  w-full " >
                 <!-- <div class="example-custom-placeholder  w-full rounded-md  text-gray-400    bg-indigo-50  b-indigo-200"
                     *cdkDragPlaceholder>

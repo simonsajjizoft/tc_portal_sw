@@ -16,7 +16,7 @@
   }
 
   ::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
-    background-color: #8b398f!important;
+    background-color: var(--secondary-color)!important;
     font-weight: bold!important;
     font-size: 11px!important;
   }
@@ -28,7 +28,7 @@
   }
 
   ::ng-deep .mat-step-icon-state-edit{
-    background-color: #8b398f!important;
+    background-color: var(--secondary-color)!important;
   }
 
   .inactive-element{
@@ -38,7 +38,7 @@
   }
 
   .bg-secondary{
-    background-color: #8b398f!important;
+    background-color: var(--secondary-color)!important;
   }
 
   

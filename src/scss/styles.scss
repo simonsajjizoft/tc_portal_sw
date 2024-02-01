@@ -27,6 +27,14 @@
 
 }
 
+input[type="text"] {
+    font-family: "Plus Jakarta Sans",sans-serif !important;
+    word-spacing: 0.1rem !important;
+    -webkit-font-smoothing: antialiased !important;
+    font-smooth: antialiased!important;
+
+}
+
 $grid-breakpoints: (
     xs: 0,
     sm: 576px,
@@ -507,6 +515,10 @@ a:hover {
 
 input:autofill {
 background: white!important;
+font-family: "Plus Jakarta Sans",sans-serif !important;
+word-spacing: 0.1rem !important;
+-webkit-font-smoothing: antialiased !important;
+font-smooth: antialiased!important;
 }
   
 
@@ -516,6 +528,10 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px white inset !important;
+    font-family: "Plus Jakarta Sans",sans-serif !important;
+    word-spacing: 0.1rem !important;
+    -webkit-font-smoothing: antialiased !important;
+    font-smooth: antialiased!important;
 }
   
 

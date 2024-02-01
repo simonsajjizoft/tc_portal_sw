@@ -28,7 +28,7 @@
 
 
 <div #field2 class="text-sm  py-3 bg-white " cdkDrag>
-    <!-- Preview Placeholder -->
+  <!-- Preview Placeholder -->
   <div class="example-custom-placeholder w-full rounded-md  text-gray-400    bg-indigo-50  b-indigo-200"
     *cdkDragPlaceholder>
     <div class="w-full bg-white opacity-10">
@@ -45,20 +45,31 @@
     </div>
   </div>
   <!-- Preview Placeholder -->
-
   <div class="w-full h-fit bg-white ">
-
-    <div class=" py-1 flex flex-col items-center w-full  relative">
-      <div cdkDragHandle class="absolute rht-15 top-1/3 text-gray-400  "
-      ><mat-icon class="text-2xl p-0">drag_indicator</mat-icon></div>
-      <textarea #tArea [rows]="2" (keyup)="autoResizingTArea()" [spellcheck]="false"
-        placeholder="Add your Question here.."
-        class="font-semibold px-2.5 py-2 w-3/5 border-0 bg-neutral-50 focus:bg-neutral-100 outline-none "></textarea>
-
+    <div class="flex justify-center">
+      <div cdkDragHandle class=" text-gray-400  cursor-grab"><img src="assets/icons/drag.png" width="20px" height="20px"
+          alt="" srcset=""></div>
     </div>
-    <div class=" py-3 flex flex-col items-center w-full ">
-      <input type="text" placeholder="Enter your placeholder..."
-        class="block w-3/5 rounded-md font-semibold  px-2 py-2 text-gray-900   border-2 border-gray-300 placeholder:text-gray-400 outline-pink-500  ">
+    <div class=" py-1 flex justify-center items-center w-full  relative">
+      <div class="w-3/5 relative">
+        <div class="absolute top-1/3 -left-10 flex flex-col items-center gap-3">
+          <div class=" font-semibold  text-xs  flex p-0 items-center mt-2 sec-clr accent-pink-500"><input
+              class="w-3.5 h-3.5 " type="checkbox" name="" id=""></div>
+          <mat-icon class="sec-clr text-xl pl-0.5">delete_outline</mat-icon>
+          <img src="assets/icons/copy.png" width="15px" height="15px" class=" cursor-pointer" alt="" srcset="">
+        </div>
+        <textarea #tArea [rows]="2" (keyup)="autoResizingTArea()" [spellcheck]="false"
+          placeholder="Add your Question here.."
+          class="font-bold px-2.5 py-2 w-full border-0 placeholder:italic placeholder:font-medium text-sm bg-neutral-50 focus:bg-neutral-100 outline-none "></textarea>
+      </div>
+    </div>
+    <div class=" py-3 flex flex-col items-center w-full relative">
+      <div class="text-xs font-bold w-3/5 flex items-center justify-between text-gray-500 gap-0.5 px-0 -mr-2 relative ">
+        <div class="flex items-center gap-0.5">Edit<mat-icon class="text-base mb-2  rounded-full p-4  ">edit</mat-icon>
+        </div>
+      </div>
+      <input type="text" placeholder=" Your Placeholder..."
+        class="block w-3/5 rounded-md font-semibold  px-2 py-2 text-gray-900 placeholder:italic   border-2 border-gray-300 placeholder:text-gray-400 outline-none ">
     </div>
   </div>
 </div>
