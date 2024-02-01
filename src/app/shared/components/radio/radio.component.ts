@@ -12,6 +12,7 @@ export class RadioComponent implements OnInit{
   @Input() checkedField;
   @HostBinding('style.width') public width: string = '50%';
   @ViewChild('field') field: ElementRef; 
+  @ViewChild('tArea') tArea:ElementRef;
   @Output() selectFieldEvent = new EventEmitter();
   @Output() fieldValueChange = new EventEmitter();
   @Output() checkItemEvent = new EventEmitter();
@@ -70,6 +71,11 @@ export class RadioComponent implements OnInit{
 
    swap(){
     this.swapElement.emit({item :this.config,id: this.config?.id});
+   }
+
+   autoResizingTArea(){
+    this.tArea.nativeElement.style.height = 'auto';
+    this.tArea.nativeElement.style.height = `${this.tArea.nativeElement?.scrollHeight}px`;
    }
 
 }
