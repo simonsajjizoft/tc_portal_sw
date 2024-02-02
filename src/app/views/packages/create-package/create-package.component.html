@@ -1,6 +1,6 @@
 <div class=" overflow-hidden mt-0">
     <div class="  w-full   min-h-scr-half relative">
-        <div class="flex justify-between border py-2  mb-2 px-3 bg-white rounded-md">
+        <div class="flex justify-between border py-2  mb-3 px-3 bg-white rounded-md">
             <div class="flex gap-1 items-center font-semibold py-1.5 relative cursor-pointer">
                 <img src="assets/icons/pkg.svg" width="20px" height="20px" alt="" srcset="">
                 <div class="absolute left-3  top-3.5 z-20 border-pink-200 border-2 rounded-full"><img
@@ -14,19 +14,22 @@
                     <span class="  ">Submit & Review </span>
                    
                 </div>
-                <div (click)="statusDropdown=!statusDropdown" 
-                    class="cursor-pointer rounded-3xl relative  text-gray-800 px-3 py-2 font-medium text-sm flex  items-center">
-                    <span class="   font-bold">Draft </span>
-                    <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg>
-                    <div *ngIf="statusDropdown" class=" w-44 h-fit bg-white text-black z-10 rounded-lg border absolute text-xs top-10 shadow right-0">
-                        <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span class="mr-1">Save As Draft</span></div>
-                        <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span class="mr-1">Submit & Review</span></div>
-                    </div>
+                <div (click)="statusDropdown=!statusDropdown"
+                class="z-20 cursor-pointer rounded-3xl relative  text-pink-600 border-pink-400 border-2 px-3 py-1 font-medium text-sm flex  items-center">
+                <span class=" flex items-center font-bold text-sm">Save As </span>
+                <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 4 4 4-4" />
+                </svg>
+                <div *ngIf="statusDropdown"
+                    class=" w-44 h-fit bg-white text-black z-10 rounded-md border absolute text-xs top-10 shadow right-0">
+                    <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
+                            class="mr-1">Save As Draft</span></div>
+                    <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span class="mr-1">Submit &
+                            Review</span></div>
                 </div>
+            </div>
                 <div class="text-gray-600 font-bold text-sm">
                     Clear
                 </div>
@@ -34,7 +37,7 @@
         </div>
 
 
-        <div class="main-content overflow-auto bg-white rounded-md">
+        <div class="main-content overflow-auto bg-white rounded-md py-3">
             <mat-stepper #stepper class="example-stepper px-0" [orientation]="'vertical'" [linear]="true">
                 <mat-step [stepControl]="firstFormGroup" [completed]="firstFormGroup?.valid" >
                     <ng-template matStepLabel>
