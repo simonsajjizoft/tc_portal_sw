@@ -61,12 +61,12 @@
           <img  (click)="swap()" matTooltip="Swap with the selected Item" class="opacity-90 hover:opacity-100  cursor-pointer"
           src="assets/icons/swap.png" width="13px" height="13px" >
         </div>
-        <textarea #tArea [rows]="2" (keyup)="autoResizingTArea()" [spellcheck]="false"
+        <textarea #tArea [rows]="3" (keyup)="autoResizingTArea()" [spellcheck]="false"
           placeholder="Add your Question here.."
           class="font-bold px-2.5 py-2 w-full border-0 placeholder:italic placeholder:font-medium text-sm bg-neutral-50 focus:bg-neutral-100 outline-none "></textarea>
       </div>
     </div>
-    <div class=" py-3 flex flex-col items-center w-full relative">
+    <div class=" py-1 flex flex-col items-center w-full relative">
       <div class="text-xs font-bold w-3/5 flex items-center justify-between text-gray-500 gap-0.5 px-0 -mr-2 relative ">
         <div class="flex items-center gap-0.5">Edit<mat-icon class="text-base mb-2  rounded-full p-4  ">edit</mat-icon>
         </div>

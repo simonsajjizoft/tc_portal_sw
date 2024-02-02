@@ -36,7 +36,7 @@ export class RadioComponent implements OnInit{
   }
 
   addOption(idx: any) {
-    this.config?.values.push('Option ' + (this.config?.values?.length + 1))
+    this.config?.values.push('Choice ' + (this.config?.values?.length + 1))
   }
 
   deleteOption(opt) {

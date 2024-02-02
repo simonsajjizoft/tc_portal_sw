@@ -17,7 +17,8 @@
                 </div> -->
                 <div (click)="statusDropdown=!statusDropdown"
                     class="cursor-pointer rounded-3xl relative  text-gray-800 px-3 py-2 font-medium text-sm flex  items-center">
-                    <span class="text-pink-600 flex items-center  font-bold"><mat-icon class="text-sm text-pink-500 -mr-1 mt-1">save</mat-icon>Save As </span>
+                    <span class="text-pink-600 flex items-center  font-bold"><mat-icon
+                            class="text-sm text-pink-500 -mr-1 mt-1">save</mat-icon>Save As </span>
                     <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -31,7 +32,7 @@
                                 Review</span></div>
                     </div>
                 </div>
-                
+
             </div>
 
         </div>
@@ -52,45 +53,48 @@
             </div>
         </div> -->
     </div>
-    <div class="table bg-white  w-full px-3 py-4" cdkDropList #tableList="cdkDropList" [cdkDropListData]="table"
+    <div class=" droplst bg-white  w-full px-3 relative" cdkDropList #tableList="cdkDropList" [cdkDropListData]="table"
         (cdkDropListDropped)="drop($event)">
+        <div class=" py-3 sticky top-0 z-10 bg-white">
+            <ul class="flex  border-b-2 border-gray-200 flex-wrap items-center   gap-0 mb-0" cdkDropList
+                #menuList="cdkDropList" [cdkDropListData]="menu" cdkDropListSortingDisabled
+                [cdkDropListConnectedTo]="[tableList]" (cdkDropListDropped)="drop($event)"
+                (cdkDropListExited)="exited($event)" (cdkDropListEntered)="entered()">
+                <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
 
-        <ul class="flex  border-b-2 border-gray-200 flex-wrap items-center p-0 gap-0 mb-0" cdkDropList
-            #menuList="cdkDropList" [cdkDropListData]="menu" cdkDropListSortingDisabled
-            [cdkDropListConnectedTo]="[tableList]" (cdkDropListDropped)="drop($event)"
-            (cdkDropListExited)="exited($event)" (cdkDropListEntered)="entered()">
-            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+                <div (click)="addItemToList(item)" class="item   p-4 w-fit" *ngFor="let item of menu;let idx=index"
+                    cdkDrag [cdkDragData]="item">
+                    <div matRipple [matRippleCentered]="true"
+                        class="text-center justify-center  items-center flex flex-col gap-1  py-1 bg-white border-0">
+                        <img *ngIf="item?.img" class="p-t-3" [src]="item?.img" width="22px" height="22px" alt=""
+                            srcset="">
+                        <div class=" font-semibold text-blue-950 xs-text px-2">{{ item?.title }}</div>
 
-            <div (click)="addItemToList(item)" class="item   p-0 w-fit" *ngFor="let item of menu;let idx=index" cdkDrag
-                [cdkDragData]="item">
-                <div matRipple [matRippleCentered]="true"
-                    class="text-center justify-center  items-center flex flex-col gap-1  py-1 bg-white border-0">
-                    <img *ngIf="item?.img" class="p-t-3" [src]="item?.img" width="22px" height="22px" alt="" srcset="">
-                    <div class=" font-semibold text-blue-950 xs-text px-2">{{ item?.title }}</div>
-
+                    </div>
+                    <div [ngSwitch]="item?.type" *cdkDragPreview>
+                        <app-label *ngSwitchCase="'label'" [config]="item" [idx]="idx"></app-label>
+                        <app-textfield *ngSwitchCase="'textbox'" [config]="item"></app-textfield>
+                        <app-radio *ngSwitchCase="'radio'" [config]="item"></app-radio>
+                        <app-dropdown *ngSwitchCase="'dropdown'" [config]="item"></app-dropdown>
+                    </div>
                 </div>
-                <div [ngSwitch]="item?.type" *cdkDragPreview>
-                    <app-label *ngSwitchCase="'label'" [config]="item" [idx]="idx"></app-label>
-                    <app-textfield *ngSwitchCase="'textbox'" [config]="item"></app-textfield>
-                    <app-radio *ngSwitchCase="'radio'" [config]="item"></app-radio>
-                    <app-dropdown *ngSwitchCase="'dropdown'" [config]="item"></app-dropdown>
-                </div>
-            </div>
-        </ul>
-        <div class=" w-full bg-violet-50">
-            <div class="flex justify-between">
-                <div class="text-xs font-bold px-3 flex items-center text-black gap-1.5" >
-                  <img src="assets/icons/codicon.png" width="19px" height="19px" alt="" srcset="">  Properties
-                </div>
-                <div class="text-xs font-bold px-3 flex items-center justify-end gap-3" >
-                    <div><img src="assets/icons/del.png" width="17px" height="17px" alt="" srcset=""></div>
-                    <div class="flex items-center gap-0.5"><mat-icon class="text-base mb-1.5  rounded-full p-2  ">edit</mat-icon></div>
-                    <div class="font-bold">Required</div>
+            </ul>
+            <div class=" w-full bg-violet-50 py-2">
+                <div class="flex justify-between">
+                    <div class="text-xs font-bold px-3 flex items-center text-black gap-1.5">
+                        <img src="assets/icons/codicon.png" width="19px" height="19px" alt="" srcset=""> Properties
+                    </div>
+                    <div class="text-xs font-bold px-3 flex items-center justify-end gap-3">
+                        <div><img src="assets/icons/del.png" width="17px" height="17px" alt="" srcset=""></div>
+                        <div class="flex items-center gap-0.5"><mat-icon
+                                class="text-base mb-1.5  rounded-full p-2  ">edit</mat-icon></div>
+                        <div class="font-bold">Required</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="droparea mt-2   py-4 w-full flex flex-col gap-0.5 items-center">
-            <div *ngFor="let item of table; let idx = index"  class="  w-full " >
+        <div class=" mt-2   py-4 w-full flex flex-col gap-0.5 items-center">
+            <div *ngFor="let item of table; let idx = index" class="  w-full ">
                 <!-- <div class="example-custom-placeholder  w-full rounded-md  text-gray-400    bg-indigo-50  b-indigo-200"
                     *cdkDragPlaceholder>
                     <div [ngSwitch]="item?.type" class="opacity-70 bg-transparent">
@@ -108,7 +112,7 @@
                             [checkedField]="checkedField"></app-dropdown>
                     </div>
                 </div> -->
-                <div [ngSwitch]="item?.type" class="bg-white" >
+                <div [ngSwitch]="item?.type" class="bg-white">
                     <app-textfield *ngSwitchCase="'textbox'" [config]="item" [idx]="idx" (swapElement)="swap($event)"
                         (fieldValueChange)="fieldChange($event)" (checkItemEvent)="checkField($event)"
                         (selectFieldEvent)="selectField($event)" [checkedField]="checkedField"></app-textfield>

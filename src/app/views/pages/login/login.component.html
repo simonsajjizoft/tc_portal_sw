@@ -1,31 +1,32 @@
 <div class=" min-vh-100 flex flex-col gap-5 align-items-center  outer-div bg-zinc-50">
   <div class="hdr py-4 w-full bg-pink-600"></div>
   <div class="m-0 w-100  p-0  ">
-    <c-row class="w-100 m-0 p-28 d-flex j-center align-items-center ">
-      <c-col md="4" class="px-3 ">
-        <c-card class="px-3 bg-white   shadow-sm shadow-pink-500 border-0  py-4" style="border-radius: 12px!important;">
-          <c-card-body class="bg-white relative">
+    <c-row class="w-100 m-0  d-flex j-center align-items-center ">
+      <c-col md="4" class="">
+        <c-card class="px-3 bg-white   shadow2 border-0  py-4" style="border-radius: 24px!important;">
+          <c-card-body class="bg-white relative" >
+            <h5 class="font-bold text-center text-gray-600  py-2">Login</h5>
             <div class="text-center mb-4 px-1 py-4">
                 <div class="flex items-center justify-center" >
                  <span class="relative text-xl gap-2 font-medium"><img src="assets/icons/sw-logo.png" width="150px" height="70px" alt="" srcset=""> <span class="font-bold text-xs text-pink-500 absolute -bottom-4 -right-4">TC Portal</span></span>
                  </div>
              </div>
-             <h3 class="font-bold text-center   py-2"></h3>
-             <div [formGroup]="formGroup" class="px-2" >
-              <div class="text-sm font-bold px-1 text-black mt-3">Email</div>
+
+             <div [formGroup]="formGroup" class="px-3" >
+              <div class="text-xs font-bold px-1.5 text-black mt-3">Email</div>
                <div class=" py-2  w-full">
-                <input formControlName="empEmail" formControlName="empEmail" type="text" placeholder="Enter your Email Address"
-                    class="block w-full  font-medium border-2 rounded-lg focus:text-sm   border-gray-300  px-2 py-2 text-gray-600  text-sm  placeholder:text-gray-400 outline-none focus:border-pink-500  ">
+                <input  formControlName="empEmail" formControlName="empEmail" type="email" placeholder="Enter your Email"
+                    class="block w-full  font-bold border-b-2  focus:text-xs   border-gray-200  px-2 py-2.5 text-gray-600  text-xs focus:font-bold  placeholder:text-gray-400 outline-none focus:border-pink-500  ">
               </div>
-              <div class="text-sm font-bold px-1 text-black mt-4">Password</div>
+              <div class="text-xs font-bold px-1.5 text-black mt-4">Password</div>
                <div class=" py-2  w-full">
-                <input formControlName="empPassword" type="password" placeholder="Enter your Password"
-                    class="block w-full focus:text-sm font-medium  border-2 rounded-lg border-gray-300  px-2 py-2 text-gray-600  text-sm   placeholder:text-gray-400 outline-none focus:border-pink-500 ">
+                <input   formControlName="empPassword" type="password" placeholder="Enter your Password"
+                    class="block w-full focus:text-xs font-bold   border-b-2  border-gray-200  px-2 py-2.5 text-gray-600  text-xs   placeholder:text-gray-400 outline-none focus:border-pink-500 ">
               </div>
                
-              <div class="text-xs font-semibold justify-end flex sec-clr  px-1 " > Reset Password </div>
+              <div class="text-xs font-medium justify-end flex text-violet-900  px-1 pt-3" > Reset Password </div>
                <div class="flex flex-col justify-center align-center mb-3 mt-5" >
-                 <div class="bg_alt text-white font-medium rounded-3xl w-fit py-2 px-5 text-sm"  type="button" (click)="submitClick()">Continue</div>
+                 <div class="bg_alt text-white font-medium rounded-2xl w-fit py-2 px-5 text-sm"  type="button" (click)="submitClick()">Continue</div>
 
                </div>
  
