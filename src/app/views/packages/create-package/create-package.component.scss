@@ -1,10 +1,10 @@
 .min-h-scr-half{
-    height: calc(100vh - 100px);
+    height: calc(100vh - 90px);
     position: relative;
 }
 
 .main-content{
-    height: calc(90% - 10px)!important;
+    height: calc(90% - 90px)!important;
 }
 
 .p-sticky {
@@ -16,7 +16,7 @@
   }
 
   ::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
-    background-color: var(--secondary-color)!important;
+    background-color: rgb(165, 114, 205)!important;
     font-weight: bold!important;
     font-size: 11px!important;
   }
@@ -28,7 +28,7 @@
   }
 
   ::ng-deep .mat-step-icon-state-edit{
-    background-color: var(--secondary-color)!important;
+    background-color: rgb(165, 114, 205)!important;
   }
 
   .inactive-element{

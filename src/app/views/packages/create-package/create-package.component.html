@@ -1,6 +1,6 @@
-<div class=" overflow-hidden">
-    <div class=" bg-white rounded-md w-full px-3 py-3 border mt-1 min-h-scr-half relative">
-        <div class="flex justify-between">
+<div class=" overflow-hidden mt-0">
+    <div class="  w-full   min-h-scr-half relative">
+        <div class="flex justify-between border py-2  mb-2 px-3 bg-white rounded-md">
             <div class="flex gap-1 items-center font-semibold py-1.5 relative cursor-pointer">
                 <img src="assets/icons/pkg.svg" width="20px" height="20px" alt="" srcset="">
                 <div class="absolute left-3  top-3.5 z-20 border-pink-200 border-2 rounded-full"><img
@@ -34,9 +34,9 @@
         </div>
 
 
-        <div class="main-content overflow-auto ">
-            <mat-stepper #stepper class="example-stepper px-0" [orientation]="'vertical'">
-                <mat-step [stepControl]="firstFormGroup" >
+        <div class="main-content overflow-auto bg-white rounded-md">
+            <mat-stepper #stepper class="example-stepper px-0" [orientation]="'vertical'" [linear]="true">
+                <mat-step [stepControl]="firstFormGroup" [completed]="firstFormGroup?.valid" >
                     <ng-template matStepLabel>
                         <span  [ngClass]="stepper?.selectedIndex==0 ? 'font-bold text-sm' : 'font-semibold text-xs'">Basic Package Information</span>
                       </ng-template>
@@ -90,7 +90,7 @@
      
                     </form>
                 </mat-step>
-                <mat-step [stepControl]="secondFormGroup" *ngIf="firstFormGroup?.valid" >
+                <mat-step [stepControl]="secondFormGroup"  >
                     <ng-template matStepLabel>
                         <span  [ngClass]="stepper?.selectedIndex==1 ? 'font-bold text-sm' : 'font-semibold text-xs'">Select Exercises for your Package</span>
                       </ng-template>
