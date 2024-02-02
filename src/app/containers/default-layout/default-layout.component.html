@@ -15,7 +15,7 @@
         <span class=" text-sm "
           [ngClass]="router?.url?.includes('dashboard') ? 'text-pink-600 font-bold': 'text-gray-600'">Home</span>
       </div>
-      <div   [ngClass]="router?.url?.includes('exercises') ? 'bg-violet-50' : ''"
+      <div   [ngClass]="router?.url?.includes('exercises') ? 'bg-violet-50' : ''" (click)="navigate('/exercises')"
         class="overflow-hidden cursor-pointer font-bold  text-sm flex p-10 pt-2 pb-2 gap-1 rounded-md items-center">
         <img class=" mr-2" src="assets/icons/exercise.svg" width="25px" height="25px" alt="">
         <span class=" text-sm "
