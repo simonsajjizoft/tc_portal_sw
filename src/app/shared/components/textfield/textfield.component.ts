@@ -27,7 +27,7 @@ export class TextfieldComponent implements OnInit {
         if(e.target != this.field?.nativeElement && !this.field?.nativeElement?.contains(e.target)){
           this.showProperties = false;
           this.selectFieldEvent.emit({item :this.config,id: this.idx,selected:false});
-          this.changeDetectorRef.detectChanges();
+          // this.changeDetectorRef.detectChanges();
         }
     
      });

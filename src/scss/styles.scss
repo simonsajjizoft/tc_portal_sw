@@ -534,21 +534,24 @@ input:-webkit-autofill:active{
     font-smooth: antialiased!important;
 }
   
+.bg_alt {
+    background-color: var(--secondary-color);
+}
 
-
-// * {
-//     transition: background-color 0.2s ease-out;
-//     -webkit-transition:background-color 0.2s ease-out;
-//     -ms-transition:background-color 0.2s ease-out;
-
-// }
 
 * {
-    transition: all 0.2s ease-out;
-    -webkit-transition:all 0.2s ease-out;
-    -ms-transition:all 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
+    -webkit-transition:background-color 0.2s ease-out;
+    -ms-transition:background-color 0.2s ease-out;
 
 }
+
+// * {
+//     transition: all 0.2s ease-out;
+//     -webkit-transition:all 0.2s ease-out;
+//     -ms-transition:all 0.2s ease-out;
+
+// }
 
 
 @media screen and (max-width: 1150px) {
@@ -559,4 +562,8 @@ input:-webkit-autofill:active{
 
 cite{
     font-style: normal!important;
+}
+
+.bg-l-pink{
+    background-color: rgb(255, 251, 254)!important;
 }

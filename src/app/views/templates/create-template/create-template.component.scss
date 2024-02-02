@@ -2,7 +2,7 @@
   
   .item {
     background: #fff;
-    cursor: move;
+    cursor:pointer!important;
   }
   
   .table > :not(caption) > * > *{

@@ -10,15 +10,9 @@
                 <span class="ml-2 text-lg">Create Template</span>
             </div>
             <div class="flex gap-0.5 px-2 py-3 justify-end items-center ">
-                <!-- <div
-                    class="cursor-pointer rounded-3xl relative  text-pink-600 px-3 py-2 font-bold text-sm flex  items-center">
-                    <span class="  ">Submit & Review </span>
-
-                </div> -->
                 <div (click)="statusDropdown=!statusDropdown"
-                    class="cursor-pointer rounded-3xl relative  text-gray-800 px-3 py-2 font-medium text-sm flex  items-center">
-                    <span class="text-pink-600 flex items-center  font-bold"><mat-icon
-                            class="text-sm text-pink-500 -mr-1 mt-1">save</mat-icon>Save As </span>
+                    class="z-20 cursor-pointer rounded-3xl relative  text-pink-600 border-pink-400 border-2 px-3 py-1 font-medium text-sm flex  items-center">
+                    <span class=" flex items-center font-bold text-sm">Save As </span>
                     <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -65,9 +59,11 @@
                 <div (click)="addItemToList(item)" class="item   p-4 w-fit" *ngFor="let item of menu;let idx=index"
                     cdkDrag [cdkDragData]="item">
                     <div matRipple [matRippleCentered]="true"
-                        class="text-center justify-center  items-center flex flex-col gap-1  py-1 bg-white border-0">
-                        <img *ngIf="item?.img" class="p-t-3" [src]="item?.img" width="22px" height="22px" alt=""
+                        class="text-center justify-center  items-center flex flex-col gap-1.5  py-1 bg-white border-0">
+                        <div class="w-fit h-6">
+                            <img *ngIf="item?.img" class="p-0" [src]="item?.img" class="w-fit h-full" alt=""
                             srcset="">
+                        </div>
                         <div class=" font-semibold text-blue-950 xs-text px-2">{{ item?.title }}</div>
 
                     </div>
@@ -93,25 +89,8 @@
                 </div>
             </div>
         </div>
-        <div class=" mt-2   py-4 w-full flex flex-col gap-0.5 items-center">
+        <div class=" mt-2   py-1 w-full flex flex-col gap-0.5 items-center">
             <div *ngFor="let item of table; let idx = index" class="  w-full ">
-                <!-- <div class="example-custom-placeholder  w-full rounded-md  text-gray-400    bg-indigo-50  b-indigo-200"
-                    *cdkDragPlaceholder>
-                    <div [ngSwitch]="item?.type" class="opacity-70 bg-transparent">
-
-                        <app-textfield *ngSwitchCase="'textbox'" [config]="item" [idx]="idx"
-                            (swapElement)="swap($event)" (fieldValueChange)="fieldChange($event)"
-                            (checkItemEvent)="checkField($event)" (selectFieldEvent)="selectField($event)"
-                            [checkedField]="checkedField"></app-textfield>
-                        <app-radio *ngSwitchCase="'radio'" [config]="item" [idx]="idx" (swapElement)="swap($event)"
-                            (fieldValueChange)="fieldChange($event)" (checkItemEvent)="checkField($event)"
-                            (selectFieldEvent)="selectField($event)" [checkedField]="checkedField"></app-radio>
-                        <app-dropdown *ngSwitchCase="'dropdown'" [config]="item" [idx]="idx"
-                            (swapElement)="swap($event)" (fieldValueChange)="fieldChange($event)"
-                            (checkItemEvent)="checkField($event)" (selectFieldEvent)="selectField($event)"
-                            [checkedField]="checkedField"></app-dropdown>
-                    </div>
-                </div> -->
                 <div [ngSwitch]="item?.type" class="bg-white">
                     <app-textfield *ngSwitchCase="'textbox'" [config]="item" [idx]="idx" (swapElement)="swap($event)"
                         (fieldValueChange)="fieldChange($event)" (checkItemEvent)="checkField($event)"
