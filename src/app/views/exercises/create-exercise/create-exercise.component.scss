@@ -1,0 +1,62 @@
+.min-h-scr-half{
+    height: calc(100vh - 90px);
+    position: relative;
+}
+
+.main-content{
+    height: calc(90% - 100px)!important;
+}
+
+.p-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 2px;
+    background-color: white!important;
+    width: 100%;
+  }
+
+  ::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+    background-color: rgb(165, 114, 205)!important;
+    font-weight: bold!important;
+    font-size: 11px!important;
+  }
+
+
+  ::ng-deep .mat-step-icon .mat-icon{
+    display: none!important;
+
+  }
+
+  ::ng-deep .mat-step-icon-state-edit{
+    background-color: rgb(165, 114, 205)!important;
+  }
+
+  .inactive-element{
+    pointer-events:none!important;
+    opacity: 0.5;
+    color: #cccccc;
+  }
+
+  .bg-secondary{
+    background-color: var(--secondary-color)!important;
+  }
+
+  ::ng-deep .ck-editor__editable {
+    min-height: 50vh !important;
+    border-bottom-left-radius: 8px!important;
+    border-bottom-right-radius: 8px!important;
+  }
+
+  ::ng-deep .ck-editor__editable:focus{
+    box-shadow: none!important;
+    outline: none!important;
+    border: 1px solid rgb(214, 105, 173)!important;
+  }
+
+  ::ng-deep .ck.ck-editor__top .ck-sticky-panel .ck-toolbar {
+    border-radius: 8px!important;
+    border-bottom-left-radius: 0px!important;
+    border-bottom-right-radius: 0px!important;
+    padding: 10px!important;
+  }
+  

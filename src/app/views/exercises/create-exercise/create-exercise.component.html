@@ -1,1 +1,147 @@
-<p>create-exercise works!</p>
+<div class=" overflow-hidden mt-0">
+    <div class="  w-full   min-h-scr-half relative">
+        <div class="flex justify-between border py-2  mb-3 px-3 bg-white rounded-md">
+            <div class="flex gap-1 items-center font-semibold py-1.5 relative cursor-pointer">
+                <img src="assets/icons/exercise.svg" width="22px" height="22px" alt="" srcset="">
+                <div class="absolute left-3  top-3.5 z-20 border-pink-200 border-2 rounded-full"><img
+                        src="assets/icons/plus.png" width="12px" height="12px" alt="" srcset="">
+                </div>
+                <span class="ml-2 text-lg">Create Exercise</span>
+            </div>
+            <div class="flex gap-4 px-2 py-3 justify-end items-center ">
+                <div  *ngIf="firstFormGroup?.valid" (click)="openDialog(2000,0)"
+                    class="cursor-pointer rounded-3xl relative  text-pink-600 px-3 py-2 font-bold text-sm flex  items-center">
+                    <span class="  ">Submit & Review </span>
+                   
+                </div>
+                <div (click)="statusDropdown=!statusDropdown"
+                class="z-20 cursor-pointer rounded-3xl relative  text-pink-600 border-pink-400 border-2 px-3 py-1 font-medium text-sm flex  items-center">
+                <span class=" flex items-center font-bold text-sm">Save As </span>
+                <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 4 4 4-4" />
+                </svg>
+                <div *ngIf="statusDropdown"
+                    class=" w-44 h-fit bg-white text-black z-10 rounded-md border absolute text-xs top-10 shadow right-0">
+                    <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
+                            class="mr-1">Save As Draft</span></div>
+                    <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span class="mr-1">Submit &
+                            Review</span></div>
+                </div>
+            </div>
+                <div class="text-gray-600 font-bold text-sm">
+                    Clear
+                </div>
+            </div>
+        </div>
+
+
+        <div class="main-content overflow-auto bg-white rounded-md py-3 px-3">
+            <mat-stepper #stepper class="example-stepper px-0" [orientation]="'vertical'" [linear]="true">
+                <mat-step [stepControl]="firstFormGroup" [completed]="firstFormGroup?.valid" >
+                    <ng-template matStepLabel>
+                        <span  [ngClass]="stepper?.selectedIndex==0 ? 'font-bold text-sm' : 'font-semibold text-xs'">Basic Exercise Information</span>
+                      </ng-template>
+                      <ng-template matStepperIcon="edit">
+                        <img src="assets/icons/edit_white.png" width="12px" height="12px" alt="" srcset="">
+                      </ng-template>
+                    <form [formGroup]="firstFormGroup">
+                        <div class="flex flex-wrap gap-4 py-3 mt-3 mb-8">
+                            <div class=" flex-1 gap-4 items-center ">
+                                <div class="label font-semibold text-sm py-3">Age Group <span
+                                        class="text-pink-500">*</span></div>
+                                <div
+                                    class="font-semibold flex items-center gap-2 py-2 border-2 border-zinc-200 rounded-lg w-fit px-4  justify-between">
+                                    <span class="text-sm">6-8 Age</span>
+                                    <svg class="w-2 h-2 ms-1  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 10 6">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m1 1 4 4 4-4" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class=" flex-1 gap-4 items-center font-bold  ">
+                                <div class="label font-semibold text-sm py-3">Exercise Type <span
+                                        class="text-pink-500">*</span></div>
+                                <mat-slide-toggle>
+                                    <div class="flex items-center gap-0.5">
+                                        <svg class="w-4 h-4  ml-3 text-pink-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6.072 10.072 2 2 6-4m3.586 4.314.9-.9a2 2 0 0 0 0-2.828l-.9-.9a2 2 0 0 1-.586-1.414V5.072a2 2 0 0 0-2-2H13.8a2 2 0 0 1-1.414-.586l-.9-.9a2 2 0 0 0-2.828 0l-.9.9a2 2 0 0 1-1.414.586H5.072a2 2 0 0 0-2 2v1.272a2 2 0 0 1-.586 1.414l-.9.9a2 2 0 0 0 0 2.828l.9.9a2 2 0 0 1 .586 1.414v1.272a2 2 0 0 0 2 2h1.272a2 2 0 0 1 1.414.586l.9.9a2 2 0 0 0 2.828 0l.9-.9a2 2 0 0 1 1.414-.586h1.272a2 2 0 0 0 2-2V13.8a2 2 0 0 1 .586-1.414Z"></path>
+                                        </svg>
+                                        <span>Premium</span>
+                                    </div>
+                                     </mat-slide-toggle>
+                            </div>
+                        </div>
+                        <div class="flex py-3 flex-wrap gap-4 w-full text-sm ">
+                            <div class="flex-1">
+                                <div class="font-semibold ">Exercise Name</div>
+                                <div class=" py-3  w-full">
+                                    <input formControlName="name" type="text" placeholder="Type a name for your exercise.."
+                                        class="block w-3/4 rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-semibold ">Description</div>
+                                <div class=" py-3  w-full">
+                                    <textarea formControlName="description" placeholder="Description"
+                                        class="font-semibold border-2 border-gray-300 rounded-lg px-2 py-2 w-3/4  outline-pink-500 "></textarea>
+                                </div>
+                            </div>
+                        </div>
+     
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup"  >
+                    <ng-template matStepLabel>
+                        <span  [ngClass]="stepper?.selectedIndex==1 ? 'font-bold text-sm' : 'font-semibold text-xs'">Exercise Steps and Upload of Files</span>
+                      </ng-template>
+                    <form [formGroup]="secondFormGroup">
+                        <ckeditor [editor]="Editor" [config]="{ toolbar: [ 
+                            'heading',
+                            '|',
+                            'bold',
+                            'italic',
+                            'underline',
+                            'horizontalLine',
+                            'link',
+                            'bulletedList',
+                            'code',
+                            'codeBlock',
+                            '|',
+                            'classicEditor',
+                            'numberedList',
+                            'sourcedialog',
+                            '|',
+                            'outdent',
+                            'indent',
+                            'alignment',
+                            '|',
+                            'fontColor',
+                            'fontSize',
+                            'blockQuote',
+                            'undo',
+                            'redo',
+                            'SourceEditing'
+                            ] }"   formControlName="content" #myEditor></ckeditor>
+                    </form>
+                </mat-step>
+                
+                <!-- <mat-step>
+                    <ng-template matStepLabel>Completed</ng-template>
+                    <p>You have successfully created a Exercise.</p>
+                </mat-step> -->
+            </mat-stepper>
+        </div>
+        <div class="p-sticky w-full px-2  flex justify-end items-center  mt-2">
+
+            <div class="flex gap-4 px-2 border-t-2  w-full justify-end items-center py-3">
+                <div [ngClass]="checkPrevStepActive(stepper) ? 'border-pink-600 text-pink-700 cursor-pointer' : 'border-gray-400 text-gray-400 cursor-default'" (click)="goStepBack(stepper)" class="rounded-2xl border-2 text-sm font-bold px-4 py-1 opacity-70">
+                    Back</div>
+                <div [ngClass]="checkNextStepActive(stepper) ? 'border-pink-600 text-pink-700  cursor-pointer' : 'border-gray-400 text-gray-400'" class="rounded-2xl border-2 text-sm  font-bold  px-4 py-1 " (click)="goStepForward(stepper)" >Next</div>
+            </div>
+        </div>
+    </div>
+
+</div>
