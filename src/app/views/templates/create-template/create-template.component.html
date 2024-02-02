@@ -90,7 +90,7 @@
             </div>
         </div>
         <div class=" mt-2   py-1 w-full flex flex-col gap-0.5 items-center">
-            <div *ngFor="let item of table; let idx = index" class="  w-full ">
+            <div *ngFor="let item of table; let idx = index" class="  w-3/5">
                 <div [ngSwitch]="item?.type" class="bg-white">
                     <app-textfield *ngSwitchCase="'textbox'" [config]="item" [idx]="idx" (swapElement)="swap($event)"
                         (fieldValueChange)="fieldChange($event)" (checkItemEvent)="checkField($event)"
