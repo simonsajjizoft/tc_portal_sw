@@ -18,4 +18,10 @@ export class ListComponent {
     );
   }
 
+  navigateDetails(){
+    this.router.navigate(
+      ['/exercises/details'] 
+    );
+  }
+
 }
