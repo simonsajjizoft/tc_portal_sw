@@ -97,7 +97,7 @@
                     <ng-template matStepLabel>
                         <span  [ngClass]="stepper?.selectedIndex==1 ? 'font-bold text-sm' : 'font-semibold text-xs'">Exercise Steps and Upload of Files</span>
                       </ng-template>
-                    <form [formGroup]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup" class="py-2">
                         <ckeditor [editor]="Editor" [config]="{ toolbar: [ 
                             'heading',
                             '|',
@@ -125,6 +125,20 @@
                             'redo',
                             'SourceEditing'
                             ] }"   formControlName="content" #myEditor></ckeditor>
+
+                        <h4 class="font-bold text-lg py-3">Upload File</h4>
+                        <div class=" w-full">
+                            <div class="h-56 w-80 px-3 rounded-lg border-pink-300 border-2 border-dashed bg-pink-50 flex flex-col justify-center gap-1 items-center">
+                                <div >
+                                    <img src="assets/icons/upload.png" class="h-10 w-10 opacity-65" alt="" srcset="">
+                                </div>
+                                <div>
+                                    <img src="assets/icons/Group 192.png" alt="" srcset="">
+                                </div>
+                                <div class="text-center"><span class="text-pink-600 underline text-xs font-bold">Click to upload</span></div>
+                                <div class="text-center text-pink-500 text-xs font-semibold">(Only PNG and JPEG is allowed) Maximium size is 6MB.</div>
+                            </div>
+                        </div>
                     </form>
                 </mat-step>
                 
