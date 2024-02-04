@@ -7,12 +7,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
+  loader;
   constructor(private router:Router){}
 
-  ngOnInit(){}
+  ngOnInit(){
+    this.loader = true;
+    setTimeout(()=>{
+      this.loader = false;
+    },2000)
+  }
 
   createExercise() {
-    // this.initialLoader = true;
     this.router.navigate(
       ['/exercises/create'] 
     );
