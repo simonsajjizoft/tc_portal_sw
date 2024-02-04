@@ -91,6 +91,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.initCharts();
+    this.loader = true
+    setTimeout(()=>{
+      this.loader = false;
+    },2000)
   }
 
   initCharts(): void {

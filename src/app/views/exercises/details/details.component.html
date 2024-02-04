@@ -11,21 +11,25 @@
                 </div>
             </div>
             <div class="flex flex-col gap-1 px-2 py-2 items-end justify-center ">
-                
-                <div (click)="statusDropdown=!statusDropdown"
-                    class="z-20 cursor-pointer rounded-3xl relative  text-pink-600 border-pink-400 border-2 px-3 py-1 font-medium text-sm flex  items-center">
-                    <span class=" flex items-center font-bold text-sm">Draft </span>
-                    <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg>
-                    <div *ngIf="statusDropdown"
-                        class=" w-44 h-fit bg-white text-black z-10 rounded-md border absolute text-xs top-10 shadow right-0">
-                        <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
-                                class="mr-1">Save As Draft</span></div>
-                        <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span class="mr-1">Submit &
-                                Review</span></div>
+                <div class="flex gap-3">
+                    <div><img class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image"> Jose Leos
+                    </div>
+                    <div (click)="statusDropdown=!statusDropdown"
+                        class="z-20 cursor-pointer rounded-3xl relative  text-pink-600 border-pink-400 border-2 px-3 py-1 font-medium text-sm flex  items-center">
+                        <span class=" flex items-center font-bold text-sm">Draft </span>
+                        <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                        <div *ngIf="statusDropdown"
+                            class=" w-44 h-fit bg-white text-black z-10 rounded-md border absolute text-xs top-10 shadow right-0">
+                            <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
+                                    class="mr-1">Save As Draft</span></div>
+                            <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span
+                                    class="mr-1">Submit &
+                                    Review</span></div>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -39,8 +43,8 @@
             <form [formGroup]="firstFormGroup">
                 <div class="flex flex-wrap gap-4 py-3 mt-3 mb-8">
                     <div class=" flex-1 gap-4 items-center ">
-                        <div class="label font-semibold text-sm py-3">Age Group <span
-                                class="text-pink-500">*</span></div>
+                        <div class="label font-semibold text-sm py-3">Age Group <span class="text-pink-500">*</span>
+                        </div>
                         <div
                             class="font-semibold flex items-center gap-2 py-2 border-2 border-zinc-200 rounded-lg w-fit px-4  justify-between">
                             <span class="text-sm">6-8 Age</span>
@@ -52,8 +56,8 @@
                         </div>
                     </div>
                     <div class=" flex-1 gap-4 items-center font-bold  ">
-                        <div class="label font-semibold text-sm py-3">Exercise Type <span
-                                class="text-pink-500">*</span></div>
+                        <div class="label font-semibold text-sm py-3">Exercise Type <span class="text-pink-500">*</span>
+                        </div>
                         <mat-slide-toggle>
                             <div class="flex items-center gap-0.5">
                                 <svg class="w-4 h-4  ml-3 text-pink-600" aria-hidden="true"
@@ -72,8 +76,7 @@
                     <div class="flex-1">
                         <div class="font-semibold ">Exercise Name</div>
                         <div class=" py-3  w-full">
-                            <input formControlName="name" type="text"
-                                placeholder="Type a name for your exercise.."
+                            <input formControlName="name" type="text" placeholder="Type a name for your exercise.."
                                 class="block w-3/4 rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
                         </div>
                     </div>
@@ -135,7 +138,7 @@
             </form>
 
         </div>
-        
+
     </div>
 
 </div>

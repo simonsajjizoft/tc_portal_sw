@@ -1,99 +1,88 @@
 <div class="pb-3 bg-zinc-50">
-    <!-- <div class="text-lg font-bold px-3 py-3 flex gap-3 items-center"><img src="assets/icons/dashboard.png" width="35px" height="35px" alt="" srcset="">  Dashboard</div> -->
-    <div class="text-lg font-bold px-2 py-2 mb-2">Hi Joel, <span class="font-semibold text-xl ml-1">Welcome</span></div>
+    <div *ngIf="!loader" class="text-lg font-bold px-2 py-2 mb-2">Hi Joel, <span class="font-semibold text-xl ml-1">Welcome</span></div>
+    <div *ngIf="loader" class="text-lg font-bold px-1 py-2 mb-2">
+        <div class="h-5 text-xl  bg-zinc-100 rounded-full w-48 "></div>
+    </div>
     <div class="flex flex-1 mb-2 gap-5 flex-wrap">
-        <div class=" bg-white w-80 h-44 rounded-lg  px-3 py-2" style="box-shadow: rgba(29, 29, 29, 0.1) -4px 9px 25px -6px;">
-          <c-chart
-          [data]="data"
-          [height]="150"
-          [options]="chartOptions"
-          [type]="'bar'"
-        >
-        </c-chart>
-
+        
+        <!-- <div *ngIf="loader" class=" bg-neutral-100 animate-pulse w-80 h-44 rounded-lg  px-3 py-2" >
+            <div class="h-40">
+            </div>
+          </div> -->
+    
+        <div *ngIf="loader" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 w-full">
+            <div *ngFor="let item of [1,2,3,4]" class="rounded-lg bg-neutral-100  h-36 sm:h-36 md:h-40 lg:h-40 xl:h-40  flex gap-3 items-center justify-center animate-pulse">
+                <svg class="w-1/3 h-1/3 text-zinc-50 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
+                    <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z"/>
+                    <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z"/>
+                </svg>
+            </div>
         </div>
-        <div class=" flex  gap-4 flex-1">
-            <div class="rounded-lg pink-shadow w-1/3 h-40 bg-white flex gap-3 items-center justify-center">
-                <div class=" w-16 h-16  flex  justify-center items-center opacity-70">
-                    <img src="assets/icons/pkg.svg" class="w-fit h-fit" alt="" srcset="">
+        <div *ngIf="!loader" class=" grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 w-full"> 
+            <div class="rounded-lg pink-shadow   h-36 sm:h-36 md:h-40 lg:h-40 xl:h-40 bg-white flex gap-2 items-center justify-center">
+                <div class=" w-14 sm:w-14 lg:w-16 xl:w-16 h-14 sm:h-14 lg:h-16 xl:h-16  flex  justify-center items-center opacity-70">
+                    <img src="assets/icons/pkg.svg" class="w-full h-full" alt="" srcset="">
                 </div>
                 <div class=" flex  flex-col justify-end ">
-                    <div class="text-pink-500  font-medium vlarge-text max-w-24 overflow-hidden  text-ellipsis">20</div>
+                    <div class="sec-clr font-light  vlarge-text max-w-24 overflow-hidden  text-ellipsis">20</div>
                     <div class="font-semibold text-sm sec-clr max-w-24 overflow-hidden  text-ellipsis">Packages</div>
                 </div>
-
-
             </div>
-            <div class="rounded-lg pink-shadow w-1/3 h-40 bg-white flex gap-3 items-center justify-center">
-                <div class=" w-16 h-16  flex  justify-center items-center opacity-80">
-                    <img src="assets/icons/exercise.svg" class="w-fit h-fit" alt="" srcset="">
+            <div class="rounded-lg pink-shadow  h-36 sm:h-36 md:h-40 lg:h-40 xl:h-40 bg-white flex gap-2 items-center justify-center">
+                <div class="w-14 sm:w-14 lg:w-16 xl:w-16 h-14 sm:h-14 lg:h-16 xl:h-16  flex  justify-center items-center opacity-80">
+                    <img src="assets/icons/exercise.svg" class="w-full h-full" alt="" srcset="">
                 </div>
                 <div class=" flex  flex-col justify-end ">
-                    <div class="text-pink-500 font-medium vlarge-text max-w-24 overflow-hidden  text-ellipsis">12</div>
+                    <div class="sec-clr font-light vlarge-text  max-w-24 overflow-hidden  text-ellipsis">12</div>
                     <div class="font-semibold text-sm sec-clr max-w-24 overflow-hidden  text-ellipsis">Exercises</div>
                 </div>
-
-
             </div>
-            <div class="rounded-lg pink-shadow w-1/3 h-40 bg-white flex gap-3 items-center justify-center">
-                <div class=" w-14 h-14  flex  justify-center items-center opacity-80">
-                    <img src="assets/icons/layout.png" class="w-fit h-fit" alt="" srcset="">
+            <div class="rounded-lg pink-shadow  h-36 sm:h-36 md:h-40 lg:h-40 xl:h-40 bg-white flex gap-2 items-center justify-center">
+                <div class=" w-14 sm:w-14 lg:w-16 xl:w-16 h-14 sm:h-14 lg:h-16 xl:h-16  flex  justify-center items-center opacity-80">
+                    <img src="assets/icons/layout.png" class="w-full h-full" alt="" srcset="">
                 </div>
                 <div class=" flex  flex-col justify-end ">
-                    <div class="text-pink-500  font-medium vlarge-text max-w-24 overflow-hidden  text-ellipsis">18</div>
+                    <div class="sec-clr  font-light vlarge-text max-w-24 overflow-hidden  text-ellipsis">18</div>
                     <div class="font-semibold text-sm sec-clr max-w-24 overflow-hidden  text-ellipsis">Templates</div>
                 </div>
-
-
             </div>
-
+            <div *ngIf="!loader" class="sm:hidden hidden md:inline-block lg:inline-block xl:inline  bg-white  min-w-64 h-44 sm:h-max  rounded-lg  px-1 pb-3" style="box-shadow: rgba(29, 29, 29, 0.1) -4px 9px 25px -6px;">
+                <c-chart
+                [data]="data"
+                [options]="chartOptions"
+                [type]="'bar'"
+              >
+              </c-chart>
+              </div>
         </div>
     </div>
     <div class="flex gap-5">
-        <!-- <div class="w-1/4">
-
-
-            <div class="rounded-2xl px-3 py-3 bg-white shadow mt-4">
-                <div class="px-2 py-2 text-sm font-bold">Work In Progress</div>
-                <div
-                    class="flex items-center border-b-2 px-2 py-2 border-gray-100 justify-between text-xs font-medium">
-
-                    <div class="flex gap-1 items-center">
-                        <div class=" w-7 h-7  bg-pink-100 rounded-full p-4">
-                            <img src="assets/icons/exercise.svg" class="w-fit h-fit p-2" alt="" srcset="">
-                        </div>
-                        <span> Exercise 1</span>
-                    </div>
-                    <div class="font-medium">25 Jan 2023</div>
-                </div>
-                <div
-                    class="flex items-center border-b-2 px-2 py-2 border-gray-100 justify-between text-xs font-medium">
-                    <div class="flex gap-1 items-center">
-                        <div class=" w-7 h-7  bg-pink-100 rounded-full p-4">
-                            <img src="assets/icons/exercise.svg" class="w-fit h-fit p-2" alt="" srcset="">
-                        </div>
-                        <span> Exercise 2</span>
-                    </div>
-                    <div class="font-medium">24 Jan 2023</div>
-                </div>
-                <div class="flex items-center  px-2 py-2 border-gray-100 justify-between text-xs font-medium">
-
-                    <div class="flex gap-1 items-center">
-                        <div class=" w-7 h-7  bg-pink-100 rounded-full p-4">
-                            <img src="assets/icons/pkg.svg" class="w-fit h-fit p-2" alt="" srcset="">
-                        </div>
-                        <span> Template 1</span>
-                    </div>
-                    <div class="font-medium">24 Jan 2023</div>
-                </div>
-
-
-            </div>
-        </div> -->
         <div class="w-full">
-            <div class="px-2 mt-2 font-bold py-2 flex w-full justify-between items-center">
+            <ng-container  *ngFor="item of [1,2,3]">
+                <ng-container *ngIf="loader">
+                    <div *ngIf="loader" class=" mt-2 font-bold py-2 flex w-full justify-between items-center">
+                        <div class="flex gap-4 items-center h-5 bg-zinc-100 rounded-full w-52 ">
+                            <span  class="text-sm "></span>
+                            <div class="flex gap-1 items-center text-xs font-semibold py-1.5 relative cursor-pointer" >
+                                <div class=" "></div>
+                            <div class="ml-1"></div>
+                            </div>
+                        </div>
+                        <div class="text-pink-500 font-semibold text-xs flex items-center gap-0.5 bg-zinc-100 rounded-full animate-pulse h-5 w-24"> </div>
+                    </div>
+                    <div *ngIf="loader" class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
+                        <div *ngFor="let item of [1,2,3,4,5]" class="relative rounded-lg animate-pulse bg-zinc-100 h-28   flex flex-col items-center justify-center">
+                            <svg class="w-1/3 h-1/3 text-zinc-50 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
+                                <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z"/>
+                                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <div *ngIf="!loader" class="px-2 mt-2 font-bold py-2 flex w-full justify-between items-center">
                 <div class="flex gap-4 items-center">
-                    <span class="text-sm">Recent Packages </span>
+                    <span  class="text-sm">Recent Packages </span>
                     <div class="flex gap-1 items-center text-xs font-semibold py-1.5 relative cursor-pointer" >
                         <img src="assets/icons/pkg.svg" width="18px" height="18px" alt="" srcset="">
                         <div class="absolute left-3  top-0 z-20 border-pink-200 border-2 rounded-full"><img src="assets/icons/plus.png"  width="11px" height="11px" alt="" srcset="">
@@ -103,8 +92,8 @@
                 </div>
                 <div class="text-pink-500 font-semibold text-xs flex items-center gap-0.5">View More <mat-icon class="font-medium text-pink-300">arrow_right_alt</mat-icon></div>
             </div>
-            <div class="flex gap-3 ">
-                <div class="relative rounded-lg bg-white h-28 w-1/5 border shadow-sm  flex flex-col items-center justify-center">
+            <div  *ngIf="!loader"  class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
+                <div class="relative rounded-lg bg-white h-28  border shadow-sm  flex flex-col items-center justify-center">
                     <div class="absolute right-1 top-1 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-pink-50">In Review</div>
                     <div class="w-12 h-12  flex  justify-center items-center p-8 bg-rose-50 rounded-full">
                         <img src="assets/icons/pkg.svg" class="w-fit h-fit" alt="" srcset="">
@@ -114,7 +103,7 @@
                     </div>
                     <div class="xs-text font-bold text-gray-400 ">P1241</div>
                 </div>
-                <div class="relative rounded-lg bg-white h-28 w-1/5 border shadow-sm  flex flex-col items-center justify-center">
+                <div class="relative rounded-lg bg-white h-28  border shadow-sm  flex flex-col items-center justify-center">
                     <div class="absolute right-1 top-1 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-green-50">Published</div>
                     <div class=" w-12 h-12  flex  justify-center items-center p-8 bg-rose-50 rounded-full">
                         <img src="assets/icons/pkg.svg" class="w-fit h-fit" alt="" srcset="">
@@ -124,7 +113,7 @@
                     </div>
                     <div class="xs-text font-bold text-gray-400 ">P1447</div>
                 </div>
-                <div class="relative rounded-lg bg-white h-28 w-1/5 border shadow-sm  flex flex-col items-center justify-center">
+                <div class="relative rounded-lg bg-white h-28  border shadow-sm  flex flex-col items-center justify-center">
                     <div class="absolute right-1 top-1 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-gray-50">Draft</div>
                     <div class=" w-12 h-12  flex  justify-center items-center p-8 bg-rose-50 rounded-full">
                         <img src="assets/icons/pkg.svg" class="w-fit h-fit" alt="" srcset="">
@@ -134,7 +123,7 @@
                     </div>
                     <div class="xs-text font-bold text-gray-400 ">P3272</div>
                 </div>
-                <div class="relative rounded-lg bg-white h-28 w-1/5 border shadow-sm  flex flex-col items-center justify-center">
+                <div class="relative rounded-lg bg-white h-28  border shadow-sm  flex flex-col items-center justify-center">
                     <div class="absolute right-1 top-1 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-blue-50">In Progress</div>
                     <div class=" w-12 h-12  flex  justify-center items-center p-8 bg-rose-50 rounded-full">
                         <img src="assets/icons/pkg.svg" class="w-fit h-fit" alt="" srcset="">
@@ -144,7 +133,7 @@
                     </div>
                     <div class="xs-text font-bold text-gray-400 ">P1668</div>
                 </div>
-                <div class="relative rounded-lg bg-white h-28 w-1/5 border shadow-sm  flex flex-col items-center justify-center">
+                <div class="relative rounded-lg bg-white h-28  border shadow-sm  flex flex-col items-center justify-center">
                     <div class="absolute right-1 top-1 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-pink-50">In Review</div>
                     <div class=" w-12 h-12  flex  justify-center items-center p-8 bg-rose-50 rounded-full">
                         <img src="assets/icons/pkg.svg" class="w-fit h-fit" alt="" srcset="">
@@ -156,9 +145,9 @@
                 </div> 
 
             </div>
-            <div class="px-2 mt-2 font-bold py-2 text-sm">Latest Exercises</div>
-            <div class="flex gap-3 ">
-                <div class="relative rounded-lg bg-white h-28 w-1/5 border shadow-sm  flex flex-col items-center justify-center">
+            <div *ngIf="!loader"  class="px-2 mt-2 font-bold py-2 text-sm">Latest Exercises</div>
+            <div *ngIf="!loader"  class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
+                <div class="relative rounded-lg bg-white h-28  border shadow-sm  flex flex-col items-center justify-center">
                     <div class="absolute right-1 top-1 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-pink-50">In Review</div>
                     <div class=" w-12 h-12  flex  justify-center items-center  p-6 bg-rose-50 rounded-full">
                         <img src="assets/icons/exercise.svg" class="w-fit h-fit p-2" alt="" srcset="">
@@ -168,7 +157,7 @@
                     </div>
                     <div class="xs-text font-bold text-gray-400 ">P1241</div>
                 </div>
-                <div class="relative rounded-lg bg-white h-28 w-1/5 border shadow-sm  flex flex-col items-center justify-center">
+                <div class="relative rounded-lg bg-white h-28  border shadow-sm  flex flex-col items-center justify-center">
                     <div class="absolute right-1 top-1 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-green-50">Published</div>
                     <div class=" w-12 h-12  flex  justify-center items-center  p-6 bg-rose-50 rounded-full">
                         <img src="assets/icons/exercise.svg" class="w-fit h-fit p-2" alt="" srcset="">
@@ -178,7 +167,7 @@
                     </div>
                     <div class="xs-text font-bold text-gray-400 ">P1447</div>
                 </div>
-                <div class="relative rounded-lg bg-white h-28 w-1/5 border shadow-sm  flex flex-col items-center justify-center">
+                <div class="relative rounded-lg bg-white h-28  border shadow-sm  flex flex-col items-center justify-center">
                     <div class="absolute right-1 top-1 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-gray-50">Draft</div>
                     <div class=" w-12 h-12  flex  justify-center items-center  p-6 bg-rose-50 rounded-full">
                         <img src="assets/icons/exercise.svg" class="w-fit h-fit p-2" alt="" srcset="">
@@ -188,7 +177,7 @@
                     </div>
                     <div class="xs-text font-bold text-gray-400 ">P3272</div>
                 </div>
-                <div class="relative rounded-lg bg-white h-28 w-1/5 border shadow-sm  flex flex-col items-center justify-center">
+                <div class="relative rounded-lg bg-white h-28  border shadow-sm  flex flex-col items-center justify-center">
                     <div class="absolute right-1 top-1 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-blue-50">In Progress</div>
                     <div class=" w-12 h-12  flex  justify-center items-center  p-6 bg-rose-50 rounded-full">
                         <img src="assets/icons/exercise.svg" class="w-fit h-fit p-2" alt="" srcset="">
@@ -198,7 +187,7 @@
                     </div>
                     <div class="xs-text font-bold text-gray-400 ">P1668</div>
                 </div>
-                <div class="relative rounded-lg bg-white h-28 w-1/5 border shadow-sm  flex flex-col items-center justify-center">
+                <div class="relative rounded-lg bg-white h-28  border shadow-sm  flex flex-col items-center justify-center">
                     <div class="absolute right-1 top-1 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-pink-50">In Review</div>
                     <div class=" w-12 h-12  flex  justify-center items-center  p-6 bg-rose-50 rounded-full">
                         <img src="assets/icons/exercise.svg" class="w-fit h-fit p-2" alt="" srcset="">
@@ -210,21 +199,21 @@
                 </div> 
 
             </div>
-            <div class="px-2 mt-2 font-bold py-2 text-sm">Templates</div>
-            <div class="flex gap-3 ">
-                <div class="rounded-lg bg-white h-28 w-1/5 border">
+            <div *ngIf="!loader"  class="px-2 mt-2 font-bold py-2 text-sm">Templates</div>
+            <div  *ngIf="!loader"  class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
+                <div class="rounded-lg bg-white h-28 border">
 
                 </div>
-                <div class="rounded-lg bg-white h-28 w-1/5 border">
+                <div class="rounded-lg bg-white h-28  border">
 
                 </div>
-                <div class="rounded-lg bg-white h-28 w-1/5 border">
+                <div class="rounded-lg bg-white h-28 border">
 
                 </div>
-                <div class="rounded-lg bg-white h-28 w-1/5 border">
+                <div class="rounded-lg bg-white h-28  border">
 
                 </div>
-                <div class="rounded-lg bg-white h-28 w-1/5 border">
+                <div class="rounded-lg bg-white h-28  border">
 
                 </div>
 
