@@ -24,6 +24,8 @@ import { LabelComponent } from './components/label/label.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { ContentEditableFormDirective } from './directives/content-editable-form.directive';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     TextfieldComponent,
     RadioComponent,
     DropdownComponent,
-    LabelComponent
+    LabelComponent,
+    ContentEditableFormDirective
   ],
   imports: [
     CommonModule,
@@ -57,6 +60,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     ClipboardModule,
     NgComponentOutlet,
     CKEditorModule,
+    TextFieldModule
   ],
   exports: [
     RouterModule,
@@ -82,7 +86,9 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     DragDropModule,
     NgComponentOutlet,
     ClipboardModule,
-    CKEditorModule
+    CKEditorModule,
+    TextFieldModule,
+    ContentEditableFormDirective
   ]
 })
 export class SharedModules { }

@@ -6,6 +6,7 @@ import { CreateExerciseComponent } from './create-exercise/create-exercise.compo
 import { ListComponent } from './list/list.component';
 import { DetailsComponent } from './details/details.component';
 import { SharedModules } from 'src/app/shared/shared.module';
+import { ContentEditableFormDirective } from 'src/app/shared/directives/content-editable-form.directive';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { SharedModules } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     ExercisesRoutingModule,
-    SharedModules
+    SharedModules,
   ]
 })
 export class ExercisesModule { }

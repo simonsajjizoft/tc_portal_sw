@@ -37,7 +37,7 @@
         </div>
 
 
-        <div class="main-content overflow-auto bg-white rounded-md py-3 px-3">
+        <div class="main-content overflow-auto bg-white rounded-md py-3 ">
             <mat-stepper #stepper class="example-stepper px-0" [orientation]="'vertical'" [linear]="true">
                 <mat-step [stepControl]="firstFormGroup" [completed]="firstFormGroup?.valid" >
                     <ng-template matStepLabel>
@@ -47,7 +47,7 @@
                         <img src="assets/icons/edit_white.png" width="12px" height="12px" alt="" srcset="">
                       </ng-template>
                     <form [formGroup]="firstFormGroup">
-                        <div class="flex flex-wrap gap-4 py-3 mt-3 mb-8">
+                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2  gap-4 py-3 mt-3 mb-8">
                             <div class=" flex-1 gap-4 items-center ">
                                 <div class="label font-semibold text-sm py-3">Age Group <span
                                         class="text-pink-500">*</span></div>
@@ -74,19 +74,18 @@
                                      </mat-slide-toggle>
                             </div>
                         </div>
-                        <div class="flex py-3 flex-wrap gap-4 w-full text-sm ">
+                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full text-sm ">
                             <div class="flex-1">
                                 <div class="font-semibold ">Exercise Name</div>
                                 <div class=" py-3  w-full">
                                     <input formControlName="name" type="text" placeholder="Type a name for your exercise.."
-                                        class="block w-3/4 rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
+                                        class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
                                 </div>
                             </div>
                             <div class="flex-1">
                                 <div class="font-semibold ">Description</div>
                                 <div class=" py-3  w-full">
-                                    <textarea formControlName="description" placeholder="Description"
-                                        class="font-semibold border-2 border-gray-300 rounded-lg px-2 py-2 w-3/4  outline-pink-500 "></textarea>
+                                    <div  contenteditable="true"  [(ngModel)]="content" formControlName="description" [disabled]="!descenabled" placeholder="Description"  class=" placeholder:text-gray-300 text-black font-semibold border-2 border-gray-300 rounded-lg px-2 py-2 w-full min-h-28 outline-pink-500 "></div>
                                 </div>
                             </div>
                         </div>
