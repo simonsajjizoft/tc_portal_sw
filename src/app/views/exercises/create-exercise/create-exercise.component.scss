@@ -1,11 +1,15 @@
-.min-h-scr-half{
+.max-h-scr-half{
     height: calc(100vh - 90px);
     position: relative;
 }
 
 .main-content{
-    height: calc(90% - 100px)!important;
+    height: calc(90vh - 90px)!important;
 }
+
+
+
+
 
 .p-sticky {
     position: -webkit-sticky;
@@ -14,6 +18,7 @@
     background-color: white!important;
     width: 100%;
   }
+  
 
   ::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
     background-color: rgb(165, 114, 205)!important;
@@ -73,3 +78,26 @@
   color:gray!important
 }
 
+::ng-deep .mat-vertical-stepper-header{
+  padding: 1rem 0.50rem!important;
+}
+
+::ng-deep .mat-vertical-content-container{
+  margin-left: 1.2rem!important;
+  position: relative;
+}
+
+::ng-deep .mat-vertical-content{
+  padding-left:0!important;
+  padding-right: 0!important;
+}
+
+@media screen and (max-width: 1150px) {
+  .max-h-scr-half{
+    height: calc(80vh - 50px);
+    position: relative;
+} 
+  .main-content{
+    height: calc(75vh - 90px)!important;
+}
+}

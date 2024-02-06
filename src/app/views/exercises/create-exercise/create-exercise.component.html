@@ -1,6 +1,6 @@
 <div class=" overflow-hidden mt-0">
-    <div class="  w-full   min-h-scr-half relative">
-        <div class="flex justify-between border py-2  mb-3 px-3 bg-white rounded-md">
+    <div class="  w-full   max-h-scr-half relative">
+        <div class="flex justify-between border py-2  mb-3 px-2 bg-white rounded-md">
             <div class="flex gap-1 items-center font-semibold py-1.5 relative cursor-pointer">
                 <img src="assets/icons/exercise.svg" width="22px" height="22px" alt="" srcset="">
                 <div class="absolute left-3  top-3.5 z-20 border-pink-200 border-2 rounded-full"><img
@@ -9,11 +9,10 @@
                 <span class="ml-2 text-lg">Create Exercise</span>
             </div>
             <div class="flex gap-4 px-2 py-3 justify-end items-center ">
-                <div  *ngIf="firstFormGroup?.valid" (click)="openDialog(2000,0)"
+                <!-- <div  *ngIf="firstFormGroup?.valid" (click)="openDialog(2000,0)"
                     class="cursor-pointer rounded-3xl relative  text-pink-600 px-3 py-2 font-bold text-sm flex  items-center">
                     <span class="  ">Submit & Review </span>
-                   
-                </div>
+                </div> -->
                 <div (click)="statusDropdown=!statusDropdown"
                 class="z-20 cursor-pointer rounded-3xl relative  text-pink-600 border-pink-400 border-2 px-3 py-1 font-medium text-sm flex  items-center">
                 <span class=" flex items-center font-bold text-sm">Save As </span>
@@ -30,15 +29,20 @@
                             Review</span></div>
                 </div>
             </div>
-                <div class="text-gray-600 font-bold text-sm">
+                <!-- <div class="text-gray-600 font-bold text-sm">
                     Clear
-                </div>
+                </div> -->
             </div>
         </div>
 
 
-        <div class="main-content overflow-auto bg-white rounded-md py-3 ">
-            <mat-stepper #stepper class="example-stepper px-0" [orientation]="'vertical'" [linear]="true">
+        <div class="main-content overflow-auto bg-white rounded-md  px-1">
+            <div class="flex justify-between mb-3 sticky top-0 bg-white z-20 py-2">
+                <div [ngClass]="checkPrevStepActive(stepper) ? ' text-pink-700 cursor-pointer' : ' text-gray-400 cursor-default'" (click)="goStepBack(stepper)" class="rounded-2xl  text-sm font-bold px-2  opacity-70">
+                    Back</div>
+                <div [ngClass]="checkNextStepActive(stepper) ? 'text-pink-700  cursor-pointer' : ' text-gray-400'" class="rounded-2xl  text-sm  font-bold  px-2  " (click)="goStepForward(stepper)" >Next</div>
+            </div>
+            <mat-stepper #stepper class="example-stepper px-0 max-h-full h-full pb-3" [orientation]="'vertical'" [linear]="true">
                 <mat-step [stepControl]="firstFormGroup" [completed]="firstFormGroup?.valid" >
                     <ng-template matStepLabel>
                         <span  [ngClass]="stepper?.selectedIndex==0 ? 'font-bold text-sm' : 'font-semibold text-xs'">Basic Exercise Information</span>
@@ -46,8 +50,8 @@
                       <ng-template matStepperIcon="edit">
                         <img src="assets/icons/edit_white.png" width="12px" height="12px" alt="" srcset="">
                       </ng-template>
-                    <form [formGroup]="firstFormGroup">
-                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2  gap-4 py-3 mt-3 mb-8">
+                    <form [formGroup]="firstFormGroup" class="px-3.5">
+                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2  gap-4 py-3  mt-3 mb-8">
                             <div class=" flex-1 gap-4 items-center ">
                                 <div class="label font-semibold text-sm py-3">Age Group <span
                                         class="text-pink-500">*</span></div>
@@ -96,7 +100,8 @@
                     <ng-template matStepLabel>
                         <span  [ngClass]="stepper?.selectedIndex==1 ? 'font-bold text-sm' : 'font-semibold text-xs'">Exercise Steps and Upload of Files</span>
                       </ng-template>
-                    <form [formGroup]="secondFormGroup" class="py-2">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vel in ipsa distinctio voluptate debitis aliquam. Illum voluptatem quis dolor id tempore. Amet quasi iste veniam atque eligendi qui, vel iure adipisci ut, rerum repellat sunt. Quod voluptatem eius asperiores esse reprehenderit vel officiis eligendi facilis ipsam impedit voluptatum, dolorem sit ut pariatur repellat quaerat ipsum consequuntur laborum deleniti accusamus ea nihil maxime! Hic consectetur placeat quis deserunt suscipit nam. Maiores eius pariatur harum odit, nihil quo! Hic omnis officia ipsum tempore sed. Asperiores harum consequatur quis autem molestias illum dolores repellendus culpa quia, libero similique nemo ut praesentium neque dolor? Nesciunt corporis dolores, exercitationem quis veniam cupiditate cum saepe sunt autem recusandae placeat earum iste? Laudantium nulla reiciendis et optio ullam vitae nisi blanditiis quas maiores in eos, ex exercitationem architecto, eaque fugiat! Atque ipsa minus, voluptatem, illo suscipit officiis similique omnis dicta, voluptates velit perspiciatis culpa quaerat laborum ab ipsum cumque dolores dolore sed temporibus! Accusamus, cum quos velit doloribus odit facilis cumque, maiores consequatur provident dolores iste unde fugiat necessitatibus error. Quia est nostrum voluptatem perferendis quas necessitatibus eum voluptatum error provident, libero nobis eveniet vero et fugit deleniti assumenda. Culpa minus officiis voluptatibus maxime ratione? Laborum quasi consequatur reiciendis quis cumque ea nostrum error iste nam et quisquam doloremque excepturi, ipsam molestiae ad, officia voluptatibus quos laboriosam facere sit voluptate incidunt magnam. Ea quaerat quam autem laboriosam nihil quidem quibusdam, voluptate eveniet, libero saepe tempora eos, veritatis ipsam a molestiae aperiam mollitia sint deleniti minus quod nostrum assumenda! Ipsum reprehenderit, ex blanditiis, nisi ea inventore necessitatibus deleniti ab tenetur doloribus, in minus quasi consequuntur! Porro, molestias. Ducimus omnis numquam ipsa maiores ea magni ex placeat reprehenderit molestiae optio cum consequuntur asperiores id non modi quidem debitis, recusandae odit. Debitis non, eum tempore totam culpa sequi, quidem ea, sint cum voluptas maxime aspernatur? Molestiae facere molestias velit repellendus cupiditate ex deserunt, omnis hic possimus itaque iusto esse atque illum sed ipsam aliquam, porro eius. Labore quidem commodi expedita nemo dignissimos odit delectus ut! Incidunt, dolorem, vero sunt fuga blanditiis repellat neque fugit, ipsam voluptate quia atque nihil amet ex quis. Architecto atque dolores distinctio voluptas exercitationem laboriosam perspiciatis, voluptates, non veritatis vero praesentium quidem molestias! Autem omnis impedit quidem tempora optio, cum corporis ipsum velit a dolorum expedita hic tenetur necessitatibus ut iusto dolore at, harum maiores inventore. Vero maxime consequatur repellat amet, pariatur aperiam totam recusandae?
+                    <form [formGroup]="secondFormGroup" class="py-2 mb-4 " >
                         <ckeditor [editor]="Editor" [config]="{ toolbar: [ 
                             'heading',
                             '|',
@@ -146,15 +151,17 @@
                     <p>You have successfully created a Exercise.</p>
                 </mat-step> -->
             </mat-stepper>
+            
         </div>
-        <div class="p-sticky w-full px-2  flex justify-end items-center  mt-2">
+        <!-- <div class="p-sticky  bg-white w-full px-2  flex justify-end items-center  mt-2">
 
             <div class="flex gap-4 px-2 border-t-2  w-full justify-end items-center py-3">
                 <div [ngClass]="checkPrevStepActive(stepper) ? 'border-pink-600 text-pink-700 cursor-pointer' : 'border-gray-400 text-gray-400 cursor-default'" (click)="goStepBack(stepper)" class="rounded-2xl border-2 text-sm font-bold px-4 py-1 opacity-70">
                     Back</div>
                 <div [ngClass]="checkNextStepActive(stepper) ? 'border-pink-600 text-pink-700  cursor-pointer' : 'border-gray-400 text-gray-400'" class="rounded-2xl border-2 text-sm  font-bold  px-4 py-1 " (click)="goStepForward(stepper)" >Next</div>
             </div>
-        </div>
+        </div> -->
+       
     </div>
 
 </div>
