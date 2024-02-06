@@ -8,15 +8,26 @@ import { Router } from '@angular/router';
   encapsulation:ViewEncapsulation.None
 })
 export class ListComponent {
-
+  loader;
   constructor(private router:Router){}
 
-  ngOnInit(){}
+  ngOnInit(){
+    this.loader = true;
+    setTimeout(()=>{
+      this.loader = false;
+    },2000)
+  }
 
   createPackage() {
     // this.initialLoader = true;
     this.router.navigate(
       ['/packages/create'] 
+    );
+  }
+
+  navigateDetails(){
+    this.router.navigate(
+      ['/packages/details'] 
     );
   }
 

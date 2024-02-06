@@ -28,6 +28,7 @@ export class DetailsComponent {
   statusDropdown;
   content;
   descenabled = true;
+  tab = 0;
   @ViewChild('desc') desc:ElementRef;
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
   private _ngZone: NgZone;
@@ -78,6 +79,10 @@ export class DetailsComponent {
   triggerResize() {
     // Wait for changes to be applied, then trigger textarea resize.
     this._ngZone.onStable.pipe().subscribe(() => this.autosize.resizeToFitContent(true));
+  }
+
+  switchTab(tabNumber){
+    this.tab = tabNumber;
   }
 
 }
