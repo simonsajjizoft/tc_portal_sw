@@ -58,45 +58,49 @@
 
     </div>
     </button>
-    <ul cDropdownMenu class="pt-0 pr-5 w-auto f-roboto shadow-bx" style="border:1px solid rgb(231, 231, 231)!important">
-      <!-- <li>
-        <h6 cDropdownHeader class="bg-light fw-semibold py-2">Account</h6>
-      </li>
+    <ul cDropdownMenu class=" px-2 py-2 w-72 f-roboto shadow-bx" style="border:1px solid rgb(231, 231, 231)!important">
       <li>
-        <a routerLink="./" cDropdownItem>
-          <svg cIcon class="me-2" name="cilBell"></svg>
-          Updates
-          <c-badge class=" float-end info" >
-            42
-          </c-badge>
-        </a>
+        <div class="mt-2 mb-2 flex items-center text-slate-700 text-sm font-semibold py-2 px-4  rounded-lg">
+          <div class="avatar m-b-5 m-r-10">
+            <img   class="avatar-img a-img w-36 h-36" src="/assets/icons/prof.svg" alt="user@email.com">
+          </div>
+          <div class="flex flex-col ">
+            <div class="text-base leading-5">Joel Manuek</div>
+            <small class="font-normal">Transformational Coach</small>
+
+          </div>
+        </div>
       </li>
-      <li>
-        <a routerLink="./" cDropdownItem>
-          <svg cIcon class="me-2" name="cilEnvelopeOpen"></svg>
-          Messages
-          <c-badge class="float-end success" >
-            42
-          </c-badge>
-        </a>
-      </li>
-      <li>
-        <a routerLink="./" cDropdownItem>
-          <svg cIcon class="me-2" name="cilTask"></svg>
-          Tasks
-          <c-badge class="ms-2 float-end danger" >
-            42
-          </c-badge>
-        </a>
-      </li>   
       <li>
         <hr cDropdownDivider/>
-      </li> -->
-      <li class="p-t-15">
-        <a (click)="logout()" cDropdownItem class="f-s-14 d-flex align-center">
-          <mat-icon class="m-r-4 f-s-20">logout</mat-icon>
-          Log Out
-      </a>
+      </li>
+      <li>
+        <h6 cDropdownHeader class="bg-light fw-semibold py-2 px-4 rounded-lg">Account</h6>
+      </li>
+      <li>
+        <div routerLink="./"  class="mt-2 mb-2 flex items-center text-slate-700 text-sm font-semibold py-2 px-4 hover:bg-gray-100 rounded-lg">
+          <svg cIcon class="me-2" name="cilBell"></svg>
+          <span class="font-medium" >Updates</span>
+          <div class="px-2 ml-4 py-0.5 rounded-lg bg-pink-400 text-white font-bold">
+            54
+          </div>
+        </div>
+      </li> 
+      <li>
+        <div routerLink="./"  class="mt-2 mb-2 flex items-center text-slate-700 text-sm font-semibold py-2 px-4 hover:bg-gray-100 rounded-lg">
+          <img src="assets/icons/add-user.png" class="mr-2 " width="16px" height="16px" alt="" srcset="">
+          <span class="font-medium" >Create New User</span>
+          
+        </div>
+      </li> 
+      <li>
+        <hr cDropdownDivider/>
+      </li>
+      <li >
+        <div (click)="logout()"  class="mt-2 mb-2 flex items-center text-slate-700 text-sm font-semibold py-2 px-4 hover:bg-gray-100 rounded-lg" style="display: flex;align-items: center;flex-direction: row!important;">
+          <img src="assets/icons/logout.png" class="mr-2 ml-1" width="16px" height="16px" alt="" srcset="">
+          <span>Log Out</span>
+      </div>
       </li>
       <li></li>
     </ul>

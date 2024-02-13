@@ -10,6 +10,10 @@ import { IconModule } from '@coreui/icons-angular';
 import { MaterialModule } from 'src/app/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { SharedModules } from 'src/app/shared/shared.module';
+import { NgxOtpInputModule } from 'ngx-otp-input';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule({
@@ -17,7 +21,9 @@ import { BrowserModule } from '@angular/platform-browser';
     LoginComponent,
     RegisterComponent,
     Page404Component,
-    Page500Component
+    Page500Component,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +36,8 @@ import { BrowserModule } from '@angular/platform-browser';
     MaterialModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxOtpInputModule
   ]
 })
 export class PagesModule {

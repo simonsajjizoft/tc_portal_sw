@@ -26,6 +26,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { ContentEditableFormDirective } from './directives/content-editable-form.directive';
+import { NgxOtpInputModule } from 'ngx-otp-input';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { ContentEditableFormDirective } from './directives/content-editable-form
     ClipboardModule,
     NgComponentOutlet,
     CKEditorModule,
-    TextFieldModule
+    TextFieldModule,
+    NgxOtpInputModule
   ],
   exports: [
     RouterModule,
@@ -88,7 +90,8 @@ import { ContentEditableFormDirective } from './directives/content-editable-form
     ClipboardModule,
     CKEditorModule,
     TextFieldModule,
-    ContentEditableFormDirective
+    ContentEditableFormDirective,
+    NgxOtpInputModule
   ]
 })
 export class SharedModules { }

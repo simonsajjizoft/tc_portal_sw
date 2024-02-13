@@ -46,6 +46,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxPaginationModule } from 'ngx-pagination'
 import { MatDialogModule } from "@angular/material/dialog";
 import { AuthGuardService } from './services/auth-guard.service';
+import { NgxOtpInputModule } from 'ngx-otp-input';
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
@@ -96,9 +98,11 @@ const APP_CONTAINERS = [
     NgxPaginationModule,
     MatDialogModule,
     ModalModule,
+    NgxOtpInputModule
   ],
   
   providers: [
+
     {
       provide: LocationStrategy,
       useClass: PathLocationStrategy,
