@@ -30,8 +30,8 @@
                <div class="flex flex-col justify-center align-center mb-3 mt-5" >
                  <div class="bg_alt text-white font-medium rounded-2xl w-fit py-2 px-5 text-sm"  type="button" (click)="submitClick()">Continue</div>
                </div>
-               <div class=" loader mb-4" *ngIf="loginLoader">
-                     <mat-spinner diameter="50" color="basic"></mat-spinner>
+               <div class=" loader" *ngIf="loginLoader">
+                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
                </div>
              </div>
           </c-card-body>
