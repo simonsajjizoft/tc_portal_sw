@@ -19,31 +19,31 @@
             </div>
         </div>
         <div *ngIf="!loader" class=" grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 w-full"> 
-            <div class="rounded-xl  pink-shadow h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28 bg-white flex gap-4 items-end px-4 py-4">
-                <div class=" w-14 sm:w-14 lg:w-16 xl:w-16 h-14 sm:h-14 lg:h-16 xl:h-16  flex  justify-center items-center ">
+            <div class="rounded-xl  pink-shadow border-2 border-pink-50 h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28  flex gap-4 items-end px-4 py-4">
+                <div class=" w-14 sm:w-14 lg:w-16 xl:w-16 h-14 sm:h-14 lg:h-16 xl:h-16  flex  justify-center items-center p-2">
                     <img src="assets/icons/pkg.svg" class="w-full h-full p-4" alt="" srcset="">
                 </div>
                 <div class=" flex  flex-col justify-end gap-0.5 pb-1">
                     <div class="text-pink-500 font-semibold  vlarge-text max-w-24 overflow-hidden  text-ellipsis">20</div>
-                    <div class="font-semibold text-xs sec-clr max-w-24 overflow-hidden  text-ellipsis">PACKAGES</div>
+                    <div class="font-bold text-xs sec-clr max-w-24 overflow-hidden  text-ellipsis">PACKAGES</div>
                 </div>
             </div>
-            <div class="rounded-xl  pink-shadow  h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28 bg-white flex gap-4 items-end px-4 py-4">
-                <div class="w-14 sm:w-14 lg:w-16 xl:w-16 h-14 sm:h-14 lg:h-16 xl:h-16  flex  justify-center items-center ">
+            <div class="rounded-xl  pink-shadow border-2 border-pink-50  h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28  flex gap-4 items-end px-4 py-4">
+                <div class="w-14 sm:w-14 lg:w-16 xl:w-16 h-14 sm:h-14 lg:h-16 xl:h-16  flex  justify-center items-center p-2">
                     <img src="assets/icons/exercise.svg" class="w-full h-full" alt="" srcset="">
                 </div>
                 <div class=" flex  flex-col justify-end gap-0.5 pb-1">
                     <div class="text-pink-500 font-semibold vlarge-text  max-w-24 overflow-hidden  text-ellipsis">12</div>
-                    <div class="font-semibold text-xs sec-clr max-w-24 overflow-hidden  text-ellipsis">EXERCISES</div>
+                    <div class="font-bold text-xs sec-clr max-w-24 overflow-hidden  text-ellipsis">EXERCISES</div>
                 </div>
             </div>
-            <div class="rounded-xl pink-shadow  h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28 bg-white flex gap-4 items-end px-4 py-4">
-                <div class=" w-14 sm:w-14 lg:w-16 xl:w-16 h-14 sm:h-14 lg:h-16 xl:h-16  flex  justify-center items-center opacity-90">
+            <div class="rounded-xl pink-shadow border-2 border-pink-50  h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28  flex gap-4 items-end px-4 py-4">
+                <div class=" w-14 sm:w-14 lg:w-16 xl:w-16 h-14 sm:h-14 lg:h-16 xl:h-16  flex  justify-center items-center opacity-90 p-2">
                     <img src="assets/icons/layout.png" class="w-full h-full p-4" alt="" srcset="">
                 </div>
                 <div class=" flex  flex-col justify-end gap-0.5 pb-1">
                     <div class="text-pink-500 font-semibold vlarge-text max-w-24 overflow-hidden  text-ellipsis">18</div>
-                    <div class="font-semibold text-xs sec-clr max-w-24 overflow-hidden  text-ellipsis">TEMPLATES</div>
+                    <div class="font-bold text-xs sec-clr max-w-24 overflow-hidden  text-ellipsis">TEMPLATES</div>
                 </div>
             </div>
             <!-- <div *ngIf="!loader" class="hidden sm:hidden md:inline-block  bg-white  min-w-64 h-52 sm:h-max  rounded-lg  px-1 pb-1" style="box-shadow: rgba(29, 29, 29, 0.1) -4px 9px 25px -6px;">
@@ -82,7 +82,7 @@
             </ng-container>
             <div *ngIf="!loader" class="px-2 mt-2 font-bold py-2 flex w-full justify-between items-center">
                 <div class="flex gap-4 items-center">
-                    <span  class="text-sm">Recent Packages </span>
+                    <span  class="text-sm sec-clr">Recent Packages </span>
                     <div class="flex gap-1 items-center text-xs font-semibold py-1.5 relative cursor-pointer" >
                         <img src="assets/icons/pkg.svg" width="18px" height="18px" alt="" srcset="">
                         <div class="absolute left-3  top-0 z-20 border-pink-200 border-2 rounded-full"><img src="assets/icons/plus.png"  width="11px" height="11px" alt="" srcset="">
@@ -145,7 +145,7 @@
                 </div> 
 
             </div>
-            <div *ngIf="!loader"  class="px-2 mt-2 font-bold py-2 text-sm">Latest Exercises</div>
+            <div *ngIf="!loader"  class="px-2 mt-2 font-bold py-2 text-sm sec-clr">Latest Exercises</div>
             <div *ngIf="!loader"  class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
                 <div class="relative rounded-lg bg-white h-28  border shadow-sm  flex flex-col items-center justify-center">
                     <div class="absolute right-1.5 top-1.5 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-pink-50">In Review</div>
@@ -199,7 +199,7 @@
                 </div> 
 
             </div>
-            <div *ngIf="!loader"  class="px-2 mt-2 font-bold py-2 text-sm">Templates</div>
+            <div *ngIf="!loader"  class="px-2 mt-2 font-bold py-2 text-sm sec-clr">Templates</div>
             <div  *ngIf="!loader"  class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
                 <div class="relative rounded-lg bg-white h-28  border shadow-sm  flex flex-col items-center justify-center">
                     <div class="absolute right-1.5 top-1.5 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-gray-50">Draft</div>
