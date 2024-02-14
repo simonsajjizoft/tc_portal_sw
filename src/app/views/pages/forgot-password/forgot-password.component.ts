@@ -50,7 +50,8 @@ export class ForgotPasswordComponent {
   }
 
   submitClick(): void {
-    this.userNavigation('/reset-password');
+    this.toaster.success("The Temperory password has been sent to Email")
+    this.userNavigation('/resetpassword');
   }
 
   loginApi() {

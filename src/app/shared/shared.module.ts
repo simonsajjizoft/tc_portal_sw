@@ -27,6 +27,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { ContentEditableFormDirective } from './directives/content-editable-form.directive';
 import { NgxOtpInputModule } from 'ngx-otp-input';
+import { TextareaComponent } from './components/textarea/textarea.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { NgxOtpInputModule } from 'ngx-otp-input';
     RadioComponent,
     DropdownComponent,
     LabelComponent,
-    ContentEditableFormDirective
+    ContentEditableFormDirective,
+    TextareaComponent,
+    CheckboxComponent
   ],
   imports: [
     CommonModule,
@@ -91,7 +95,9 @@ import { NgxOtpInputModule } from 'ngx-otp-input';
     CKEditorModule,
     TextFieldModule,
     ContentEditableFormDirective,
-    NgxOtpInputModule
+    NgxOtpInputModule,
+    TextareaComponent,
+    CheckboxComponent
   ]
 })
 export class SharedModules { }

@@ -35,10 +35,10 @@ export class CreateTemplateComponent implements OnInit {
   menu: Array<IMenu> = [
     // { title: 'Label', price: 12, id: 5 ,img:"assets/icons/label.png",type:'label',label:"Question"},
     { title: 'Textbox', price: 12, id: 1 ,img:"assets/icons/text.png", type: "textbox",placeholder: "Please Enter Placeholder",label:"Question",selected:false,checked:false},
-    { title: 'Dropdown', price: 12, id: 3 ,img:"assets/icons/drop.png",type: "dropdown",label:"Question",selected:false,checked:false},
+    { title: 'Dropdown', price: 12, id: 3 ,img:"assets/icons/drop.png",type: "dropdown",label:"Question",selected:false,checked:false,values:['The Teseract','Golden Boot','Three Travellers']},
     { title: 'Radio', price: 12, id: 4 ,img:"assets/icons/radio.png",type: "radio",values: ["Choice"],label:"Question",selected:false,checked:false},
     { title: 'Textarea', price: 12, id: 5 ,img:"assets/icons/textarea.png",type:'textarea',label:"Question",selected:false,checked:false},
-    { title: 'Checkbox', price: 12, id: 5 ,img:"assets/icons/check.png",type:'checkbox',label:"Question",selected:false,checked:false},
+    { title: 'Checkbox', price: 12, id: 5 ,img:"assets/icons/check.png",type:'checkbox',label:"Question",selected:false,checked:false,values: ["Checkbox 1"]},
   ];
   table: Array<IMenu> = [];
   selectedField;

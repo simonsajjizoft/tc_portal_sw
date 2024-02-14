@@ -11,7 +11,7 @@
             <div class="flex justify-start px-3"><img src="assets/icons/favicon.ico" width="30px" height="30px"  alt="" srcset=""></div>
             <div class="text-center mb-4 px-3 py-2 mt-2">
                 <div class="flex items-center justify-center" >
-                 <span class="relative text-xl gap-2 font-medium"><img src="assets/icons/sw-logo.png" width="130px" height="50px" alt="" srcset=""> <span class="font-bold text-xs text-pink-500 absolute -bottom-4 -right-4">TC Portal</span></span>
+                 <span class="relative text-xl gap-2 font-medium"><img src="assets/icons/sw-logo.png" width="130px" height="50px" alt="" srcset=""> </span>
                  </div>
              </div>
              <div [formGroup]="formGroup" class="px-3 py-3" >
@@ -28,7 +28,7 @@
                
               <a class="text-xs font-medium justify-end flex text-violet-900  px-1 pt-3 underline" [routerLink]="'/forgotpassword'"> Forget Password?</a>
                <div class="flex flex-col justify-center align-center mb-3 mt-5" >
-                 <div class="bg_alt text-white font-medium rounded-2xl w-fit py-2 px-5 text-sm"  type="button" (click)="submitClick()">Continue</div>
+                 <div class="bg_alt text-white font-medium rounded-2xl w-fit py-2 px-5 text-sm"  type="button" (click)="submitClick()">Login</div>
                </div>
                <div class=" loader" *ngIf="loginLoader">
                 <div class="lds-ring"><div></div><div></div><div></div><div></div></div>

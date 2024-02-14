@@ -2,11 +2,11 @@ import { ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, In
 import * as ClassicEditorBuild from 'ckeditor5-build-classic/build/ckeditor';
 
 @Component({
-  selector: 'app-dropdown',
-  templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss']
+  selector: 'app-textarea',
+  templateUrl: './textarea.component.html',
+  styleUrls: ['./textarea.component.scss']
 })
-export class DropdownComponent {
+export class TextareaComponent implements OnInit{
   @Input() config;
   @Input() idx;
   @Input() checkedField;

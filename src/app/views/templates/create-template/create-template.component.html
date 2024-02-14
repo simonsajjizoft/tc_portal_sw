@@ -72,6 +72,8 @@
                         <app-textfield *ngSwitchCase="'textbox'" [config]="item"></app-textfield>
                         <app-radio *ngSwitchCase="'radio'" [config]="item"></app-radio>
                         <app-dropdown *ngSwitchCase="'dropdown'" [config]="item"></app-dropdown>
+                        <app-textarea *ngSwitchCase="'textarea'" [config]="item"></app-textarea>
+                        <app-checkbox *ngSwitchCase="'checkbox'" [config]="item"></app-checkbox>
                     </div>
                 </div>
             </ul>
@@ -101,6 +103,12 @@
                     <app-dropdown *ngSwitchCase="'dropdown'" [config]="item" [idx]="idx" (swapElement)="swap($event)"
                         (fieldValueChange)="fieldChange($event)" (checkItemEvent)="checkField($event)"
                         (selectFieldEvent)="selectField($event)" [checkedField]="checkedField"></app-dropdown>
+                    <app-textarea *ngSwitchCase="'textarea'" [config]="item" [idx]="idx" (swapElement)="swap($event)"
+                        (fieldValueChange)="fieldChange($event)" (checkItemEvent)="checkField($event)"
+                        (selectFieldEvent)="selectField($event)" [checkedField]="checkedField"></app-textarea>
+                    <app-checkbox *ngSwitchCase="'checkbox'" [config]="item" [idx]="idx" (swapElement)="swap($event)"
+                        (fieldValueChange)="fieldChange($event)" (checkItemEvent)="checkField($event)"
+                        (selectFieldEvent)="selectField($event)" [checkedField]="checkedField"></app-checkbox>
                 </div>
             </div>
         </div>
