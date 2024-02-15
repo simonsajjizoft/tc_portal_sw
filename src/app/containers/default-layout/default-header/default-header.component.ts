@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { ClassToggleService, HeaderComponent } from '@coreui/angular';
@@ -15,7 +15,16 @@ export class DefaultHeaderComponent extends HeaderComponent {
   public userName;
   public newMessages = new Array(4)
   public newTasks = new Array(5)
-  public newNotifications = new Array(5)
+  public newNotifications = new Array(5);
+  statusDropdown;
+  @ViewChild('drpdown') drpdown:ElementRef;
+  @HostListener('document:click', ['$event.target'])
+  onClick(target: any) {
+    const clickedInside = this.drpdown.nativeElement.contains(target);
+    if (!clickedInside) {
+      this.statusDropdown = false;
+    }
+  }
 
   constructor(private classToggler: ClassToggleService,private authService :AuthService) {
     super();
