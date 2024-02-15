@@ -11,28 +11,27 @@
 
 @font-face {
     font-family: Plus Jakarta Sans;
-    src:url("/assets/fonts/PlusJakartaSans-Regular.ttf") format("truetype"),
-    url("/assets/font/PlusJakartaSans-Medium.ttf") format("truetype"),
-    url("/assets/font/PlusJakartaSans-Semibold.ttf") format("truetype"),
-    url("/assets/font/PlusJakartaSans-Bold.ttf") format("truetype");
-    
-  }
+    src: url("/assets/fonts/PlusJakartaSans-Regular.ttf") format("truetype"),
+        url("/assets/font/PlusJakartaSans-Medium.ttf") format("truetype"),
+        url("/assets/font/PlusJakartaSans-Semibold.ttf") format("truetype"),
+        url("/assets/font/PlusJakartaSans-Bold.ttf") format("truetype");
+
+}
 
 
 *:not(mat-icon) {
-    font-family: "Plus Jakarta Sans",sans-serif !important;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
     word-spacing: 0.1rem !important;
     -webkit-font-smoothing: antialiased !important;
-    font-smooth: antialiased!important;
+    font-smooth: antialiased !important;
 
 }
 
 input[type="text"] {
-    font-family: "Plus Jakarta Sans",sans-serif !important;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
     word-spacing: 0.1rem !important;
     -webkit-font-smoothing: antialiased !important;
-    font-smooth: antialiased!important;
-
+    font-smooth: antialiased !important;
 }
 
 $grid-breakpoints: (
@@ -60,38 +59,38 @@ c-col {
 }
 
 .mat-mdc-tab-list {
-    flex-grow: 0!important;
-  
-  }
-  
-  .tabs .mat-mdc-tab {
-    padding: 5px!important;
+    flex-grow: 0 !important;
+
+}
+
+.tabs .mat-mdc-tab {
+    padding: 5px !important;
     background-color: transparent;
     font-weight: 500;
-    max-height: 45px!important;
-    color:black!important;
-  }
-  
-  /* Styles for the active tab label */
-  .mat-mdc-tab.mdc-tab--active {
+    max-height: 45px !important;
+    color: black !important;
+}
+
+/* Styles for the active tab label */
+.mat-mdc-tab.mdc-tab--active {
     padding: 5px;
     background-color: transparent;
-  }
-  
-  .mat-mdc-tab.mdc-tab--active .mdc-tab__content .mdc-tab__text-label{
-    color:black!important;
-    font-weight: 600!important;
-  }
+}
 
-  .mdc-tab__content .mdc-tab__text-label{
-    color:black!important;
-    letter-spacing: -0.01rem!important;
-  }
-  
-  /* Styles for the ink bar */
-  .mdc-tab-indicator__content.mdc-tab-indicator__content--underline {
-    border-color: var(--primary-color)!important;
-  }
+.mat-mdc-tab.mdc-tab--active .mdc-tab__content .mdc-tab__text-label {
+    color: black !important;
+    font-weight: 600 !important;
+}
+
+.mdc-tab__content .mdc-tab__text-label {
+    color: black !important;
+    letter-spacing: -0.01rem !important;
+}
+
+/* Styles for the ink bar */
+.mdc-tab-indicator__content.mdc-tab-indicator__content--underline {
+    border-color: var(--primary-color) !important;
+}
 
 // @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600,700,900");
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,600&display=swap');
@@ -125,11 +124,11 @@ $enable-rtl: true;
 
 :root {
     --primary-color: #d9045b;
-    --secondary-color:#7F2A86;
+    --secondary-color: #7F2A86;
 }
 
-.sec-clr{
-    color:var(--secondary-color)!important
+.sec-clr {
+    color: var(--secondary-color) !important
 }
 
 canvas {
@@ -515,26 +514,26 @@ a:hover {
 
 
 input:autofill {
-background: white!important;
-font-family: "Plus Jakarta Sans",sans-serif !important;
-word-spacing: 0.1rem !important;
--webkit-font-smoothing: antialiased !important;
-font-smooth: antialiased!important;
+    background: white !important;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    word-spacing: 0.1rem !important;
+    -webkit-font-smoothing: antialiased !important;
+    font-smooth: antialiased !important;
 }
-  
+
 
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
-    font-family: "Plus Jakarta Sans",sans-serif !important;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
     word-spacing: 0.1rem !important;
     -webkit-font-smoothing: antialiased !important;
-    font-smooth: antialiased!important;
+    font-smooth: antialiased !important;
 }
-  
+
 .bg_alt {
     background-color: var(--secondary-color);
 }
@@ -542,8 +541,8 @@ input:-webkit-autofill:active{
 
 * {
     transition: background-color 0.2s ease-out;
-    -webkit-transition:background-color 0.2s ease-out;
-    -ms-transition:background-color 0.2s ease-out;
+    -webkit-transition: background-color 0.2s ease-out;
+    -ms-transition: background-color 0.2s ease-out;
 
 }
 
@@ -561,25 +560,25 @@ input:-webkit-autofill:active{
     }
 }
 
-.main-body{
+.main-body {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
 }
 
 @media screen and (max-width: 1150px) {
-    .main-body{
+    .main-body {
         padding-left: 0rem;
         padding-right: 0rem;
     }
 }
 
 
-cite{
-    font-style: normal!important;
+cite {
+    font-style: normal !important;
 }
 
-.bg-l-pink{
-    background-color: rgb(255, 251, 254)!important;
+.bg-l-pink {
+    background-color: rgb(255, 251, 254) !important;
 }
 
 .ck-editor__editable_inline {
@@ -593,46 +592,57 @@ cite{
     position: relative;
     width: 80px;
     height: 80px;
-  }
-  .lds-ring div {
+}
+
+.lds-ring div {
     box-sizing: border-box;
     display: block;
     position: absolute;
     width: 64px;
     height: 64px;
     margin: 8px;
-    border: 6px solid #df568b ;
+    border: 6px solid #df568b;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: #df568b transparent transparent transparent;
-  }
-  .lds-ring div:nth-child(1) {
+}
+
+.lds-ring div:nth-child(1) {
     animation-delay: -0.45s;
-  }
-  .lds-ring div:nth-child(2) {
+}
+
+.lds-ring div:nth-child(2) {
     animation-delay: -0.3s;
-  }
-  .lds-ring div:nth-child(3) {
+}
+
+.lds-ring div:nth-child(3) {
     animation-delay: -0.15s;
-  }
-  @keyframes lds-ring {
+}
+
+@keyframes lds-ring {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
+
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  
+}
+
 // Loader css ENDS  
 
 
-.my-super-class{
-    border: 2px solid rgb(220, 220, 220)!important;
-    width: 45px!important;
+.my-super-class {
+    border: 2px solid rgb(220, 220, 220) !important;
+    width: 45px !important;
     height: 45px !important;
 }
 
-.my-super-filled-class{
-    border: 2px solid rgb(238, 115, 172)!important;
+.my-super-filled-class {
+    border: 2px solid rgb(238, 115, 172) !important;
+}
+
+.sidebar-brand{
+    display: flex!important;
+    justify-content: flex-start!important;
 }

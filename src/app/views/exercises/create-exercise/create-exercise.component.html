@@ -14,21 +14,21 @@
                     <span class="  ">Submit & Review </span>
                 </div> -->
                 <div (click)="statusDropdown=!statusDropdown"
-                class="z-20 cursor-pointer rounded-3xl relative  text-pink-600 border-pink-400 border-2 px-3 py-1 font-medium text-sm flex  items-center">
-                <span class=" flex items-center font-bold text-sm">Save As </span>
-                <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 10 6">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m1 1 4 4 4-4" />
-                </svg>
-                <div *ngIf="statusDropdown"
-                    class=" w-44 h-fit bg-white text-black z-10 rounded-md border absolute text-xs top-10 shadow right-0">
-                    <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
-                            class="mr-1">Save As Draft</span></div>
-                    <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span class="mr-1">Submit &
-                            Review</span></div>
+                    class="z-20 cursor-pointer rounded-3xl relative  text-pink-600 border-pink-400 border-2 px-3 py-1 font-medium text-sm flex  items-center">
+                    <span class=" flex items-center font-bold text-sm">Save As </span>
+                    <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
+                    <div *ngIf="statusDropdown"
+                        class=" w-44 h-fit bg-white text-black z-20 rounded-md border absolute text-xs top-10 shadow right-0">
+                        <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
+                                class="mr-1">Save As Draft</span></div>
+                        <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span class="mr-1">Submit &
+                                Review</span></div>
+                    </div>
                 </div>
-            </div>
                 <!-- <div class="text-gray-600 font-bold text-sm">
                     Clear
                 </div> -->
@@ -37,21 +37,27 @@
 
 
         <div class="main-content overflow-auto bg-white rounded-md  px-1.5">
-            <div class="flex justify-between mb-3 sticky top-0 bg-white z-20 py-2 px-2">
-                <div [ngClass]="checkPrevStepActive(stepper) ? ' text-pink-700 cursor-pointer' : ' text-gray-400 cursor-default'" (click)="goStepBack(stepper)" class="rounded-2xl  text-sm font-bold px-1  opacity-70">
+            <div class="flex justify-between mb-3 sticky top-0 bg-white z-10 py-2 px-2">
+                <div [ngClass]="checkPrevStepActive(stepper) ? ' text-pink-700 cursor-pointer' : ' text-gray-400 cursor-default'"
+                    (click)="goStepBack(stepper)" class="rounded-2xl  text-sm font-bold px-1  opacity-70">
                     Back</div>
-                <div [ngClass]="checkNextStepActive(stepper) ? 'text-pink-700  cursor-pointer' : ' text-gray-400'" class="rounded-2xl  text-sm  font-bold  px-2  " (click)="goStepForward(stepper)" >Next</div>
+                <div [ngClass]="checkNextStepActive(stepper) ? 'text-pink-700  cursor-pointer' : ' text-gray-400'"
+                    class="rounded-2xl  text-sm  font-bold  px-2  " (click)="goStepForward(stepper)">Next</div>
             </div>
-            <mat-stepper #stepper class="example-stepper px-0 max-h-full h-full pb-3" [orientation]="'vertical'" [linear]="true">
-                <mat-step [stepControl]="firstFormGroup" [completed]="firstFormGroup?.valid" >
+            <mat-stepper #stepper class="example-stepper px-0 max-h-full h-full pb-3" [orientation]="'vertical'"
+                [linear]="true">
+                <mat-step [stepControl]="firstFormGroup" [completed]="firstFormGroup?.valid">
                     <ng-template matStepLabel>
-                        <span  [ngClass]="stepper?.selectedIndex==0 ? 'font-bold text-sm' : 'font-semibold text-xs'">Basic Exercise Information</span>
-                      </ng-template>
-                      <ng-template matStepperIcon="edit">
+                        <span
+                            [ngClass]="stepper?.selectedIndex==0 ? 'font-bold text-sm' : 'font-semibold text-xs'">Basic
+                            Exercise Information</span>
+                    </ng-template>
+                    <ng-template matStepperIcon="edit">
                         <img src="assets/icons/edit_white.png" width="12px" height="12px" alt="" srcset="">
-                      </ng-template>
+                    </ng-template>
                     <form [formGroup]="firstFormGroup" class="px-3.5">
-                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2  gap-4 py-3  mt-3 mb-8">
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2  gap-4 py-3  mt-3 mb-8">
                             <div class=" flex-1 gap-4 items-center ">
                                 <div class="label font-semibold text-sm py-3">Age Group <span
                                         class="text-pink-500">*</span></div>
@@ -70,38 +76,79 @@
                                         class="text-pink-500">*</span></div>
                                 <mat-slide-toggle>
                                     <div class="flex items-center gap-0.5">
-                                        <svg class="w-4 h-4  ml-3 text-pink-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6.072 10.072 2 2 6-4m3.586 4.314.9-.9a2 2 0 0 0 0-2.828l-.9-.9a2 2 0 0 1-.586-1.414V5.072a2 2 0 0 0-2-2H13.8a2 2 0 0 1-1.414-.586l-.9-.9a2 2 0 0 0-2.828 0l-.9.9a2 2 0 0 1-1.414.586H5.072a2 2 0 0 0-2 2v1.272a2 2 0 0 1-.586 1.414l-.9.9a2 2 0 0 0 0 2.828l.9.9a2 2 0 0 1 .586 1.414v1.272a2 2 0 0 0 2 2h1.272a2 2 0 0 1 1.414.586l.9.9a2 2 0 0 0 2.828 0l.9-.9a2 2 0 0 1 1.414-.586h1.272a2 2 0 0 0 2-2V13.8a2 2 0 0 1 .586-1.414Z"></path>
+                                        <svg class="w-4 h-4  ml-3 text-pink-600" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="m6.072 10.072 2 2 6-4m3.586 4.314.9-.9a2 2 0 0 0 0-2.828l-.9-.9a2 2 0 0 1-.586-1.414V5.072a2 2 0 0 0-2-2H13.8a2 2 0 0 1-1.414-.586l-.9-.9a2 2 0 0 0-2.828 0l-.9.9a2 2 0 0 1-1.414.586H5.072a2 2 0 0 0-2 2v1.272a2 2 0 0 1-.586 1.414l-.9.9a2 2 0 0 0 0 2.828l.9.9a2 2 0 0 1 .586 1.414v1.272a2 2 0 0 0 2 2h1.272a2 2 0 0 1 1.414.586l.9.9a2 2 0 0 0 2.828 0l.9-.9a2 2 0 0 1 1.414-.586h1.272a2 2 0 0 0 2-2V13.8a2 2 0 0 1 .586-1.414Z">
+                                            </path>
                                         </svg>
                                         <span>Premium</span>
                                     </div>
-                                     </mat-slide-toggle>
+                                </mat-slide-toggle>
                             </div>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full text-sm ">
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full text-sm ">
                             <div class="flex-1">
                                 <div class="font-semibold ">Exercise Name</div>
                                 <div class=" py-3  w-full">
-                                    <input formControlName="name" type="text" placeholder="Type a name for your exercise.."
+                                    <input formControlName="name" type="text"
+                                        placeholder="Type a name for your exercise.."
                                         class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
                                 </div>
                             </div>
                             <div class="flex-1">
                                 <div class="font-semibold ">Description</div>
                                 <div class=" py-3  w-full">
-                                    <div  contenteditable="true"  [(ngModel)]="content" formControlName="description" [disabled]="!descenabled" placeholder="Description"  class=" placeholder:text-gray-300 text-black font-semibold border-2 border-gray-300 rounded-lg px-2 py-2 w-full min-h-28 outline-pink-500 "></div>
+                                    <div contenteditable="true" [(ngModel)]="content" formControlName="description"
+                                        [disabled]="!descenabled" placeholder="Description"
+                                        class=" placeholder:text-gray-300 text-black font-semibold border-2 border-gray-300 rounded-lg px-2 py-2 w-full min-h-28 outline-pink-500 ">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-     
+
                     </form>
                 </mat-step>
-                <mat-step [stepControl]="secondFormGroup"  >
+                <mat-step [stepControl]="secondFormGroup">
                     <ng-template matStepLabel>
-                        <span  [ngClass]="stepper?.selectedIndex==1 ? 'font-bold text-sm' : 'font-semibold text-xs'">Exercise Steps and Upload of Files</span>
-                      </ng-template>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vel in ipsa distinctio voluptate debitis aliquam. Illum voluptatem quis dolor id tempore. Amet quasi iste veniam atque eligendi qui, vel iure adipisci ut, rerum repellat sunt. Quod voluptatem eius asperiores esse reprehenderit vel officiis eligendi facilis ipsam impedit voluptatum, dolorem sit ut pariatur repellat quaerat ipsum consequuntur laborum deleniti accusamus ea nihil maxime! Hic consectetur placeat quis deserunt suscipit nam. Maiores eius pariatur harum odit, nihil quo! Hic omnis officia ipsum tempore sed. Asperiores harum consequatur quis autem molestias illum dolores repellendus culpa quia, libero similique nemo ut praesentium neque dolor? Nesciunt corporis dolores, exercitationem quis veniam cupiditate cum saepe sunt autem recusandae placeat earum iste? Laudantium nulla reiciendis et optio ullam vitae nisi blanditiis quas maiores in eos, ex exercitationem architecto, eaque fugiat! Atque ipsa minus, voluptatem, illo suscipit officiis similique omnis dicta, voluptates velit perspiciatis culpa quaerat laborum ab ipsum cumque dolores dolore sed temporibus! Accusamus, cum quos velit doloribus odit facilis cumque, maiores consequatur provident dolores iste unde fugiat necessitatibus error. Quia est nostrum voluptatem perferendis quas necessitatibus eum voluptatum error provident, libero nobis eveniet vero et fugit deleniti assumenda. Culpa minus officiis voluptatibus maxime ratione? Laborum quasi consequatur reiciendis quis cumque ea nostrum error iste nam et quisquam doloremque excepturi, ipsam molestiae ad, officia voluptatibus quos laboriosam facere sit voluptate incidunt magnam. Ea quaerat quam autem laboriosam nihil quidem quibusdam, voluptate eveniet, libero saepe tempora eos, veritatis ipsam a molestiae aperiam mollitia sint deleniti minus quod nostrum assumenda! Ipsum reprehenderit, ex blanditiis, nisi ea inventore necessitatibus deleniti ab tenetur doloribus, in minus quasi consequuntur! Porro, molestias. Ducimus omnis numquam ipsa maiores ea magni ex placeat reprehenderit molestiae optio cum consequuntur asperiores id non modi quidem debitis, recusandae odit. Debitis non, eum tempore totam culpa sequi, quidem ea, sint cum voluptas maxime aspernatur? Molestiae facere molestias velit repellendus cupiditate ex deserunt, omnis hic possimus itaque iusto esse atque illum sed ipsam aliquam, porro eius. Labore quidem commodi expedita nemo dignissimos odit delectus ut! Incidunt, dolorem, vero sunt fuga blanditiis repellat neque fugit, ipsam voluptate quia atque nihil amet ex quis. Architecto atque dolores distinctio voluptas exercitationem laboriosam perspiciatis, voluptates, non veritatis vero praesentium quidem molestias! Autem omnis impedit quidem tempora optio, cum corporis ipsum velit a dolorum expedita hic tenetur necessitatibus ut iusto dolore at, harum maiores inventore. Vero maxime consequatur repellat amet, pariatur aperiam totam recusandae?
-                    <form [formGroup]="secondFormGroup" class="py-2 mb-4 " >
+                        <span
+                            [ngClass]="stepper?.selectedIndex==1 ? 'font-bold text-sm' : 'font-semibold text-xs'">Exercise
+                            Steps and Upload of Files</span>
+                    </ng-template>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vel in ipsa distinctio voluptate
+                    debitis aliquam. Illum voluptatem quis dolor id tempore. Amet quasi iste veniam atque eligendi qui,
+                    vel iure adipisci ut, rerum repellat sunt. Quod voluptatem eius asperiores esse reprehenderit vel
+                    officiis eligendi facilis ipsam impedit voluptatum, dolorem sit ut pariatur repellat quaerat ipsum
+                    consequuntur laborum deleniti accusamus ea nihil maxime! Hic consectetur placeat quis deserunt
+                    suscipit nam. Maiores eius pariatur harum odit, nihil quo! Hic omnis officia ipsum tempore sed.
+                    Asperiores harum consequatur quis autem molestias illum dolores repellendus culpa quia, libero
+                    similique nemo ut praesentium neque dolor? Nesciunt corporis dolores, exercitationem quis veniam
+                    cupiditate cum saepe sunt autem recusandae placeat earum iste? Laudantium nulla reiciendis et optio
+                    ullam vitae nisi blanditiis quas maiores in eos, ex exercitationem architecto, eaque fugiat! Atque
+                    ipsa minus, voluptatem, illo suscipit officiis similique omnis dicta, voluptates velit perspiciatis
+                    culpa quaerat laborum ab ipsum cumque dolores dolore sed temporibus! Accusamus, cum quos velit
+                    doloribus odit facilis cumque, maiores consequatur provident dolores iste unde fugiat necessitatibus
+                    error. Quia est nostrum voluptatem perferendis quas necessitatibus eum voluptatum error provident,
+                    libero nobis eveniet vero et fugit deleniti assumenda. Culpa minus officiis voluptatibus maxime
+                    ratione? Laborum quasi consequatur reiciendis quis cumque ea nostrum error iste nam et quisquam
+                    doloremque excepturi, ipsam molestiae ad, officia voluptatibus quos laboriosam facere sit voluptate
+                    incidunt magnam. Ea quaerat quam autem laboriosam nihil quidem quibusdam, voluptate eveniet, libero
+                    saepe tempora eos, veritatis ipsam a molestiae aperiam mollitia sint deleniti minus quod nostrum
+                    assumenda! Ipsum reprehenderit, ex blanditiis, nisi ea inventore necessitatibus deleniti ab tenetur
+                    doloribus, in minus quasi consequuntur! Porro, molestias. Ducimus omnis numquam ipsa maiores ea
+                    magni ex placeat reprehenderit molestiae optio cum consequuntur asperiores id non modi quidem
+                    debitis, recusandae odit. Debitis non, eum tempore totam culpa sequi, quidem ea, sint cum voluptas
+                    maxime aspernatur? Molestiae facere molestias velit repellendus cupiditate ex deserunt, omnis hic
+                    possimus itaque iusto esse atque illum sed ipsam aliquam, porro eius. Labore quidem commodi expedita
+                    nemo dignissimos odit delectus ut! Incidunt, dolorem, vero sunt fuga blanditiis repellat neque
+                    fugit, ipsam voluptate quia atque nihil amet ex quis. Architecto atque dolores distinctio voluptas
+                    exercitationem laboriosam perspiciatis, voluptates, non veritatis vero praesentium quidem molestias!
+                    Autem omnis impedit quidem tempora optio, cum corporis ipsum velit a dolorum expedita hic tenetur
+                    necessitatibus ut iusto dolore at, harum maiores inventore. Vero maxime consequatur repellat amet,
+                    pariatur aperiam totam recusandae?
+                    <form [formGroup]="secondFormGroup" class="py-2 mb-4 ">
                         <ckeditor [editor]="Editor" [config]="{ toolbar: [ 
                             'heading',
                             '|',
@@ -128,30 +175,33 @@
                             'undo',
                             'redo',
                             'SourceEditing'
-                            ] }"   formControlName="content" #myEditor></ckeditor>
+                            ] }" formControlName="content" #myEditor></ckeditor>
 
                         <h4 class="font-bold text-lg py-3">Upload File</h4>
                         <div class=" w-full">
-                            <div class="h-56 w-80 px-3 rounded-lg border-pink-300 border-2 border-dashed bg-pink-50 flex flex-col justify-center gap-1 items-center">
-                                <div >
+                            <div
+                                class="h-56 w-80 px-3 rounded-lg border-pink-300 border-2 border-dashed bg-pink-50 flex flex-col justify-center gap-1 items-center">
+                                <div>
                                     <img src="assets/icons/upload.png" class="h-10 w-10 opacity-65" alt="" srcset="">
                                 </div>
                                 <div>
                                     <img src="assets/icons/Group 192.png" alt="" srcset="">
                                 </div>
-                                <div class="text-center"><span class="text-pink-600 underline text-xs font-bold">Click to upload</span></div>
-                                <div class="text-center text-pink-500 text-xs font-semibold">(Only PNG and JPEG is allowed) Maximium size is 6MB.</div>
+                                <div class="text-center"><span class="text-pink-600 underline text-xs font-bold">Click
+                                        to upload</span></div>
+                                <div class="text-center text-pink-500 text-xs font-semibold">(Only PNG and JPEG is
+                                    allowed) Maximium size is 6MB.</div>
                             </div>
                         </div>
                     </form>
                 </mat-step>
-                
+
                 <!-- <mat-step>
                     <ng-template matStepLabel>Completed</ng-template>
                     <p>You have successfully created a Exercise.</p>
                 </mat-step> -->
             </mat-stepper>
-            
+
         </div>
         <!-- <div class="p-sticky  bg-white w-full px-2  flex justify-end items-center  mt-2">
 
@@ -161,7 +211,7 @@
                 <div [ngClass]="checkNextStepActive(stepper) ? 'border-pink-600 text-pink-700  cursor-pointer' : 'border-gray-400 text-gray-400'" class="rounded-2xl border-2 text-sm  font-bold  px-4 py-1 " (click)="goStepForward(stepper)" >Next</div>
             </div>
         </div> -->
-       
+
     </div>
 
 </div>

@@ -1,68 +1,38 @@
 <!--<c-header class="mb-4 d-print-none" position="sticky">-->
-<ng-container >
-  <c-container   breakpoint="xxl" >
-
-    <!-- <div class="create-nav p-l-10">
-      <div class="c-gr" style="color:rgb(94, 93, 93)">Menu <i class="fa fa-chevron-down f-s-12 m-l-4"></i></div>
-      <div class="">
-        <div>Create Blog</div>
-      </div>
-    </div> -->
-    <button
-    toggle="visible"
-    cHeaderToggler
-    [cSidebarToggle]="sidebarId"
-    class="ps-1"
-  >
-    <svg cIcon
-      name="cilMenu"
-      size="lg"
-    ></svg>
-  </button>
-    <c-header-nav class="d-none d-lg-flex me-auto f-s-14"> 
+<ng-container>
+  <c-container breakpoint="xxl">
+    <button toggle="visible" cHeaderToggler [cSidebarToggle]="sidebarId" class="ps-1">
+      <svg cIcon name="cilMenu" size="lg"></svg>
+    </button>
+    <c-header-nav class="d-none d-lg-flex me-auto f-s-14">
       <!-- <img src="assets/icons/sw-logo.png" width="105px" height="25px" alt="" srcset=""> -->
     </c-header-nav>
-    <!-- <div class="m-r-15" >
-      <img src="assets/icons/blog.png" width="22px" height="22px" alt="" srcset="">
-     </div>
-     <div style="border-left:2px solid rgb(235, 235, 235);height:30px;"></div>
-     <div >
-      <button mat-icon-button><mat-icon>work_outline</mat-icon></button>
-     </div>
-     <div style="border-left:2px solid rgb(235, 235, 235);height:30px;"></div> -->
     <c-header-nav class="ms-3">
-      
       <ng-container *ngTemplateOutlet="userDropdown"></ng-container>
     </c-header-nav>
   </c-container>
-  
+
 </ng-container>
 <!--</c-header>-->
 <ng-template #userDropdown>
-  <c-dropdown alignment="end" variant="nav-item" class="d-flex align-center" >
-    <button
-      cButton
-      color=""
-      [caret]="false"
-      cDropdownToggle
-      class="py-0 d-flex align-center"
-      style="outline:none!important;border: none!important;"
-    >
-    <div class="avatar m-b-5 m-r-10">
-      <img   class="avatar-img a-img" src="/assets/icons/prof.svg" alt="user@email.com">
-      <span class="avatar-status bg-success"></span>
-    </div>
-    <div *ngIf="userName" class="flex-column d-flex user">
-      <div class="f-s-13 fw-semibold f-poppins c-black" style="color:black!important">{{userName | titlecase}}</div>
-      <div class="f-s-12 f-poppins t-a-left" style="line-height: 9px;">Admin <i class="fa fa-caret-down"></i></div>
+  <c-dropdown alignment="end" variant="nav-item" class="d-flex align-center">
+    <button cButton color="" [caret]="false" cDropdownToggle class="py-0 d-flex align-center"
+      style="outline:none!important;border: none!important;">
+      <div class="avatar m-b-5 m-r-10">
+        <img class="avatar-img a-img" src="/assets/icons/prof.svg" alt="user@email.com">
+        <span class="avatar-status bg-success"></span>
+      </div>
+      <div *ngIf="userName" class="flex-column d-flex user">
+        <div class="f-s-13 fw-semibold f-poppins c-black" style="color:black!important">{{userName | titlecase}}</div>
+        <div class="f-s-12 f-poppins t-a-left" style="line-height: 9px;">Admin <i class="fa fa-caret-down"></i></div>
 
-    </div>
+      </div>
     </button>
     <ul cDropdownMenu class=" px-2 py-2 w-72 f-roboto shadow-bx" style="border:1px solid rgb(231, 231, 231)!important">
       <li>
         <div class="mt-2 mb-2 flex items-center text-slate-700 text-sm font-semibold py-2 px-4  rounded-lg">
           <div class="avatar m-b-5 m-r-10">
-            <img   class="avatar-img a-img w-36 h-36" src="/assets/icons/prof.svg" alt="user@email.com">
+            <img class="avatar-img a-img w-36 h-36" src="/assets/icons/prof.svg" alt="user@email.com">
           </div>
           <div class="flex flex-col ">
             <div class="text-base leading-5">Joel Manuek</div>
@@ -72,38 +42,41 @@
         </div>
       </li>
       <li>
-        <hr cDropdownDivider/>
+        <hr cDropdownDivider />
       </li>
       <li>
         <h6 cDropdownHeader class="bg-light fw-semibold py-2 px-4 rounded-lg">Account</h6>
       </li>
       <li>
-        <div routerLink="./"  class="mt-2 mb-2 flex items-center text-slate-700 text-sm font-semibold py-2 px-4 hover:bg-gray-100 rounded-lg">
+        <div routerLink="./"
+          class="mt-2 mb-2 flex items-center text-slate-700 text-sm font-semibold py-2 px-4 hover:bg-gray-100 rounded-lg">
           <svg cIcon class="me-2" name="cilBell"></svg>
-          <span class="font-medium" >Updates</span>
+          <span class="font-medium">Updates</span>
           <div class="px-2 ml-4 py-0.5 rounded-lg bg-pink-400 text-white font-bold">
             54
           </div>
         </div>
-      </li> 
-      <li>
-        <div routerLink="./"  class="mt-2 mb-2 flex items-center text-slate-700 text-sm font-semibold py-2 px-4 hover:bg-gray-100 rounded-lg">
-          <img src="assets/icons/add-user.png" class="mr-2 " width="16px" height="16px" alt="" srcset="">
-          <span class="font-medium" >Create New User</span>
-          
-        </div>
-      </li> 
-      <li>
-        <hr cDropdownDivider/>
       </li>
-      <li >
-        <div (click)="logout()"  class="mt-2 mb-2 flex items-center text-slate-700 text-sm font-semibold py-2 px-4 hover:bg-gray-100 rounded-lg" style="display: flex;align-items: center;flex-direction: row!important;">
+      <li>
+        <div [routerLink]="'/register'"
+          class="mt-2 mb-2 flex items-center text-slate-700 text-sm font-semibold py-2 px-4 hover:bg-gray-100 rounded-lg">
+          <img src="assets/icons/add-user.png" class="mr-2 " width="16px" height="16px" alt="" srcset="">
+          <span class="font-medium">Create New User</span>
+
+        </div>
+      </li>
+      <li>
+        <hr cDropdownDivider />
+      </li>
+      <li>
+        <div (click)="logout()"
+          class="mt-2 mb-2 flex items-center text-slate-700 text-sm font-semibold py-2 px-4 hover:bg-gray-100 rounded-lg"
+          style="display: flex;align-items: center;flex-direction: row!important;">
           <img src="assets/icons/logout.png" class="mr-2 ml-1" width="16px" height="16px" alt="" srcset="">
           <span>Log Out</span>
-      </div>
+        </div>
       </li>
       <li></li>
     </ul>
   </c-dropdown>
 </ng-template>
-

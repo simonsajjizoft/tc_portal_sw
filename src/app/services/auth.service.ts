@@ -8,11 +8,9 @@ export class AuthService {
   constructor(private router:Router) { }
 
   isAuthenticated(){
-    // let token = localStorage.getItem('userToken');
     let token = sessionStorage.getItem('userToken');
     if(token === null || !token) return false;
     else {
-      // let decodedToken:any = jwt_decode(token);
       return true
     }
   }

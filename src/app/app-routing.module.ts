@@ -53,6 +53,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/pages/pages.module').then((m) => m.PagesModule)
       },
+      {
+        path: 'register',
+        loadChildren: () =>
+          import('./views/register/register.module').then((m) => m.RegisterModule)
+      },
     ]
   },
   {
@@ -91,7 +96,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'register',
+    path: 'register2',
     component: RegisterComponent,
     data: {
       title: 'Register Page'
