@@ -3,7 +3,7 @@
     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
   </div> -->
   <div class="hdr py-4 w-full bg-pink-600"></div>
-  <div class="m-0 w-100  p-0  ">
+  <div class="m-0 w-100  p-0  overflow-auto">
     <c-row class="w-100 m-0  d-flex j-center align-items-center ">
       <c-col md="4" class="py-4">
         <c-card class="px-4 bg-white  border-0   py-4" style="border-radius: 30px!important;">
@@ -17,12 +17,12 @@
              <div [formGroup]="formGroup" class="px-3 py-3" >
               <div class="text-xs font-bold px-1.5 text-black mt-3">Email</div>
                <div class=" py-2  w-full">
-                <input  formControlName="empEmail" formControlName="empEmail" type="email" placeholder="Enter your Email"
+                <input  formControlName="username" type="email" placeholder="Enter your Email"
                     class="block w-full  font-bold border-b-2  focus:text-xs   border-gray-200  px-2 py-2 text-gray-600  text-xs focus:font-bold  placeholder:text-gray-400 outline-none focus:border-pink-500  ">
               </div>
               <div class="text-xs font-bold px-1.5 text-black mt-4">Password</div>
                <div class=" py-2  w-full">
-                <input   formControlName="empPassword" type="password" placeholder="Enter your Password"
+                <input   formControlName="password" type="password" placeholder="Enter your Password"
                     class="block w-full focus:text-xs font-bold   border-b-2  border-gray-200  px-2 py-2 text-gray-600  text-xs   placeholder:text-gray-400 outline-none focus:border-pink-500 ">
               </div>
                

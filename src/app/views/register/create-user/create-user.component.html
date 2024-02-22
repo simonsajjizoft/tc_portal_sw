@@ -16,45 +16,48 @@
 
 
         <div class="main-content overflow-auto bg-white rounded-md  px-1.5 py-4">
-            <form [formGroup]="firstFormGroup" class="px-3.5 ">
+            <form [formGroup]="registerFG" class="px-3.5 ">
 
                 <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full text-sm ">
                     <div class="flex-1">
-                        <div class="font-semibold ">Username / Email</div>
+                        <div class="font-semibold ">Username / Email <span class="text-red-500">*</span></div>
                         <div class=" py-3  w-3/4">
                             <input formControlName="username" type="text" placeholder="Please enter your Email Address"
                                 class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
                         </div>
                     </div>
                     <div class="flex-1">
-                        <div class="font-semibold ">Role</div>
+                        <div class="font-semibold ">Role <span class="text-red-500">*</span></div>
                         <div class=" py-3  w-3/4">
-                            <input formControlName="role" type="text" placeholder="Role"
+                            <select  class="w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-pink-500  sm:leading-6" id="role" formControlName="role" >
+                                <option value="" selected disabled class="font-semibold text-sm">Select a Role</option>
+                                <option *ngFor="let role of roles" [ngValue]="role" class="font-semibold text-sm">{{role}}</option>
+                            </select>
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full text-sm mt-4">
+                    <div class="flex-1">
+                        <div class="font-semibold ">First Name <span class="text-red-500">*</span></div>
+                        <div class=" py-3  w-3/4">
+                            <input formControlName="firstname" type="text" placeholder="Enter your First Name"
+                                class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-semibold ">Last Name <span class="text-red-500">*</span></div>
+                        <div class=" py-3  w-3/4">
+                            <input formControlName="lastname" type="text" placeholder="Enter your Last Name"
                                 class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
                         </div>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full text-sm mt-4">
                     <div class="flex-1">
-                        <div class="font-semibold ">First Name</div>
+                        <div class="font-semibold ">Password <span class="text-red-500">*</span></div>
                         <div class=" py-3  w-3/4">
-                            <input formControlName="username" type="text" placeholder="Please enter your Email Address"
-                                class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
-                        </div>
-                    </div>
-                    <div class="flex-1">
-                        <div class="font-semibold ">Last Name</div>
-                        <div class=" py-3  w-3/4">
-                            <input formControlName="role" type="text" placeholder="Role"
-                                class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
-                        </div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full text-sm mt-4">
-                    <div class="flex-1">
-                        <div class="font-semibold ">Password</div>
-                        <div class=" py-3  w-3/4">
-                            <input formControlName="username" type="text" placeholder="Please enter your Email Address"
+                            <input formControlName="password" type="text" placeholder="Please enter your Password"
                                 class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
                         </div>
                     </div>
@@ -66,7 +69,7 @@
                     </div>
                     <div class="flex justify-start sm:justify-start md:justify-end px-4">
                         <div class="w-3/4 flex gap-4 items-center ">
-                            <div class="bg_alt text-white font-medium rounded-2xl w-fit py-2 px-5 text-sm"  type="button" >Create</div>
+                            <div class="bg_alt text-white font-medium rounded-2xl w-fit py-2 px-5 text-sm" (click)="submit()" type="button" >Create</div>
                             <div class="bg-gray-200 text-gray-700 font-semibold rounded-2xl w-fit py-2 px-5 text-sm"  type="button" >Cancel</div>
 
                         </div>

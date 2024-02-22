@@ -90,7 +90,7 @@ export class DashboardComponent implements OnInit {
   public Editor = ClassicEditorBuild;
 
   ngOnInit(): void {
-    this.initCharts();
+    // this.initCharts();
     this.loader = true
     setTimeout(()=>{
       this.loader = false;
@@ -138,7 +138,6 @@ export class DashboardComponent implements OnInit {
         borderWidth: 2,
       }]
     };
-    // const ctx = document.getElementById('myChart');
     new Chart('myChart', {
       type:'bar',
       options: this.options,

@@ -38,8 +38,8 @@ export class LoginComponent {
       if (!station) this.showLoginForm = true;
     } else this.showLoginForm = true;
     this.formGroup = this.formBuilder.group({
-      empEmail: [null, Validators.compose([Validators.required, Validators.email]),],
-      empPassword: [null, Validators.required]
+      username: [null, Validators.compose([Validators.required, Validators.email]),],
+      password: [null, Validators.required]
     });
   }
 
@@ -55,7 +55,28 @@ export class LoginComponent {
   }
 
   loginApi() {
-    this.userNavigation('/dashboard');
+    this.apiService.LoginPost(`${environment.apiUrl}login`, this.formGroup.value).subscribe(data => {
+      // this.wrongUser = false;
+      if (data?.data?.token) {
+        this.loginLoader = false;
+        this.logedIn = true;
+        localStorage.setItem('userToken', data?.data?.token);
+        // localStorage.removeItem('invalidLoginStatus');
+        this.userNavigation('/dashboard');
+      }
+    }, (err) => {
+      // this.wrongUser = true;
+      this.loginLoader = false;
+      console.log(err?.error )
+      this.toaster.error(err?.error || err)
+      // if (err?.error?.blocked) this.accBlocked = true;
+      // if (!err?.error?.blocked && err?.error?.status === false) {
+      //   this.setInvalidLogin();
+      //   this.accBlocked = false;
+      // }
+    })
+
+
   } 
 
   userNavigation(station) {
