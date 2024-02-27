@@ -24,26 +24,31 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
+        canActivate: [AuthGuard],
         loadChildren: () =>
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
       {
         path: 'packages',
+        canActivate: [AuthGuard],
         loadChildren: () =>
           import('./views/packages/packages.module').then((m) => m.PackagesModule)
       },
       {
         path: 'templates',
+        canActivate: [AuthGuard],
         loadChildren: () =>
           import('./views/templates/templates.module').then((m) => m.TemplatesModule)
       },
       {
         path: 'exercises',
+        canActivate: [AuthGuard],
         loadChildren: () =>
           import('./views/exercises/exercises.module').then((m) => m.ExercisesModule)
       },          
       {
         path: 'home',
+        canActivate: [AuthGuard],
         loadChildren: () =>
           import('./views/home/home.module').then((m) => m.HomeModule)
       },     
@@ -55,6 +60,7 @@ const routes: Routes = [
       },
       {
         path: 'register',
+        canActivate: [AuthGuard],
         loadChildren: () =>
           import('./views/register/register.module').then((m) => m.RegisterModule)
       },

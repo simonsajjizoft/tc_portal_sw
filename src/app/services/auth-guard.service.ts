@@ -9,6 +9,7 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot): any {
     let roles = route.data['role'];
+    console.log(this.auth.isAuthenticated())
     if (!this.auth.isAuthenticated()) {
       this.router.navigate(['']);
       return false;

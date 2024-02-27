@@ -10,24 +10,24 @@ export class AuthService {
   avilableRoles = ['ADMIN'];
   baseUrl = environment.apiUrl;
   authToken: any;
-  constructor(private router:Router,private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
-  isAuthenticated(){
-    let token = sessionStorage.getItem('userToken');
-    if(token === null || !token) return false;
+  isAuthenticated() {
+    let token = localStorage.getItem('userToken');
+    if (token === null || !token) return false;
     else {
       return true
     }
   }
 
-  getUser(){
+  getUser() {
     // let token = localStorage.getItem('userToken');
-    let token = sessionStorage.getItem('userToken');
+    let token = localStorage.getItem('userToken');
     // if(token === null) return false;
     // else return jwt_decode(token);
   }
 
-  logOut(){
+  logOut() {
     localStorage.removeItem("userToken");
     sessionStorage.removeItem("userToken");
     sessionStorage.clear();
