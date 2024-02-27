@@ -41,10 +41,7 @@ export class AuthService {
     let data = { token: localStorage.getItem('userToken') ? localStorage.getItem('userToken') : '' };
     return this.http.post<any>(url, data).pipe(
       map(response => {
-        // Assuming the response contains the new access token
-        // You should adjust this according to your API response
         const newUserToken = response.data;
-        // Save the new access token to local storage or wherever you store tokens
         localStorage.setItem('userToken', newUserToken);
         return newUserToken;
       })
@@ -52,7 +49,6 @@ export class AuthService {
   }
 
   getAccessToken(): string | null {
-    // Retrieve access token from local storage or wherever you store tokens
     return localStorage.getItem('userToken');
   }
 }
