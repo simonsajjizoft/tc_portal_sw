@@ -8,6 +8,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { DoughnutOptions, Options } from 'src/app/shared/interface';
 import { ToastrService } from 'ngx-toastr';
 import Chart  from 'chart.js/auto';
+import { environment } from 'src/environments/environment';
 
 @Component({
   templateUrl: 'dashboard.component.html',
@@ -84,14 +85,18 @@ export class DashboardComponent implements OnInit {
     }
   };;
   loader;
-  blogs;
-  careers;
+  cards = [
+  {name:'Packages',cnt:0,img:'assets/icons/packages_alt.svg'},
+  {name:'Exercises',cnt:0,img:'assets/icons/exercise_alt.svg'},
+  {name:'Templates',cnt:0,img:'assets/icons/layout_alt.png'}
+ ]
   uniqueTags:any = [];
   public Editor = ClassicEditorBuild;
 
   ngOnInit(): void {
     // this.initCharts();
-    this.loader = true
+    this.loader = true;
+    this.fetchDetails()
     setTimeout(()=>{
       this.loader = false;
     },2000)
@@ -143,6 +148,24 @@ export class DashboardComponent implements OnInit {
       options: this.options,
       data: this.data
     });
+  }
+
+  fetchDetails(){
+    let URL = environment?.apiUrl + 'tc/menu';
+    this.apiService.ExecuteGet(URL).subscribe((data:any) => {
+      // this.wrongUser = false;
+     console.log(data);
+     this.cards[0].cnt = data?.data?.createdPackageCount;
+     this.cards[1].cnt =  data?.data?.createdExerciseCount;
+     this.cards[2].cnt =  data?.data?.createdTemplateCount;
+     
+    }, (err) => {
+      // this.wrongUser = true;
+      this.loader = false;
+      console.log(err?.error )
+      this.toastr.error(err?.error || err)
+   
+    })
   }
 
 }

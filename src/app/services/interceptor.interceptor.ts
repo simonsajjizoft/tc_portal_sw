@@ -1,38 +1,47 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of, throwError,BehaviorSubject } from 'rxjs';
 import { GeneralService } from '../services/general.services';
+import { AuthService } from './auth.service';
+import { ApiService } from './api.services';
+import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { tap, mergeMap, switchMap, filter, take, flatMap } from 'rxjs/operators';
 
 @Injectable()
 export class InterceptorInterceptor implements HttpInterceptor {
+  
+  constructor(private authService: AuthService) {}
 
-  constructor(
-    private general: GeneralService,
-  ) { }
-
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-
-    if (request.headers.get('Skip')) {
-      const newHeaders = request.headers.delete('Skip')
-      const newRequest = request.clone({ headers: newHeaders });
-      return next.handle(newRequest);
-    }
-    else if (this.general.getToken) {
-      const modified = request.clone({
-        setHeaders: {
-          Authorization: this.general.getToken
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return next.handle(request).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          return this.authService.refreshToken().pipe(
+            switchMap(() => {
+              const newRequest = request.clone({
+                setHeaders: {
+                  Authorization: `Bearer ${this.authService.getAccessToken()}`
+                }
+              });
+              return next.handle(newRequest);
+            }),
+            catchError((err) => {
+              return throwError(() => new Error("New Authentication Error"));
+            })
+          );
         }
-      });
-
-
-      return next.handle(modified);
-    } else {
-      return next.handle(request);
-    }
+        return throwError(() => new Error("New Authentication Error"));
+      })
+    );
   }
+
+
 }

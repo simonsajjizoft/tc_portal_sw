@@ -49,7 +49,7 @@ export class ApiService {
     if (urlParam) {
       url = url + '/' + urlParam;
     }
-    return this.http.get(url, { params: queryParam });
+    return this.http.get(url, { params: queryParam,headers: this.setHeaders() });
   }
 
   ExecutePost(url: string, data:any): Observable<Object> {
@@ -95,5 +95,8 @@ authenticationService(username: String, password: String) {
   registerSuccessfulLogin(username, password) {
     sessionStorage.setItem('userToken', username)
   }
+
+  
+
 
 }

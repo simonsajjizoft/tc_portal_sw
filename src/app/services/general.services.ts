@@ -28,8 +28,6 @@ export class GeneralService {
     }
   }
 
- 
-
 
   logOut() {
     localStorage.clear();

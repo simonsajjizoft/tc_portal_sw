@@ -19,16 +19,16 @@
             </div>
         </div>
         <div *ngIf="!loader" class=" grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 w-full"> 
-            <div class="rounded-xl bg-white   border-2 border-violet-100 h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28  flex gap-3 items-end px-4 py-4">
+            <div *ngFor="let card of cards" class="rounded-xl bg-white   border-2 border-violet-100 h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28  flex gap-3 items-end px-4 py-4">
                 <div class=" w-20  h-14 sm:h-14 lg:h-16 xl:h-16  flex  justify-center items-center px-3 py-1 bg-violet-50 rounded-xl">
-                    <img src="assets/icons/packages_alt.svg" class="w-full h-full p-4" alt="" srcset="">
+                    <img [src]="card?.img" class="w-full h-full p-4" alt="" srcset="">
                 </div>
                 <div class=" flex  flex-col justify-end gap-0.5 pb-1">
-                    <div class="text-pink-400 font-semibold  vlarge-text max-w-24 overflow-hidden  text-ellipsis">20</div>
-                    <div class="font-semibold text-sm sec-clr max-w-24 overflow-hidden  text-ellipsis">Packages</div>
+                    <div class="text-pink-400 font-semibold  vlarge-text max-w-24 overflow-hidden  text-ellipsis">{{card?.cnt}}</div>
+                    <div class="font-semibold text-sm sec-clr max-w-24 overflow-hidden  text-ellipsis">{{card?.name}}</div>
                 </div>
             </div>
-            <div class="rounded-xl  bg-white   border-2 border-violet-100  h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28  flex gap-4 items-end px-4 py-4">
+            <!-- <div class="rounded-xl  bg-white   border-2 border-violet-100  h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28  flex gap-4 items-end px-4 py-4">
                 <div class="w-20  h-14 sm:h-14 lg:h-16 xl:h-16  flex  justify-center items-center px-3 py-1 bg-violet-50 rounded-xl">
                     <img src="assets/icons/exercise_alt.svg" class="w-full h-full" alt="" srcset="">
                 </div>
@@ -45,7 +45,7 @@
                     <div class="text-pink-400 font-semibold vlarge-text max-w-24 overflow-hidden  text-ellipsis">18</div>
                     <div class="font-semibold text-sm sec-clr max-w-24 overflow-hidden  text-ellipsis">Templates</div>
                 </div>
-            </div>
+            </div> -->
             <!-- <div *ngIf="!loader" class="hidden sm:hidden md:inline-block  bg-white  min-w-64 h-52 sm:h-max  rounded-lg  px-1 pb-1" style="box-shadow: rgba(29, 29, 29, 0.1) -4px 9px 25px -6px;">
                 <c-chart
                 [data]="data"
@@ -58,7 +58,7 @@
     </div>
     <div class="flex gap-5 mt-4">
         <div class="w-full ">
-            <ng-container  *ngFor="item of [1,2,3]">
+            <ng-container  *ngFor="let item of [1,2,3]">
                 <ng-container *ngIf="loader">
                     <div *ngIf="loader" class=" mt-2 font-bold py-2 flex w-full justify-between items-center">
                         <div class="flex gap-4 items-center h-5 bg-zinc-100 rounded-full w-52 ">
