@@ -21,13 +21,11 @@ export class AuthService {
   }
 
   getUser() {
-    // let token = localStorage.getItem('userToken');
     let token = localStorage.getItem('userToken');
-    // if(token === null) return false;
-    // else return jwt_decode(token);
   }
 
   logOut() {
+    localStorage.removeItem("userEmail");
     localStorage.removeItem("userToken");
     sessionStorage.removeItem("userToken");
     sessionStorage.clear();
@@ -35,8 +33,6 @@ export class AuthService {
   }
 
   refreshToken(): Observable<any> {
-    // Assuming your refresh token API returns a new access token
-    // You should replace this with your actual refresh token API call
     let url = environment.apiUrl + 'refresh-token';
     let data = { token: localStorage.getItem('userToken') ? localStorage.getItem('userToken') : '' };
     return this.http.post<any>(url, data).pipe(

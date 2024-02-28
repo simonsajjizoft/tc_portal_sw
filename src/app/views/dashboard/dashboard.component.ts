@@ -151,7 +151,7 @@ export class DashboardComponent implements OnInit {
   }
 
   fetchDetails(){
-    let URL = environment?.apiUrl + 'tc/menu';
+    let URL = environment?.apiUrl + 'tc/menu'; // here we have to change api based on whether role is admin or tc
     this.apiService.ExecuteGet(URL).subscribe((data:any) => {
       // this.wrongUser = false;
      console.log(data);

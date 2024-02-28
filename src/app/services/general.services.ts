@@ -1,18 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class GeneralService {
-//   unreadMessage = new BehaviorSubject(null)
+  userEmail: BehaviorSubject<any> = new BehaviorSubject<any>({});
   constructor(private router: Router,) { }
-
-//   private getS3Bucket(): any {
-//     const bucket = new S3(environment.s3config);
-//     return bucket;
-//   }
 
   set setToken(token: any) {
     // localStorage.setItem('token', token);
@@ -26,6 +21,14 @@ export class GeneralService {
     else {
       return null
     }
+  }
+
+  get getUserName(){
+    return this.userEmail;
+  }
+
+  setUserName(val:any) :void{
+    this.userEmail.next(val)
   }
 
 

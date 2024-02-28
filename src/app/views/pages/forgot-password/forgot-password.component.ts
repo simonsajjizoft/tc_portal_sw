@@ -6,6 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { ApiService } from 'src/app/services/api.services';
 import { AuthService } from 'src/app/services/auth.service';
+import { GeneralService } from 'src/app/services/general.services';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-forgot-password',
@@ -20,6 +22,7 @@ export class ForgotPasswordComponent {
   isLoading: boolean = true;
   logedIn;
   showLoginForm;
+  userName;
 
   constructor(
     private router: Router,
@@ -27,31 +30,37 @@ export class ForgotPasswordComponent {
     private toaster: ToastrService,
     private changeDetector: ChangeDetectorRef,
     public auth: AuthService,
-    private apiService:ApiService
+    private apiService:ApiService,
+    private generalService:GeneralService
 
   ) {
-    if (this.auth.isAuthenticated()) {
-      let station = sessionStorage.getItem('currentStation');
-      let userRole = sessionStorage.getItem('userRole');
-      this.logedIn = false;
-      this.userNavigation(station);
-      if (!station) this.showLoginForm = true;
-    } else this.showLoginForm = true;
+    this.userName =  localStorage.getItem("userEmail");
     this.formGroup = this.formBuilder.group({
-      empEmail: [null, Validators.compose([Validators.required, Validators.email]),],
-      empPassword: [null, Validators.required]
+      username: [this.userName, Validators.compose([Validators.required, Validators.email]),],
+      password: [null, Validators.required]
     });
   }
 
-  get email(): any { return this.formGroup.get('empEmail'); }
+  get email(): any { return this.formGroup.get('username'); }
 
   get fControls(): any {
     return this.formGroup.controls;
   }
 
   submitClick(): void {
-    this.toaster.success("The Temperory password has been sent to Email")
-    this.userNavigation('/resetpassword');
+    this.loginLoader = true;
+    // this.toaster.error("The Temperory password has been sent to Email");
+    console.log(this.formGroup.value)
+    this.apiService.LoginPost(`${environment.apiUrl}email`, this.formGroup.value).subscribe(data => {
+      console.log(data);
+      this.toaster.success("The Temperory password has been successfully sent to your email.")
+      this.userNavigation('/resetpassword');
+      this.generalService.setUserName(this.formGroup.controls['username'].value);
+    }, (err) => {
+      this.loginLoader = false;
+      console.log(err?.error )
+      this.toaster.error(err?.error || err)
+    })
   }
 
   loginApi() {
