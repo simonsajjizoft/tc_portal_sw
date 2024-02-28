@@ -34,9 +34,10 @@ export class LoginComponent {
       let station = sessionStorage.getItem('currentStation');
       let userRole = sessionStorage.getItem('userRole');
       this.logedIn = false;
-      this.userNavigation(station);
+      this.userNavigation('/dashboard');
       if (!station) this.showLoginForm = true;
-    } else this.showLoginForm = true;
+    } 
+    else this.showLoginForm = true;
     this.formGroup = this.formBuilder.group({
       username: [null, Validators.compose([Validators.required, Validators.email]),],
       password: [null, Validators.required]
