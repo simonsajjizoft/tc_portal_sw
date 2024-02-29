@@ -11,7 +11,10 @@
   grid-template-columns: auto auto auto auto;
 }
 
-
+.search-results {
+  height: 100%;
+  overflow: auto;
+}
 
 
 @media screen and (max-width: 1534px) {

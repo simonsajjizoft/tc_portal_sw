@@ -35,6 +35,13 @@ export class ApiService {
     return header;
   }
 
+  setHeadersListing(){
+    let header = new HttpHeaders({
+      'Authorization': `Bearer ${this.getToken()}`,
+    });
+    return header;
+  }
+
   setLoginHeaders() {
     let header = new HttpHeaders({
       'Authorization': `Bearer ${this.getLoginToken()}`,

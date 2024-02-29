@@ -70,7 +70,11 @@ export class LoginComponent {
           this.loginLoader = false;
           this.logedIn = true;
           localStorage.setItem('userToken', data?.data?.token);
-          console.log(this.formGroup.value.username)
+          console.log(data?.data);
+          localStorage.setItem('TCuserRole',data?.data?.role ? data?.data?.role.toLowerCase( ):'');
+          this.generalService.setUserName(data?.data?.username);
+          localStorage?.setItem('TCuserfirstName',data?.data?.firstName);
+          localStorage?.setItem('TCuserlastName',data?.data?.lastName)
           // localStorage.removeItem('invalidLoginStatus');
           this.userNavigation('/dashboard');
         }

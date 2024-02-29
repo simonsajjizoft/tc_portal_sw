@@ -47,6 +47,7 @@ import { NgxPaginationModule } from 'ngx-pagination'
 import { MatDialogModule } from "@angular/material/dialog";
 import { AuthGuardService } from './services/auth-guard.service';
 import { NgxOtpInputModule } from 'ngx-otp-input';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -98,7 +99,8 @@ const APP_CONTAINERS = [
     NgxPaginationModule,
     MatDialogModule,
     ModalModule,
-    NgxOtpInputModule
+    NgxOtpInputModule,
+    InfiniteScrollModule
   ],
   
   providers: [
@@ -122,7 +124,8 @@ const APP_CONTAINERS = [
     AuthGuardService
   ],
   bootstrap: [AppComponent],
-  exports:[]
+    
+    exports:[InfiniteScrollModule]
 })
 export class AppModule {
 }

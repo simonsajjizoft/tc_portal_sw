@@ -66,7 +66,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     NgComponentOutlet,
     CKEditorModule,
     TextFieldModule,
-    NgxOtpInputModule
+    NgxOtpInputModule,
   ],
   exports: [
     RouterModule,
@@ -97,7 +97,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     ContentEditableFormDirective,
     NgxOtpInputModule,
     TextareaComponent,
-    CheckboxComponent
+    CheckboxComponent,
   ]
 })
 export class SharedModules { }
