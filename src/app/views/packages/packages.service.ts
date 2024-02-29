@@ -10,12 +10,12 @@ import { environment } from 'src/environments/environment';
 export class PackagesService {
 
   constructor(private http: HttpClient,private apiService:ApiService ) {}
-  getPacakges(page: number): Observable<any[]> {
+  getPackages(page: number,searchValue:string,statusList:any[]): Observable<any[]> {
     return this.apiService.ExecutePost(
       environment?.apiUrl +  `tc/packages` +`?page=${page}&size=10`,{
-        "username": "simon.sajimathews@zoftsolutions.com",
-        "eventStatusId":[],
-        "searchValue":""
+        "username": localStorage?.getItem("userEmail") ? localStorage?.getItem("userEmail") : '',
+        "eventStatusId":statusList,
+        "searchValue":searchValue
     }
       ) as Observable<any[]>;
   }

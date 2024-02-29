@@ -18,19 +18,20 @@
                     </div> Packages
                 </div>
                 <div class="w-2/4 relative ">
-                    <input type="text"
+                    <input (input)="searchList($event)" type="text"
                         class="w-full border-gray-200 rounded-lg border-2 outline-none text-sm font-semibold px-2 py-1.5"
                         placeholder="Search">
-                    <img src="assets/icons/search.svg" width="18px" height="18px" alt="" srcset=""
+                        <img *ngIf="searchValue?.trim()" src="assets/icons/cancel.png" width="17px" height="16px" alt="" srcset=""
+                        class="absolute top-1/4 right-3 cursor-pointer">
+                    <img *ngIf="!searchValue?.trim()" src="assets/icons/search.svg" width="18px" height="18px" alt="" srcset=""
                         class="absolute top-1/4 right-3 ">
                 </div>
-                <div class="flex gap-1 items-center text-sm  rounded-lg font-semibold  px-2 py-1.5 ">
+                <div (click)="statusDropdown=true" (clickOutside)="statusDropdown=false"  class="w-24 cursor-pointer flex gap-1 items-center text-sm  rounded-lg font-semibold  px-2 py-1.5 relative">
                     Status
-                    <svg class="w-2 h-2 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg>
+                    <mat-icon class="text-xl mb-1">{{statusDropdown ? 'keyboard_arrow_up' :'keyboard_arrow_down'}}</mat-icon>
+                    <ng-container  *ngIf="statusDropdown">
+                        <app-custom-dropdown  [checkboxes]="true" [values]="statusList" [displayName]="'statusName'" (changeStatusListModel)="changeList($event)"></app-custom-dropdown>
+                    </ng-container>
                 </div>
                 <div class="flex gap-1 items-center font-semibold py-1.5 relative cursor-pointer"
                     (click)="createPackage()">
@@ -64,33 +65,7 @@
                 </div>
             </div>
         </ng-container>
-        <!-- <div *ngIf="!loader"
-            class="  py-3 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-3 mr-0 sm:mr-0 md:mr-2">
-            <div (dblclick)="navigateDetails()" *ngFor="let item of [1,2,3,4,5,6,7,8]"
-                class="h-48 sm:h-48  md:h-52 card-item cursor-pointer rounded-md  bg-white border flex flex-col justify-between gap-2  px-2 py-2 overflow-hidden">
-                <div class="flex justify-end">
-                    <div  class="w-fit px-2  xs-text text-gray-700 font-medium rounded-2xl bg-pink-50">
-                        Active
-                    </div>
-                </div>
-                <div class="w-full h-1/3 flex items-center justify-center text-center">
-                    <div class=" w-14 h-14 flex  justify-center items-center px-1 py-1 rounded-full bg-pink-50">
-                        <img src="assets/icons/pkg.svg" class="w-full h-full p-8" alt="" srcset="">
-                    </div>
-                </div>
-                <div class=" flex  flex-col justify-center items-center">
-                    <div class=" font-semibold text-sm">Package {{item}}</div>
-                    <div class="font-medium text-xs text-gray-600">E 121215</div>
-                </div>
-                <div class="flex items-center gap-0.5">
-                    <div class="w-8 h-7 rounded-full ring-2 ring-gray-100 bg-gray-100 text-violet-800 font-medium flex align-center justify-center mr-2 p-2">JD</div>
-                    <div class="flex flex-col w-full ">
-                        <div class="s-text font-medium    relative w-3/4 overflow-hidden max-w-full  whitespace-nowrap overflow-ellipsis">John Doe</div>
-                        <div class="xs-text  w-3/4 whitespace-nowrap overflow-ellipsis overflow-hidden">Created Dec 21. 2023</div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+       
         <div class="h-tab" style="overflow-y: auto;" #ctn>
             <div *ngIf="!loader"  infiniteScroll [infiniteScrollDistance]="distance" [infiniteScrollContainer]="ctn"
                 [infiniteScrollThrottle]="throttle" (scrolled)="onScroll()">
@@ -100,9 +75,9 @@
                         class="h-48 sm:h-48  md:h-52 card-item cursor-pointer rounded-md  bg-white border flex flex-col justify-between gap-2  px-2 py-2 overflow-hidden">
                         <div class="flex justify-end">
                             <div class="w-fit px-2  xs-text text-gray-700 font-medium rounded-2xl bg-pink-50">
-                                Active
+                                {{item?.packageStatus}}
                             </div>
-                        </div>
+                        </div> 
                         <div class="w-full h-1/3 flex items-center justify-center text-center">
                             <div class=" w-14 h-14 flex  justify-center items-center px-1 py-1 rounded-full bg-pink-50">
                                 <img src="assets/icons/pkg.svg" class="w-full h-full p-8" alt="" srcset="">
@@ -110,18 +85,18 @@
                         </div>
                         <div class=" flex  flex-col justify-center items-center">
                             <div class=" font-semibold text-sm"> {{item?.packageName}}</div>
-                            <div class="font-medium text-xs text-gray-600">E 121215</div>
+                            <div class="font-medium text-xs text-gray-600">{{item?.packageId}}</div>
                         </div>
                         <div class="flex items-center gap-0.5">
                             <div
                                 class="w-8 h-7 rounded-full ring-2 ring-gray-100 bg-gray-100 text-violet-800 font-medium flex align-center justify-center mr-2 p-2">
-                                JD</div>
+                                {{item?.createdUser?.charAt(0) ? item?.createdUser?.charAt(0) : ' '}} </div>
                             <div class="flex flex-col w-full ">
                                 <div
                                     class="s-text font-medium    relative w-3/4 overflow-hidden max-w-full  whitespace-nowrap overflow-ellipsis">
-                                    John Doe</div>
+                                    {{item?.createdUser ? item?.createdUser : ''}}</div>
                                 <div class="xs-text  w-3/4 whitespace-nowrap overflow-ellipsis overflow-hidden">Created
-                                    Dec 21. 2023</div>
+                                 {{item?.createdDate | date:"MMM dd. yyyy"}}</div>
                             </div>
                         </div>
                     </div>

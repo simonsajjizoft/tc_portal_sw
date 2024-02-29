@@ -29,6 +29,8 @@ import { ContentEditableFormDirective } from './directives/content-editable-form
 import { NgxOtpInputModule } from 'ngx-otp-input';
 import { TextareaComponent } from './components/textarea/textarea.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { CustomDropdownComponent } from './components/custom-dropdown/custom-dropdown.component';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     LabelComponent,
     ContentEditableFormDirective,
     TextareaComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    CustomDropdownComponent
   ],
   imports: [
     CommonModule,
@@ -67,6 +70,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     CKEditorModule,
     TextFieldModule,
     NgxOtpInputModule,
+    ClickOutsideModule
   ],
   exports: [
     RouterModule,
@@ -98,6 +102,8 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     NgxOtpInputModule,
     TextareaComponent,
     CheckboxComponent,
+    CustomDropdownComponent,
+    ClickOutsideModule
   ]
 })
 export class SharedModules { }

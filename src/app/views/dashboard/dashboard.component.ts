@@ -157,9 +157,9 @@ export class DashboardComponent implements OnInit {
   fetchDetails() {
     let role = localStorage.getItem("TCuserRole");
     this.firstName = localStorage.getItem("TCuserfirstName")
-    role = role=='tc' ? 'tc' : (role=='super_admin' ? 'super-admin':'' )
+    role = role=='tc' ? 'tc' : (role=='super_admin' ? 'super-admin': role )
     let URL = environment?.apiUrl + `${role}/menu`; // here we have to change api based on whether role is admin or tc
-    this.apiService.ExecutePost(URL, {}).subscribe((data: any) => {
+    this.apiService.ExecuteGet(URL).subscribe((data: any) => {
       // this.wrongUser = false;
       console.log(data);
       this.cards[0].cnt = data?.data?.createdPackageCount;
