@@ -30,14 +30,14 @@ export class ListComponent {
   searchValue = '';
   statusDropdown = false;
   statusList = [];
+  packageDetails;
+  detailsLoader:boolean = false;
   constructor(private router:Router,private http:HttpClient,private packageService:PackagesService,private apiService:ApiService){}
 
   ngOnInit(){
     this.loader = true;
+    this.detailsLoader = true;
     this.fetchStatusList()
-    setTimeout(()=>{
-      this.loader = false;
-    },2000);
     let checkedList = [];
     checkedList = this.statusList.filter((item)=>item?.checked);
     this.packageService
@@ -45,7 +45,12 @@ export class ListComponent {
     .subscribe((data:any) => {
       let packages = data?.data;
       this.packages = packages;
+      if(this.packages?.length>0) this.getDetails(this.packages[0]);
+      this.disableAllLoaders()
       console.log(this.packages)
+    },
+    (error)=>{
+      this.disableAllLoaders()
     });
   }
 
@@ -77,7 +82,11 @@ export class ListComponent {
         let packages:any[] = data?.data;
         // if(packages.length == 0) this.isReachedLastPage = true;
         this.packages.push(...packages);
-        console.log(packages)
+        console.log(packages);
+        this.disableAllLoaders()
+      },
+      (error)=>{
+        this.disableAllLoaders()
       });
   }
 
@@ -101,9 +110,10 @@ export class ListComponent {
         this.statusList.map((item)=>{
           item.checked = false;
         })
-        console.log(this.statusList)
-
+        console.log(this.statusList);
+        
       }
+      
     })
   }
 
@@ -118,9 +128,39 @@ export class ListComponent {
         this.packages = [];
         let packages:any[] = data?.data;
         // if(packages.length == 0) this.isReachedLastPage = true;
+        this.disableAllLoaders()
         this.packages.push(...packages);
         console.log(packages)
+      },
+      (error)=>{
+        this.disableAllLoaders();
       });
+  }
+
+  getDetails(pkg:any){
+    let payload = {
+      "objectId":  pkg?.packageId
+    };
+    
+    this.detailsLoader = true;
+    this.apiService.ExecutePost(environment?.apiUrl + 'get-package',payload).subscribe((data:any)=>{
+      if(data?.data){
+        console.log(data);
+        this.packageDetails = data?.data;
+      }
+      this.detailsLoader = false;
+    },
+    (error)=>{
+      this.detailsLoader = false;
+    })
+
+  }
+
+  disableAllLoaders(){
+    setTimeout(()=>{
+      this.loader = false;
+      this.detailsLoader = false;
+    },1000);
   }
 
 

@@ -112,10 +112,10 @@
             </div>
         </div>
         <div class="bg-white rounded-md w-full h-full shadow-sm py-2 h-tab overflow-hidden">
-            <div *ngIf="loader" class="h-3 flex justify-end px-2 text-xs font-semibold items-center">
+            <div *ngIf="detailsLoader" class="h-3 flex justify-end px-2 text-xs font-semibold items-center">
                 <div class="h-3 w-12 bg-slate-50 rounded-full animate-pulse"></div>
             </div>
-            <div *ngIf="!loader" class="h-3 flex justify-end px-2 text-xs font-semibold items-center">Active
+            <div *ngIf="!detailsLoader" class="h-3 flex justify-end px-2 text-xs font-semibold items-center">Active
                 <svg class="w-2 h-2 ms-1 mt-0.5 text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -124,21 +124,21 @@
             </div>
 
             <div class="w-full  flex items-center justify-center text-center ">
-                <div *ngIf="loader" class=" w-16 h-16 flex  justify-center items-center mt-5">
+                <div *ngIf="detailsLoader" class=" w-16 h-16 flex  justify-center items-center mt-5">
                     <div class="w-full h-full rounded-full bg-gray-100 animate-pulse"></div>
                 </div>
-                <div *ngIf="!loader" class=" w-16 h-16 flex  justify-center items-center mt-5">
+                <div *ngIf="!detailsLoader" class=" w-16 h-16 flex  justify-center items-center mt-5">
                     <img src="assets/icons/pkg.svg" class="w-full h-full" alt="" srcset="">
                 </div>
             </div>
             <div class=" flex  flex-col justify-center items-center">
-                <div *ngIf="loader" class=" font-semibold text-base mt-2 h-4 w-36 bg-gray-50 rounded-xl mb-2"></div>
-                <div *ngIf="loader" class="font-medium text-xs text-gray-600 h-4 w-44 bg-gray-50 rounded-xl"></div>
-                <div *ngIf="!loader" class=" font-semibold text-base mt-2">Exercise 2</div>
-                <div *ngIf="!loader" class="font-medium text-xs text-gray-600">E 121215</div>
+                <div *ngIf="detailsLoader" class=" font-semibold text-base mt-2 h-4 w-36 bg-gray-50 rounded-xl mb-2"></div>
+                <div *ngIf="detailsLoader" class="font-medium text-xs text-gray-600 h-4 w-44 bg-gray-50 rounded-xl"></div>
+                <div *ngIf="!detailsLoader" class=" font-semibold text-base mt-2"></div>
+                <div *ngIf="!detailsLoader" class="font-medium text-xs text-gray-600"></div>
             </div>
             <div class="flex items-center gap-0.5 px-3 py-3">
-                <ng-container *ngIf="loader">
+                <ng-container *ngIf="detailsLoader">
                     <div class="w-8 h-8 rounded-full bg-zinc-50 "></div>
                     <div class="flex flex-col w-full ">
                         <div
@@ -149,19 +149,19 @@
                         </div>
                     </div>
                 </ng-container>
-                <ng-container *ngIf="!loader">
+                <ng-container *ngIf="!detailsLoader">
                     <img class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image">
                     <div class="flex flex-col w-full ">
                         <div
                             class="text-sm font-semibold    relative w-3/4 overflow-hidden max-w-full  whitespace-nowrap overflow-ellipsis">
-                            John Doe</div>
+                            </div>
                         <div class="text-xs font-medium  w-3/4 whitespace-nowrap overflow-ellipsis overflow-hidden">
-                            Created Dec 21. 2023</div>
+                            Created </div>
                     </div>
                 </ng-container>
 
             </div>
-            <mat-tab-group *ngIf="!loader" animationDuration="0" class="mt-2 overflow-y-auto h-3/5 px-2 tabs">
+            <mat-tab-group *ngIf="!detailsLoader" animationDuration="0" class="mt-2 overflow-y-auto h-3/5 px-2 tabs">
                 <mat-tab label="Details">
                     <!-- <ng-template mat-tab-label >
                       Details
@@ -170,7 +170,7 @@
                         class="text-xs font-semibold px-2.5 py-2  w-3/4 whitespace-nowrap overflow-ellipsis overflow-hidden">
                         Last Updated Dec 20, 2023</div>
                     <div class="text-sm font-semibold flex gap-1 px-2.5 "><span class="mr-2">Updated by</span> <img
-                            class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image"> Jose Leos
+                            class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image"> 
                     </div>
                     <div class="px-3 py-3 flex text-sm">
                         <div class="bg-rose-50 px-3 py-1 rounded-full font-semibold border-pink-200 border-2 z-10">

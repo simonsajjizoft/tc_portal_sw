@@ -11,8 +11,10 @@ export class PackagesService {
 
   constructor(private http: HttpClient,private apiService:ApiService ) {}
   getPackages(page: number,searchValue:string,statusList:any[]): Observable<any[]> {
+    let role = localStorage.getItem("TCuserRole");
+    role = role=='tc' ? 'tc' : (role=='super_admin' ? 'super-admin': role )
     return this.apiService.ExecutePost(
-      environment?.apiUrl +  `tc/packages` +`?page=${page}&size=10`,{
+      environment?.apiUrl +  `${role}/packages` +`?page=${page}&size=10`,{
         "username": localStorage?.getItem("userEmail") ? localStorage?.getItem("userEmail") : '',
         "eventStatusId":statusList,
         "searchValue":searchValue
