@@ -2,7 +2,7 @@
     <div class="w-full sm:w-full md:w-3/4 md:flex-1 mr-3">
         <div class="flex gap-3  items-center w-full">
             <ng-container *ngIf="loader">
-                <div class="text-lg w-1/4 font-bold  py-1.5 flex gap-1 items-center">
+                <div class="text-lg w-1/4 font-bold  py-1 flex gap-1 items-center">
                     <div class=" w-7 h-7  flex  justify-center items-center">
                         <img src="assets/icons/pkg.svg" class="w-fit h-fit p-4" alt="" srcset="">
                     </div> Packages
@@ -12,7 +12,7 @@
                 </div>
             </ng-container>
             <ng-container *ngIf="!loader">
-                <div class="text-lg w-1/4 font-bold  py-1.5 flex gap-1 items-center">
+                <div class="text-lg w-1/4 font-bold  py-1 flex gap-1 items-center">
                     <div class=" w-7 h-7  flex  justify-center items-center">
                         <img src="assets/icons/pkg.svg" class="w-fit h-fit p-4" alt="" srcset="">
                     </div> Packages
@@ -26,11 +26,11 @@
                     <img *ngIf="!searchValue?.trim()" src="assets/icons/search.svg" width="18px" height="18px" alt="" srcset=""
                         class="absolute top-1/4 right-3 ">
                 </div>
-                <div (click)="statusDropdown=true" (clickOutside)="statusDropdown=false"  class="w-24 cursor-pointer flex gap-1 items-center text-sm  rounded-lg font-semibold  px-2 py-1.5 relative">
+                <div (click)="statusDropdown=!statusDropdown" (clickOutside)="statusDropdown=false"  class="w-24 cursor-pointer flex gap-1 items-center text-sm  rounded-lg font-semibold  px-2 py-1.5 relative">
                     Status
                     <mat-icon class="text-xl mb-1">{{statusDropdown ? 'keyboard_arrow_up' :'keyboard_arrow_down'}}</mat-icon>
                     <ng-container  *ngIf="statusDropdown">
-                        <app-custom-dropdown  [checkboxes]="true" [values]="statusList" [displayName]="'statusName'" (changeStatusListModel)="changeList($event)"></app-custom-dropdown>
+                        <app-custom-dropdown (click)="statusDropdown=true;$event?.stopPropagation()"  [checkboxes]="true" [values]="statusList" [displayName]="'statusName'" (changeStatusListModel)="changeList($event)"></app-custom-dropdown>
                     </ng-container>
                 </div>
                 <div class="flex gap-1 items-center font-semibold py-1.5 relative cursor-pointer"
@@ -69,10 +69,10 @@
         <div class="h-tab" style="overflow-y: auto;" #ctn>
             <div *ngIf="!loader"  infiniteScroll [infiniteScrollDistance]="distance" [infiniteScrollContainer]="ctn"
                 [infiniteScrollThrottle]="throttle" (scrolled)="onScroll()">
-                <div
+                <div 
                     class="  py-3 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-3 mr-0 sm:mr-0 md:mr-2">
-                    <div (dblclick)="navigateDetails()" *ngFor="let item of packages"
-                        class="h-48 sm:h-48  md:h-52 card-item cursor-pointer rounded-md  bg-white border flex flex-col justify-between gap-2  px-2 py-2 overflow-hidden">
+                    <div (dblclick)="navigateDetails()" (click)="getDetails(item)" *ngFor="let item of packages" [ngClass]="item?.selected ? 'border-purple-200 border-2' : 'border'"
+                        class="h-48 sm:h-48  md:h-52 card-item cursor-pointer rounded-md  bg-white  flex flex-col justify-between gap-2  px-2 py-2 overflow-hidden">
                         <div class="flex justify-end">
                             <div class="w-fit px-2  xs-text text-gray-700 font-medium rounded-2xl " [ngClass]="statusConfigs[item?.packageStatus] ? statusConfigs[item?.packageStatus]?.bgColor : 'bg-pink-50'">
                                 {{item?.packageStatus}}
@@ -106,108 +106,119 @@
     </div>
 
     <div class="w-1/4 hidden sm:hidden md:inline">
-        <div class="flex justify-end  items-center mb-2 mt-0.5 px-1">
+        <div class="flex justify-end  items-center mb-4 mt-0.5 px-1">
             <div class="flex gap-1 items-center font-semibold py-1.5 text-sm ">
-                <img src="assets/icons/eye.png" width="18px" height="18px" alt="" srcset="">View
+                <!-- <img src="assets/icons/eye.png" width="18px" height="18px" alt="" srcset="">View -->
             </div>
         </div>
-        <div class="bg-white rounded-md w-full h-full shadow-sm py-2 h-tab overflow-hidden">
-            <div *ngIf="detailsLoader" class="h-3 flex justify-end px-2 text-xs font-semibold items-center">
-                <div class="h-3 w-12 bg-slate-50 rounded-full animate-pulse"></div>
-            </div>
-            <div *ngIf="!detailsLoader" class="h-3 flex justify-end px-2 text-xs font-semibold items-center">Active
-                <svg class="w-2 h-2 ms-1 mt-0.5 text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    fill="none" viewBox="0 0 10 6">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m1 1 4 4 4-4" />
-                </svg>
-            </div>
-
-            <div class="w-full  flex items-center justify-center text-center ">
-                <div *ngIf="detailsLoader" class=" w-16 h-16 flex  justify-center items-center mt-5">
-                    <div class="w-full h-full rounded-full bg-gray-100 animate-pulse"></div>
+        <div #containerdetails class="bg-white rounded-md w-full h-full shadow-sm py-2 h-tab overflow-hidden ">
+            <div #top >
+                <div *ngIf="detailsLoader" class="h-3 flex justify-end px-2 text-xs font-semibold items-center">
+                    <div class="h-3 w-12 bg-slate-50 rounded-full animate-pulse"></div>
                 </div>
-                <div *ngIf="!detailsLoader" class=" w-16 h-16 flex  justify-center items-center mt-5">
-                    <img src="assets/icons/pkg.svg" class="w-full h-full" alt="" srcset="">
+                <div *ngIf="!detailsLoader" class="h-3 flex justify-end px-2 text-xs font-semibold items-center">Active
+                    <svg class="w-2 h-2 ms-1 mt-0.5 text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
                 </div>
-            </div>
-            <div class=" flex  flex-col justify-center items-center">
-                <div *ngIf="detailsLoader" class=" font-semibold text-base mt-2 h-4 w-36 bg-gray-50 rounded-xl mb-2"></div>
-                <div *ngIf="detailsLoader" class="font-medium text-xs text-gray-600 h-4 w-44 bg-gray-50 rounded-xl"></div>
-                <div *ngIf="!detailsLoader" class=" font-semibold text-base mt-2"></div>
-                <div *ngIf="!detailsLoader" class="font-medium text-xs text-gray-600"></div>
-            </div>
-            <div class="flex items-center gap-0.5 px-3 py-3">
-                <ng-container *ngIf="detailsLoader">
-                    <div class="w-8 h-8 rounded-full bg-zinc-50 "></div>
-                    <div class="flex flex-col w-full ">
-                        <div
-                            class="text-sm font-semibold  bg-zinc-50 animate-pulse rounded-full h-3 relative w-1/2 overflow-hidden max-w-full  whitespace-nowrap overflow-ellipsis">
-                        </div>
-                        <div
-                            class="text-xs font-medium bg-zinc-50 animate-pulse rounded-full w-3/4 h-3 mt-2 whitespace-nowrap overflow-ellipsis overflow-hidden">
-                        </div>
+    
+                <div class="w-full  flex items-center justify-center text-center ">
+                    <div *ngIf="detailsLoader" class=" w-16 h-16 flex  justify-center items-center mt-5">
+                        <div class="w-full h-full rounded-full bg-gray-100 animate-pulse"></div>
                     </div>
-                </ng-container>
-                <ng-container *ngIf="!detailsLoader">
-                    <img class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image">
-                    <div class="flex flex-col w-full ">
-                        <div
-                            class="text-sm font-semibold    relative w-3/4 overflow-hidden max-w-full  whitespace-nowrap overflow-ellipsis">
-                            </div>
-                        <div class="text-xs font-medium  w-3/4 whitespace-nowrap overflow-ellipsis overflow-hidden">
-                            Created </div>
+                    <div *ngIf="!detailsLoader" class=" w-16 h-16 flex  justify-center items-center mt-5">
+                        <img src="assets/icons/pkg.svg" class="w-full h-full" alt="" srcset="">
                     </div>
-                </ng-container>
-
-            </div>
-            <mat-tab-group *ngIf="!detailsLoader" animationDuration="0" class="mt-2 overflow-y-auto h-3/5 px-2 tabs">
-                <mat-tab label="Details">
-                    <!-- <ng-template mat-tab-label >
-                      Details
-                    </ng-template> -->
-                    <div
-                        class="text-xs font-semibold px-2.5 py-2  w-3/4 whitespace-nowrap overflow-ellipsis overflow-hidden">
-                        Last Updated Dec 20, 2023</div>
-                    <div class="text-sm font-semibold flex gap-1 px-2.5 "><span class="mr-2">Updated by</span> <img
-                            class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image"> 
-                    </div>
-                    <div class="px-3 py-3 flex text-sm">
-                        <div class="bg-rose-50 px-3 py-1 rounded-full font-semibold border-pink-200 border-2 z-10">
-                            Exercises</div>
-                        <div
-                            class="bg-zinc-50 text-gray-600 px-3 py-1 rounded-full font-semibold border-zinc-50 border-2 -ml-2 -z-10">
-                            Templates</div>
-                    </div>
-                    <div class="flex flex-wrap justify-center  gap-2 px-2 py-3">
-                        <div *ngFor="let item of [1,2,3,4]" class=" h-32 w-28  items-center justify-center">
+                </div>
+                <div class=" flex  flex-col justify-center items-center">
+                    <div *ngIf="detailsLoader" class=" font-semibold text-base mt-2 h-4 w-36 bg-gray-50 rounded-xl mb-2"></div>
+                    <div *ngIf="detailsLoader" class="font-medium text-xs text-gray-600 h-4 w-44 bg-gray-50 rounded-xl"></div>
+                    <div *ngIf="!detailsLoader" class=" font-semibold text-base mt-2">{{packageDetails?.packageName}}</div>
+                    <div *ngIf="!detailsLoader" class="font-medium text-xs text-gray-600">{{packageDetails?.packageId}}</div>
+                </div>
+                <div class="flex gap-1" *ngIf="!detailsLoader">
+                    <div class="text-sm font-medium text-gray-600 px-3 pt-2 ">Age Group </div>
+                    <div class="text-sm font-bold px-3 pt-2 ">{{packageDetails?.ageGroup}}</div>
+                </div>
+                <div class="flex items-center gap-0.5 px-3 py-2">
+                    <ng-container *ngIf="detailsLoader">
+                        <div class="w-8 h-8 rounded-full bg-zinc-50 "></div>
+                        <div class="flex flex-col w-full ">
                             <div
-                                class="flex items-center justify-center w-full h-4/6 rounded-lg bg-pink-50 relative border-2 border-pink-300">
-                                <img src="assets/icons/exercise.svg" class="w-8 h-8" alt="" srcset="">
-                                <!-- <div  class="flex justify-end xs-text text-pink-500 absolute right-2.5 top-2"><img src="assets/icons/pencil.png" width="13px" height="13px" alt="" srcset=""></div> -->
-                                <div *ngIf="item===4"
-                                    class="flex justify-end xs-text text-pink-500 absolute right-2.5 bottom-2">Bonus
-                                </div>
-
+                                class="text-sm font-semibold  bg-zinc-50 animate-pulse rounded-full h-3 relative w-1/2 overflow-hidden max-w-full  whitespace-nowrap overflow-ellipsis">
                             </div>
-                            <div class="h-2/6">
-                                <div class=" text-center flex justify-center text-xs font-semibold h-4">Exercise 1</div>
-                                <div class="xs-text  text-center h-4">ID 634873</div>
+                            <div
+                                class="text-xs font-medium bg-zinc-50 animate-pulse rounded-full w-3/4 h-3 mt-2 whitespace-nowrap overflow-ellipsis overflow-hidden">
                             </div>
-
                         </div>
+                    </ng-container>
+                    <ng-container *ngIf="!detailsLoader">
+                        <img class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image">
+                        <div class="flex flex-col w-full ">
+                            <div
+                                class="text-sm font-semibold    relative w-3/4 overflow-hidden max-w-full  whitespace-nowrap overflow-ellipsis">
+                                </div>
+                            <div class="text-xs font-medium  w-3/4 whitespace-nowrap overflow-ellipsis overflow-hidden">
+                                Created </div>
+                        </div>
+                    </ng-container>
+    
+                </div>
 
-
-                    </div>
-                </mat-tab>
-                <mat-tab title="This feature will be available soon">
-                    <ng-template mat-tab-label>
-                        <div>Comments</div>
-                    </ng-template>
-                    <div class="px-3 py-5 text-gray-500 text-center text-xs font-medium">This feature will be available
-                        soon</div>
-                </mat-tab>
-            </mat-tab-group>
+            </div>
+            <div #bottom [style.height]="bottomHeight" class="mt-2 pb-4   overflow-hidden">
+                <mat-tab-group   animationDuration="0"  class=" overflow-y-auto  px-2 tabs max-h-full">
+                    <mat-tab label="Details">
+                        <div class="mt-3 text-xs font-semibold px-2.5 py-0.5 ">{{packageDetails?.description}}</div>
+                        <div
+                            class="text-xs font-semibold px-2.5 py-2  w-3/4 whitespace-nowrap overflow-ellipsis overflow-hidden">
+                            Last Updated Dec 20, 2023</div>
+                        <div class="text-sm font-semibold flex gap-1 px-2.5 "><span class="mr-2">Updated by</span> <img
+                                class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image"> 
+                        </div>
+                        <div class="px-3 py-3 flex text-sm">
+                            <div class="bg-rose-50 px-3 py-1 rounded-full font-semibold border-pink-200 border-2 z-10">
+                                Exercises</div>
+                            <div
+                                class="bg-zinc-50 text-gray-600 px-3 py-1 rounded-full font-semibold border-zinc-50 border-2 -ml-2 -z-10">
+                                Templates</div>
+                        </div>
+                        <div class="flex flex-wrap justify-center  gap-2 px-2 py-3 mb-2">
+                            <div class="text-center text-gray-400 text-xs font-semibold" *ngIf="packageDetails?.tcExerciseResponseDtoList && packageDetails?.tcExerciseResponseDtoList?.length==0">
+                                No Exercises
+                            </div>
+                            <div *ngFor="let exercise of packageDetails?.tcExerciseResponseDtoList" class=" h-32 w-28  items-center justify-center">
+                                <div
+                                    class="flex items-center justify-center w-full h-4/6 rounded-lg bg-pink-50 relative border-2 border-pink-300">
+                                    <img src="assets/icons/exercise.svg" class="w-8 h-8" alt="" srcset="">
+                                    <!-- <div  class="flex justify-end xs-text text-pink-500 absolute right-2.5 top-2"><img src="assets/icons/pencil.png" width="13px" height="13px" alt="" srcset=""></div> -->
+                                    <div *ngIf="item===4"
+                                        class="flex justify-end xs-text text-pink-500 absolute right-2.5 bottom-2">Bonus
+                                    </div>
+    
+                                </div>
+                                <div class="h-2/6">
+                                    <div class=" text-center flex justify-center text-xs font-semibold h-4">{{exercise?.exerciseName}}</div>
+                                    <div class="xs-text  text-center h-4 overflow-hidden w-full text-ellipsis">{{exercise?.exerciseId}}</div>
+                                </div>
+    
+                            </div>
+    
+    
+                        </div>
+                    </mat-tab>
+                    <mat-tab title="This feature will be available soon">
+                        <ng-template mat-tab-label>
+                            <div>Comments</div>
+                        </ng-template>
+                        <div class="px-3 py-5 text-gray-500 text-center text-xs font-medium">This feature will be available
+                            soon</div>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+           
         </div>
 
 

@@ -32,3 +32,23 @@
 }
 
 
+.container-details {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Adjust as needed */
+}
+
+.top-details {
+  flex: 0 0 auto; /* This div won't grow or shrink */
+  height: 100px; /* Adjust as needed */
+  background-color: red;
+}
+
+.bottom-details {
+  flex: 1; /* This div will take up remaining space */
+  background-color: blue;
+}
+
+.mat-checkbox-frame { 
+  border-color: rgb(204, 204, 204)!important;
+}

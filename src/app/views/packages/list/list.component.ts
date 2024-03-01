@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 // import {PackagesSer}
@@ -21,7 +21,7 @@ export interface Comment {
   styleUrls: ['./list.component.scss'],
   encapsulation:ViewEncapsulation.None
 })
-export class ListComponent {
+export class ListComponent implements OnInit,AfterViewInit {
   loader;
   throttle = 50;
   distance = 2;
@@ -34,6 +34,10 @@ export class ListComponent {
   packageDetails;
   detailsLoader:boolean = false;
   statusConfigs;
+  @ViewChild('containerdetails') containerRef: ElementRef;
+  @ViewChild('top') topRef: ElementRef;
+  @ViewChild('bottom') bottomRef: ElementRef;
+  bottomHeight;
   constructor(private router:Router,private http:HttpClient,private packageService:PackagesService,private apiService:ApiService,private general:GeneralService){}
 
   ngOnInit(){
@@ -55,6 +59,12 @@ export class ListComponent {
     (error)=>{
       this.disableAllLoaders()
     });
+  }
+
+  ngAfterViewInit() {
+    const containerHeight = this.containerRef.nativeElement.clientHeight;
+    const topHeight = this.topRef.nativeElement.clientHeight;
+    this.bottomHeight = `calc(${containerHeight}px - ${topHeight}px)`;
   }
 
   onScroll(): void {
@@ -144,7 +154,7 @@ export class ListComponent {
     let payload = {
       "objectId":  pkg?.packageId
     };
-    
+    this.selectPackage(pkg);
     this.detailsLoader = true;
     this.apiService.ExecutePost(environment?.apiUrl + 'get-package',payload).subscribe((data:any)=>{
       if(data?.data){
@@ -157,6 +167,13 @@ export class ListComponent {
       this.detailsLoader = false;
     })
 
+  }
+
+  selectPackage(pkg){
+    this.packages.map((item:any)=>{
+      item.selected = false;
+    })
+    pkg.selected = true;
   }
 
   disableAllLoaders(){
