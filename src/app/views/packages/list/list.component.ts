@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import {PackagesService} from '../packages.service'
 import { ApiService } from 'src/app/services/api.services';
 import { environment } from 'src/environments/environment';
+import { GeneralService } from 'src/app/services/general.services';
 
 export interface Comment {
   id: number;
@@ -32,13 +33,15 @@ export class ListComponent {
   statusList = [];
   packageDetails;
   detailsLoader:boolean = false;
-  constructor(private router:Router,private http:HttpClient,private packageService:PackagesService,private apiService:ApiService){}
+  statusConfigs;
+  constructor(private router:Router,private http:HttpClient,private packageService:PackagesService,private apiService:ApiService,private general:GeneralService){}
 
   ngOnInit(){
     this.loader = true;
     this.detailsLoader = true;
     this.fetchStatusList()
     let checkedList = [];
+    this.statusConfigs = this.general.statusConfiguration;
     checkedList = this.statusList.filter((item)=>item?.checked);
     this.packageService
     .getPackages(this.page,this.searchValue,checkedList)
