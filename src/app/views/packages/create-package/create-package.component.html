@@ -24,9 +24,9 @@
                 </svg>
                 <div *ngIf="statusDropdown"
                     class=" w-44 h-fit bg-white text-black z-10 rounded-md border absolute text-xs top-10 shadow right-0">
-                    <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
-                            class="mr-1">Save As Draft</span></div>
-                    <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span class="mr-1">Submit &
+                    <div (click)="openDialog(2000,0)"  class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
+                          class="mr-1">Save As Draft</span></div>
+                    <div (click)="openDialog(2000,0)" class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span class="mr-1">Submit &
                             Review</span></div>
                 </div>
             </div>
