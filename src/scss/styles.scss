@@ -280,14 +280,15 @@ a:hover {
 
 .sidebar {
 
-    background-color: #ffffff !important;
-    border-right: 2px solid whitesmoke !important;
+    background-color: #f5f5f7 !important;
+    // border-right: 2px solid whitesmoke !important;
     opacity: 1 !important;
+    box-shadow: 5px 0 14px #9587b040;
 }
 
 .sidebar-item.active .sidebar-link:hover,
 .sidebar-item.active>.sidebar-link {
-    background-color: grey !important;
+    background-color: rgb(228, 228, 228) !important;
 }
 
 .sidebar-nav .nav-link {
@@ -466,6 +467,7 @@ a:hover {
 
 .header {
     z-index: 990 !important;
+    background-color: #654391;
 }
 
 .required-btn {
@@ -681,4 +683,5 @@ cite {
 .sidebar-brand{
     display: flex!important;
     justify-content: flex-start!important;
+    background-color: rgb(237, 234, 239)!important;
 }

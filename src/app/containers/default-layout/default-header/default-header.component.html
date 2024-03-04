@@ -1,8 +1,9 @@
 <!--<c-header class="mb-4 d-print-none" position="sticky">-->
 <ng-container>
   <c-container breakpoint="xxl">
-    <button toggle="visible" cHeaderToggler [cSidebarToggle]="sidebarId" class="ps-1">
-      <svg cIcon name="cilMenu" size="lg"></svg>
+    <button toggle="visible" cHeaderToggler [cSidebarToggle]="sidebarId" class="ps-0.5 pt-2 text-black ">
+      <!-- <svg cIcon name="cilMenu" size="lg"></svg> -->
+      <mat-icon class="text-gray-200">menu</mat-icon>
     </button>
     <c-header-nav class="d-none d-lg-flex me-auto f-s-14">
       <!-- <img src="assets/icons/sw-logo.png" width="105px" height="25px" alt="" srcset=""> -->
@@ -16,8 +17,8 @@
 <!--</c-header>-->
 <ng-template #userDropdown>
   <div (click)="statusDropdown=!statusDropdown" #drpdown
-  class="z-20 cursor-pointer rounded-3xl relative  mr-6  px-3 py-1 font-medium text-sm flex  items-center">
-  <span class=" flex items-center font-medium text-sm pr-0.5">New </span>
+  class="z-20 cursor-pointer rounded-3xl relative  mr-6  px-3 py-1 font-medium text-sm flex  items-center text-gray-300">
+  <span class=" flex items-center font-semibold text-sm pr-0.5 ">New </span>
   <svg class="w-2 h-2 ms-1  ml-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
       viewBox="0 0 10 6">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -25,26 +26,29 @@
   </svg>
   <div *ngIf="statusDropdown"
       class=" w-44 h-fit bg-white text-gray-700 z-20 rounded-lg border border-gray-200  absolute text-sm top-10 shadow right-0 p-4">
-      <div class="px-4 py-1.5 font-medium hover:bg-pink-50 text-right items-center flex justify-end gap-2 rounded-lg">
-        <img src="assets/icons/pkg.svg" class="w-5 h-5" alt="" srcset="">
+      <div class="px-4 py-1 font-medium hover:bg-pink-50 text-right items-center flex justify-end gap-2 rounded-lg">
+        <!-- <img src="assets/icons/pkg.svg" class="w-5 h-5" alt="" srcset=""> -->
         <span class="mr-1 ml-1.5">  Package</span>
       </div>
-      <div class="px-4 py-1.5 font-medium hover:bg-pink-50 text-right items-center flex justify-end gap-2 rounded-lg mt-2">
-        <img src="assets/icons/exercise.svg" class="w-6 h-6" alt="" srcset="">
+      <div class="px-4 py-1 font-medium hover:bg-pink-50 text-right items-center flex justify-end gap-2 rounded-lg mt-2">
+        <!-- <img src="assets/icons/exercise.svg" class="w-6 h-6" alt="" srcset=""> -->
         <span class="mr-1 ml-1.5">  Exercise</span>
       </div>
-      <div class="px-4 py-1.5 font-medium hover:bg-pink-50 text-right items-center flex justify-end rounded-lg mt-2">
-        <img src="assets/icons/layout.png" class="w-5 h-5" alt="" srcset="">
+      <div class="px-4 py-1 font-medium hover:bg-pink-50 text-right items-center flex justify-end rounded-lg mt-2">
+        <!-- <img src="assets/icons/layout.png" class="w-5 h-5" alt="" srcset=""> -->
         <span class="mr-1 ml-2">  Template</span>
       </div>
   </div>
 </div>
-  <div class="items-center flex mr-6"><img src="assets/icons/setting.png" width="21px" height="21px" alt="" srcset=""></div>
+  <div class="items-center flex mr-6">
+    <img src="assets/icons/settings2.png" width="21px" height="21px" alt="" srcset="">
+    <!-- <mat-icon class="text-white">settings_outline</mat-icon> -->
+  </div>
   <c-dropdown alignment="end" variant="nav-item" class="d-flex align-center">
     <button cButton color="" [caret]="false" cDropdownToggle class="py-0 d-flex align-center"
       style="outline:none!important;border: none!important;">
-      <div class="avatar m-b-5 m-r-10">
-        <img class="avatar-img a-img" src="/assets/icons/prof.svg" alt="user@email.com">
+      <div class="avatar m-b-5 m-r-10 " >
+        <img class="avatar-img a-img ring-2 ring-purple-500" style="border:0!important" src="/assets/img/avatars/2.jpg" alt="user@email.com">
         <span class="avatar-status bg-success"></span>
       </div>
       <div *ngIf="userName" class="flex-column d-flex user">

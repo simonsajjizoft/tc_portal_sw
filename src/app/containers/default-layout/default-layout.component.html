@@ -1,6 +1,6 @@
 <!--sidebar-->
-<c-sidebar #sidebar="cSidebar" class="d-print-none sidebar sidebar-fixed bg-white" id="sidebar" visible >
-  <c-sidebar-brand class="bg-white">
+<c-sidebar #sidebar="cSidebar" class="d-print-none sidebar sidebar-fixed " id="sidebar" visible >
+  <c-sidebar-brand class="bg-purple-200">
     <div class="flex  px-4 text-left items-center  py-3 ">
       <div class="logo text-lg font-semibold f-lexend"><img src="assets/icons/favicon.ico" width="20px" height="20px"
           alt=""></div>
@@ -8,33 +8,33 @@
     </div>
   </c-sidebar-brand>
   <perfect-scrollbar [config]="perfectScrollbarConfig">
-    <div class="px-2 py-3 mt-2  bg-white ">
-      <div  (click)="navigate('/dashboard')" [ngClass]="router?.url?.includes('dashboard') ? 'bg-violet-50' : ''"
+    <div class="px-2 py-3 mt-2   ">
+      <div  (click)="navigate('/dashboard')" [ngClass]="router?.url?.includes('dashboard') ? 'bg-violet-100' : ''"
         class="overflow-hidden cursor-pointer font-bold  text-sm flex p-10 pt-2 pb-2 gap-1 rounded-md items-center">
         <img class="p-2 mr-2" src="assets/icons/home.png" width="25px" height="25px" alt="">
         <span class=" text-sm "
           [ngClass]="router?.url?.includes('dashboard') ? 'text-pink-600 font-bold': 'text-gray-600'">Home</span>
       </div>
-      <div   [ngClass]="router?.url?.includes('exercises') ? 'bg-violet-50' : ''" (click)="navigate('/exercises')"
+      <div   [ngClass]="router?.url?.includes('exercises') ? 'bg-violet-100' : ''" (click)="navigate('/exercises')"
         class="overflow-hidden cursor-pointer font-bold  text-sm flex p-10 pt-2 pb-2 gap-1 rounded-md items-center">
         <img class=" mr-2" src="assets/icons/exercise.svg" width="25px" height="25px" alt="">
         <span class=" text-sm "
           [ngClass]="router?.url?.includes('exercises') ? 'text-pink-600 font-bold': 'text-gray-600'">Excercises</span>
       </div>
-      <div   [ngClass]="router?.url?.includes('packages') ? 'bg-violet-50' : ''" (click)="navigate('/packages')"
+      <div   [ngClass]="router?.url?.includes('packages') ? 'bg-violet-100' : ''" (click)="navigate('/packages')"
         class="overflow-hidden cursor-pointer font-bold  text-sm flex p-10 pt-2 pb-2 gap-1  rounded-md items-center">
         <img class="p-2 mr-2" src="assets/icons/pkg.svg" width="26px" height="28px" alt="">
         <span  class=" text-sm"
           [ngClass]="router?.url?.includes('packages') ? 'text-pink-600 font-bold': 'text-gray-600'">Packages</span>
       </div>
-      <div   [ngClass]="router?.url?.includes('templates') ? 'bg-violet-50' : ''"  (click)="navigate('/templates')"
+      <div   [ngClass]="router?.url?.includes('templates') ? 'bg-violet-100' : ''"  (click)="navigate('/templates')"
         class="overflow-hidden cursor-pointer font-bold  text-sm flex p-10 pt-2 pb-2 gap-1  rounded-md items-center">
         <img class="p-2 mr-2" src="assets/icons/layout.png" width="26px" height="28px" alt="">
         <span  class=" text-sm"
           [ngClass]="router?.url?.includes('templates') ? 'text-pink-600 font-bold': 'text-gray-600'">Templates</span>
       </div>
     </div>
-    <div class="px-2.5 py-3   mt-3  bg-white " *ngIf="!unfoldable">
+    <div class="px-2.5 py-3   mt-3   " *ngIf="!unfoldable">
       <div class="font-bold text-xs text-gray-500 py-2 px-1">RECENTLY UPDATED</div>
       <div class="flex py-2 overflow-hidden">
         <div class="font-medium text-sm flex px-1 py-2 gap-1 rounded-md items-center overflow-hidden">
