@@ -433,6 +433,7 @@ a:hover {
     outline: 0;
     transition: var(--cui-offcanvas-transition);
     opacity: 0.99 !important;
+    min-width: 20vw;
 }
 
 .custom-modalbox {
@@ -440,6 +441,10 @@ a:hover {
     border-radius: 2px !important;
     padding: 0 !important;
     z-index: 3000 !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    top: 0px !important;
+    right: 0 !important;
 }
 
 .custom-modalbox mat-dialog-container {
@@ -447,6 +452,10 @@ a:hover {
     border-radius: 2px !important;
     padding: 0 !important;
     z-index: 3000 !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    top: 0px !important;
+    right: 0 !important;
 }
 
 
@@ -564,6 +573,7 @@ input:-webkit-autofill:active {
     .sidebar {
         z-index: 1500 !important;
     }
+ 
 }
 
 .main-body {
@@ -576,6 +586,26 @@ input:-webkit-autofill:active {
         padding-left: 0rem;
         padding-right: 0rem;
     }
+}
+
+@media only screen and (max-width: 768px) {
+    .dialog-ctn {
+        position: fixed !important;
+        bottom: 0 !important;
+        top: 0px !important;
+        right: 0 !important;
+        z-index: 1040 !important;
+        display: flex;
+        flex-direction: column;
+        color: var(--cui-offcanvas-color);
+        background-clip: padding-box;
+        outline: 0;
+        transition: var(--cui-offcanvas-transition);
+        opacity: 0.99 !important;
+        min-width: 100vw;
+        width: 100vw;
+    }
+    
 }
 
 

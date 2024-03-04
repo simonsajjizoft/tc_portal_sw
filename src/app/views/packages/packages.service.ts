@@ -21,4 +21,14 @@ export class PackagesService {
     }
       ) as Observable<any[]>;
   }
+
+  getApprovedExercises(page: number,ageGroup): Observable<any[]> {
+    let role = localStorage.getItem("TCuserRole");
+    role = role=='tc' ? 'tc' : (role=='super_admin' ? 'super-admin': role )
+    return this.apiService.ExecutePost(
+      environment?.apiUrl +  `age-group/approved-exercises` +`?page=${page}&size=10`,{
+        "ageGroup": ageGroup,
+    }
+      ) as Observable<any[]>;
+  }
 }

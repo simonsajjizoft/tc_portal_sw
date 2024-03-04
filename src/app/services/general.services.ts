@@ -25,7 +25,7 @@ export class GeneralService {
   }
 
   get getUserName() {
-    return this.userEmail;
+    return localStorage.getItem("userEmail");
   }
 
   setUserName(val: any): void {

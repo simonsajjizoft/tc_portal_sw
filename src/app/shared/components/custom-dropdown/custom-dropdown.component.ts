@@ -10,12 +10,18 @@ export class CustomDropdownComponent {
   @Input() checkboxes;
   @Input() displayName;
   @Output() changeStatusListModel = new EventEmitter();
+  @Output() selectEvent = new EventEmitter();
 
-  constructor(){}
+  constructor(){
+  }
 
   toggleCheck(event,item){
     item.checked = event.checked;
     this.changeStatusListModel.emit(item)
+  }
+
+  selectOption(option){
+    this.selectEvent.emit(option);
   }
 
 

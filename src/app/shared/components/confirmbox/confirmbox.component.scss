@@ -1,8 +1,8 @@
-div{
-  font-family: 'Roboto',sans-serif!important;
+div {
+  font-family: 'Roboto', sans-serif !important;
 }
 
-.cancel{
+.cancel {
   display: flex;
   align-items: center;
   border-width: 2px !important;
@@ -13,73 +13,63 @@ div{
   color: rgba(24, 49, 111, 0.85) !important;
   font-size: 14px !important;
   opacity: 1;
-  background-color: white!important;
-}
-.del-blog2 {
-  display: flex;
-  align-items: center;
-  border-width: 2px !important;
-  border-style: solid !important;
-  border-color: rgba(171, 42, 40, 0.65) !important;
-  background:linear-gradient(90deg,rgba(179, 86, 86, 0.87),rgba(130, 25, 25, 0.85))45%!important;
-  border-radius: 16px !important;
-  padding: 6px 20px !important;
-  color: rgba(248, 250, 255, 0.85) !important;
-  font-size: 14px !important;
-  opacity: 0.97;
+  background-color: white !important;
 }
 
 
 
 
-.btn-parent{
-    margin-top: 25px;
+.btn-parent {
+  margin-top: 25px;
 }
 
-.btn-ok{
-    padding: 0px 22px;
-    background-color: rgb(110, 136, 165)!important;
-    color:white;
-    border-radius: 15px;
-    border:0.1rem solid rgb(110, 136, 165) !important;;
-    font-size: 0.92rem;
-    margin-right: 10px;
-  }
-  
-  .btn-cancel{
-    /* background-color: #6d7f8e !important; */
-    padding-bottom: 1px;
-    background: none!important;
-    color:rgb(110, 136, 165)!important;
-    padding: 2px 14px;
-    border:0.1rem solid rgba(110, 136, 165,0.86) !important;;
-    border-radius: 15px;
-    font-weight: 500!important;
-    font-size: 0.92rem;
-  }
-  
-  .btn-primary{
-  background-color: var(--button-bg-alt)!important;
+.btn-ok {
+  padding: 0px 22px;
+  background-color: rgb(110, 136, 165) !important;
+  color: white;
+  border-radius: 15px;
+  border: 0.1rem solid rgb(110, 136, 165) !important;
+  ;
+  font-size: 0.92rem;
+  margin-right: 10px;
 }
-button{
-    border: none;
-    outline: none!important;
-    border-radius: 4px!important;
-    cursor: pointer;
-    color: #fff;
-    padding-top: 2px !important;
+
+.btn-cancel {
+  /* background-color: #6d7f8e !important; */
+  padding-bottom: 1px;
+  background: none !important;
+  color: rgb(110, 136, 165) !important;
+  padding: 2px 14px;
+  border: 0.1rem solid rgba(110, 136, 165, 0.86) !important;
+  ;
+  border-radius: 15px;
+  font-weight: 500 !important;
+  font-size: 0.92rem;
+}
+
+.btn-primary {
+  background-color: var(--button-bg-alt) !important;
+}
+
+button {
+  border: none;
+  outline: none !important;
+  border-radius: 4px !important;
+  cursor: pointer;
+  color: #fff;
+  padding-top: 2px !important;
 }
 
 button:focus {
-    outline: none !important;
-    box-shadow: none!important;
-  }
-
-.c-gr{
-  color:gray;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-.text-o{
+.c-gr {
+  color: gray;
+}
+
+.text-o {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -88,9 +78,9 @@ button:focus {
 
 .clamp {
   overflow: hidden !important;
-  overflow-wrap: break-word!important;
+  overflow-wrap: break-word !important;
   flex-wrap: wrap !important;
-  word-wrap: break-word!important;
+  word-wrap: break-word !important;
   text-overflow: ellipsis !important;
   text-wrap: wrap;
   width: 100% !important;
@@ -113,38 +103,44 @@ button:focus {
 }
 
 
-.title-name{
-  color: rgb(15, 15, 74)!important;
-  font-size: 17px!important;
+.title-name {
+  color: rgb(15, 15, 74) !important;
+  font-size: 17px !important;
 }
 
-.c-blk{
-  color: rgb(15, 15, 74)!important;
+.c-blk {
+  color: rgb(15, 15, 74) !important;
 }
 
-.details{
-  width: 35vw;
+.details {
+  // width: 35vw;
+  // height: 15vh;
 }
 
 
-*:not(mat-icon){
+*:not(mat-icon) {
   font-family: "Plus Jakarta Sans", sans-serif !important;
   letter-spacing: -.01rem !important;
-  word-spacing: 0.1rem!important;
+  word-spacing: 0.1rem !important;
 }
 
 
 
-.custom-modalbox  {
-  box-shadow: none!important;
-  border-radius: 2px!important;
-  padding: 0!important;
-  z-index: 2000!important;
+.custom-modalbox {
+  box-shadow: none !important;
+  border-radius: 2px !important;
+  padding: 0 !important;
+  z-index: 2000 !important;
 }
 
 .custom-modalbox mat-dialog-container {
-  box-shadow: none!important;
-  border-radius: 2px!important;
-  padding: 0!important;
-  z-index: 2000!important;
+  box-shadow: none !important;
+  border-radius: 2px !important;
+  padding: 0 !important;
+  z-index: 2000 !important;
+}
+
+.custom-grid {
+  display: grid;
+  grid-template-columns: 170px auto;
 }

@@ -14,7 +14,7 @@ const routes: Routes = [
     component:CreatePackageComponent
   },
   {
-    path:'details',
+    path:'details/:id',
     component:DetailsComponent
   }
   

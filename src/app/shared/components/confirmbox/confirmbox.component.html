@@ -1,54 +1,58 @@
-<!-- <div  mat-dialog-close class="d-flex j-end p-10 p-b-0"><mat-icon style="color:grey">close</mat-icon></div>
 
-<h6 mat-dialog-title class="f-s-16">Are you sure you want to {{data?.action}} {{data?.content}}?</h6>
-<mat-dialog-content class="f-heebo ">
-  <h6 class="m-t-30 f-w-500 f-heebo title-name text-o">{{data?.name}}  </h6>
-  <span *ngIf="data?.experience" class=" c-gr m-b-10">({{data?.experience}})</span>
- 
-  <p *ngIf="data?.workMode" class="c-blk m-t-20">Mode: {{data?.workMode}}</p>
-  <p *ngIf="data?.workLocation" class="c-blk">Location: {{data?.workLocation}}</p>
-  <p  class="j-end c-gr d-flex f-s-13">- {{data?.createdBy}}</p>
-  <img *ngIf="data?.image" [src]="data?.image" width="100%" height="150px" alt="" srcset="">
-  <p class="m-t-20 f-s-13 text-o clamp">{{data?.preview}}</p>
-  <h6 class="f-s-14 m-t-20">Published At </h6>
-  <p class="f-s-13">{{data?.publishedDate | date:"dd MMM YYYY h:m a"}}</p>
-  <h6 *ngIf="data?.tags" class="f-s-14 m-t-20">Tags</h6>
-  <div *ngIf="data?.tags" class="f-s-13 clamp text-o">{{data?.tags}}</div>
-  
-
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-dialog-close class="cancel m-r-15 f-w-500">Cancel</button>
-  <button [mat-dialog-close]="true" (click)="okClick()"  class="del-blog2 f-w-500 f-heebo f-s-13">{{data?.action}}</button>
-</mat-dialog-actions> -->
 <div >
   <div class="hdr font-bold w-100 text-sm px-3 py-3 border-b-2 border-zinc-100 flex justify-between items-center">
-      <div>Submit for Review</div>
-      <div class="text-lg font-medium opacity-70"><img src="assets/icons/clear.svg" width="17px" height="17px" alt="" srcset=""></div>
+      <div>Save Package</div>
+      <div (click)="cancelClick()"  class="text-lg font-medium opacity-70 cursor-pointer"><img src="assets/icons/clear.svg" width="17px" height="17px" alt="" srcset=""></div>
   </div>
   <div class="details">
-      <div class="flex gap-2 py-3 items-center px-3">
-          <div class="font-semibold ">Select Reviewer</div>
-          <div class="flex items-center gap-0.5 py-4 px-5">
-              <img class="w-7 h-7 me-2 rounded-full" src="assets/icons/user2.svg" alt="Jese image">
-              <div class="flex items-center w-full ">
+      <div class="custom-grid mt-3  gap-0.5  items-center px-3">
+          <div class="font-semibold text-sm text-gray-500 py-2">Select Assignee <span class="text-red-500">*</span></div>
+          <div (click)="isAssigneeDropdown=!isAssigneeDropdown" (clickOutside)="isAssigneeDropdown=false" class="w-fit cursor-pointer  relative items-center gap-0.5 pt-0.5">
+              <div class="relative flex flex-col w-fit">
+                <div  class="flex items-center w-fit justify-between">
+                    <div
+                        class="text-sm font-semibold mr-2   relative    w-44  overflow-hidden text-ellipsis">
+                        {{selectedAssignee ? selectedAssignee : 'Select an Assignee...'}}
+                       
+                    </div>
+                    <svg class="w-2 h-2 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 4 4 4-4" />
+                </svg>
+                
+                </div>
+              </div>
+              <ng-container *ngIf="isAssigneeDropdown">
+                <app-custom-dropdown [checkboxes]="false" [values]="userList" [displayName]="''" (selectEvent)="selectAssignee($event)"></app-custom-dropdown>
+              </ng-container>
+          </div>
+          <div class="font-semibold text-sm text-gray-500 py-2">Status <span class="text-red-500">*</span></div>
+        <div (click)="isStatusDropdown=!isStatusDropdown" (clickOutside)="isStatusDropdown=false" class="w-fit cursor-pointer   relative  items-center gap-0.5 pt-0.5  ">
+            <div class="relative flex flex-col w-fit">
+              <div class="flex items-center w-fit justify-between">
                   <div
-                      class="text-sm font-semibold    relative  overflow-hidden max-w-full  whitespace-nowrap overflow-ellipsis">
-                      John Doe
-                     
+                      class="text-sm font-semibold  mr-2  relative  w-44   overflow-hidden text-ellipsis">
+                      {{selectedStatus?.statusName}}
                   </div>
-                  <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  <svg class="w-2 h-2 ms-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                   viewBox="0 0 10 6">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="m1 1 4 4 4-4" />
               </svg>
               </div>
-          </div>
+            </div>
+            <ng-container *ngIf="isStatusDropdown">
+              <app-custom-dropdown [checkboxes]="false" [values]="statusList" [displayName]="'statusName'" (selectEvent)="selectStatus($event)"></app-custom-dropdown>
+            </ng-container>
+        </div>
       </div>
-      <div class="flex gap-1 px-2 py-3  w-full justify-end items-center ">
-          <div [ngClass]="true ? ' text-pink-600 cursor-pointer' : ' text-gray-500 cursor-default'"  class="rounded-2xl  text-sm font-semibold px-4 py-1 ">
-              Submit for Review</div>
-          <div [ngClass]="false ? ' text-pink-600  cursor-pointer' : ' text-gray-500'" class="rounded-2xl  text-sm  font-semibold  px-4 py-1 " >Cancel</div>
-      </div>
+    
+      
   </div>
+  <div class="flex gap-1 px-2 py-3  w-full justify-end items-center absolute bottom-2">
+    <div (click)="okClick()" [ngClass]="true ? ' text-pink-600 cursor-pointer' : ' text-gray-500 cursor-default'"  class="cursor-pointer rounded-2xl  text-sm font-semibold px-3 py-1 ">
+        Save</div>
+    <div (click)="cancelClick()" [ngClass]="false ? ' text-pink-600  cursor-pointer' : ' text-gray-500'" class="cursor-pointer rounded-2xl  text-sm  font-semibold  px-3 py-1 " >Cancel</div>
+</div>
 </div>

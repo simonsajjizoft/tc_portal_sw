@@ -110,9 +110,9 @@ export class ListComponent implements OnInit,AfterViewInit {
     );
   }
 
-  navigateDetails(){
+  navigateDetails(id){
     this.router.navigate(
-      ['/packages/details'] 
+      ['/packages/details',id]
     );
   }
 
