@@ -23,6 +23,7 @@ import { WidgetsModule } from '../widgets/widgets.module';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { MaterialModule } from 'src/app/material/material.module';
 import { SharedModules } from 'src/app/shared/shared.module';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { SharedModules } from 'src/app/shared/shared.module';
     FormsModule,
     CKEditorModule,
     MaterialModule,
-    SharedModules
+    SharedModules,
+    MatExpansionModule
   ],
   declarations: [DashboardComponent]
 })

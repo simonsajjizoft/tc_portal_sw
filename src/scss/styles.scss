@@ -685,3 +685,21 @@ cite {
     justify-content: flex-start!important;
     background-color: rgb(237, 234, 239)!important;
 }
+
+
+.mat-expansion-panel {
+background-color: transparent!important;
+box-shadow: none!important;
+border:none!important;
+outline: none!important;
+padding: 0!important;
+
+}
+
+.mat-expansion-indicator{
+    display: none!important;
+}
+
+.mat-expansion-panel-body, .mat-expansion-panel-header {
+    padding: 0!important;
+}

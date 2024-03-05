@@ -95,6 +95,9 @@ export class DashboardComponent implements OnInit {
   recentPackages:any = [];
   recentTemplates:any = [];
   firstName;
+  showRecentPackages = true;
+  showRecentExercises = true;
+  showRecentTemplates = true;
   public Editor = ClassicEditorBuild;
 
   ngOnInit(): void {

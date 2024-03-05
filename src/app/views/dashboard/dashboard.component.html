@@ -80,68 +80,89 @@
                     </div>
                 </ng-container>
             </ng-container>
-            <div *ngIf="!loader" class=" mt-2 font-bold py-2 flex w-full justify-between items-center">
-                <div class="flex gap-2 items-center">
-                    <div class="text-pink-500 font-semibold text-xs flex items-center gap-0.5"><mat-icon class="font-medium text-gray-400">expand_less</mat-icon></div>
-                    <span  class="text-sm sec-clr">Recent Packages </span>
-                    
+            <mat-expansion-panel [(expanded)]="showRecentPackages" class="mt-2">
+                <mat-expansion-panel-header>
+                    <div *ngIf="!loader" class="  font-bold py-2 flex w-full justify-between items-center">
+                        <div class="flex gap-2 items-center">
+                            <div class="text-pink-500 font-semibold text-xs flex items-center gap-0.5"><mat-icon  class="cursor-pointer font-medium text-gray-400">{{showRecentPackages ? 'expand_less' : 'expand_more'}}</mat-icon></div>
+                            <span  class="text-sm sec-clr">Recent Packages </span>
+                            
+                        </div>
+                        <div class="flex-1 ml-2 px-2 mr-2 h-0.5 bg-gray-100"></div>
+                    </div>
+                </mat-expansion-panel-header>
+                <div  >
+                    <div  *ngIf="!loader"  class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
+                        <div *ngFor="let package of recentPackages" class="relative rounded-lg bg-white h-28  border-2 border-gray-200 shadow-sm flex flex-col items-center justify-center">
+                            <div class="absolute right-1.5 top-1.5 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-pink-50">In Review</div>
+                            <div class="w-12 h-12  flex  justify-center items-center p-8 bg-rose-50 rounded-full">
+                                <img src="assets/icons/pkg.svg" class="w-fit h-fit" alt="" srcset="">
+                            </div>
+                            <div class="text-xs font-semibold">
+                                {{package?.packageName}}
+                            </div>
+                            <div class="xs-text font-bold text-gray-400 ">{{package?.packageId}}</div>
+                        </div>
+                    </div>
                 </div>
-                <!-- <div class="flex-1 ml-2 px-2 mr-2 h-0.5 bg-gray-200"></div> -->
-            </div>
-            <div  *ngIf="!loader"  class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
-                <div *ngFor="let package of recentPackages" class="relative rounded-lg bg-white h-28  border-2 border-gray-200 shadow-sm flex flex-col items-center justify-center">
-                    <div class="absolute right-1.5 top-1.5 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-pink-50">In Review</div>
-                    <div class="w-12 h-12  flex  justify-center items-center p-8 bg-rose-50 rounded-full">
-                        <img src="assets/icons/pkg.svg" class="w-fit h-fit" alt="" srcset="">
+              </mat-expansion-panel>
+              <mat-expansion-panel [(expanded)]="showRecentExercises" class="mt-2">
+                <mat-expansion-panel-header>
+                    <div *ngIf="!loader" class=" font-bold py-2 flex w-full justify-between items-center">
+                        <div class="flex gap-2 items-center">
+                            <div class="text-pink-500 font-semibold text-xs flex items-center gap-0.5"><mat-icon (click)="showRecentExercises=!showRecentExercises" class="cursor-pointer font-medium text-gray-400">{{showRecentExercises ? 'expand_less' : 'expand_more'}}</mat-icon></div>
+                            <span  class="text-sm sec-clr">Latest Exercises </span>
+                            
+                        </div>
+                        <div class="flex-1 ml-2 px-2 mr-2 h-0.5 bg-gray-200"></div>
                     </div>
-                    <div class="text-xs font-semibold">
-                        {{package?.packageName}}
+                </mat-expansion-panel-header>
+                <div >
+                    <div *ngIf="!loader"  class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
+                        <div *ngFor="let exercise of recentExercises" class="relative rounded-lg bg-white h-28  border-2 border-gray-200 shadow-sm  flex flex-col items-center justify-center">
+                            <div class="absolute right-1.5 top-1.5 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-pink-50">In Review</div>
+                            <div class=" w-12 h-12  flex  justify-center items-center  p-6 bg-rose-50 rounded-full">
+                                <img src="assets/icons/exercise.svg" class="w-fit h-fit p-2" alt="" srcset="">
+                            </div>
+                            <div class="text-xs font-semibold">
+                                {{exercise?.exerciseName}}
+                            </div>
+                            <div class="xs-text font-bold text-gray-400 ">{{exercise?.exerciseId}}</div>
+                        </div>
                     </div>
-                    <div class="xs-text font-bold text-gray-400 ">{{package?.packageId}}</div>
                 </div>
-            </div>
-            <div *ngIf="!loader" class=" mt-2 font-bold py-2 flex w-full justify-between items-center">
-                <div class="flex gap-2 items-center">
-                    <div class="text-pink-500 font-semibold text-xs flex items-center gap-0.5"><mat-icon class="font-medium text-gray-400">expand_less</mat-icon></div>
-                    <span  class="text-sm sec-clr">Latest Exercises </span>
-                    
+              </mat-expansion-panel>
+           
+              <mat-expansion-panel [(expanded)]="showRecentTemplates" class="mt-2">
+                <mat-expansion-panel-header>
+                    <div *ngIf="!loader" class="  font-bold py-2 flex w-full justify-between items-center">
+                        <div class="flex gap-2 items-center">
+                            <div class="text-pink-500 font-semibold text-xs flex items-center gap-0.5"><mat-icon (click)="showRecentTemplates=!showRecentTemplates" class="font-medium text-gray-400">{{showRecentTemplates ? 'expand_less' : 'expand_more'}}</mat-icon></div>
+                            <span  class="text-sm sec-clr">Recent Templates </span>
+                        </div>
+                        <div class="flex-1 ml-2 px-2 mr-2 h-0.5 bg-gray-200"></div>
+                    </div>
+                </mat-expansion-panel-header>
+                <div >
+                    <div  *ngIf="!loader"  class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
+                        <div *ngFor="let template of recentTemplates" class="relative rounded-lg bg-white h-28  border-2 border-gray-200 shadow-sm flex flex-col items-center justify-center">
+                            <div class="absolute right-1.5 top-1.5 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-gray-50">Draft</div>
+                            <div class=" w-12 h-12  flex  justify-center items-center p-10 bg-rose-50 rounded-full">
+                                <img src="assets/icons/layout.png" class="w-fit h-fit" alt="" srcset="">
+                            </div>
+                            <div class="text-xs font-semibold">
+                                {{template?.templateName}}
+                            </div>
+                            <div class="xs-text font-bold text-gray-400 ">{{template?.templateId}}</div>
+                        </div> 
+                        
+        
+                    </div>
                 </div>
-                <!-- <div class="flex-1 ml-2 px-2 mr-2 h-0.5 bg-gray-200"></div> -->
-            </div>
-            <div *ngIf="!loader"  class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
-                <div *ngFor="let exercise of recentExercises" class="relative rounded-lg bg-white h-28  border-2 border-gray-200 shadow-sm  flex flex-col items-center justify-center">
-                    <div class="absolute right-1.5 top-1.5 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-pink-50">In Review</div>
-                    <div class=" w-12 h-12  flex  justify-center items-center  p-6 bg-rose-50 rounded-full">
-                        <img src="assets/icons/exercise.svg" class="w-fit h-fit p-2" alt="" srcset="">
-                    </div>
-                    <div class="text-xs font-semibold">
-                        {{exercise?.exerciseName}}
-                    </div>
-                    <div class="xs-text font-bold text-gray-400 ">{{exercise?.exerciseId}}</div>
-                </div>
-            </div>
-            <div *ngIf="!loader" class=" mt-2 font-bold py-2 flex w-full justify-between items-center">
-                <div class="flex gap-2 items-center">
-                    <div class="text-pink-500 font-semibold text-xs flex items-center gap-0.5"><mat-icon class="font-medium text-gray-400">expand_less</mat-icon></div>
-
-                    <span  class="text-sm sec-clr">Recent Templates </span>
-                    
-                </div>
-            </div>
-            <div  *ngIf="!loader"  class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
-                <div *ngFor="let template of recentTemplates" class="relative rounded-lg bg-white h-28  border-2 border-gray-200 shadow-sm flex flex-col items-center justify-center">
-                    <div class="absolute right-1.5 top-1.5 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-gray-50">Draft</div>
-                    <div class=" w-12 h-12  flex  justify-center items-center p-10 bg-rose-50 rounded-full">
-                        <img src="assets/icons/layout.png" class="w-fit h-fit" alt="" srcset="">
-                    </div>
-                    <div class="text-xs font-semibold">
-                        {{template?.templateName}}
-                    </div>
-                    <div class="xs-text font-bold text-gray-400 ">{{template?.templateId}}</div>
-                </div> 
-                
-
-            </div>
+              </mat-expansion-panel>
+            
+            
+            
         </div>
 
     </div>

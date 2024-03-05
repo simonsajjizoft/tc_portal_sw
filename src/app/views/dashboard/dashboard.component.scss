@@ -51,3 +51,14 @@
   background-color: rgb(255, 250, 253);
   // box-shadow: rgba(233, 43, 110, 0.54) 0px 0px 3px;
 }
+
+.initial-effect{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.show-transition{
+  visibility: visible;
+  opacity: 1;
+}
