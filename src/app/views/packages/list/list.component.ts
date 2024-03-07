@@ -117,7 +117,7 @@ export class ListComponent implements OnInit,AfterViewInit {
   }
 
   fetchStatusList(){
-    this.apiService.ExecutePost(environment?.apiUrl + 'status',{}).subscribe((data:any)=>{
+    this.apiService.ExecuteGet(environment?.apiUrl + 'status').subscribe((data:any)=>{
       if(data?.data){
         this.statusList = data?.data;
         this.statusList.map((item)=>{
@@ -151,12 +151,9 @@ export class ListComponent implements OnInit,AfterViewInit {
   }
 
   getDetails(pkg:any){
-    let payload = {
-      "objectId":  pkg?.packageId
-    };
     this.selectPackage(pkg);
     this.detailsLoader = true;
-    this.apiService.ExecutePost(environment?.apiUrl + 'get-package',payload).subscribe((data:any)=>{
+    this.apiService.ExecuteGet(environment?.apiUrl + 'package' + `?packageId=${pkg?.packageId}`).subscribe((data:any)=>{
       if(data?.data){
         console.log(data);
         this.packageDetails = data?.data;

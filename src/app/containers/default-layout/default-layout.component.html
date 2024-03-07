@@ -1,83 +1,65 @@
 <!--sidebar-->
-<c-sidebar #sidebar="cSidebar" class="d-print-none sidebar sidebar-fixed " id="sidebar" visible >
+<c-sidebar #sidebar="cSidebar" class="d-print-none sidebar sidebar-fixed " id="sidebar" visible>
   <c-sidebar-brand class="bg-purple-200">
     <div class="flex  px-4 text-left items-center  py-3 ">
-      <div class="logo text-lg font-semibold f-lexend"><img src="assets/icons/favicon.ico" width="20px" height="20px"
+      <div class="logo text-lg font-semibold f-lexend"><img src="assets/icons/favicon.ico" width="22px" height="22px"
           alt=""></div>
-      <div class="font-bold text-sm sec-clr ml-2 pt-1"><span class=" mr-2 ">TC</span> <span class=" font-bold ">PORTAL</span></div>
+      <div class="font-bold text-sm sec-clr ml-2 pt-1"><span class=" mr-2 ">TC</span> <span
+          class=" font-bold ">PORTAL</span></div>
     </div>
   </c-sidebar-brand>
   <perfect-scrollbar [config]="perfectScrollbarConfig">
     <div class="px-2 py-3 mt-2   ">
-      <div  (click)="navigate('/dashboard')" [ngClass]="router?.url?.includes('dashboard') ? 'bg-violet-100' : ''"
+      <div (click)="navigate('/dashboard')" [ngClass]="router?.url?.includes('dashboard') ? 'bg-violet-100' : ''"
         class="overflow-hidden cursor-pointer font-bold  text-sm flex p-10 pt-2 pb-2 gap-1 rounded-md items-center">
         <img class="p-2 mr-2" src="assets/icons/home.png" width="25px" height="25px" alt="">
-        <span class=" text-sm "
-          [ngClass]="router?.url?.includes('dashboard') ? 'text-pink-600 font-bold': 'text-gray-600'">Home</span>
+        <span class=" text-sm font-semibold"
+          [ngClass]="router?.url?.includes('dashboard') ? 'text-pink-600 ': 'text-gray-800'">Home</span>
       </div>
-      <div   [ngClass]="router?.url?.includes('exercises') ? 'bg-violet-100' : ''" (click)="navigate('/exercises')"
+      <div [ngClass]="router?.url?.includes('exercises') ? 'bg-violet-100' : ''" (click)="navigate('/exercises')"
         class="overflow-hidden cursor-pointer font-bold  text-sm flex p-10 pt-2 pb-2 gap-1 rounded-md items-center">
-        <img class=" mr-2" src="assets/icons/exercise.svg" width="25px" height="25px" alt="">
-        <span class=" text-sm "
-          [ngClass]="router?.url?.includes('exercises') ? 'text-pink-600 font-bold': 'text-gray-600'">Excercises</span>
+        <img class=" mr-2" src="assets/icons/exercise.svg" width="26px" height="26px" alt="">
+        <span class=" text-sm font-semibold"
+          [ngClass]="router?.url?.includes('exercises') ? 'text-pink-600 ': 'text-gray-800'">Excercises</span>
       </div>
-      <div   [ngClass]="router?.url?.includes('packages') ? 'bg-violet-100' : ''" (click)="navigate('/packages')"
+      <div [ngClass]="router?.url?.includes('packages') ? 'bg-violet-100' : ''" (click)="navigate('/packages')"
         class="overflow-hidden cursor-pointer font-bold  text-sm flex p-10 pt-2 pb-2 gap-1  rounded-md items-center">
         <img class="p-2 mr-2" src="assets/icons/pkg.svg" width="26px" height="28px" alt="">
-        <span  class=" text-sm"
-          [ngClass]="router?.url?.includes('packages') ? 'text-pink-600 font-bold': 'text-gray-600'">Packages</span>
+        <span class=" text-sm  font-semibold"
+          [ngClass]="router?.url?.includes('packages') ? 'text-pink-600': 'text-gray-800'">Packages</span>
       </div>
-      <div   [ngClass]="router?.url?.includes('templates') ? 'bg-violet-100' : ''"  (click)="navigate('/templates')"
+      <div [ngClass]="router?.url?.includes('templates') ? 'bg-violet-100' : ''" (click)="navigate('/templates')"
         class="overflow-hidden cursor-pointer font-bold  text-sm flex p-10 pt-2 pb-2 gap-1  rounded-md items-center">
         <img class="p-2 mr-2" src="assets/icons/layout.png" width="26px" height="28px" alt="">
-        <span  class=" text-sm"
-          [ngClass]="router?.url?.includes('templates') ? 'text-pink-600 font-bold': 'text-gray-600'">Templates</span>
+        <span class=" text-sm  font-semibold"
+          [ngClass]="router?.url?.includes('templates') ? 'text-pink-600 ': 'text-gray-800'">Templates</span>
       </div>
     </div>
-    <div class="px-2.5 py-3   mt-3   " *ngIf="!unfoldable">
-      <div class="font-bold text-xs text-gray-500 py-2 px-1">RECENTLY UPDATED</div>
-      <div class="flex py-2 overflow-hidden">
-        <div class="font-medium text-sm flex px-1 py-2 gap-1 rounded-md items-center overflow-hidden">
-          <img class="p-2 mr-1" src="assets/icons/pkg.svg" width="32px" height="30px" alt="">
-          <div class="flex-col flex">
-            <span class=" text-xs font-bold text-black">Package 1325</span>
-            <span class=" text-xs text-gray-500">P14151</span>
-          </div>
-
+    <div class="px-2.5 py-3   mt-3   text-black" *ngIf="!unfoldable">
+     <ng-container *ngIf="!loader">
+      <div class="font-bold text-gray-600 text-base px-2 flex items-center gap-2 mb-2"><mat-icon class="text-zinc-500">history_toggle</mat-icon>  Recent Activities</div>
+      <div *ngFor="let activity of data" class="px-2 py-2 items-center flex gap-2 ">
+        <div class=" w-8 h-8 min-w-8 min-h-8  flex  justify-center items-center  p-2 bg-rose-50 rounded-full ring ring-pink-100">
+          <img src="assets/icons/exercise.svg" class="w-fit h-fit p-2" alt="" srcset="">
         </div>
-
-      </div>
-      <div class="flex overflow-hidden ">
-        <div class="font-medium text-sm flex px-1 py-2 gap-1 rounded-md items-center">
-          <img class=" mr-1" src="assets/icons/exercise.svg" width="32px" height="28px" alt="">
-          <div class="flex-col flex">
-            <span class=" text-xs font-bold text-black">Exercise 8</span>
-            <span class="text-xs text-gray-500">E19151</span>
-          </div>
-
-        </div>
-
-      </div>
-      <div class="flex overflow-hidden">
-        <div class="font-medium text-sm flex px-1 py-2 gap-1 rounded-md items-center">
-          <img class=" mr-1" src="assets/icons/exercise.svg" width="32px" height="28px" alt="">
-          <div class="flex-col flex">
-            <span class=" text-xs font-bold text-black">Exercise 6325</span>
-            <span class=" text-xs text-gray-500">E14151</span>
-          </div>
-
-        </div>
-
-      </div>
-      <div class="flex overflow-hidden">
-        <div class="font-medium text-sm flex px-1 py-2 gap-1 rounded-md items-center">
-          <img class=" mr-1" src="assets/icons/exercise.svg" width="32px" height="28px" alt="">
-          <div class="flex-col flex">
-            <span class=" text-xs font-bold text-black">Exercise 6325</span>
-            <span class=" text-xs text-gray-500">E14151</span>
-          </div>
+        <div class="flex flex-col ml-2 flex-1">
+          <div class="font-semibold text-xs max-w-36 overflow-hidden text-ellipsis h-4 whitespace-nowrap">{{activity?.activityName}}</div>
+          <div class="xs-text">{{activity?.eventStatusName}}</div>
         </div>
       </div>
+     </ng-container>
+     <ng-container *ngIf="loader">
+      <div class="font-bold text-gray-700 text-base px-2 flex items-center gap-2 w-3/4 h-6 animate-pulse rounded-xl bg-white mb-2"></div>
+      <div *ngFor="let ldr of [1,2,3]" class="px-2 py-2 items-center flex gap-2 ">
+        <div class=" w-10 h-10  flex  justify-center items-center  p-2  animate-pulse rounded-full bg-zinc-200">
+        </div>
+        <div class="flex flex-col ml-2 gap-1">
+          <div class="font-semibold text-xs w-24 h-3 animate-pulse  bg-gray-200"></div>
+          <div class="xs-text w-10 animate-pulse h-3  bg-gray-200"></div>
+        </div>
+      </div>
+     </ng-container>
+
     </div>
   </perfect-scrollbar>
 </c-sidebar>

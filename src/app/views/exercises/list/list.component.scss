@@ -1,31 +1,54 @@
 .h-tab{
-    height: calc(100vh - 130px);
+  height: calc(100vh - 130px);
 }
 
 .card{
-    width: 13rem!important;
+  width: 13rem!important;
 }
 
 .card-list{
-    display: grid;
-    grid-template-columns: auto auto auto auto;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+
+.search-results {
+  height: 100%;
+  overflow: auto;
 }
 
 
-
-  
-  @media screen and (max-width: 1534px) {
-    .card-list{
-        display: grid;
-        grid-template-columns: auto auto auto ;
-    }
+@media screen and (max-width: 1534px) {
+  .card-list{
+      display: grid;
+      grid-template-columns: auto auto auto ;
   }
- 
-  @media screen and (max-width: 1320px) {
-    .card-list{
-        display: grid;
-        grid-template-columns: 32% 32% 32% ;
-    }
+}
+
+@media screen and (max-width: 1320px) {
+  .card-list{
+      display: grid;
+      grid-template-columns: 32% 32% 32% ;
   }
+}
 
 
+.container-details {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Adjust as needed */
+}
+
+.top-details {
+  flex: 0 0 auto; /* This div won't grow or shrink */
+  height: 100px; /* Adjust as needed */
+  background-color: red;
+}
+
+.bottom-details {
+  flex: 1; /* This div will take up remaining space */
+  background-color: blue;
+}
+
+.mat-checkbox-frame { 
+  border-color: rgb(204, 204, 204)!important;
+}

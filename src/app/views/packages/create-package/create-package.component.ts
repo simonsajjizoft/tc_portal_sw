@@ -27,11 +27,14 @@ export class CreatePackageComponent {
     premiumStatus:[false, Validators.required],
   });
   secondFormGroup = this._formBuilder.group({
-    assignedTo:[this.general?.getUserName, Validators.required],
-    updatedUser:[this.general?.getUserName, Validators.required],
-    createdUser:[this.general?.getUserName, Validators.required],
+    assignedTo:['', Validators.required],
+    updatedUser:['', Validators.required],
+    createdUser:['', Validators.required],
     eventStatusId:['', Validators.required],
     exerciseId:[[],Validators.required],
+    packageStatus:[[]],
+    packageStatusId:[''],
+    assignedBy:['']
   });
   thirdFormGroup = this._formBuilder.group({
     thirdCtrl: ['', Validators.required],
@@ -104,12 +107,13 @@ export class CreatePackageComponent {
     if(this.firstFormGroup.valid ){
       const dialog = this.dialog.open(ConfirmboxComponent, {
         panelClass: 'dialog-ctn',
-        data: { statusList:this.statusList,userList:this.userList  },
+        data: { statusList:this.statusList,userList:this.userList,assignee:this.general.getUserName},
       });
       dialog.afterClosed().subscribe(data => {
         if(data){
           console.log(data);
           this.savePackage(data);
+          
         }
   
       });
@@ -185,7 +189,7 @@ export class CreatePackageComponent {
   }
 
   fetchStatusList(){
-    this.apiService.ExecutePost(environment?.apiUrl + 'status',{}).subscribe((data:any)=>{
+    this.apiService.ExecuteGet(environment?.apiUrl + 'status').subscribe((data:any)=>{
       if(data?.data){
         this.statusList = data?.data;
         this.statusList.map((item)=>{
@@ -220,18 +224,21 @@ export class CreatePackageComponent {
     this.secondFormGroup.controls['exerciseId'].patchValue(listIds);
     this.secondFormGroup.controls['assignedTo'].patchValue(data?.assignee);
     this.secondFormGroup.controls['eventStatusId'].patchValue(data?.status?.statusId);
-    console.log(this.firstFormGroup)
+    this.secondFormGroup.controls['assignedBy'].patchValue(this.general.getUserName);
+    this.secondFormGroup.controls['createdUser'].patchValue(this.general.getUserName);
+    this.secondFormGroup.controls['updatedUser'].patchValue(this.general.getUserName);
+    
     let payload = {...this.firstFormGroup?.value,...this.secondFormGroup?.value};
     console.log(payload);
   
-    this.apiService.ExecutePost(environment?.apiUrl + 'save-package',payload).subscribe((data:any)=>{
+    this.apiService.ExecutePost(environment?.apiUrl + 'package',payload).subscribe((data:any)=>{
       if(data){
         console.log(data?.data); 
-        this.tostr.success("The package has been saved successfully")
+        this.tostr.success(data?.data)
       }
-      else this.tostr.error("Failed to save the package")
+      else this.tostr.error(data?.data || data?.message)
     },(error)=>{
-       this.tostr.error("Failed to save the package")
+       this.tostr.error(data?.message || data?.error)
     })
   }
 

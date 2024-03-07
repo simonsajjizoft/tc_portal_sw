@@ -34,32 +34,29 @@ export class GeneralService {
 
   get statusConfiguration() {
     return {
-     "Review": {
+     "In Progress": {
+        "statusId": "65cdb5ea5c7dba7637483539",
+        "statusName": "In Progress",
+        "bgColor":"bg-blue-50",
+        "textColor":"text-blue-700"
+      },
+      "Review":{
         "statusId": "65cdb6535c7dba763748353b",
         "statusName": "Review",
-        "bgColor":"bg-pink-100"
-      },
-      "Waiting for Approval":{
-        "statusId": "65cdb59a5c7dba7637483538",
-        "statusName": "Waiting for Approval",
-        "bgColor":"bg-amber-50"
+        "bgColor":"bg-pink-50",
+        "textColor":"text-pink-400"
       },
       "Approved":{
         "statusId": "65cdb6715c7dba763748353c",
         "statusName": "Approved",
-        "bgColor":"bg-green-100"
+        "bgColor":"bg-emerald-50",
+        "textColor":"text-green-700"
       },
-      "Draft" :{
-        "statusId": "65cdb5ea5c7dba7637483539",
-        "statusName": "Draft",
-        "bgColor":"bg-gray-100"
-      },
-      "Not Approved": {
-        "statusId": "65cdb5f45c7dba763748353a",
-        "statusName": "Not Approved",
-        "bgColor":"bg-red-50"
-      }
     }
+  }
+
+  get UserRole(){
+    return localStorage.getItem("TCuserRole");
   }
 
 

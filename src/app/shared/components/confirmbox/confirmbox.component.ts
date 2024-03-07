@@ -37,14 +37,20 @@ export class ConfirmboxComponent {
     ) {
     if (data) {
       this.userList = data?.userList;
-      console.log(this.userList)
+      console.log(data?.packageStatusId)
       this.statusList = data?.statusList;
-      this.statusList.map((item)=>{
-        if(item?.statusName =='Draft') this.selectedStatus = item;
-      });
-
-      // this.visible = true;
-      // this.message = data.message || this.message;
+      if(this.statusList){
+        this.statusList?.map((item)=>{
+          if(!data?.statusId && item?.statusId=='65cdb5ea5c7dba7637483539') this.selectStatus(item)
+          else if(data?.statusId == item?.statusId) this.selectStatus(item)
+        });
+      }
+      if(this.userList){
+        this.userList.map((item)=>{
+          if(data?.assignee === item) this.selectAssignee(item);
+        });
+      }
+     
     }
   }
 

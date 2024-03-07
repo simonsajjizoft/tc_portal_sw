@@ -1,7 +1,7 @@
 <!--<c-header class="mb-4 d-print-none" position="sticky">-->
 <ng-container>
   <c-container breakpoint="xxl">
-    <button toggle="visible" cHeaderToggler [cSidebarToggle]="sidebarId" class="ps-0.5 pt-2 text-black ">
+    <button toggle="visible" cHeaderToggler [cSidebarToggle]="sidebarId" class="sm:visible md:hidden ps-0.5 pt-2 text-black ">
       <!-- <svg cIcon name="cilMenu" size="lg"></svg> -->
       <mat-icon class="text-gray-200">menu</mat-icon>
     </button>
@@ -17,24 +17,25 @@
 <!--</c-header>-->
 <ng-template #userDropdown>
   <div (click)="statusDropdown=!statusDropdown" #drpdown
-  class="z-20 cursor-pointer rounded-3xl relative  mr-6  px-3 py-1 font-medium text-sm flex  items-center text-gray-300">
-  <span class=" flex items-center font-semibold text-sm pr-0.5 ">New </span>
+  class="z-20 cursor-pointer rounded-3xl relative  mr-6  px-3 py-1 font-medium text-sm flex  items-center text-gray-100">
+  <mat-icon class="text-pink-300  text-lg leading-6">add_circle_outline</mat-icon>
+  <span class=" flex items-center font-semibold text-sm pr-0.5 ">Create </span>
   <svg class="w-2 h-2 ms-1  ml-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
       viewBox="0 0 10 6">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="m1 1 4 4 4-4" />
   </svg>
   <div *ngIf="statusDropdown"
-      class=" w-44 h-fit bg-white text-gray-700 z-20 rounded-lg border border-gray-200  absolute text-sm top-10 shadow right-0 p-4">
-      <div class="px-4 py-1 font-medium hover:bg-pink-50 text-right items-center flex justify-end gap-2 rounded-lg">
+      class=" w-44 h-fit bg-white text-gray-700 z-20 rounded-md border border-gray-200  absolute text-sm top-10 shadow right-0 p-4">
+      <div class="px-4 py-1 font-semibold hover:bg-pink-50 text-right items-center flex justify-end gap-2 rounded-lg">
         <!-- <img src="assets/icons/pkg.svg" class="w-5 h-5" alt="" srcset=""> -->
         <span class="mr-1 ml-1.5">  Package</span>
       </div>
-      <div class="px-4 py-1 font-medium hover:bg-pink-50 text-right items-center flex justify-end gap-2 rounded-lg mt-2">
+      <div class="px-4 py-1 font-semibold hover:bg-pink-50 text-right items-center flex justify-end gap-2 rounded-lg mt-2">
         <!-- <img src="assets/icons/exercise.svg" class="w-6 h-6" alt="" srcset=""> -->
         <span class="mr-1 ml-1.5">  Exercise</span>
       </div>
-      <div class="px-4 py-1 font-medium hover:bg-pink-50 text-right items-center flex justify-end rounded-lg mt-2">
+      <div class="px-4 py-1 font-semibold hover:bg-pink-50 text-right items-center flex justify-end rounded-lg mt-2">
         <!-- <img src="assets/icons/layout.png" class="w-5 h-5" alt="" srcset=""> -->
         <span class="mr-1 ml-2">  Template</span>
       </div>

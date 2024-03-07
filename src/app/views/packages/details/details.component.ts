@@ -33,6 +33,9 @@ export class DetailsComponent {
     createdUser:['', Validators.required],
     eventStatusId:['', Validators.required],
     exerciseId:[[],Validators.required],
+    packageStatus:[[]],
+    packageStatusId:[''],
+    assignedBy:['']
   });
   thirdFormGroup = this._formBuilder.group({
     thirdCtrl: ['', Validators.required],
@@ -54,6 +57,22 @@ export class DetailsComponent {
   userList;
   ageDropdown;
   id;
+  logs = [
+    {time:'6 mins ago',user:'J',description:'Package 426246cerer55u status changed from Draft to Review'},
+    {time:'05 Mar 2024',user:'J',description:'Assignee Changed from Joe Davis to Admin213'},
+    {time:'03 Mar 2024',user:'A',description:'Package 426246cerer55u was updated at 5th Dec 2024 with status Draft.',
+  contentchanged:'Description'},
+  {time:'03 Mar 2024',user:'A',description:'Package 426246cerer55u was created at 5th Dec 2024 with status Draft.'},
+  ];
+  comments = [
+    {time:'6 mins ago',user:'J',description:'Please do proceed with Approval',username:'josephkuruvilla@gmail.com'},
+    {time:'05 Mar 2024',user:'A',description:'Assignee Changed from Joe Davis to Admin213',username:'admin123@gmail.com'},
+    {time:'03 Mar 2024',user:'S',description:'The Exercises in  the Packages have been added to.',
+  contentchanged:'Description',username:'sanjo@gmail.com'},
+  ];
+  isCommentActionsEnabled ;
+  details;
+  statusConfigs;
   @ViewChild('desc') desc: ElementRef;
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
   private _ngZone: NgZone;
@@ -77,6 +96,7 @@ export class DetailsComponent {
     this.route.paramMap.subscribe( paramMap => {
       this.id = paramMap.get('id');
       this.getDetails(this.id);
+      this.statusConfigs = this.general.statusConfiguration;
   })
   }
 
@@ -112,7 +132,7 @@ export class DetailsComponent {
     if(this.firstFormGroup.valid){
       const dialog = this.dialog.open(ConfirmboxComponent, {
         panelClass: 'dialog-ctn',
-        data: { statusList:this.statusList,userList:this.userList  },
+        data: { statusList:this.statusList,userList:this.userList,assignee:this.secondFormGroup?.get('assignedTo')?.value,statusId:this.secondFormGroup?.get('packageStatusId')?.value},
       });
       dialog.afterClosed().subscribe(data => {
         if(data){
@@ -193,7 +213,7 @@ export class DetailsComponent {
   }
 
   fetchStatusList(){
-    this.apiService.ExecutePost(environment?.apiUrl + 'status',{}).subscribe((data:any)=>{
+    this.apiService.ExecuteGet(environment?.apiUrl + 'status').subscribe((data:any)=>{
       if(data?.data){
         this.statusList = data?.data;
         this.statusList.map((item)=>{
@@ -228,21 +248,23 @@ export class DetailsComponent {
     this.secondFormGroup.controls['exerciseId'].patchValue(listIds);
     this.secondFormGroup.controls['assignedTo'].patchValue(data?.assignee);
     this.secondFormGroup.controls['eventStatusId'].patchValue(data?.status?.statusId);
+    this.secondFormGroup.controls['assignedBy'].patchValue(this.general.getUserName);
+    // this.secondFormGroup.controls['createdUser'].patchValue('');
     console.log(this.firstFormGroup)
     let payload = {...this.firstFormGroup?.value,...this.secondFormGroup?.value};
     console.log(payload)
-    delete payload.createdUser;
     payload.updatedUser = this.general.getUserName;
+    payload.assignedBy = this.general.getUserName;
     console.log(payload);
-    this.apiService.ExecutePost(environment?.apiUrl + 'save-package',payload).subscribe((data:any)=>{
+    this.apiService.ExecutePut(environment?.apiUrl + 'package',payload).subscribe((data:any)=>{
       if(data?.data){
         console.log(data?.data); 
-        this.tostr.success("The package has been saved successfully")
+        this.tostr.success(data?.data)
       }
-      else this.tostr.error("Failed to save the package")
+      else this.tostr.error(data?.data || data?.message)
     },
     (error)=>{
-      this.tostr.error("Failed to save the package")
+      this.tostr.error(data?.message || data?.error)
     })
   }
 
@@ -251,17 +273,13 @@ export class DetailsComponent {
     return selectedExercises.map((item)=>{return item?.exerciseId}) || []
   }
 
-  isFirstFormValid(){
-    if(this.firstFormGroup.get('packageName')?.value) return true;
-    else return false;
-  }
-
   getDetails(id:any){
     let payload = {"objectId":  id};
     this.detailsLoader = true;
-    this.apiService.ExecutePost(environment?.apiUrl + 'get-package',payload).subscribe((data:any)=>{
+    this.apiService.ExecuteGet(environment?.apiUrl + 'package' + `?packageId=${id}`).subscribe((data:any)=>{
       if(data?.data){
         console.log(data);
+        this.details = data?.data;
         this.updateFormValues(data?.data)
       }
       this.detailsLoader = false;
@@ -284,6 +302,10 @@ export class DetailsComponent {
    console.log(this.exercises)
     console.log(this.firstFormGroup?.value);
     console.log(this.secondFormGroup?.value);
+  }
+
+  showCommentButtons(){
+    this.isCommentActionsEnabled = true;
   }
 
 

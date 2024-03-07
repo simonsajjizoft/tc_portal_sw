@@ -1,51 +1,41 @@
-<div class="pb-3 bg-zinc-50">
-    <div *ngIf="!loader" class="text-lg font-bold px-2 py-2 mb-2">Hi {{firstName ? (firstName | titlecase) : ''}}, <span class="font-semibold text-xl ml-1">Welcome</span></div>
+<div class="pb-3 bg-transparent">
+    <div *ngIf="!loader" class="text-lg font-bold px-2 py-2 mb-2">Hi {{firstName ? (firstName | titlecase) : ''}}, <span
+            class="font-semibold text-xl ml-1">Welcome</span></div>
     <div *ngIf="loader" class="text-lg font-bold px-1 py-2 mb-2">
         <div class="h-5 text-xl  bg-zinc-100 rounded-full w-48 "></div>
     </div>
     <div class="flex flex-1 mb-2 gap-5 flex-wrap">
-        
+
         <!-- <div *ngIf="loader" class=" bg-neutral-100 animate-pulse w-80 h-44 rounded-lg  px-3 py-2" >
             <div class="h-40">
             </div>
           </div> -->
-    
-        <div *ngIf="loader" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 w-full">
-            <div *ngFor="let item of [1,2,3]" class="rounded-xl  bg-neutral-100 animate-pulse   h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28  flex gap-4 items-center px-4 py-4">
-                <svg class="w-1/3 h-1/3 text-zinc-50 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
-                    <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z"/>
-                    <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z"/>
+
+        <div *ngIf="loader" class="flex flex-wrap gap-4 w-full">
+            <div *ngFor="let item of [1,2,3]"
+                class="rounded-xl  bg-gray-50 animate-pulse w-full sm:w-full md:w-80 lg:w-80 xl:w-96  h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28  flex gap-4 items-center px-4 py-4">
+                <svg class="w-1/3 h-1/3 text-zinc-100 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" viewBox="0 0 16 20">
+                    <path
+                        d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+                    <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
                 </svg>
             </div>
         </div>
-        <div *ngIf="!loader" class=" grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 w-full"> 
-            <div *ngFor="let card of cards" class="rounded-xl bg-white   border-2 border-violet-100 h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28  flex gap-3 items-end px-4 py-4">
-                <div class=" w-20  h-14 sm:h-14 lg:h-16 xl:h-16  flex  justify-center items-center px-3 py-1 bg-violet-50 rounded-xl">
+        <div *ngIf="!loader" class=" flex flex-wrap gap-4 w-full">
+            <div (click)="navigateListingPage(card?.route)" *ngFor="let card of cards"
+                class="cursor-pointer rounded-md bg-white w-full sm:w-full md:w-80 lg:w-80 xl:w-96  border-2 border-violet-200 h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28  flex gap-3 items-end px-4 py-4">
+                <div
+                    class=" w-20  h-14 sm:h-14 lg:h-16 xl:h-16  flex  justify-center items-center px-3 py-1.5 bg-violet-50 rounded-xl">
                     <img [src]="card?.img" class="w-full h-full p-4" alt="" srcset="">
                 </div>
                 <div class=" flex  flex-col justify-end gap-0.5 pb-1">
-                    <div class="text-pink-400 font-semibold  vlarge-text max-w-24 overflow-hidden  text-ellipsis">{{card?.cnt}}</div>
-                    <div class="font-semibold text-sm sec-clr max-w-24 overflow-hidden  text-ellipsis">{{card?.name}}</div>
+                    <div class="text-pink-400 font-semibold  vlarge-text max-w-24 overflow-hidden  text-ellipsis">
+                        {{card?.cnt}}</div>
+                    <div class="font-semibold text-sm sec-clr max-w-24 overflow-hidden  text-ellipsis">{{card?.name}}
+                    </div>
                 </div>
             </div>
-            <!-- <div class="rounded-xl  bg-white   border-2 border-violet-100  h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28  flex gap-4 items-end px-4 py-4">
-                <div class="w-20  h-14 sm:h-14 lg:h-16 xl:h-16  flex  justify-center items-center px-3 py-1 bg-violet-50 rounded-xl">
-                    <img src="assets/icons/exercise_alt.svg" class="w-full h-full" alt="" srcset="">
-                </div>
-                <div class=" flex  flex-col justify-end gap-0.5 pb-1">
-                    <div class="text-pink-400 font-semibold vlarge-text  max-w-24 overflow-hidden  text-ellipsis">12</div>
-                    <div class="font-semibold text-sm sec-clr max-w-24 overflow-hidden  text-ellipsis">Exercises</div>
-                </div>
-            </div>
-            <div class="rounded-xl bg-white   border-2 border-violet-100  h-28 sm:h-28 md:h-28 lg:h-28 xl:h-28  flex gap-4 items-end px-4 py-4">
-                <div class=" w-20  h-14 sm:h-14 lg:h-16 xl:h-16  flex  justify-center items-center opacity-90 px-3 py-1 bg-violet-50 rounded-xl">
-                    <img src="assets/icons/layout_alt.png" class="w-full h-full py-2.5 px-1" alt="" srcset="">
-                </div>
-                <div class=" flex  flex-col justify-end gap-0.5 pb-1">
-                    <div class="text-pink-400 font-semibold vlarge-text max-w-24 overflow-hidden  text-ellipsis">18</div>
-                    <div class="font-semibold text-sm sec-clr max-w-24 overflow-hidden  text-ellipsis">Templates</div>
-                </div>
-            </div> -->
             <!-- <div *ngIf="!loader" class="hidden sm:hidden md:inline-block  bg-white  min-w-64 h-52 sm:h-max  rounded-lg  px-1 pb-1" style="box-shadow: rgba(29, 29, 29, 0.1) -4px 9px 25px -6px;">
                 <c-chart
                 [data]="data"
@@ -56,25 +46,30 @@
               </div> -->
         </div>
     </div>
-    <div class="flex gap-5 mt-4">
+    <div class="flex gap-5 ">
         <div class="w-full ">
-            <ng-container  *ngFor="let item of [1,2,3]">
+            <ng-container *ngFor="let item of [1,2,3]">
                 <ng-container *ngIf="loader">
-                    <div *ngIf="loader" class=" mt-2 font-bold py-2 flex w-full justify-between items-center">
-                        <div class="flex gap-4 items-center h-5 bg-zinc-100 rounded-full w-52 ">
-                            <span  class="text-sm "></span>
-                            <div class="flex gap-1 items-center text-xs font-semibold py-1.5 relative cursor-pointer" >
+                    <div *ngIf="loader" class=" mt-3 font-bold py-3 flex w-full justify-between items-center">
+                        <div class="flex gap-4 items-center h-5 bg-gray-100 rounded-full w-52 ">
+                            <span class="text-sm "></span>
+                            <div class="flex gap-1 items-center text-xs font-semibold py-1.5 relative cursor-pointer">
                                 <div class=" "></div>
-                            <div class="ml-1"></div>
+                                <div class="ml-1"></div>
                             </div>
                         </div>
-                        <div class="text-pink-500 font-semibold text-xs flex items-center gap-0.5 bg-zinc-100 rounded-full animate-pulse h-5 w-24"> </div>
+                        <div
+                            class="text-pink-500 font-semibold text-xs flex items-center gap-0.5 bg-zinc-50 rounded-full animate-pulse h-5 w-24">
+                        </div>
                     </div>
-                    <div *ngIf="loader" class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
-                        <div *ngFor="let item of [1,2,3,4,5]" class="relative rounded-lg animate-pulse bg-zinc-100 h-28   flex flex-col items-center justify-center">
-                            <svg class="w-1/3 h-1/3 text-zinc-50 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
-                                <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z"/>
-                                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z"/>
+                    <div *ngIf="loader" class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-6 gap-2  ">
+                        <div *ngFor="let item of [1,2,3,4,5,6]"
+                            class="relative rounded-lg animate-pulse bg-gray-50 h-28  border-2 border-gray-100 flex flex-col items-center justify-center">
+                            <svg class="w-1/3 h-1/3 text-zinc-100 " aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
+                                <path
+                                    d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+                                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
                             </svg>
                         </div>
                     </div>
@@ -84,87 +79,153 @@
                 <mat-expansion-panel-header>
                     <div *ngIf="!loader" class="  font-bold py-2 flex w-full justify-between items-center">
                         <div class="flex gap-2 items-center">
-                            <div class="text-pink-500 font-semibold text-xs flex items-center gap-0.5"><mat-icon  class="cursor-pointer font-medium text-gray-400">{{showRecentPackages ? 'expand_less' : 'expand_more'}}</mat-icon></div>
-                            <span  class="text-sm sec-clr">Recent Packages </span>
-                            
+                            <div class="text-pink-500 font-semibold text-xs flex items-center gap-0.5"><mat-icon
+                                    class="cursor-pointer font-medium text-gray-400">{{showRecentPackages ?
+                                    'expand_less' : 'expand_more'}}</mat-icon></div>
+                            <span class="text-sm sec-clr">Recent Packages </span>
+
                         </div>
-                        <div class="flex-1 ml-2 px-2 mr-2 h-0.5 bg-gray-100"></div>
+                        <div class="flex-1 ml-2 px-2 mr-2 h-0.5 bg-gray-200"></div>
                     </div>
                 </mat-expansion-panel-header>
-                <div  >
-                    <div  *ngIf="!loader"  class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
-                        <div *ngFor="let package of recentPackages" class="relative rounded-lg bg-white h-28  border-2 border-gray-200 shadow-sm flex flex-col items-center justify-center">
-                            <div class="absolute right-1.5 top-1.5 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-pink-50">In Review</div>
-                            <div class="w-12 h-12  flex  justify-center items-center p-8 bg-rose-50 rounded-full">
-                                <img src="assets/icons/pkg.svg" class="w-fit h-fit" alt="" srcset="">
+                <div>
+                    <div *ngIf="!loader" class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-6  gap-2 ">
+                        <div *ngFor="let package of recentPackages"
+                            class="relative   mb-2    flex flex-col items-center justify-center">
+                            <div
+                                class="relative rounded-lg  flex flex-col items-center justify-center bg-white border-2 border-gray-200 w-full h-28">
+                                <div *ngIf="general?.UserRole=='super_admin'"
+                                    class="absolute left-1.5 top-1.5 text-xs text-gray-700 font-semibold px-2 w-6 h-6  rounded-full bg-purple-50 flex items-center justify-center border border-purple-100">
+                                    J</div>
+                                <div
+                                    class="absolute right-1.5 top-1.5 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-pink-50">
+                                    In Review</div>
+                                <div class="w-14 h-14  flex  justify-center items-center p-8 bg-rose-50 rounded-full">
+                                    <img src="assets/icons/pkg.svg" class="w-fit h-fit" alt="" srcset="">
+                                </div>
                             </div>
-                            <div class="text-xs font-semibold">
+                            <div (click)="navigate('packages',package?.packageId)"
+                                class="text-xs font-semibold max-w-full overflow-hidden text-ellipsis px-2 h-4 hover:text-pink-500 cursor-pointer">
                                 {{package?.packageName}}
                             </div>
-                            <div class="xs-text font-bold text-gray-400 ">{{package?.packageId}}</div>
+                            <div class="xs-text font-bold text-gray-400 max-w-full overflow-hidden text-ellipsis px-2">
+                                {{package?.packageId}}</div>
+                        </div>
+                        <div   class="relative  flex flex-col items-start ">
+                            <div (click)="navigateListingPage('packages/create')" class="cursor-pointer relative rounded-lg mb-2 flex flex-col items-center justify-center bg-gray-50 border-2 border-dashed border-gray-200 w-full h-28">
+                              <mat-icon class="text-gray-300 ">add_circle_outline</mat-icon>
+                              <small class="font-medium text-gray-300">Add New Package</small>
+                            </div>
+                            <div (click)="navigateListingPage('packages')"
+                                class="text-xs flex items-center text-center justify-center font-semibold  px-2 w-full  text-pink-500 cursor-pointer">
+                              <span> View More</span> <mat-icon class="leading-6 ml-2">arrow_right_alt</mat-icon>
+                            </div>
                         </div>
                     </div>
                 </div>
-              </mat-expansion-panel>
-              <mat-expansion-panel [(expanded)]="showRecentExercises" class="mt-2">
+            </mat-expansion-panel>
+            <mat-expansion-panel [(expanded)]="showRecentExercises" class="mt-2">
                 <mat-expansion-panel-header>
                     <div *ngIf="!loader" class=" font-bold py-2 flex w-full justify-between items-center">
                         <div class="flex gap-2 items-center">
-                            <div class="text-pink-500 font-semibold text-xs flex items-center gap-0.5"><mat-icon (click)="showRecentExercises=!showRecentExercises" class="cursor-pointer font-medium text-gray-400">{{showRecentExercises ? 'expand_less' : 'expand_more'}}</mat-icon></div>
-                            <span  class="text-sm sec-clr">Latest Exercises </span>
-                            
+                            <div class="text-pink-500 font-semibold text-xs flex items-center gap-0.5"><mat-icon
+                                    (click)="showRecentExercises=!showRecentExercises"
+                                    class="cursor-pointer font-medium text-gray-400">{{showRecentExercises ?
+                                    'expand_less' : 'expand_more'}}</mat-icon></div>
+                            <span class="text-sm sec-clr">Latest Exercises </span>
+
                         </div>
                         <div class="flex-1 ml-2 px-2 mr-2 h-0.5 bg-gray-200"></div>
                     </div>
                 </mat-expansion-panel-header>
-                <div >
-                    <div *ngIf="!loader"  class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
-                        <div *ngFor="let exercise of recentExercises" class="relative rounded-lg bg-white h-28  border-2 border-gray-200 shadow-sm  flex flex-col items-center justify-center">
-                            <div class="absolute right-1.5 top-1.5 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-pink-50">In Review</div>
-                            <div class=" w-12 h-12  flex  justify-center items-center  p-6 bg-rose-50 rounded-full">
-                                <img src="assets/icons/exercise.svg" class="w-fit h-fit p-2" alt="" srcset="">
+                <div>
+                    <div *ngIf="!loader" class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-6 gap-2 ">
+                        <div *ngFor="let exercise of recentExercises"
+                            class="relative   mb-2    flex flex-col items-center justify-center">
+                            <div
+                                class="relative rounded-lg  flex flex-col items-center justify-center bg-white border-2 border-gray-200 w-full h-28">
+                                <div *ngIf="general?.UserRole=='super_admin'"
+                                    class="absolute left-1.5 top-1.5 text-xs text-gray-700 font-semibold px-2 w-6 h-6  rounded-full bg-purple-50 flex items-center justify-center border border-purple-100">
+                                    J</div>
+                                <div
+                                    class="absolute right-1.5 top-1.5 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-pink-50">
+                                    In Review</div>
+                                <div class=" w-14 h-14  flex  justify-center items-center  p-6 bg-rose-50 rounded-full">
+                                    <img src="assets/icons/exercise.svg" class="w-fit h-fit p-2" alt="" srcset="">
+                                </div>
+
                             </div>
-                            <div class="text-xs font-semibold">
+
+                            <div (click)="navigate('exercises',exercise?.exerciseId)"
+                                class="text-xs font-semibold max-w-full overflow-hidden text-ellipsis px-2 whitespace-nowrap hover:text-pink-500 cursor-pointer">
                                 {{exercise?.exerciseName}}
                             </div>
-                            <div class="xs-text font-bold text-gray-400 ">{{exercise?.exerciseId}}</div>
+                            <div class="xs-text font-bold text-gray-400 max-w-full overflow-hidden text-ellipsis px-2">
+                                {{exercise?.exerciseId}}</div>
+                        </div>
+                        <div class="relative  flex flex-col items-start">
+                            <div (click)="navigateListingPage('exercises/create')" class="cursor-pointer relative rounded-lg mb-2 flex flex-col items-center justify-center bg-gray-50 border-2 border-dashed border-gray-200 w-full h-28">
+                              <mat-icon  class="text-gray-300 ">add_circle_outline</mat-icon>
+                              <small class="font-medium text-gray-300">Add New Exercise</small>
+                            </div>
+                            <div (click)="navigateListingPage('exercises')"
+                                class="text-xs flex items-center text-center justify-center font-semibold  px-2 w-full  text-pink-500 cursor-pointer">
+                              <span> View More</span> <mat-icon class="leading-6 ml-2">arrow_right_alt</mat-icon>
+                            </div>
                         </div>
                     </div>
                 </div>
-              </mat-expansion-panel>
-           
-              <mat-expansion-panel [(expanded)]="showRecentTemplates" class="mt-2">
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [(expanded)]="showRecentTemplates" class="mt-2">
                 <mat-expansion-panel-header>
                     <div *ngIf="!loader" class="  font-bold py-2 flex w-full justify-between items-center">
                         <div class="flex gap-2 items-center">
-                            <div class="text-pink-500 font-semibold text-xs flex items-center gap-0.5"><mat-icon (click)="showRecentTemplates=!showRecentTemplates" class="font-medium text-gray-400">{{showRecentTemplates ? 'expand_less' : 'expand_more'}}</mat-icon></div>
-                            <span  class="text-sm sec-clr">Recent Templates </span>
+                            <div class="text-pink-500 font-semibold text-xs flex items-center gap-0.5"><mat-icon
+                                    (click)="showRecentTemplates=!showRecentTemplates"
+                                    class="font-medium text-gray-400">{{showRecentTemplates ? 'expand_less' :
+                                    'expand_more'}}</mat-icon></div>
+                            <span class="text-sm sec-clr">Recent Templates </span>
                         </div>
                         <div class="flex-1 ml-2 px-2 mr-2 h-0.5 bg-gray-200"></div>
                     </div>
                 </mat-expansion-panel-header>
-                <div >
-                    <div  *ngIf="!loader"  class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-5 gap-3 ">
-                        <div *ngFor="let template of recentTemplates" class="relative rounded-lg bg-white h-28  border-2 border-gray-200 shadow-sm flex flex-col items-center justify-center">
-                            <div class="absolute right-1.5 top-1.5 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-gray-50">Draft</div>
-                            <div class=" w-12 h-12  flex  justify-center items-center p-10 bg-rose-50 rounded-full">
-                                <img src="assets/icons/layout.png" class="w-fit h-fit" alt="" srcset="">
+                <div>
+                    <div *ngIf="!loader" class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-6 gap-2  ">
+                        <div *ngFor="let template of recentTemplates"
+                            class="relative mb-2  flex flex-col items-center justify-center">
+                            <div
+                                class="relative rounded-lg  flex flex-col items-center justify-center bg-white border-2 border-gray-200 w-full h-28">
+                                <div *ngIf="general?.UserRole=='super_admin'"
+                                    class="absolute left-1.5 top-1.5 text-xs text-gray-700 font-semibold px-2 w-6 h-6  rounded-full bg-purple-50 flex items-center justify-center border border-purple-100">
+                                    J</div>
+                                <div
+                                    class="absolute right-1.5 top-1.5 xxs-text text-gray-700 font-medium px-2  rounded-2xl bg-gray-50">
+                                    Draft</div>
+                                <div class=" w-14 h-14  flex  justify-center items-center p-10 bg-rose-50 rounded-full">
+                                    <img src="assets/icons/layout.png" class="w-fit h-fit" alt="" srcset="">
+                                </div>
                             </div>
-                            <div class="text-xs font-semibold">
+
+                            <div class="text-xs font-semibold max-w-full overflow-hidden text-ellipsis px-2">
                                 {{template?.templateName}}
                             </div>
-                            <div class="xs-text font-bold text-gray-400 ">{{template?.templateId}}</div>
-                        </div> 
-                        
-        
+                            <div class="xs-text font-bold text-gray-400 max-w-full overflow-hidden text-ellipsis px-2">
+                                {{template?.templateId}}</div>
+                        </div>
+                        <div class="relative  flex flex-col items-start">
+                            <div  class="relative rounded-lg mb-2 flex flex-col items-center justify-center bg-gray-50 border-2 border-dashed border-gray-200 w-full h-28">
+                              <mat-icon class="text-gray-300 ">add_circle_outline</mat-icon>
+                              <small class="font-medium text-gray-300">Add New Template</small>
+                            </div>
+                            <div (click)="navigateListingPage('templates')"
+                                class="text-xs flex items-center text-center justify-center font-semibold  px-2 w-full  text-pink-500 cursor-pointer">
+                              <span> View More</span> <mat-icon class="leading-6 ml-2">arrow_right_alt</mat-icon>
+                            </div>
+                        </div>
                     </div>
                 </div>
-              </mat-expansion-panel>
-            
-            
-            
+            </mat-expansion-panel>
         </div>
-
     </div>
-
 </div>

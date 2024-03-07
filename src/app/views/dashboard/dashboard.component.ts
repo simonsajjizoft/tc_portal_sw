@@ -9,6 +9,8 @@ import { DoughnutOptions, Options } from 'src/app/shared/interface';
 import { ToastrService } from 'ngx-toastr';
 import Chart from 'chart.js/auto';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import { GeneralService } from 'src/app/services/general.services';
 
 @Component({
   templateUrl: 'dashboard.component.html',
@@ -16,7 +18,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DashboardComponent implements OnInit {
   private unsubscribe = new Subject<void>();
-  constructor(private chartsData: DashboardChartsData, private apiService: ApiService, private toastr: ToastrService) {
+  constructor(private chartsData: DashboardChartsData, private apiService: ApiService, private toastr: ToastrService,private router:Router,private general:GeneralService) {
   }
   public mainChart: IChartProps = {};
   public chart: Array<IChartProps> = [];
@@ -86,9 +88,9 @@ export class DashboardComponent implements OnInit {
   };;
   loader;
   cards = [
-    { name: 'Packages', cnt: 0, img: 'assets/icons/packages_alt.svg' },
-    { name: 'Exercises', cnt: 0, img: 'assets/icons/exercise_alt.svg' },
-    { name: 'Templates', cnt: 0, img: 'assets/icons/layout_alt.png' }
+    { name: 'Packages', cnt: 0, img: 'assets/icons/packages_alt.svg',route:'packages' },
+    { name: 'Exercises', cnt: 0, img: 'assets/icons/exercise_alt.svg',route:'exercises' },
+    { name: 'Templates', cnt: 0, img: 'assets/icons/layout_alt.png',route:'templates' }
   ]
   uniqueTags: any = [];
   recentExercises:any = [];
@@ -179,6 +181,18 @@ export class DashboardComponent implements OnInit {
       this.toastr.error(err?.error || err)
 
     })
+  }
+
+  navigate(type,id){
+    this.router.navigate([`${type}/details/${id}`])
+  }
+
+  navigateListingPage(route){
+    this.router.navigate([`${route}`])
+  }
+
+  getUserRole(){
+    return this.general?.UserRole;
   }
 
 }

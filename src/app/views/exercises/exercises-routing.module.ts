@@ -14,7 +14,7 @@ const routes: Routes = [
     component:CreateExerciseComponent
   },
   {
-    path:'details',
+    path:'details/:id',
     component:DetailsComponent
   }
   

@@ -1,15 +1,14 @@
-
 <div class=" overflow-hidden mt-0">
-    <div class="  w-full   max-h-scr-half relative">
-        <div class=" border py-2  mb-3 px-3 bg-white rounded-md">
+    <div class="  w-full   h-fit relative ">
+        <div class="  py-2  mb-3 px-3 bg-white rounded-md border border-gray-200">
             <div class="flex justify-between">
                 <div class="flex gap-1 items-center font-semibold  relative cursor-pointer">
                     <img src="assets/icons/exercise.svg" class="h-12 w-10" alt="" srcset="">
                     <div class="flex flex-col  justify-center ">
-                        <div class=" text- m-0 leading-6">Exercise Name</div>
-                        <div class="text-xs font-medium m-0 leading-3"><span class="text-pink-600">E 32525</span> <span
-                                class="text-pink-400 ml-2 mr-2">|</span> <span class="text-violet-900 font-semibold">Package
-                                213412</span></div>
+                        <div class=" text- m-0 leading-6">{{details?.exerciseName ? details?.exerciseName : ''}}</div>
+                        <div class="text-xs font-medium m-0 leading-3"><span class="text-pink-600">{{id}}</span> <span
+                                class="text-pink-400 ml-2 mr-2">|</span> <span class="text-violet-900 font-semibold">
+                                {{details?.packageName ? details?.packageName : ''}}</span></div>
                     </div>
                 </div>
                 <div class="flex flex-col gap-1 px-2  items-end justify-center ">
@@ -19,8 +18,8 @@
                             <span class=" flex items-center font-bold text-sm">Draft </span>
                             <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 1 4 4 4-4" />
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                             <div *ngIf="statusDropdown"
                                 class=" w-44 h-fit bg-white text-black z-10 rounded-md border absolute text-xs top-10 shadow right-0">
@@ -32,68 +31,98 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="justify-end flex px-2">
                 <p class="xs-text m-0">Last Updated 24 Jan 2024 by John Doe</p>
             </div>
         </div>
-        <div class=" bg-white rounded-md  px-1.5">
+        <div class=" bg-white  px-1.5 rounded-md border border-gray-200">
             <div class="flex justify-end text-xs gap-3 font-semibold items-center mr-3 pt-2">
-                <div (click)="switchTab(0)" [ngClass]="tab==0 ? 'text-pink-500 bg-pink-50' : ''" class="px-3 py-1 cursor-pointer rounded-lg  font-bold">Exercise</div>
-                <div (click)="switchTab(1)" [ngClass]="tab==1 ? 'text-pink-500 bg-pink-50' : ''" class="px-3 py-1 cursor-pointer rounded-lg">Templates</div>
+                <div (click)="switchTab(0)" [ngClass]="tab==0 ? 'text-pink-500 bg-pink-50' : ''"
+                    class="px-3 py-1 cursor-pointer rounded-lg  font-bold">Exercise</div>
+                <div (click)="switchTab(1)" [ngClass]="tab==1 ? 'text-pink-500 bg-pink-50' : ''"
+                    class="px-3 py-1 cursor-pointer rounded-lg">Templates</div>
             </div>
-            <div class="py-3 main-content overflow-auto bg-white">
+            <div class="py-3  overflow-auto bg-white">
                 <ng-container *ngIf="tab==0">
                     <div class="py-1 mt-3 text-base font-bold px-3">Exercise Info.</div>
-                    <form [formGroup]="firstFormGroup" class="px-3">
-                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2  gap-4   mt-3 mb-8">
+                    <form [formGroup]="firstFormGroup" class="px-3.5">
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2  gap-4 py-3  mt-3 mb-8">
                             <div class=" flex-1 gap-4 items-center ">
                                 <div class="label font-semibold text-sm py-3">Age Group <span
                                         class="text-pink-500">*</span></div>
-                                <div
-                                    class="font-semibold flex items-center gap-2 py-2 border-2 border-zinc-200 rounded-lg w-fit px-4  justify-between">
-                                    <span class="text-sm">6-8 Age</span>
-                                    <svg class="w-2 h-2 ms-1  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                <div (click)="ageDropdown=!ageDropdown" (clickOutside)="ageDropdown=false"
+                                    class="cursor-pointer font-semibold relative flex items-center  py-2 border-2 border-zinc-200 rounded-lg w-max px-3  justify-between">
+                                    <span class="text-sm">{{firstFormGroup?.value?.ageGroup ?
+                                        firstFormGroup?.value?.ageGroup : ' '}} Age</span>
+                                    <svg class="w-2 h-2 ms-3  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         fill="none" viewBox="0 0 10 6">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="2" d="m1 1 4 4 4-4" />
                                     </svg>
+                                    <ng-container *ngIf="ageDropdown">
+                                        <app-custom-dropdown [values]="ageList" [displayName]="'age'"
+                                            (selectEvent)="selectAgeGroup($event)"></app-custom-dropdown>
+                                    </ng-container>
                                 </div>
                             </div>
                             <div class=" flex-1 gap-4 items-center font-bold  ">
-                                <div class="label font-semibold text-sm py-3">Exercise Type <span
+                                <div class="label font-semibold text-sm py-3">Premium Status <span
                                         class="text-pink-500">*</span></div>
-                                <mat-slide-toggle>
+                                <mat-slide-toggle formControlName="premiumStatus">
                                     <div class="flex items-center gap-0.5">
-                                        <svg class="w-4 h-4  ml-3 text-pink-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6.072 10.072 2 2 6-4m3.586 4.314.9-.9a2 2 0 0 0 0-2.828l-.9-.9a2 2 0 0 1-.586-1.414V5.072a2 2 0 0 0-2-2H13.8a2 2 0 0 1-1.414-.586l-.9-.9a2 2 0 0 0-2.828 0l-.9.9a2 2 0 0 1-1.414.586H5.072a2 2 0 0 0-2 2v1.272a2 2 0 0 1-.586 1.414l-.9.9a2 2 0 0 0 0 2.828l.9.9a2 2 0 0 1 .586 1.414v1.272a2 2 0 0 0 2 2h1.272a2 2 0 0 1 1.414.586l.9.9a2 2 0 0 0 2.828 0l.9-.9a2 2 0 0 1 1.414-.586h1.272a2 2 0 0 0 2-2V13.8a2 2 0 0 1 .586-1.414Z"></path>
+                                        <svg class="w-4 h-4  ml-3 text-pink-600" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="m6.072 10.072 2 2 6-4m3.586 4.314.9-.9a2 2 0 0 0 0-2.828l-.9-.9a2 2 0 0 1-.586-1.414V5.072a2 2 0 0 0-2-2H13.8a2 2 0 0 1-1.414-.586l-.9-.9a2 2 0 0 0-2.828 0l-.9.9a2 2 0 0 1-1.414.586H5.072a2 2 0 0 0-2 2v1.272a2 2 0 0 1-.586 1.414l-.9.9a2 2 0 0 0 0 2.828l.9.9a2 2 0 0 1 .586 1.414v1.272a2 2 0 0 0 2 2h1.272a2 2 0 0 1 1.414.586l.9.9a2 2 0 0 0 2.828 0l.9-.9a2 2 0 0 1 1.414-.586h1.272a2 2 0 0 0 2-2V13.8a2 2 0 0 1 .586-1.414Z">
+                                            </path>
                                         </svg>
                                         <span>Premium</span>
                                     </div>
-                                     </mat-slide-toggle>
+                                </mat-slide-toggle>
                             </div>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full text-sm ">
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full text-sm ">
                             <div class="flex-1">
-                                <div class="font-semibold ">Exercise Name</div>
+                                <div class="font-semibold ">Exercise Name <span class="text-pink-500">*</span></div>
                                 <div class=" py-3  w-full">
-                                    <input formControlName="name" type="text" placeholder="Type a name for your exercise.."
-                                        class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
+                                    <input formControlName="exerciseName" type="text"
+                                        placeholder="Type a name for your exercise.."
+                                        class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
                                 </div>
                             </div>
                             <div class="flex-1">
-                                <div class="font-semibold ">Description</div>
+                                <div class="font-semibold ">Price <span class="text-pink-500">*</span></div>
                                 <div class=" py-3  w-full">
-                                    <div  contenteditable="true"  [(ngModel)]="content" formControlName="description" [disabled]="!descenabled" placeholder="Description"  class=" placeholder:text-gray-300 text-black font-semibold border-2 border-gray-300 rounded-lg px-2 py-2 w-full min-h-28 outline-pink-500 "></div>
+                                    <input type="text" formControlName="premiumPrice"
+                                        placeholder="Price for your exercise"
+                                        class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
                                 </div>
                             </div>
                         </div>
-     
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 w-full text-sm ">
+
+                            <div class="flex-1">
+                                <div class="font-semibold ">Description <span class="text-pink-500">*</span></div>
+                                <div class=" py-3  w-full">
+                                    <div contenteditable="true" [(ngModel)]="content"
+                                        formControlName="exerciseDescription" [disabled]="!descenabled"
+                                        placeholder="Description"
+                                        class=" placeholder:text-gray-300 text-black font-semibold border-2 border-gray-300 rounded-lg px-2 py-2 w-full min-h-28 outline-pink-500 ">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </form>
-                    <div class="py-1 mt-3 text-base font-bold px-3">Exercise Steps </div>
-                    <form [formGroup]="secondFormGroup" class="py-4 mb-5  sm:px-0 md:px-3 lg:px-3 xl:px-3" >
+                    <div class="py-1 mt-3 text-base font-bold px-3">Exercise Instructions </div>
+                    <form [formGroup]="secondFormGroup" class="py-4 mb-5  sm:px-0 md:px-3 lg:px-3 xl:px-3">
                         <ckeditor [editor]="Editor" [config]="{ toolbar: [ 
                             'heading',
                             '|',
@@ -120,28 +149,105 @@
                             'undo',
                             'redo',
                             'SourceEditing'
-                            ] }"   formControlName="content" #myEditor></ckeditor>
-    
+                            ] }" formControlName="exerciseInstruction" #myEditor></ckeditor>
+
                         <div class=" mt-3 text-base font-bold px-3 py-3">Upload File</div>
                         <div class=" w-full px-2">
-                            <div class="h-56 w-80 px-3 rounded-lg border-pink-300 border-2 border-dashed bg-pink-50 flex flex-col justify-center gap-1 items-center">
-                                <div >
+                            <div
+                                class="h-56 w-80 px-3 rounded-lg border-pink-300 border-2 border-dashed bg-pink-50 flex flex-col justify-center gap-1 items-center">
+                                <div>
                                     <img src="assets/icons/upload.png" class="h-10 w-10 opacity-65" alt="" srcset="">
                                 </div>
                                 <div>
                                     <img src="assets/icons/Group 192.png" alt="" srcset="">
                                 </div>
-                                <div class="text-center"><span class="text-pink-600 underline text-xs font-bold">Click to upload</span></div>
-                                <div class="text-center text-pink-500 text-xs font-semibold">(Only PNG and JPEG is allowed) Maximium size is 6MB.</div>
+                                <div class="text-center"><span class="text-pink-600 underline text-xs font-bold">Click
+                                        to upload</span></div>
+                                <div class="text-center text-pink-500 text-xs font-semibold">(Only PNG and JPEG is
+                                    allowed) Maximium size is 6MB.</div>
                             </div>
                         </div>
                     </form>
                 </ng-container>
                 <ng-container *ngIf="tab==1">
-                    <div class="text-xs font-medium px-3 leading-4 mt-2">Package 33532 <span class="ml-2 mr-2 text-pink-400">|</span> Exercise 31414</div>
-                    <div class="px-3  font-semibold">Template name</div>
+                    <div class="min-h-80">
+                        <div class="flex gap-3 items-center px-3">
+                            <div class=""><img src="assets/icons/layout.png" class="w-10 h-10 " alt="" srcset=""></div>
+                        <div>
+                            <div class="text-xs font-medium leading-4 mt-2">{{details?.packageName ?
+                                details?.packageName : ''}} <span class="ml-2 mr-2 text-pink-400">|</span>
+                                {{details?.exerciseName ? details?.exerciseName : ''}}</div>
+                            <div class="  font-semibold text-lg">{{details?.templateName}}</div>
+                            <div class=" font-medium  text-sm">{{details?.templateId}}</div>
+                        </div>
+                        </div>
+                        <h6 class="text-sm font-bold px-3 py-4">Description</h6>
+                        <p class="text-sm font-semibold px-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos totam quis harum in, explicabo eligendi, numquam ipsum, iusto natus possimus corrupti. Voluptatum ducimus qui cupiditate repellendus eaque quo voluptas assumenda eos totam optio illum tempora debitis ea dolorem, dolor ut?</p>
+                    </div>
                 </ng-container>
             </div>
         </div>
+    </div>
+    <div class="px-3 py-2 bg-white rounded-md border border-gray-200 mt-4 mb-3">
+        <mat-tab-group animationDuration="0" class=" overflow-y-auto  px-2  tabs ">
+            <mat-tab>
+                <ng-template mat-tab-label class="flex items-center gap-0.5 "><mat-icon
+                        class="text-pink-500 text-xl mr-1 ">history</mat-icon><span
+                        class="py-1.5 px-0.5">Logs</span></ng-template>
+                <div class="py-3">
+                    <div *ngFor="let log of logs" class="rounded-md bg-slate-50 px-3 py-3 mt-3 mb-3">
+                        <div class="flex gap-2 items-center">
+                            <div
+                                class="rounded-full w-8 h-8 ring-2 ring-purple-100 bg-purple-100 flex items-center justify-center font-bold text-gray-500">
+                                {{log?.user}}</div>
+                            <div class="flex flex-col gap-1 font-medium text-sm">
+                                <small class="text-gray-600 font-medium">{{log?.time}}</small>
+                                <div class="text-sm font-semibold">{{log?.description}}</div>
+                                <div *ngIf="log?.contentchanged" class="text-xs">
+                                    Content changed in <span
+                                        class="text-gray-700 font-bold">{{log?.contentchanged}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label class="flex items-center gap-0.5 "><mat-icon
+                        class="text-pink-500 text-xl mr-1 ">comment</mat-icon><span
+                        class="py-1.5 px-0.5">Comments</span></ng-template>
+                <div class="w-full py-4 text-sm">
+                    <div contenteditable="true" (focus)="showCommentButtons()"
+                        placeholder="Type in your comment here..."
+                        class=" placeholder:text-gray-200 text-black font-medium border border-gray-300 rounded-lg px-3 py-3 w-full min-h-20 outline-none ">
+                    </div>
+                    <div class="flex justify-end gap-1 py-2 px-0.5">
+                        <div *ngIf="isCommentActionsEnabled"
+                            class="cursor-pointer bg_alt rounded-3xl text-white text-sm py-1 px-4 font-semibold opacity-80 hover:opacity-100">
+                            Save</div>
+                        <div *ngIf="isCommentActionsEnabled" (click)="isCommentActionsEnabled=false"
+                            class="cursor-pointer text-gray-700 text-sm py-1 px-4 font-semibold rounded-md">Cancel</div>
+                    </div>
+                </div>
+                <div class="py-1">
+                    <div *ngFor="let comment of comments" class="rounded-md bg-neutral-50 px-3 py-3 mt-2 mb-2">
+                        <div class="flex gap-2 items-center">
+                            <div class="flex flex-col  font-medium text-sm">
+                                <div class="flex items-center gap-2">
+                                    <div
+                                        class="rounded-full w-7 h-7 ring-2 ring-purple-100 bg-purple-100 flex items-center justify-center font-bold text-gray-500">
+                                        {{comment?.user}}</div><span
+                                        class="font-bold text-sm pl-1">{{comment?.username}}</span><small
+                                        class="text-gray-600 font-medium">{{comment?.time}}</small>
+                                </div>
+                                <div class="text-sm font-medium px-10">{{comment?.description}}</div>
+                                <div class="flex gap-2 text-gray-700 font-bold text-xs px-10 pt-2"><span>Edit</span>
+                                    <span>Delete</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
     </div>
 </div>

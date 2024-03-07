@@ -67,7 +67,7 @@ export class ApiService {
     if (urlParam) {
       url = url + '/' + urlParam;
     }
-    return this.http.put(url, body, { params: queryParam });
+    return this.http.put(url, body, { params: queryParam,headers: this.setHeaders() });
   }
 
   ExecuteDelete(url: string, urlParam?: string, queryParam?: HttpParams): Observable<Object> {

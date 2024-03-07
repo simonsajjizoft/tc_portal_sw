@@ -6,6 +6,25 @@
   </div>
   <div class="details">
       <div class="custom-grid mt-3  gap-0.5  items-center px-3">
+        <div class="font-semibold text-sm text-gray-500 py-2">Status <span class="text-red-500">*</span></div>
+        <div (click)="isStatusDropdown=!isStatusDropdown" (clickOutside)="isStatusDropdown=false" class="w-fit cursor-pointer   relative  items-center gap-0.5 pt-0.5  ">
+            <div class="relative flex flex-col w-fit">
+              <div class="flex items-center w-fit justify-between">
+                  <div
+                      class="text-sm font-semibold  mr-2  relative  w-44   overflow-hidden text-ellipsis">
+                      {{selectedStatus?.statusName ?  selectedStatus?.statusName : 'Select Status'}}
+                  </div>
+                  <svg class="w-2 h-2 ms-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="m1 1 4 4 4-4" />
+              </svg>
+              </div>
+            </div>
+            <ng-container *ngIf="isStatusDropdown">
+              <app-custom-dropdown [checkboxes]="false" [values]="statusList" [displayName]="'statusName'" (selectEvent)="selectStatus($event)"></app-custom-dropdown>
+            </ng-container>
+        </div>
           <div class="font-semibold text-sm text-gray-500 py-2">Select Assignee <span class="text-red-500">*</span></div>
           <div (click)="isAssigneeDropdown=!isAssigneeDropdown" (clickOutside)="isAssigneeDropdown=false" class="w-fit cursor-pointer  relative items-center gap-0.5 pt-0.5">
               <div class="relative flex flex-col w-fit">
@@ -27,25 +46,7 @@
                 <app-custom-dropdown [checkboxes]="false" [values]="userList" [displayName]="''" (selectEvent)="selectAssignee($event)"></app-custom-dropdown>
               </ng-container>
           </div>
-          <div class="font-semibold text-sm text-gray-500 py-2">Status <span class="text-red-500">*</span></div>
-        <div (click)="isStatusDropdown=!isStatusDropdown" (clickOutside)="isStatusDropdown=false" class="w-fit cursor-pointer   relative  items-center gap-0.5 pt-0.5  ">
-            <div class="relative flex flex-col w-fit">
-              <div class="flex items-center w-fit justify-between">
-                  <div
-                      class="text-sm font-semibold  mr-2  relative  w-44   overflow-hidden text-ellipsis">
-                      {{selectedStatus?.statusName}}
-                  </div>
-                  <svg class="w-2 h-2 ms-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                  viewBox="0 0 10 6">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="m1 1 4 4 4-4" />
-              </svg>
-              </div>
-            </div>
-            <ng-container *ngIf="isStatusDropdown">
-              <app-custom-dropdown [checkboxes]="false" [values]="statusList" [displayName]="'statusName'" (selectEvent)="selectStatus($event)"></app-custom-dropdown>
-            </ng-container>
-        </div>
+    
       </div>
     
       
