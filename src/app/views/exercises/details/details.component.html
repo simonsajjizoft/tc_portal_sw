@@ -55,16 +55,16 @@
                                 <div class="label font-semibold text-sm py-3">Age Group <span
                                         class="text-pink-500">*</span></div>
                                 <div (click)="ageDropdown=!ageDropdown" (clickOutside)="ageDropdown=false"
-                                    class="cursor-pointer font-semibold relative flex items-center  py-2 border-2 border-zinc-200 rounded-lg w-max px-3  justify-between">
+                                    class="cursor-pointer font-semibold relative flex items-center  py-2 px-2 border-2 border-zinc-200 rounded-lg w-max   justify-between">
                                     <span class="text-sm">{{firstFormGroup?.value?.ageGroup ?
                                         firstFormGroup?.value?.ageGroup : ' '}} Age</span>
-                                    <svg class="w-2 h-2 ms-3  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    <svg class="w-2 h-2 ms-5  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         fill="none" viewBox="0 0 10 6">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="2" d="m1 1 4 4 4-4" />
                                     </svg>
                                     <ng-container *ngIf="ageDropdown">
-                                        <app-custom-dropdown [values]="ageList" [displayName]="'age'"
+                                        <app-custom-dropdown [values]="ageList" [displayName]="'ageGroup'"
                                             (selectEvent)="selectAgeGroup($event)"></app-custom-dropdown>
                                     </ng-container>
                                 </div>
@@ -87,12 +87,12 @@
                             </div>
                         </div>
                         <div
-                            class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full text-sm ">
+                            class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2  gap-4 py-3  mt-3 mb-8 text-sm">
                             <div class="flex-1">
-                                <div class="font-semibold ">Exercise Name <span class="text-pink-500">*</span></div>
+                                <div class="font-semibold ">Skill Type <span class="text-pink-500">*</span></div>
                                 <div class=" py-3  w-full">
-                                    <input formControlName="exerciseName" type="text"
-                                        placeholder="Type a name for your exercise.."
+                                    <input formControlName="skillType" type="text"
+                                        placeholder="Enter the skill Type"
                                         class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
                                 </div>
                             </div>
@@ -104,6 +104,27 @@
                                         class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
                                 </div>
                             </div>
+                        </div>
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full text-sm ">
+                            <div class="flex-1">
+                                <div class="font-semibold ">Exercise Name <span class="text-pink-500">*</span></div>
+                                <div class=" py-3  w-full">
+                                    <input formControlName="exerciseName" type="text"
+                                        placeholder="Type a name for your exercise.."
+                                        class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
+                                </div>
+                            </div>
+                            <div class=" flex-1 gap-4 items-center font-bold  ">
+                                <div class="label font-semibold text-sm py-3">Bonus <span
+                                        class="text-pink-500">*</span></div>
+                                <mat-slide-toggle formControlName="bonus">
+                                    <div class="flex items-center gap-0.5 px-2">
+                                        <span>Bonus</span>
+                                    </div>
+                                </mat-slide-toggle>
+                            </div>
+                            
                         </div>
                         <div
                             class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 w-full text-sm ">

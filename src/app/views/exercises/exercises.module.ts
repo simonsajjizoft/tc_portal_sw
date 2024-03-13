@@ -7,6 +7,7 @@ import { ListComponent } from './list/list.component';
 import { DetailsComponent } from './details/details.component';
 import { SharedModules } from 'src/app/shared/shared.module';
 import { ContentEditableFormDirective } from 'src/app/shared/directives/content-editable-form.directive';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ContentEditableFormDirective } from 'src/app/shared/directives/content-
     CommonModule,
     ExercisesRoutingModule,
     SharedModules,
+    InfiniteScrollModule
   ]
 })
 export class ExercisesModule { }

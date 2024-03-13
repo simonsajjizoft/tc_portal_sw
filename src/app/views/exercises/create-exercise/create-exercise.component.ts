@@ -19,14 +19,15 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./create-exercise.component.scss']
 })
 export class CreateExerciseComponent {
-  ageList = [{'age':'4-6',selected:true},{'age':'6-8'}];
+  ageList = [];
   firstFormGroup = this._formBuilder.group({
     exerciseName: ['', Validators.required],
     premiumPrice:['0',Validators.required],
     exerciseDescription: ['', Validators.required],
-    ageGroup: [this.ageList[0]?.age, Validators.required],
+    ageGroup: ['', Validators.required],
     premiumStatus:[false, Validators.required],
-    packageName:['',]
+    skillType:['', Validators.required],
+    bonus:[false, Validators.required],
   });
   secondFormGroup = this._formBuilder.group({
     assignedTo:['', Validators.required],
@@ -43,6 +44,7 @@ export class CreateExerciseComponent {
     templateId:[''],
     templateName:[''],
     updatedDate:[''],
+    packageName:['',]
 
   });
   thirdFormGroup = this._formBuilder.group({
@@ -58,6 +60,11 @@ export class CreateExerciseComponent {
   statusList;
   userList;
   ageDropdown;
+  loader;
+  throttle = 50;
+  distance = 2;
+  page = 1;
+  exercises: any[] = [];
   @ViewChild('desc') desc: ElementRef;
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
   private _ngZone: NgZone;
@@ -80,6 +87,7 @@ export class CreateExerciseComponent {
     });
     this.route.paramMap.subscribe(paramMap => {
       this.fetchAllUsers();
+      this.fetchAgeList();
       this.fetchStatusList();
     })
   }
@@ -117,7 +125,6 @@ export class CreateExerciseComponent {
         if(data){
           console.log(data);
           this.saveExercise(data);
-          
         }
   
       });
@@ -178,6 +185,43 @@ export class CreateExerciseComponent {
       }
     })
 
+  }
+
+  selectAgeGroup(age){
+    this.ageList.map((item:any)=>item.selected = false)
+    age.selected = true;
+    this.firstFormGroup.controls['ageGroup'].setValue(age?.ageGroup);
+  }
+
+  fetchAgeList(){
+    this.apiService.ExecuteGet(environment?.apiUrl + 'age-group').subscribe((data:any)=>{
+      if(data?.data){
+        this.ageList = data?.data;
+        console.log(this.ageList)
+        this.ageList.map((item)=>{
+          item.selected = false;
+        });
+        this.firstFormGroup.controls['ageGroup'].patchValue(this.ageList[0]?.ageGroup);
+      }
+    })
+
+  }
+
+  onScroll(): void {
+    // if(!this.isReachedLastPage){
+    //   this.packageService
+    //   .getApprovedExercises(++this.page,"4-6")
+    //   .subscribe((data:any) => {
+    //     let exercises = data?.data;
+    //     if(exercises){
+    //       if(exercises?.length == 0) this.isReachedLastPage = true;
+    //       else this.exercises.push(...exercises);
+    //     }
+     
+    //     // this.unselectAllExercises()
+    //     console.log(exercises)
+    //   });
+    // }
   }
 
 
