@@ -38,6 +38,9 @@ export class ListComponent implements OnInit,AfterViewInit {
   @ViewChild('top') topRef: ElementRef;
   @ViewChild('bottom') bottomRef: ElementRef;
   bottomHeight;
+  tbView = 'exercises';
+  comments;
+  commentsLoader;
   constructor(private router:Router,private http:HttpClient,private packageService:PackagesService,private apiService:ApiService,private general:GeneralService){}
 
   ngOnInit(){
@@ -158,7 +161,9 @@ export class ListComponent implements OnInit,AfterViewInit {
         console.log(data);
         this.packageDetails = data?.data;
       }
+      this.fetchComments(pkg?.packageId)
       this.detailsLoader = false;
+
     },
     (error)=>{
       this.detailsLoader = false;
@@ -179,6 +184,25 @@ export class ListComponent implements OnInit,AfterViewInit {
       this.detailsLoader = false;
     },1000);
   }
+
+  changeTabView(tab){
+    this.tbView = tab;
+    console.log(this.tbView)
+  }
+
+  fetchComments(id){
+    this.commentsLoader = true;
+     this.apiService.ExecuteGet(environment?.apiUrl + 'comment' + `?eventId=${id}`).subscribe((data:any)=>{
+       if(data?.data){
+         this.comments = data?.data;
+         console.log(this.comments); 
+       }
+       this.commentsLoader = false;
+     },
+     (error)=>{
+      this.commentsLoader = false;
+     })
+   }
 
 
 }

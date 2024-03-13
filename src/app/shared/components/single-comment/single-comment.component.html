@@ -1,0 +1,11 @@
+<div  class="rounded-md bg-neutral-50 px-3 py-3 mt-2 mb-2">
+    <div class="flex gap-2 items-center">
+        <div class="flex flex-col  font-medium text-sm">
+            <div class="flex items-center gap-2"><div class="rounded-full w-7 h-7 ring-2 ring-purple-100 bg-purple-100 flex items-center justify-center font-bold text-gray-500">{{comment?.commentUser ? (comment?.commentUser?.charAt(0) | titlecase) : ''}}</div><span class="font-bold text-xs pl-1">{{comment?.commentUser}}</span><small class="text-gray-600 font-medium text-xs">{{comment?.commentDate ? (comment?.commentDate | date:"MMM dd yyy h:m a") : ""}}</small></div>
+            <div *ngIf="!editMode" class="text-sm font-medium px-10 py-2" [innerHTML]="comment?.comment"></div>
+            <div *ngIf="editMode"  commenteditable="true" class="text-sm font-medium px-10 py-2" [(ngModel)]="content"></div>
+            <div *ngIf="editMode" class="flex gap-2 text-gray-700 font-bold text-xs px-10 pt-2"><span class="hover:underline cursor-pointer rounded-2xl text-white px-2.5 py-1 bg-sec" (click)="editComment(comment,content)">Save</span> <span class="hover:underline cursor-pointer rounded-2xl text-gray-800 px-2.5 py-1 bg-gray-100" (click)="editMode=false">Cancel</span></div>
+            <div *ngIf="!editMode" class="flex gap-2 text-gray-700 font-bold text-xs px-10 pt-2"><span class="hover:underline cursor-pointer" (click)="editMode=true">Edit</span> <span (click)="deleteComment(comment)" class="hover:underline cursor-pointer">Delete</span></div>
+        </div>
+    </div>
+</div>

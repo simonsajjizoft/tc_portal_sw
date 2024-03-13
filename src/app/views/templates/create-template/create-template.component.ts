@@ -8,6 +8,8 @@ import {
   DragDropModule,
 } from '@angular/cdk/drag-drop';
 import { Component, VERSION ,OnInit, ViewChild, ElementRef} from '@angular/core';
+import { ConfirmboxComponent } from 'src/app/shared/components/confirmbox/confirmbox.component';
+import { GeneralService } from 'src/app/services/general.services';
 
 type IMenu = {
   title: string;
@@ -43,9 +45,11 @@ export class CreateTemplateComponent implements OnInit {
   table: Array<IMenu> = [];
   selectedField;
   statusDropdown;
+  userList;
+  statusList;
   @ViewChild('tableList') tableList: ElementRef;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private general:GeneralService) { }
 
   ngOnInit(): void {}
 
@@ -148,6 +152,34 @@ export class CreateTemplateComponent implements OnInit {
 
     })
     console.log(this.table)
+  }
+
+  openDialog(): void {
+    const dialog = this.dialog.open(ConfirmboxComponent, {
+      panelClass: 'dialog-ctn',
+      data: { statusList:this.statusList,userList:this.userList,assignee:this.general.getUserName},
+    });
+    dialog.afterClosed().subscribe(data => {
+      if(data){
+        console.log(data);        
+      }
+    });
+    // if(this.firstFormGroup.valid ){
+    //   const dialog = this.dialog.open(ConfirmboxComponent, {
+    //     panelClass: 'dialog-ctn',
+    //     data: { statusList:this.statusList,userList:this.userList,assignee:this.general.getUserName},
+    //   });
+    //   dialog.afterClosed().subscribe(data => {
+    //     if(data){
+    //       console.log(data);
+    //       this.saveExercise(data);
+          
+    //     }
+  
+    //   });
+    // }
+    // else this.tostr.warning("Please do enter the required fields before saving.")
+   
   }
 
 }

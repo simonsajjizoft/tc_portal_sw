@@ -144,3 +144,22 @@ button:focus {
   display: grid;
   grid-template-columns: 170px auto;
 }
+
+  
+textarea {
+  resize: vertical!important;
+  overflow: hidden!important;
+}
+
+[contenteditable=true]:empty:before {
+content: attr(placeholder);
+pointer-events: none;
+display: block; /* For Firefox */
+color:gray!important
+}
+
+.cmt{
+  resize: vertical!important;
+  width: 28vw!important;
+}
+

@@ -13,22 +13,22 @@
                 </div>
                 <div class="flex flex-col gap-1 px-2  items-end justify-center ">
                     <div class="flex gap-3">
-                        <div (click)="statusDropdown=!statusDropdown"
+                        <div (click)="openDialog()"
                             class="z-20 cursor-pointer rounded-3xl relative  text-pink-600 border-pink-400 border-2 px-3 py-1 font-medium text-sm flex  items-center">
-                            <span class=" flex items-center font-bold text-sm">Draft </span>
-                            <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                            <div *ngIf="statusDropdown"
-                                class=" w-44 h-fit bg-white text-black z-10 rounded-md border absolute text-xs top-10 shadow right-0">
-                                <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
-                                        class="mr-1">Save As Draft</span></div>
-                                <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span
-                                        class="mr-1">Submit &
-                                        Review</span></div>
-                            </div>
+                            <span class=" flex items-center font-bold text-sm">Save</span>
+                            <!-- <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                        <div *ngIf="statusDropdown"
+                            class=" w-44 h-fit bg-white text-black z-10 rounded-md border absolute text-xs top-10 shadow right-0">
+                            <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
+                                (click)="openDialog(2000,0)"    class="mr-1">Save As Draft</span></div>
+                            <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span
+                                (click)="openDialog(2000,0)"     class="mr-1">Submit &
+                                    Review</span></div>
+                        </div> -->
                         </div>
                     </div>
 
@@ -173,16 +173,19 @@
                     <div class="min-h-80">
                         <div class="flex gap-3 items-center px-3">
                             <div class=""><img src="assets/icons/layout.png" class="w-10 h-10 " alt="" srcset=""></div>
-                        <div>
-                            <div class="text-xs font-medium leading-4 mt-2">{{details?.packageName ?
-                                details?.packageName : ''}} <span class="ml-2 mr-2 text-pink-400">|</span>
-                                {{details?.exerciseName ? details?.exerciseName : ''}}</div>
-                            <div class="  font-semibold text-lg">{{details?.templateName}}</div>
-                            <div class=" font-medium  text-sm">{{details?.templateId}}</div>
-                        </div>
+                            <div>
+                                <div class="text-xs font-medium leading-4 mt-2">{{details?.packageName ?
+                                    details?.packageName : ''}} <span class="ml-2 mr-2 text-pink-400">|</span>
+                                    {{details?.exerciseName ? details?.exerciseName : ''}}</div>
+                                <div class="  font-semibold text-lg">{{details?.templateName}}</div>
+                                <div class=" font-medium  text-sm">{{details?.templateId}}</div>
+                            </div>
                         </div>
                         <h6 class="text-sm font-bold px-3 py-4">Description</h6>
-                        <p class="text-sm font-semibold px-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos totam quis harum in, explicabo eligendi, numquam ipsum, iusto natus possimus corrupti. Voluptatum ducimus qui cupiditate repellendus eaque quo voluptas assumenda eos totam optio illum tempora debitis ea dolorem, dolor ut?</p>
+                        <p class="text-sm font-semibold px-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Dignissimos totam quis harum in, explicabo eligendi, numquam ipsum, iusto natus possimus
+                            corrupti. Voluptatum ducimus qui cupiditate repellendus eaque quo voluptas assumenda eos
+                            totam optio illum tempora debitis ea dolorem, dolor ut?</p>
                     </div>
                 </ng-container>
             </div>
@@ -242,7 +245,8 @@
                                 </div>
                                 <div class="text-sm font-medium px-10">{{comment?.description}}</div>
                                 <div class="flex gap-2 text-gray-700 font-bold text-xs px-10 pt-2"><span>Edit</span>
-                                    <span>Delete</span></div>
+                                    <span>Delete</span>
+                                </div>
                             </div>
                         </div>
                     </div>

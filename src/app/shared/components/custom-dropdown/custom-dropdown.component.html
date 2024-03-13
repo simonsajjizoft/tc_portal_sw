@@ -5,7 +5,7 @@
 
 </div>
 
-<div *ngIf="!checkboxes" class="rounded-md border bg-white px-1 py-2 flex flex-col absolute right-0 shadow top-8 z-20 w-max  min-w-28 text-sm font-semibold">
+<div *ngIf="!checkboxes" class="rounded-md border bg-white px-1 py-2 flex flex-col absolute right-2 shadow top-8 z-20 w-full  min-w-28 text-sm font-semibold">
     <div (click)="selectOption(item)" *ngFor="let item of values" [ngClass]="item?.selected ? 'bg-gray-100 rounded-lg ':''" class="flex justify-between  items-center px-2 py-0.5 rounded-md hover:text-purple-800">
         <div class=" text-left font-semibold text-gray-800 overflow-hidden text-ellipsis max-w-40">{{item?.[displayName] ? item?.[displayName] : (item ? item : '')}}</div>
     </div>

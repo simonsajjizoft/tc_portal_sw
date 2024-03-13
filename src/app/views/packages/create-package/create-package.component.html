@@ -53,15 +53,15 @@
                                 <div class="label font-semibold text-sm py-3">Age Group <span
                                         class="text-pink-500">*</span></div>
                                 <div (click)="ageDropdown=!ageDropdown" (clickOutside)="ageDropdown=false"
-                                    class="font-semibold relative flex items-center  py-2 border-2 border-zinc-200 rounded-lg w-fit px-3  justify-between">
+                                    class="font-semibold relative flex items-center  py-2 border-2 border-zinc-200 rounded-lg w-fit px-2  justify-between">
                                     <span class="text-sm">{{firstFormGroup?.value?.ageGroup ? firstFormGroup?.value?.ageGroup : ' '}} Age</span>
-                                    <svg class="w-2 h-2 ms-3  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    <svg class="w-2 h-2 ms-5  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         fill="none" viewBox="0 0 10 6">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="2" d="m1 1 4 4 4-4" />
                                     </svg>
                                     <ng-container *ngIf="ageDropdown">
-                                        <app-custom-dropdown [values]="ageList" [displayName]="'age'" (selectEvent)="selectAgeGroup($event)"></app-custom-dropdown>
+                                        <app-custom-dropdown [values]="ageList" [displayName]="'ageGroup'" (selectEvent)="selectAgeGroup($event)"></app-custom-dropdown>
                                     </ng-container>
                                 </div>
                             </div>
@@ -135,10 +135,10 @@
                                     <div class="h-2/6">
                                         <div class=" text-center  text-xs font-semibold h-4 max-w-full text-ellipsis overflow-hidden">{{item?.exerciseName}}</div>
                                         <div class="xs-text  text-center h-4 max-w-full text-ellipsis overflow-hidden">{{item?.exerciseId}}</div>
-                                        <div class="py-1.5  items-center flex gap-2 px-2 justify-center"  >
+                                        <!-- <div class="py-1.5  items-center flex gap-2 px-2 justify-center"  >
                                             <input type="radio" class="h-3 w-3 " [name]="'Bonus'" id="">
                                             <div class="text-xs font-semibold">Bonus</div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </ng-container>
                              </div>

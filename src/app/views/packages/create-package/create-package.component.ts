@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { PackagesService } from '../packages.service';
 import { GeneralService } from 'src/app/services/general.services';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-package',
@@ -18,12 +19,12 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./create-package.component.scss']
 })
 export class CreatePackageComponent {
-  ageList = [{'age':'4-6',selected:true},{'age':'6-8'}];
+  ageList = [];
   firstFormGroup = this._formBuilder.group({
     packageName: ['', Validators.required],
     premiumPrice:['0',Validators.required],
     description: ['', Validators.required],
-    ageGroup: [this.ageList[0]?.age, Validators.required],
+    ageGroup: ['', Validators.required],
     premiumStatus:[false, Validators.required],
   });
   secondFormGroup = this._formBuilder.group({
@@ -34,7 +35,8 @@ export class CreatePackageComponent {
     exerciseId:[[],Validators.required],
     packageStatus:[[]],
     packageStatusId:[''],
-    assignedBy:['']
+    assignedBy:[''],
+    commentDocument:['']
   });
   thirdFormGroup = this._formBuilder.group({
     thirdCtrl: ['', Validators.required],
@@ -65,7 +67,8 @@ export class CreatePackageComponent {
     private apiService:ApiService,
     private packageService:PackagesService,
     private general:GeneralService,
-    private tostr:ToastrService
+    private tostr:ToastrService,
+    private router:Router
   ) {
     this.firstFormGroup.valueChanges.subscribe(value => {
       if(this.desc?.nativeElement){
@@ -79,6 +82,7 @@ export class CreatePackageComponent {
     this.content = ''
     this.firstFormGroup.get("description").setValue(this.content);
     this.getExercises();
+    this.fetchAgeList();
     this.fetchAllUsers();
     this.fetchStatusList();
   }
@@ -215,7 +219,10 @@ export class CreatePackageComponent {
   selectAgeGroup(age){
     this.ageList.map((item:any)=>item.selected = false)
     age.selected = true;
-    this.firstFormGroup.controls['ageGroup'].setValue(age?.age);
+    this.firstFormGroup.controls['ageGroup'].setValue(age?.ageGroup);
+    this.exercises = [];
+    this.page = 1;
+    this.getExercises();
   }
 
   savePackage(data){
@@ -227,6 +234,12 @@ export class CreatePackageComponent {
     this.secondFormGroup.controls['assignedBy'].patchValue(this.general.getUserName);
     this.secondFormGroup.controls['createdUser'].patchValue(this.general.getUserName);
     this.secondFormGroup.controls['updatedUser'].patchValue(this.general.getUserName);
+    let commentObj:any = {
+      "comment": data?.comment,
+      "commentDate": new Date(),
+      "commentUser": this.general.getUserName
+    }
+    this.secondFormGroup.controls['commentDocument'].patchValue(commentObj);
     
     let payload = {...this.firstFormGroup?.value,...this.secondFormGroup?.value};
     console.log(payload);
@@ -234,7 +247,10 @@ export class CreatePackageComponent {
     this.apiService.ExecutePost(environment?.apiUrl + 'package',payload).subscribe((data:any)=>{
       if(data){
         console.log(data?.data); 
-        this.tostr.success(data?.data)
+        this.tostr.success(data?.data);
+        this.router.navigate(
+          ['/packages'] 
+        );
       }
       else this.tostr.error(data?.data || data?.message)
     },(error)=>{
@@ -248,6 +264,20 @@ export class CreatePackageComponent {
       return selectedExercises.map((item)=>{return item?.exerciseId}) || []
     }
     else return []
+
+  }
+
+  fetchAgeList(){
+    this.apiService.ExecuteGet(environment?.apiUrl + 'age-group').subscribe((data:any)=>{
+      if(data?.data){
+        this.ageList = data?.data;
+        console.log(this.ageList)
+        this.ageList.map((item)=>{
+          item.selected = false;
+        });
+        this.firstFormGroup.controls['ageGroup'].patchValue(this.ageList[0]?.ageGroup);
+      }
+    })
 
   }
 

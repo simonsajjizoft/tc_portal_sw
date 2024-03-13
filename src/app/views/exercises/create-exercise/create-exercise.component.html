@@ -13,22 +13,23 @@
                     class="cursor-pointer rounded-3xl relative  text-pink-600 px-3 py-2 font-bold text-sm flex  items-center">
                     <span class="  ">Submit & Review </span>
                 </div> -->
-                <div (click)="statusDropdown=!statusDropdown"
-                    class="z-20 cursor-pointer rounded-3xl relative  text-pink-600 border-pink-400 border-2 px-3 py-1 font-medium text-sm flex  items-center">
-                    <span class=" flex items-center font-bold text-sm">Save As </span>
-                    <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg>
-                    <div *ngIf="statusDropdown"
-                        class=" w-44 h-fit bg-white text-black z-20 rounded-md border absolute text-xs top-10 shadow right-0">
-                        <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
-                                class="mr-1">Save As Draft</span></div>
-                        <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span class="mr-1">Submit &
-                                Review</span></div>
+                <div (click)="openDialog()" 
+                        class="z-20 cursor-pointer rounded-3xl relative  text-pink-600 border-pink-400 border-2 px-3 py-1 font-medium text-sm flex  items-center">
+                        <span class=" flex items-center font-bold text-sm">Save</span>
+                        <!-- <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                        <div *ngIf="statusDropdown"
+                            class=" w-44 h-fit bg-white text-black z-10 rounded-md border absolute text-xs top-10 shadow right-0">
+                            <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
+                                (click)="openDialog(2000,0)"    class="mr-1">Save As Draft</span></div>
+                            <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span
+                                (click)="openDialog(2000,0)"     class="mr-1">Submit &
+                                    Review</span></div>
+                        </div> -->
                     </div>
-                </div>
                 <!-- <div class="text-gray-600 font-bold text-sm">
                     Clear
                 </div> -->
@@ -61,20 +62,25 @@
                             <div class=" flex-1 gap-4 items-center ">
                                 <div class="label font-semibold text-sm py-3">Age Group <span
                                         class="text-pink-500">*</span></div>
-                                <div
-                                    class="font-semibold flex items-center gap-2 py-2 border-2 border-zinc-200 rounded-lg w-fit px-4  justify-between">
-                                    <span class="text-sm">6-8 Age</span>
-                                    <svg class="w-2 h-2 ms-1  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                <div (click)="ageDropdown=!ageDropdown" (clickOutside)="ageDropdown=false"
+                                    class="cursor-pointer font-semibold relative flex items-center  py-2 border-2 border-zinc-200 rounded-lg w-max px-3  justify-between">
+                                    <span class="text-sm">{{firstFormGroup?.value?.ageGroup ?
+                                        firstFormGroup?.value?.ageGroup : ' '}} Age</span>
+                                    <svg class="w-2 h-2 ms-3  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         fill="none" viewBox="0 0 10 6">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="2" d="m1 1 4 4 4-4" />
                                     </svg>
+                                    <ng-container *ngIf="ageDropdown">
+                                        <app-custom-dropdown [values]="ageList" [displayName]="'age'"
+                                            (selectEvent)="selectAgeGroup($event)"></app-custom-dropdown>
+                                    </ng-container>
                                 </div>
                             </div>
                             <div class=" flex-1 gap-4 items-center font-bold  ">
-                                <div class="label font-semibold text-sm py-3">Exercise Type <span
+                                <div class="label font-semibold text-sm py-3">Premium Status <span
                                         class="text-pink-500">*</span></div>
-                                <mat-slide-toggle>
+                                <mat-slide-toggle formControlName="premiumStatus">
                                     <div class="flex items-center gap-0.5">
                                         <svg class="w-4 h-4  ml-3 text-pink-600" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
@@ -91,18 +97,31 @@
                         <div
                             class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full text-sm ">
                             <div class="flex-1">
-                                <div class="font-semibold ">Exercise Name</div>
+                                <div class="font-semibold ">Exercise Name <span class="text-pink-500">*</span></div>
                                 <div class=" py-3  w-full">
-                                    <input formControlName="name" type="text"
+                                    <input formControlName="exerciseName" type="text"
                                         placeholder="Type a name for your exercise.."
-                                        class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
+                                        class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
                                 </div>
                             </div>
                             <div class="flex-1">
-                                <div class="font-semibold ">Description</div>
+                                <div class="font-semibold ">Price <span class="text-pink-500">*</span></div>
                                 <div class=" py-3  w-full">
-                                    <div contenteditable="true" [(ngModel)]="content" formControlName="description"
-                                        [disabled]="!descenabled" placeholder="Description"
+                                    <input type="text" formControlName="premiumPrice"
+                                        placeholder="Price for your exercise"
+                                        class="block w-full rounded-lg font-semibold border px-2 py-2 text-gray-900   ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 outline-pink-500  sm:leading-6">
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 w-full text-sm ">
+
+                            <div class="flex-1">
+                                <div class="font-semibold ">Description <span class="text-pink-500">*</span></div>
+                                <div class=" py-3  w-full">
+                                    <div contenteditable="true" [(ngModel)]="content"
+                                        formControlName="exerciseDescription" [disabled]="!descenabled"
+                                        placeholder="Description"
                                         class=" placeholder:text-gray-300 text-black font-semibold border-2 border-gray-300 rounded-lg px-2 py-2 w-full min-h-28 outline-pink-500 ">
                                     </div>
                                 </div>
@@ -117,37 +136,7 @@
                             [ngClass]="stepper?.selectedIndex==1 ? 'font-bold text-sm' : 'font-semibold text-xs'">Exercise
                             Steps and Upload of Files</span>
                     </ng-template>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vel in ipsa distinctio voluptate
-                    debitis aliquam. Illum voluptatem quis dolor id tempore. Amet quasi iste veniam atque eligendi qui,
-                    vel iure adipisci ut, rerum repellat sunt. Quod voluptatem eius asperiores esse reprehenderit vel
-                    officiis eligendi facilis ipsam impedit voluptatum, dolorem sit ut pariatur repellat quaerat ipsum
-                    consequuntur laborum deleniti accusamus ea nihil maxime! Hic consectetur placeat quis deserunt
-                    suscipit nam. Maiores eius pariatur harum odit, nihil quo! Hic omnis officia ipsum tempore sed.
-                    Asperiores harum consequatur quis autem molestias illum dolores repellendus culpa quia, libero
-                    similique nemo ut praesentium neque dolor? Nesciunt corporis dolores, exercitationem quis veniam
-                    cupiditate cum saepe sunt autem recusandae placeat earum iste? Laudantium nulla reiciendis et optio
-                    ullam vitae nisi blanditiis quas maiores in eos, ex exercitationem architecto, eaque fugiat! Atque
-                    ipsa minus, voluptatem, illo suscipit officiis similique omnis dicta, voluptates velit perspiciatis
-                    culpa quaerat laborum ab ipsum cumque dolores dolore sed temporibus! Accusamus, cum quos velit
-                    doloribus odit facilis cumque, maiores consequatur provident dolores iste unde fugiat necessitatibus
-                    error. Quia est nostrum voluptatem perferendis quas necessitatibus eum voluptatum error provident,
-                    libero nobis eveniet vero et fugit deleniti assumenda. Culpa minus officiis voluptatibus maxime
-                    ratione? Laborum quasi consequatur reiciendis quis cumque ea nostrum error iste nam et quisquam
-                    doloremque excepturi, ipsam molestiae ad, officia voluptatibus quos laboriosam facere sit voluptate
-                    incidunt magnam. Ea quaerat quam autem laboriosam nihil quidem quibusdam, voluptate eveniet, libero
-                    saepe tempora eos, veritatis ipsam a molestiae aperiam mollitia sint deleniti minus quod nostrum
-                    assumenda! Ipsum reprehenderit, ex blanditiis, nisi ea inventore necessitatibus deleniti ab tenetur
-                    doloribus, in minus quasi consequuntur! Porro, molestias. Ducimus omnis numquam ipsa maiores ea
-                    magni ex placeat reprehenderit molestiae optio cum consequuntur asperiores id non modi quidem
-                    debitis, recusandae odit. Debitis non, eum tempore totam culpa sequi, quidem ea, sint cum voluptas
-                    maxime aspernatur? Molestiae facere molestias velit repellendus cupiditate ex deserunt, omnis hic
-                    possimus itaque iusto esse atque illum sed ipsam aliquam, porro eius. Labore quidem commodi expedita
-                    nemo dignissimos odit delectus ut! Incidunt, dolorem, vero sunt fuga blanditiis repellat neque
-                    fugit, ipsam voluptate quia atque nihil amet ex quis. Architecto atque dolores distinctio voluptas
-                    exercitationem laboriosam perspiciatis, voluptates, non veritatis vero praesentium quidem molestias!
-                    Autem omnis impedit quidem tempora optio, cum corporis ipsum velit a dolorum expedita hic tenetur
-                    necessitatibus ut iusto dolore at, harum maiores inventore. Vero maxime consequatur repellat amet,
-                    pariatur aperiam totam recusandae?
+                   
                     <form [formGroup]="secondFormGroup" class="py-2 mb-4 ">
                         <ckeditor [editor]="Editor" [config]="{ toolbar: [ 
                             'heading',
@@ -175,7 +164,7 @@
                             'undo',
                             'redo',
                             'SourceEditing'
-                            ] }" formControlName="content" #myEditor></ckeditor>
+                            ] }" formControlName="instruction" #myEditor></ckeditor>
 
                         <h4 class="font-bold text-lg py-3">Upload File</h4>
                         <div class=" w-full">

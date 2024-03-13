@@ -8,7 +8,7 @@ import { RegisterComponent } from './views/pages/register/register.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { ForgotPasswordComponent } from './views/pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './views/pages/reset-password/reset-password.component';
-
+import { RoleGuardService as RoleGuard } from './services/role-guard.service';
 const routes: Routes = [
   {
     path: '',
@@ -60,7 +60,7 @@ const routes: Routes = [
       },
       {
         path: 'register',
-        canActivate: [AuthGuard],
+        canActivate: [RoleGuard],
         loadChildren: () =>
           import('./views/register/register.module').then((m) => m.RegisterModule)
       },

@@ -38,12 +38,15 @@
     <div class="px-2.5 py-3   mt-3   text-black" *ngIf="!unfoldable">
      <ng-container *ngIf="!loader">
       <div class="font-bold text-gray-600 text-base px-2 flex items-center gap-2 mb-2"><mat-icon class="text-zinc-500">history_toggle</mat-icon>  Recent Activities</div>
-      <div *ngFor="let activity of data" class="px-2 py-2 items-center flex gap-2 ">
+      <div *ngIf="data?.length==0 || !data" class="px-2 py-2 items-center flex gap-2 ">
+        <div class="text-gray-500 text-xs pl-3 py-2">No Recent Activities</div>
+      </div>
+      <div  *ngFor="let activity of data" class="px-2 py-2 items-center flex gap-2 ">
         <div class=" w-8 h-8 min-w-8 min-h-8  flex  justify-center items-center  p-2 bg-rose-50 rounded-full ring ring-pink-100">
-          <img src="assets/icons/exercise.svg" class="w-fit h-fit p-2" alt="" srcset="">
+          <img  [src]="activity?.activityType=='Package'? 'assets/icons/pkg.svg' : 'assets/icons/exercise.svg'" class="w-fit h-fit p-2" alt="" srcset="">
         </div>
         <div class="flex flex-col ml-2 flex-1">
-          <div class="font-semibold text-xs max-w-36 overflow-hidden text-ellipsis h-4 whitespace-nowrap">{{activity?.activityName}}</div>
+          <div (click)="navigateActivity(activity?.activityId,activity?.activityType)" class="cursor-pointer font-semibold text-xs max-w-36 overflow-hidden text-ellipsis h-4 whitespace-nowrap hover:text-pink-600">{{activity?.activityName}}</div>
           <div class="xs-text">{{activity?.eventStatusName}}</div>
         </div>
       </div>

@@ -70,11 +70,11 @@ export class ApiService {
     return this.http.put(url, body, { params: queryParam,headers: this.setHeaders() });
   }
 
-  ExecuteDelete(url: string, urlParam?: string, queryParam?: HttpParams): Observable<Object> {
+  ExecuteDelete(url: string,body?: any, urlParam?: string, queryParam?: HttpParams): Observable<Object> {
     if (urlParam) {
       url = url + '/' + urlParam;
     }
-    return this.http.delete(url, { params: queryParam });
+    return this.http.delete(url,{ headers: this.setHeaders(),body:body });
   }
 
   ExecutePatch(url: string, body: any, urlParam?: string, queryParam?: HttpParams): Observable<Object> {

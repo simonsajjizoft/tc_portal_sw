@@ -4,10 +4,12 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as ClassicEditorBuild from 'ckeditor5-build-classic/build/ckeditor';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/services/api.services';
+import { GeneralService } from 'src/app/services/general.services';
 import { ConfirmboxComponent } from 'src/app/shared/components/confirmbox/confirmbox.component';
 import { environment } from 'src/environments/environment';
 @Component({
@@ -30,7 +32,17 @@ export class DetailsComponent {
     updatedUser:['', Validators.required],
     createdUser:['', Validators.required],
     eventStatusId:['', Validators.required],
-    exerciseInstruction:['',Validators.required],
+    instruction:['',Validators.required],
+    assignedBy:[''
+    ],
+    exerciseStatusId:[''],
+    exerciseStatus:[''],
+    fileURL:[''],
+    packageId:[''],
+    templateId:[''],
+    templateName:[''],
+    updatedDate:[''],
+
   });
   thirdFormGroup = this._formBuilder.group({
     thirdCtrl: ['', Validators.required],
@@ -69,7 +81,10 @@ export class DetailsComponent {
     breakpointObserver: BreakpointObserver,
     private dialog: MatDialog,
     private apiService: ApiService,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private tostr:ToastrService,
+    private general:GeneralService,
+    private router:Router
   ) {
     this.firstFormGroup.valueChanges.subscribe(value => {
       this.desc.nativeElement.style.height = 'auto';
@@ -84,8 +99,6 @@ export class DetailsComponent {
   }
 
   ngOnInit(): void {
-    this.content = ''
-    this.firstFormGroup.get("exerciseDescription").setValue(this.content);
   }
 
 
@@ -108,11 +121,23 @@ export class DetailsComponent {
     else if (stepper?.selectedIndex == 0) return false;
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(ConfirmboxComponent, {
-      panelClass: 'custom-modalbox',
-      data: { data: 'data' }
-    });
+  openDialog(): void {
+    // this.savePackage()
+    if(this.firstFormGroup.valid){
+      const dialog = this.dialog.open(ConfirmboxComponent, {
+        panelClass: 'dialog-ctn',
+        data: { statusList:this.statusList,userList:this.userList,assignee:this.secondFormGroup?.get('assignedTo')?.value,statusId:this.secondFormGroup?.get('exerciseStatusId')?.value},
+      });
+      dialog.afterClosed().subscribe(data => {
+        if(data){
+          console.log(data);
+          this.saveExercise(data);
+        }
+  
+      });
+    }
+
+    else this.tostr.warning("Please do enter the required fields before saving.")
   }
 
   triggerResize() {
@@ -125,9 +150,8 @@ export class DetailsComponent {
   }
 
   getDetails(id: any) {
-    let payload = { "objectId": id };
     this.detailsLoader = true;
-    this.apiService.ExecutePost(environment?.apiUrl + 'get-exercise', payload).subscribe((data: any) => {
+    this.apiService.ExecuteGet(environment?.apiUrl + 'exercise'+ `?exerciseId=${id}`).subscribe((data: any) => {
       if (data?.data) {
         console.log(data);
         this.details = data?.data;
@@ -141,7 +165,7 @@ export class DetailsComponent {
   }
 
   fetchStatusList(){
-    this.apiService.ExecutePost(environment?.apiUrl + 'status',{}).subscribe((data:any)=>{
+    this.apiService.ExecuteGet(environment?.apiUrl + 'status').subscribe((data:any)=>{
       if(data?.data){
         this.statusList = data?.data;
         this.statusList.map((item)=>{
@@ -180,6 +204,32 @@ export class DetailsComponent {
 
   showCommentButtons(){
     this.isCommentActionsEnabled = true;
+  }
+
+  saveExercise(data){
+    this.secondFormGroup.controls['assignedTo'].patchValue(data?.assignee);
+    this.secondFormGroup.controls['eventStatusId'].patchValue(data?.status?.statusId);
+    this.secondFormGroup.controls['assignedBy'].patchValue(this.general.getUserName);
+    // this.secondFormGroup.controls['createdUser'].patchValue('');
+    console.log(this.firstFormGroup)
+    let payload = {...this.firstFormGroup?.value,...this.secondFormGroup?.value};
+    console.log(payload)
+    payload.updatedUser = this.general.getUserName;
+    payload.assignedBy = this.general.getUserName;
+    console.log(payload);
+    this.apiService.ExecutePut(environment?.apiUrl + 'exercise',payload).subscribe((data:any)=>{
+      if(data?.data){
+        console.log(data?.data); 
+        this.tostr.success(data?.data);
+        this.router.navigate(
+          ['/exercises'] 
+        );
+      }
+      else this.tostr.error(data?.data || data?.message)
+    },
+    (error)=>{
+      this.tostr.error(data?.message || data?.error)
+    })
   }
 
   

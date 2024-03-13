@@ -19,12 +19,13 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent {
-  ageList = [{'age':'4-6',selected:true},{'age':'6-8'}];
+  ageList = [];
   firstFormGroup = this._formBuilder.group({
+    packageId: [''],
     packageName: ['', Validators.required],
     premiumPrice:['0',Validators.required],
     description: ['', Validators.required],
-    ageGroup: [this.ageList[0]?.age, Validators.required],
+    ageGroup: ['', Validators.required],
     premiumStatus:[false, Validators.required],
   });
   secondFormGroup = this._formBuilder.group({
@@ -35,7 +36,10 @@ export class DetailsComponent {
     exerciseId:[[],Validators.required],
     packageStatus:[[]],
     packageStatusId:[''],
-    assignedBy:['']
+    assignedBy:[''],
+    createdDate:[''],
+    updatedDate:[''],
+    commentDocument:['']
   });
   thirdFormGroup = this._formBuilder.group({
     thirdCtrl: ['', Validators.required],
@@ -57,20 +61,6 @@ export class DetailsComponent {
   userList;
   ageDropdown;
   id;
-  logs = [
-    {time:'6 mins ago',user:'J',description:'Package 426246cerer55u status changed from Draft to Review'},
-    {time:'05 Mar 2024',user:'J',description:'Assignee Changed from Joe Davis to Admin213'},
-    {time:'03 Mar 2024',user:'A',description:'Package 426246cerer55u was updated at 5th Dec 2024 with status Draft.',
-  contentchanged:'Description'},
-  {time:'03 Mar 2024',user:'A',description:'Package 426246cerer55u was created at 5th Dec 2024 with status Draft.'},
-  ];
-  comments = [
-    {time:'6 mins ago',user:'J',description:'Please do proceed with Approval',username:'josephkuruvilla@gmail.com'},
-    {time:'05 Mar 2024',user:'A',description:'Assignee Changed from Joe Davis to Admin213',username:'admin123@gmail.com'},
-    {time:'03 Mar 2024',user:'S',description:'The Exercises in  the Packages have been added to.',
-  contentchanged:'Description',username:'sanjo@gmail.com'},
-  ];
-  isCommentActionsEnabled ;
   details;
   statusConfigs;
   @ViewChild('desc') desc: ElementRef;
@@ -104,6 +94,7 @@ export class DetailsComponent {
     this.content = ''
     this.firstFormGroup.get("description").setValue(this.content);
     this.getExercises();
+    this.fetchAgeList();
     this.fetchAllUsers();
     this.fetchStatusList();
   }
@@ -153,7 +144,7 @@ export class DetailsComponent {
 
   getExercises(){
     this.packageService
-    .getApprovedExercises(this.page,"4-6")
+    .getApprovedExercises(this.page,this.firstFormGroup?.value?.ageGroup )
     .subscribe((data:any) => {
       let exercises = data?.data;
      if(exercises?.length>0) this.exercises.push(...exercises);
@@ -169,7 +160,7 @@ export class DetailsComponent {
   onScroll(): void {
     if(!this.isReachedLastPage){
       this.packageService
-      .getApprovedExercises(++this.page,"4-6")
+      .getApprovedExercises(++this.page,this.firstFormGroup?.value?.ageGroup )
       .subscribe((data:any) => {
         let exercises = data?.data;
         if(data?.data){
@@ -239,7 +230,10 @@ export class DetailsComponent {
   selectAgeGroup(age){
     this.ageList.map((item:any)=>item.selected = false)
     age.selected = true;
-    this.firstFormGroup.controls['ageGroup'].setValue(age?.age);
+    this.firstFormGroup.controls['ageGroup'].setValue(age?.ageGroup);
+    this.exercises = [];
+    this.page = 1;
+    this.getExercises();
   }
 
   savePackage(data){
@@ -250,16 +244,27 @@ export class DetailsComponent {
     this.secondFormGroup.controls['eventStatusId'].patchValue(data?.status?.statusId);
     this.secondFormGroup.controls['assignedBy'].patchValue(this.general.getUserName);
     // this.secondFormGroup.controls['createdUser'].patchValue('');
-    console.log(this.firstFormGroup)
+    console.log(this.firstFormGroup);
+    let commentObj:any = {
+      "comment": data?.comment,
+      "commentDate": new Date(),
+      "commentUser": this.general.getUserName
+    }
+    this.secondFormGroup.controls['commentDocument'].patchValue(commentObj);
     let payload = {...this.firstFormGroup?.value,...this.secondFormGroup?.value};
     console.log(payload)
     payload.updatedUser = this.general.getUserName;
     payload.assignedBy = this.general.getUserName;
-    console.log(payload);
+    if(commentObj?.comment=='' || !commentObj?.comment) delete payload.commentDocument;
+
+    console.log(payload)
     this.apiService.ExecutePut(environment?.apiUrl + 'package',payload).subscribe((data:any)=>{
       if(data?.data){
         console.log(data?.data); 
-        this.tostr.success(data?.data)
+        this.tostr.success(data?.data);
+        this.router.navigate(
+          ['/packages'] 
+        );
       }
       else this.tostr.error(data?.data || data?.message)
     },
@@ -304,8 +309,17 @@ export class DetailsComponent {
     console.log(this.secondFormGroup?.value);
   }
 
-  showCommentButtons(){
-    this.isCommentActionsEnabled = true;
+
+  fetchAgeList(){
+    this.apiService.ExecuteGet(environment?.apiUrl + 'age-group').subscribe((data:any)=>{
+      if(data?.data){
+        this.ageList = data?.data;
+        this.ageList.map((item)=>{
+          item.selected = false;
+        });
+      }
+    })
+
   }
 
 

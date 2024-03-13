@@ -62,5 +62,17 @@ export class DefaultLayoutComponent {
       this.loader = false;
     })
   }
+
+  navigateActivity(id,activity){
+    if(activity=='Package') this.router.navigate([
+      `packages/details/${id}`
+    ]);
+    else if(activity == 'Exercise') this.router.navigate([
+      `exercises/details/${id}`
+    ]);
+    else this.router.navigate([
+      `templates/details/${id}`
+    ]);
+  }
   
 }

@@ -10,22 +10,23 @@
                 <span class="ml-2 text-lg">Create Template</span>
             </div>
             <div class="flex gap-0.5 px-2 py-3 justify-end items-center ">
-                <div (click)="statusDropdown=!statusDropdown"
-                    class="z-20 cursor-pointer rounded-3xl relative  text-pink-600 border-pink-400 border-2 px-3 py-1 font-medium text-sm flex  items-center">
-                    <span class=" flex items-center font-bold text-sm">Save As </span>
-                    <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg>
-                    <div *ngIf="statusDropdown"
-                        class=" w-44 h-fit bg-white text-black z-10 rounded-md border absolute text-xs top-10 shadow right-0">
-                        <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
-                                class="mr-1">Save As Draft</span></div>
-                        <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span class="mr-1">Submit &
-                                Review</span></div>
-                    </div>
-                </div>
+                <div (click)="openDialog()" 
+                class="z-20 cursor-pointer rounded-3xl relative  text-pink-600 border-pink-400 border-2 px-3 py-1 font-medium text-sm flex  items-center">
+                <span class=" flex items-center font-bold text-sm">Save</span>
+                <!-- <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 4 4 4-4" />
+                </svg>
+                <div *ngIf="statusDropdown"
+                    class=" w-44 h-fit bg-white text-black z-10 rounded-md border absolute text-xs top-10 shadow right-0">
+                    <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
+                        (click)="openDialog(2000,0)"    class="mr-1">Save As Draft</span></div>
+                    <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span
+                        (click)="openDialog(2000,0)"     class="mr-1">Submit &
+                            Review</span></div>
+                </div> -->
+            </div>
 
             </div>
 

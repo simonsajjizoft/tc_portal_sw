@@ -16,7 +16,7 @@
 </ng-container>
 <!--</c-header>-->
 <ng-template #userDropdown>
-  <div (click)="statusDropdown=!statusDropdown" #drpdown
+  <!-- <div (click)="statusDropdown=!statusDropdown" #drpdown
   class="z-20 cursor-pointer rounded-3xl relative  mr-6  px-3 py-1 font-medium text-sm flex  items-center text-gray-100">
   <mat-icon class="text-pink-300  text-lg leading-6">add_circle_outline</mat-icon>
   <span class=" flex items-center font-semibold text-sm pr-0.5 ">Create </span>
@@ -28,45 +28,35 @@
   <div *ngIf="statusDropdown"
       class=" w-44 h-fit bg-white text-gray-700 z-20 rounded-md border border-gray-200  absolute text-sm top-10 shadow right-0 p-4">
       <div class="px-4 py-1 font-semibold hover:bg-pink-50 text-right items-center flex justify-end gap-2 rounded-lg">
-        <!-- <img src="assets/icons/pkg.svg" class="w-5 h-5" alt="" srcset=""> -->
         <span class="mr-1 ml-1.5">  Package</span>
       </div>
       <div class="px-4 py-1 font-semibold hover:bg-pink-50 text-right items-center flex justify-end gap-2 rounded-lg mt-2">
-        <!-- <img src="assets/icons/exercise.svg" class="w-6 h-6" alt="" srcset=""> -->
         <span class="mr-1 ml-1.5">  Exercise</span>
       </div>
       <div class="px-4 py-1 font-semibold hover:bg-pink-50 text-right items-center flex justify-end rounded-lg mt-2">
-        <!-- <img src="assets/icons/layout.png" class="w-5 h-5" alt="" srcset=""> -->
         <span class="mr-1 ml-2">  Template</span>
       </div>
   </div>
-</div>
-  <div class="items-center flex mr-6">
+</div> -->
+  <div class="items-center flex mr-6" [matTooltip]="'This feature is coming soon'">
     <img src="assets/icons/settings2.png" width="21px" height="21px" alt="" srcset="">
-    <!-- <mat-icon class="text-white">settings_outline</mat-icon> -->
   </div>
   <c-dropdown alignment="end" variant="nav-item" class="d-flex align-center">
     <button cButton color="" [caret]="false" cDropdownToggle class="py-0 d-flex align-center"
       style="outline:none!important;border: none!important;">
       <div class="avatar m-b-5 m-r-10 " >
-        <img class="avatar-img a-img ring-2 ring-purple-500" style="border:0!important" src="/assets/img/avatars/2.jpg" alt="user@email.com">
+        <div [title]="userName ? (userName | titlecase) : ''" class="min-w-8 text-white flex items-center justify-center min-h-8 h-8 w-8 rounded-full ring-2 ring-purple-300 bg-purple-800 text-base font-medium">{{userName ? (userName?.charAt(0) | titlecase) : ''}}</div>
         <span class="avatar-status bg-success"></span>
-      </div>
-      <div *ngIf="userName" class="flex-column d-flex user">
-        <div class="f-s-13 fw-semibold f-poppins c-black" style="color:black!important">{{userName | titlecase}}</div>
-        <div class="f-s-12 f-poppins t-a-left" style="line-height: 9px;">Admin <i class="fa fa-caret-down"></i></div>
-
       </div>
     </button>
     <ul cDropdownMenu class=" px-2 py-2 w-72 f-roboto shadow-bx" style="border:1px solid rgb(231, 231, 231)!important">
       <li>
         <div class="mt-2 mb-2 flex items-center text-slate-700 text-sm font-semibold py-2 px-4  rounded-lg">
-          <div class="avatar m-b-5 m-r-10">
-            <img class="avatar-img a-img w-36 h-36" src="/assets/icons/prof.svg" alt="user@email.com">
-          </div>
+            <div class="bg-purple-100 ring-2 text-base font-medium ring-purple-50 flex items-center justify-center w-9 h-9 rounded-full mr-2"  >{{userName ? (userName?.charAt(0) | titlecase) : ''}}</div>
+          
           <div class="flex flex-col ">
-            <div class="text-base leading-5">Joel Manuek</div>
-            <small class="font-normal">Transformational Coach</small>
+            <div class="text-base leading-5" >{{userName ? (userName| titlecase) : ''}}</div>
+            <small class="font-normal">{{userRole ? (userRole | uppercase) : ''}}</small>
 
           </div>
         </div>
@@ -74,20 +64,8 @@
       <li>
         <hr cDropdownDivider />
       </li>
-      <li>
-        <h6 cDropdownHeader class="bg-light fw-semibold py-2 px-4 rounded-lg">Account</h6>
-      </li>
-      <li>
-        <div routerLink="./"
-          class="mt-2 mb-2 flex items-center text-slate-700 text-sm font-semibold py-2 px-4 hover:bg-gray-100 rounded-lg">
-          <svg cIcon class="me-2" name="cilBell"></svg>
-          <span class="font-medium">Updates</span>
-          <div class="px-2 ml-4 py-0.5 rounded-lg bg-pink-400 text-white font-bold">
-            54
-          </div>
-        </div>
-      </li>
-      <li>
+
+      <li *ngIf="userRole=='super_admin'">
         <div [routerLink]="'/register'"
           class="mt-2 mb-2 flex items-center text-slate-700 text-sm font-semibold py-2 px-4 hover:bg-gray-100 rounded-lg cursor-pointer">
           <img src="assets/icons/add-user.png" class="mr-2 " width="16px" height="16px" alt="" srcset="">
@@ -95,7 +73,7 @@
 
         </div>
       </li>
-      <li>
+      <li *ngIf="userRole=='super_admin'">
         <hr cDropdownDivider />
       </li>
       <li>

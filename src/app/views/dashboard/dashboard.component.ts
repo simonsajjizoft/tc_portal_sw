@@ -100,11 +100,13 @@ export class DashboardComponent implements OnInit {
   showRecentPackages = true;
   showRecentExercises = true;
   showRecentTemplates = true;
+  statusConfigs;
   public Editor = ClassicEditorBuild;
 
   ngOnInit(): void {
     // this.initCharts();
     this.loader = true;
+    this.statusConfigs = this.general.statusConfiguration;
     this.fetchDetails()
     setTimeout(() => {
       this.loader = false;

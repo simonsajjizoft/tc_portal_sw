@@ -12,21 +12,10 @@
                 </div>
                 <div class="flex gap-4 px-2 py-1.5 justify-end items-center ">
                     <div (click)="openDialog()" 
+                    
                         class="z-20 cursor-pointer rounded-3xl relative  text-pink-600 border-pink-400 border-2 px-3 py-1 font-medium text-sm flex  items-center">
-                        <span class=" flex items-center font-bold text-sm">Save</span>
-                        <!-- <svg class="w-2 h-2 ms-1  ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg>
-                        <div *ngIf="statusDropdown"
-                            class=" w-44 h-fit bg-white text-black z-10 rounded-md border absolute text-xs top-10 shadow right-0">
-                            <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right bg-pink-100"><span
-                                (click)="openDialog(2000,0)"    class="mr-1">Save As Draft</span></div>
-                            <div class="px-4 py-2.5 font-semibold hover:bg-pink-50 text-right "><span
-                                (click)="openDialog(2000,0)"     class="mr-1">Submit &
-                                    Review</span></div>
-                        </div> -->
+                        <span class=" flex items-center font-bold text-sm">{{secondFormGroup?.get("packageStatusId")?.value == '65cdb5ea5c7dba7637483539' ? 'Update' : ((secondFormGroup?.get("packageStatusId")?.value === '65cdb6535c7dba763748353b') ? 'Review Changes' : 'Reopen' )}}</span>
+                     
                     </div>
                     <!-- <div class="text-gray-600 font-bold text-sm">
                     Clear
@@ -51,15 +40,15 @@
                         <div class="label font-semibold text-sm py-3">Age Group <span
                                 class="text-pink-500">*</span></div>
                         <div (click)="ageDropdown=!ageDropdown" (clickOutside)="ageDropdown=false"
-                            class="font-semibold relative flex items-center  py-2 border-2 border-zinc-200 rounded-lg w-max px-3  justify-between">
+                            class="font-semibold relative flex items-center  py-2 border-2 border-zinc-200 rounded-lg w-max px-2  justify-between">
                             <span class="text-sm">{{firstFormGroup?.value?.ageGroup ? firstFormGroup?.value?.ageGroup : ' '}} Age</span>
-                            <svg class="w-2 h-2 ms-3  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            <svg class="w-2 h-2 ms-5  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                             <ng-container *ngIf="ageDropdown">
-                                <app-custom-dropdown [values]="ageList" [displayName]="'age'" (selectEvent)="selectAgeGroup($event)"></app-custom-dropdown>
+                                <app-custom-dropdown [values]="ageList" [displayName]="'ageGroup'" (selectEvent)="selectAgeGroup($event)"></app-custom-dropdown>
                             </ng-container>
                         </div>
                     </div>
@@ -129,10 +118,10 @@
                             <div class="h-2/6">
                                 <div class=" text-center  text-xs font-semibold h-4 max-w-full text-ellipsis overflow-hidden">{{item?.exerciseName}}</div>
                                 <div class="xs-text  text-center h-4 max-w-full text-ellipsis overflow-hidden">{{item?.exerciseId}}</div>
-                                <div class="py-1.5  items-center flex gap-2 px-2 justify-center"  >
+                                <!-- <div class="py-1.5  items-center flex gap-2 px-2 justify-center"  >
                                     <input type="radio" class="h-3 w-3 " [name]="'Bonus'" id="">
                                     <div class="text-xs font-semibold">Bonus</div>
-                                </div>
+                                </div> -->
                             </div>
                         </ng-container>
                      </div>
@@ -187,41 +176,11 @@
         <mat-tab-group   animationDuration="0"  class=" overflow-y-auto  px-2  tabs ">
             <mat-tab >
                 <ng-template mat-tab-label class="flex items-center gap-0.5 "><mat-icon class="text-pink-500 text-xl mr-1 " >history</mat-icon><span class="py-1.5 px-0.5">Logs</span></ng-template>
-                <div class="py-3">
-                    <div *ngFor="let log of logs" class="rounded-md bg-slate-50 px-3 py-3 mt-3 mb-3">
-                        <div class="flex gap-2 items-center">
-                            <div class="rounded-full w-8 h-8 ring-2 ring-purple-100 bg-purple-100 flex items-center justify-center font-bold text-gray-500">{{log?.user}}</div>
-                            <div class="flex flex-col gap-1 font-medium text-sm">
-                                <small class="text-gray-600 font-medium">{{log?.time}}</small>
-                                <div class="text-sm font-semibold">{{log?.description}}</div>
-                                <div *ngIf="log?.contentchanged" class="text-xs">
-                                    Content changed in <span class="text-gray-700 font-bold">{{log?.contentchanged}}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <app-logs [id]="id"></app-logs>
             </mat-tab>
             <mat-tab >
                 <ng-template mat-tab-label class="flex items-center gap-0.5 "><mat-icon class="text-pink-500 text-xl mr-1 " >comment</mat-icon><span class="py-1.5 px-0.5">Comments</span></ng-template>
-                <div class="w-full py-4 text-sm">
-                    <div  contenteditable="true" (focus)="showCommentButtons()"   placeholder="Type in your comment here..."  class=" placeholder:text-gray-200 text-black font-medium border border-gray-300 rounded-lg px-3 py-3 w-full min-h-20 outline-none "></div>
-                    <div class="flex justify-end gap-1 py-2 px-0.5">
-                        <div *ngIf="isCommentActionsEnabled" class="cursor-pointer bg_alt rounded-3xl text-white text-sm py-1 px-4 font-semibold opacity-80 hover:opacity-100">Save</div>
-                        <div *ngIf="isCommentActionsEnabled" (click)="isCommentActionsEnabled=false" class="cursor-pointer text-gray-700 text-sm py-1 px-4 font-semibold rounded-md">Cancel</div>
-                    </div>
-                </div>
-                <div class="py-1">
-                    <div *ngFor="let comment of comments" class="rounded-md bg-neutral-50 px-3 py-3 mt-2 mb-2">
-                        <div class="flex gap-2 items-center">
-                            <div class="flex flex-col  font-medium text-sm">
-                                <div class="flex items-center gap-2"><div class="rounded-full w-7 h-7 ring-2 ring-purple-100 bg-purple-100 flex items-center justify-center font-bold text-gray-500">{{comment?.user}}</div><span class="font-bold text-sm pl-1">{{comment?.username}}</span><small class="text-gray-600 font-medium">{{comment?.time}}</small></div>
-                                <div class="text-sm font-medium px-10">{{comment?.description}}</div>
-                                <div class="flex gap-2 text-gray-700 font-bold text-xs px-10 pt-2"><span>Edit</span> <span>Delete</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <app-comments [id]="id"></app-comments>
             </mat-tab>
         </mat-tab-group>
     </div>

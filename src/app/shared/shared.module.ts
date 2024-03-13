@@ -31,6 +31,10 @@ import { TextareaComponent } from './components/textarea/textarea.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { CustomDropdownComponent } from './components/custom-dropdown/custom-dropdown.component';
 import { ClickOutsideModule } from 'ng-click-outside';
+import { CommentsComponent } from './components/comments/comments.component';
+import { LogsComponent } from './components/logs/logs.component';
+import { CommentEditableDirective } from './directives/comment-editable.directive';
+import { SingleCommentComponent } from './components/single-comment/single-comment.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,11 @@ import { ClickOutsideModule } from 'ng-click-outside';
     ContentEditableFormDirective,
     TextareaComponent,
     CheckboxComponent,
-    CustomDropdownComponent
+    CustomDropdownComponent,
+    CommentsComponent,
+    LogsComponent,
+    CommentEditableDirective,
+    SingleCommentComponent
   ],
   imports: [
     CommonModule,
@@ -103,7 +111,11 @@ import { ClickOutsideModule } from 'ng-click-outside';
     TextareaComponent,
     CheckboxComponent,
     CustomDropdownComponent,
-    ClickOutsideModule
+    ClickOutsideModule,
+    CommentsComponent,
+    LogsComponent,
+    CommentEditableDirective,
+    SingleCommentComponent
   ]
 })
 export class SharedModules { }

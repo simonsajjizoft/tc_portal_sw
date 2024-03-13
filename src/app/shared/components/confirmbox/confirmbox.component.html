@@ -48,12 +48,15 @@
           </div>
     
       </div>
+      <div class="w-full py-4 px-3 text-sm">
+        <div  commenteditable="true"    placeholder="Leave a comment" [spellcheck]="false"  [(ngModel)]="comment" class="cmt placeholder:text-gray-200 text-black font-medium border-2 border-gray-300 rounded-lg px-2.5 py-2 w-full min-h-20 outline-none "></div>
+      </div>
     
       
   </div>
-  <div class="flex gap-1 px-2 py-3  w-full justify-end items-center absolute bottom-2">
-    <div (click)="okClick()" [ngClass]="true ? ' text-pink-600 cursor-pointer' : ' text-gray-500 cursor-default'"  class="cursor-pointer rounded-2xl  text-sm font-semibold px-3 py-1 ">
+  <div class="flex gap-1 px-2 py-3  w-full justify-end items-center ">
+    <div (click)="okClick()" [ngClass]="true ? ' text-pink-600 cursor-pointer  border-pink-500 border-2' : ' text-gray-500 cursor-default'"  class="cursor-pointer rounded-2xl  text-sm font-semibold px-3.5 py-1 ">
         Save</div>
-    <div (click)="cancelClick()" [ngClass]="false ? ' text-pink-600  cursor-pointer' : ' text-gray-500'" class="cursor-pointer rounded-2xl  text-sm  font-semibold  px-3 py-1 " >Cancel</div>
+    <div (click)="cancelClick()" [ngClass]="false ? ' text-pink-600  cursor-pointer ' : ' text-pink-600 '" class="border-pink-500 border-2 ml-2 cursor-pointer rounded-2xl  text-sm  font-semibold  px-3 py-1 " >Cancel</div>
 </div>
 </div>

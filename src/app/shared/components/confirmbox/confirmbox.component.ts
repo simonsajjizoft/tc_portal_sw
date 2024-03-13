@@ -21,6 +21,7 @@ export class ConfirmboxComponent {
   menu;
   selectedAssignee;
   selectedStatus;
+  comment;
   public visible = false;
 
   toggleLiveDemo() {
@@ -57,7 +58,7 @@ export class ConfirmboxComponent {
   ngOnInit(): void{ }
 
   okClick(): void {
-    if(this.selectedAssignee && this.selectedStatus) this.dialogRef.close({assignee:this.selectedAssignee,status:this.selectedStatus});
+    if(this.selectedAssignee && this.selectedStatus) this.dialogRef.close({assignee:this.selectedAssignee,status:this.selectedStatus,comment:this.comment});
     else this.tostr.warning("Please do fill in the Required Fields.");
   }
 
